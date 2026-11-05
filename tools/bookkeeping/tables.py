@@ -239,8 +239,8 @@ def _map_debit_credit(df: pd.DataFrame) -> pd.DataFrame:
     out_col = next((cols[k] for k in ("debit", "moneyout", "paidout", "withdrawals") if k in cols), None)
     in_col = next((cols[k] for k in ("credit", "moneyin", "paidin", "deposits") if k in cols), None)
     if out_col and in_col and "amount" not in cols:
-        money_out, _ = coerce_numeric(df[out_col])
-        money_in, _ = coerce_numeric(df[in_col])
+        money_out, _ = coerce_numeric(_brackets_negative(df[out_col]))
+        money_in, _ = coerce_numeric(_brackets_negative(df[in_col]))
         df = df.copy()
         df["Amount"] = money_in.fillna(0) - money_out.fillna(0)
     return df

@@ -36,7 +36,7 @@ from tools.bookkeeping.orders import match_invoices_to_pos
 from tools.bookkeeping.payroll import check_payroll, payroll_journal, timesheet_hours
 from tools.bookkeeping.sales import aged_debtors, chase_groups, raise_invoices
 from tools.bookkeeping.tables import DataFileError, TABLE_SPECS, detect_role, load_table, norm_name, table_spec
-from tools.bookkeeping.vat import code_for_rate, normalise_code, vat_return
+from tools.bookkeeping.vat import code_for_rate, format_vat_number, normalise_code, vat_return
 
 FileInput = tuple[str, bytes]
 PURCHASE_TYPES = ("invoice", "credit_note", "receipt")
@@ -258,8 +258,8 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
                                          on_done=lambda d, t: progress.update(f"Reading documents with {source_word}… ({d}/{t})"))
         for i, (doc, (data, result)) in enumerate(zip(texts, extracted), 1):
             calls.append(result)
-            src = {"api": "Claude", "cache": "Claude (cached)", "fixture": "Pre-recorded AI (mock mode)",
-                   "mock": "Pattern reader (no AI)", "fallback": "Pattern reader (Claude unavailable)"}.get(result.source, result.source)
+            src = {"api": "Claude", "cache": "Claude (cached)", "fixture": "AI (pre-recorded)",
+                   "mock": "Pattern reader", "fallback": "Pattern reader"}.get(result.source, result.source)
             docs.append(normalise(data, doc, f"D-{i:02d}", src))
         by_type = Counter(d["doc_type"] for d in docs)
         progress.done(f"Extracted the details from {_plural(len(docs), 'document')}",
@@ -572,7 +572,8 @@ def _document_checks(docs: list[dict], book: SupplierBook, config: dict, p_start
         if has_book and d["doc_type"] in ("invoice", "credit_note") and on_account and supplier is None:
             findings.append(Finding("new_supplier", **common,
                                     finding=f"{d['counterparty'] or 'The supplier'} is not on the supplier list"
-                                            + (f" (VAT number {d['counterparty_vat_number']})." if d["counterparty_vat_number"] else ".")))
+                                            + (f" (VAT number {format_vat_number(d['counterparty_vat_number'])})."
+                                               if d["counterparty_vat_number"] else ".")))
         if d["document_date"] is not None and d["doc_type"] in ("invoice", "credit_note"):
             if d["document_date"] < p_start:
                 findings.append(Finding("prior_period", **common,
@@ -628,7 +629,7 @@ def _card_findings(txns, candidates, matches, no_receipt_needed, config, finding
                 diff = info["difference"]
                 findings.append(Finding("amount_mismatch", **common,
                                         finding=f"Card payment to {t['description']} is £{t['amount']:,.2f} but the receipt "
-                                                f"({doc['file']}) totals £{doc['gross_total']:,.2f}: £{abs(diff):,.2f} "
+                                                f"from {doc['counterparty'] or doc['file']} totals £{doc['gross_total']:,.2f}: £{abs(diff):,.2f} "
                                                 f"{'more' if diff > 0 else 'less'} on the card."))
             continue
         if t["txn_id"] in no_receipt_needed or t["amount"] < min_amount:
@@ -663,12 +664,13 @@ def _card_view(txns, credits, docs, matches, no_receipt_needed) -> pd.DataFrame:
             status = "No receipt needed" if t["txn_id"] in no_receipt_needed else "Receipt missing"
         rows.append({"Txn": t["txn_id"], "Date": t["date"], "Card": t["card_last4"], "Cardholder": t["cardholder"],
                      "Merchant": t["description"], "Amount": t["amount"], "Status": status,
-                     "Receipt": d["file"] if d else "", "Receipt total": d["gross_total"] if d else None,
+                     "Receipt from": d["counterparty"] if d else "", "Receipt": d["file"] if d else "",
+                     "Receipt total": d["gross_total"] if d else None,
                      "Receipt currency": d["currency"] if d else ""})
     for t in credits.to_dict("records"):
         rows.append({"Txn": t["txn_id"], "Date": t["date"], "Card": t["card_last4"], "Cardholder": t["cardholder"],
                      "Merchant": t["description"], "Amount": t["amount"], "Status": "Payment / refund (not an expense)",
-                     "Receipt": "", "Receipt total": None, "Receipt currency": ""})
+                     "Receipt from": "", "Receipt": "", "Receipt total": None, "Receipt currency": ""})
     return pd.DataFrame(rows)
 
 

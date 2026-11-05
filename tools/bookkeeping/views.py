@@ -8,6 +8,7 @@ A client's ``app.py`` only needs:
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -21,11 +22,6 @@ from tools.bookkeeping import pipeline, reports
 from tools.bookkeeping.pipeline import PipelineError, RunInputs, RunResult
 
 RESULT_KEY, STEPS_KEY = "bk_result", "bk_steps"
-STATUS_COLOURS = {"Done": "background-color:#E8F6EE;color:#0F5A34", "Action needed": "background-color:#FFF4E0;color:#7A4A00",
-                  "To do": "background-color:#EEF1F5;color:#344054", "Held": "background-color:#FFF4E0;color:#7A4A00",
-                  "Ready": "background-color:#E8F6EE;color:#0F5A34", "Matched": "background-color:#E8F6EE;color:#0F5A34",
-                  "Receipt missing": "background-color:#FDE8E7;color:#8A1C12",
-                  "Amount differs": "background-color:#FFF4E0;color:#7A4A00"}
 
 
 def load_config(client_dir: Path) -> dict:
@@ -110,7 +106,7 @@ def render_results(r: RunResult) -> None:
     doc_sub = " · ".join(f"{n} {t}{'s' if n != 1 else ''}" for t, n in sorted(by_type.items(), key=lambda x: -x[1])[:3])
     metrics = [ui.Metric("Documents read", str(f["documents"]), doc_sub)]
     if f.get("entries"):
-        metrics.append(ui.Metric(f"Ready to import into {r.system_label}", f"£{f['value_ready']:,.0f}",
+        metrics.append(ui.Metric(f"Purchases ready for {r.system_label.split()[0]}", f"£{f['value_ready']:,.0f}",
                                  f"{f['entries_ready']} lines · {f['entries_held']} held for a check", tone="good"))
     if f.get("card_txns"):
         missing = len(f.get("missing_receipts", []))
@@ -184,74 +180,134 @@ def _tabs(r: RunResult) -> list[tuple[str, callable]]:
     return [(available[k][0], available[k][1]) for k in order if k in available and available[k][2]]
 
 
-def _style_status(df: pd.DataFrame, column: str = "Status"):
-    if column not in df:
-        return df
-    return df.style.map(lambda v: STATUS_COLOURS.get(v, ""), subset=[column])
+def _money(v, currency: str = "GBP") -> str:
+    if v is None or (isinstance(v, float) and pd.isna(v)) or v == "":
+        return ""
+    symbol = {"GBP": "£", "USD": "$", "EUR": "€"}.get(currency or "GBP", f"{currency} ")
+    return f"{'−' if v < 0 else ''}{symbol}{abs(float(v)):,.2f}"
 
 
-def _money_cols(df: pd.DataFrame) -> dict:
-    cfg = {}
-    for c in df.columns:
-        if pd.api.types.is_float_dtype(df[c]) and c not in ("Qty", "Days overdue", "Overtime multiplier") and "hours" not in c.lower():
-            cfg[c] = st.column_config.NumberColumn(c, format="£%.2f" if c not in ("Box",) else "%d")
-        elif pd.api.types.is_datetime64_any_dtype(df[c]):
-            cfg[c] = st.column_config.DateColumn(c, format="DD MMM YYYY")
-    return cfg
+def _date(v) -> str:
+    return "" if v is None or pd.isna(v) else pd.Timestamp(v).strftime("%d %b %Y")
+
+
+def _text(v) -> str:
+    return "" if v is None or (not isinstance(v, str) and pd.isna(v)) else str(v)
+
+
+def _qty(v) -> str:
+    return "" if v is None or pd.isna(v) else f"{float(v):g}"
+
+
+FORMATTERS = {"money": _money, "date": _date, "text": _text, "qty": _qty}
+STATUS_STYLE = [("Held", "background-color:#FFF4E0;color:#7A4A00"), ("Ready", "background-color:#E8F6EE;color:#0F5A34"),
+                ("Matched", "background-color:#E8F6EE;color:#0F5A34"), ("Done", "background-color:#E8F6EE;color:#0F5A34"),
+                ("Receipt missing", "background-color:#FDE8E7;color:#8A1C12"),
+                ("Amount differs", "background-color:#FFF4E0;color:#7A4A00"),
+                ("Action needed", "background-color:#FFF4E0;color:#7A4A00")]
+
+
+def _status_css(value: str) -> str:
+    return next((css for prefix, css in STATUS_STYLE if str(value).startswith(prefix)), "")
 
 
 def _height(rows: int, cap: int = 16) -> int:
     return 38 + 35 * min(max(rows, 1), cap)
 
 
-def _table(df: pd.DataFrame, *, wide: list[str] | None = None, status: str | None = "Status", cap: int = 16) -> None:
+def _grid(df: pd.DataFrame, spec: list[tuple], *, status: str | None = None, cap: int = 16) -> None:
+    """Show selected columns as formatted text with fixed widths (fits 1280px).
+
+    ``spec`` items: (column, kind, width) or (column, kind, width, label); kind is
+    money | date | text | qty. Money and qty columns are right-aligned.
+    """
     if df is None or df.empty:
         st.info("Nothing to show.")
         return
-    shown = reports.public(df)
-    cfg = _money_cols(shown)
-    for c in wide or []:
-        if c in shown:
-            cfg[c] = st.column_config.TextColumn(c, width="large")
-    data = _style_status(shown, status) if status else shown
-    st.dataframe(data, hide_index=True, width="stretch", height=_height(len(shown), cap), column_config=cfg)
+    out, cfg = pd.DataFrame(index=df.index), {}
+    for item in spec:
+        col, kind, width = item[:3]
+        label = item[3] if len(item) > 3 else col
+        if col not in df:
+            continue
+        out[label] = [FORMATTERS[kind](v) for v in df[col]]
+        cfg[label] = st.column_config.TextColumn(label, width=width,
+                                                 alignment="right" if kind in ("money", "qty") else "left")
+    data = out.style.map(_status_css, subset=[status]) if status and status in out else out
+    st.dataframe(data, hide_index=True, width="stretch", height=_height(len(out), cap), column_config=cfg)
+
+
+def _table(df: pd.DataFrame, *, wide: list[str] | None = None, status: str | None = "Status", cap: int = 16) -> None:
+    """Generic table for the less common tabs: money-like floats formatted, blanks shown blank."""
+    if df is None or df.empty:
+        st.info("Nothing to show.")
+        return
+    shown = reports.public(df).copy()
+    spec = []
+    for c in shown.columns:
+        if pd.api.types.is_datetime64_any_dtype(shown[c]):
+            spec.append((c, "date", 95))
+        elif pd.api.types.is_float_dtype(shown[c]):
+            spec.append((c, "qty" if any(w in c.lower() for w in ("hours", "qty", "days", "multiplier", "box")) else "money", 95))
+        else:
+            spec.append((c, "text", "large" if c in (wide or []) else "medium"))
+    _grid(shown, spec, status=status, cap=cap)
 
 
 def _entries_tab(r: RunResult) -> None:
-    e = reports.entries_frame(r)
-    only_held = st.toggle("Show held entries only", value=False, key="bk_held_only")
-    if only_held:
-        e = e[e["Status"] == "Held"]
-    cols = ["Entry", "Type", "Date", "Supplier / payee", "Reference", "Account", "Net", "VAT", "VAT code", "Gross",
-            "Status", "Held by", "Coded by"]
-    _table(e[cols], status="Status")
-    st.caption("One line per VAT rate. “Coded by” shows whether the account came from the supplier list, a keyword "
-               "rule or a Claude suggestion. The full table, with descriptions and reasons, is in the Excel pack.")
+    e = r.entries.copy()
+    if st.toggle("Show held entries only", value=False, key="bk_held_only"):
+        e = e[e["status"] == "Held"]
+    e["Type"] = e["kind"].map(reports.KIND_LABELS).fillna(e["kind"])
+    e["Status"] = [f"Held · {h}" if s == "Held" and h else s for s, h in zip(e["status"], e["hold_reason"])]
+    _grid(e, [("Type", "text", 100), ("date", "date", 90, "Date"), ("counterparty", "text", 190, "Supplier / payee"),
+              ("account", "text", 175, "Account"), ("net", "money", 80, "Net"), ("vat", "money", 70, "VAT"),
+              ("vat_code", "text", 45, "Code"), ("gross", "money", 82, "Gross"), ("Status", "text", 100),
+              ("coded_by", "text", 95, "Coded by")], status="Status")
+    st.caption("One line per VAT rate. Code: S standard 20%, R reduced 5%, Z zero rated, E exempt, O no VAT, RC reverse "
+               "charge. “Coded by” shows whether the account came from the supplier list, a keyword rule or a Claude "
+               "suggestion. References, descriptions and reasons are in the Excel pack.")
     totals = reports.account_totals(r)
     if not totals.empty:
-        st.markdown("**Totals by account**")
-        _table(totals, status=None, cap=20)
+        with st.expander("Totals by account"):
+            _grid(totals, [("Account", "text", 280), ("Lines", "qty", 70), ("Net", "money", 120), ("VAT", "money", 110),
+                           ("Gross", "money", 120), ("Held (gross)", "money", 120)], cap=25)
 
 
 def _card_tab(r: RunResult) -> None:
-    _table(r.card[["Txn", "Date", "Cardholder", "Merchant", "Amount", "Status", "Receipt", "Receipt total"]])
-    st.caption("Matched on amount, date (within a week) and merchant name. Card fees need no receipt. "
-               "A receipt in another currency is matched on merchant and date.")
+    c = r.card.copy()
+    c["Receipt total"] = [_money(v, cur) for v, cur in zip(c["Receipt total"], c["Receipt currency"])]
+    _grid(c, [("Txn", "text", 55), ("Date", "date", 88), ("Cardholder", "text", 105), ("Merchant", "text", 255),
+              ("Amount", "money", 80), ("Status", "text", 140), ("Receipt from", "text", 210), ("Receipt total", "text", 90)],
+          status="Status", cap=20)
+    st.caption("Matched on amount, date (within a week) and merchant name. Card fees and parking need no receipt. "
+               "A receipt in another currency is matched on merchant, date and the original amount.")
 
 
 def _payroll_tab(r: RunResult) -> None:
-    j = reports.journal_frame(r)
-    _table(j, status=None)
-    debit, credit = j["Debit"].sum(), j["Credit"].sum()
-    st.caption(f"Debits £{debit:,.2f} · credits £{credit:,.2f} · "
-               + ("balanced." if abs(debit - credit) < 0.005 else "OUT OF BALANCE."))
+    j = r.journal
+    _grid(reports.journal_frame(r), [("Account", "text", 230), ("Debit", "money", 110), ("Credit", "money", 110),
+                                     ("Description", "text", 400), ("Department", "text", 120)], cap=20)
+    debit, credit = j["debit"].sum(), j["credit"].sum()
+    st.caption(f"Journal {j['reference'].iloc[0]} dated {j['date'].iloc[0]:%d %b %Y}. Debits £{debit:,.2f}, credits "
+               f"£{credit:,.2f}: " + ("balanced." if abs(debit - credit) < 0.005 else "OUT OF BALANCE."))
     with st.expander("Payroll check by employee"):
-        _table(reports.payroll_frame(r), status=None, cap=20)
+        _grid(r.payroll, [("employee_id", "text", 75, "ID"), ("employee", "text", 140, "Employee"), ("gross", "money", 90, "Gross"),
+                          ("paye", "money", 85, "PAYE"), ("employee_ni", "money", 85, "Employee NI"),
+                          ("employee_pension", "money", 85, "Pension"), ("student_loan", "money", 85, "Student loan"),
+                          ("net_pay", "money", 110, "Net (report)"), ("calculated_net", "money", 110, "Net (checked)"),
+                          ("net_difference", "money", 90, "Difference")], cap=20)
 
 
 def _sales_tab(r: RunResult) -> None:
-    _table(reports.sales_frame(r), wide=["Description"])
-    st.caption("Invoices are numbered in sequence and dated at the period end. Held invoices are left out of the import file.")
+    s = r.sales.copy()
+    s["Status"] = [f"Held · {', '.join(re.findall(r'EX-[0-9]+', h)) or h}" if st_ == "Held" else st_
+                   for st_, h in zip(s["status"], s["hold_reason"])]
+    _grid(s, [("invoice_number", "text", 80, "Invoice"), ("customer", "text", 185, "Customer"), ("po_number", "text", 105, "Customer PO"),
+              ("description", "text", 255, "Description"), ("quantity", "qty", 45, "Qty"), ("unit_price", "money", 80, "Price"),
+              ("net", "money", 80, "Net"), ("gross", "money", 85, "Gross"), ("Status", "text", 110)], status="Status")
+    st.caption("Invoices are numbered in sequence and dated at the period end, with each customer's payment terms. "
+               "Held invoices are left out of the import file.")
 
 
 def _debtors_tab(r: RunResult) -> None:
@@ -266,14 +322,15 @@ def _hours_tab(r: RunResult) -> None:
 
 
 def _vat_tab(r: RunResult) -> None:
-    _table(r.vat_return, status=None, wide=["How it is worked out"])
+    _grid(r.vat_return, [("Box", "qty", 50), ("Description", "text", 330), ("Amount (£)", "money", 110, "Amount"),
+                         ("How it is worked out", "text", 520)], cap=10)
     st.caption("Draft workings from the entries ready to post. A person must review them before the return is filed.")
 
 
 def _emails_tab(r: RunResult) -> None:
     st.caption("Drafts only: nothing is sent. Amounts and references come from the checked data.")
     for l in r.letters:
-        to = l["to"] + (f" · {l['contact']}" if l.get("contact") else "")
+        to = l["to"] + (f" · {l['contact']}" if l.get("contact") and l["contact"] != l["to"] else "")
         with st.expander(f"{l['subject']}  —  to {to}"):
             st.caption(f"To: {l.get('email') or 'no email on file'} · about {', '.join(l.get('exceptions', [])) or 'overdue invoices'}"
                        f" · drafted by {reports._source_label(l.get('source'))}")
@@ -281,11 +338,21 @@ def _emails_tab(r: RunResult) -> None:
 
 
 def _checklist_tab(r: RunResult) -> None:
-    c = r.checklist
-    st.dataframe(_style_status(c), hide_index=True, width="stretch", height=_height(len(c), 20),
-                 column_config={"Item": st.column_config.TextColumn(width=280), "Status": st.column_config.TextColumn(width=120),
-                                "Detail": st.column_config.TextColumn(width="large"),
-                                "Exceptions": st.column_config.TextColumn(width=150)})
+    pills = {"Done": ("#E8F6EE", "#0F5A34"), "Action needed": ("#FFF4E0", "#7A4A00"), "To do": ("#EEF1F5", "#344054")}
+    rows = []
+    for item in r.checklist.to_dict("records"):
+        bg, fg = pills.get(item["Status"], ("#EEF1F5", "#344054"))
+        rows.append(
+            f'<tr><td style="padding:.45rem .6rem;width:30%;font-weight:600">{ui.esc(item["Item"])}</td>'
+            f'<td style="padding:.45rem .6rem;width:13%"><span style="background:{bg};color:{fg};padding:.1rem .5rem;'
+            f'border-radius:4px;font-size:.82rem;white-space:nowrap">{ui.esc(item["Status"])}</span></td>'
+            f'<td style="padding:.45rem .6rem">{ui.esc(item["Detail"])}</td>'
+            f'<td style="padding:.45rem .6rem;width:15%;color:#5B6775;font-size:.85rem">{ui.esc(item["Exceptions"])}</td></tr>')
+    st.markdown('<table style="width:100%;border-collapse:collapse;font-size:.92rem" class="th-checklist">'
+                '<thead><tr style="text-align:left;color:#5B6775;font-size:.8rem;border-bottom:1px solid #D9DEE5">'
+                '<th style="padding:.35rem .6rem">Item</th><th style="padding:.35rem .6rem">Status</th>'
+                '<th style="padding:.35rem .6rem">Detail</th><th style="padding:.35rem .6rem">Exceptions</th></tr></thead>'
+                f'<tbody>{"".join(rows)}</tbody></table>', unsafe_allow_html=True)
     st.caption("Automatic items are set from this run. Manual items stay “To do” for the team.")
 
 
@@ -294,13 +361,9 @@ def _exceptions_tab(r: RunResult) -> None:
     if exc.empty:
         st.success("No exceptions found.")
         return
-    cols = ["ID", "Severity", "Area", "Check", "Who", "Reference", "Amount", "Needs human check", "Held from import"]
-    st.dataframe(exc[cols], hide_index=True, width="stretch", height=_height(len(exc), 20),
-                 column_config={"ID": st.column_config.TextColumn(width=60), "Severity": st.column_config.TextColumn(width=70),
-                                "Area": st.column_config.TextColumn(width=85),
-                                "Amount": st.column_config.NumberColumn(format="£%.2f", width=90),
-                                "Needs human check": st.column_config.TextColumn("Review", width=65),
-                                "Held from import": st.column_config.TextColumn("Held", width=55)})
+    _grid(exc, [("ID", "text", 60), ("Severity", "text", 70), ("Area", "text", 85), ("Check", "text", 215),
+                ("Who", "text", 210), ("Reference", "text", 120), ("Amount", "money", 90),
+                ("Needs human check", "text", 65, "Review"), ("Held from import", "text", 55, "Held")], cap=20)
     for e in exc.to_dict("records"):
         with st.expander(f"{e['ID']} · {e['Severity']} · {e['Check']} · {e['Who']}"):
             st.markdown(f"**Finding** — {e['Finding']}")
@@ -309,6 +372,9 @@ def _exceptions_tab(r: RunResult) -> None:
 
 
 def _documents_tab(r: RunResult) -> None:
-    d = r.documents_table
-    _table(d[["Doc", "File", "Type", "From / to", "Number", "Date", "Total", "Currency", "Confidence", "Read by"]], status=None)
+    d = r.documents_table.copy()
+    d["Total"] = [_money(v, c) for v, c in zip(d["Total"], d["Currency"])]
+    _grid(d, [("Doc", "text", 50), ("File", "text", 255), ("Type", "text", 75), ("From / to", "text", 185),
+              ("Number", "text", 105), ("Date", "date", 88), ("Total", "text", 85), ("Confidence", "text", 75),
+              ("Read by", "text", 105)], cap=30)
     st.caption("Fields read from each document. The Excel pack has every field, including VAT numbers and summaries.")
