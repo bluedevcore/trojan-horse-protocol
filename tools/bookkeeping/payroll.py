@@ -181,6 +181,11 @@ def timesheet_hours(ts: pd.DataFrame, employees: pd.DataFrame | None, cfg: dict 
                                 ref_text=kw.pop("ref_text", " · ".join(x for x in [who, _day(day)] if x)),
                                 entry_keys=keys, **kw))
 
+    def line(r: dict) -> str:  # "Tue 27 Oct 2026 (07:30–16:00, J-2614)"
+        times = f"{r.get('start')}–{r.get('finish')}" if str(r.get("start", "")).strip() else ""
+        bits = ", ".join(x for x in [times, str(r.get("job", "") or "").strip()] if x)
+        return _day(r["date"]) + (f" ({bits})" if bits else "")
+
     unknown_seen = set()
     for idx, r in zip(rows.index, rows.to_dict("records")):
         who = str(r["employee"])
@@ -188,22 +193,25 @@ def timesheet_hours(ts: pd.DataFrame, employees: pd.DataFrame | None, cfg: dict 
         known = who.strip().lower() in emp_by_name or str(r.get("employee_id", "")).strip().lower() in emp_by_name
         if emp_by_name and not known and who not in unknown_seen:
             unknown_seen.add(who)
-            weeks = rows.loc[rows["employee"] == r["employee"], "week_commencing"].dropna().unique()
-            add("unknown_employee", r, f"{who} is not on the employee list.",
+            theirs = rows[(rows["employee"] == r["employee"]) & ~rows["duplicate"]]
+            weeks = theirs["week_commencing"].dropna().unique()
+            add("unknown_employee", r, f"{who} is not on the employee list: {len(theirs)} timesheet line(s), "
+                                       f"{theirs['paid_hours'].sum():g} hours, from {_day(theirs['date'].min())}.",
                 f"Is {who} a new starter? We need their starter paperwork before they can be paid.",
                 entry_keys=[hours_key(who, w) for w in weeks], ref_text=who)
         given = stated.get(idx)
         if given is not None and pd.notna(given) and calc_h is not None and pd.notna(calc_h) and abs(given - calc_h) > 0.1:
-            add("hours_mismatch", r, f"Hours entered {given:g}, but {r.get('start')} to {r.get('finish')} "
-                                     f"less break is {calc_h:g}.", "Which figure is right?")
+            add("hours_mismatch", r, f"{line(r)}: hours entered {given:g}, but {r.get('start')} to {r.get('finish')} "
+                                     f"less break is {calc_h:g}; {calc_h:g} is counted.", "Which figure is right?")
         if paid is not None and pd.notna(paid) and paid > max_daily:
-            add("excess_hours", r, f"{paid:g} hours in one day (limit set at {max_daily:g}).",
+            add("excess_hours", r, f"{line(r)}: {paid:g} hours in one day (limit set at {max_daily:g}).",
                 "Could you confirm these hours are right?")
         if cfg.get("require_approval", True) and "approved_by" in rows and not str(r.get("approved_by", "")).strip():
-            add("missing_approval", r, "No supervisor approval on this timesheet line.", "Could you sign this line off?")
+            add("missing_approval", r, f"{line(r)}: no supervisor approval on this timesheet line.",
+                "Could you sign this line off?")
     for (who, day, *_), grp in rows[rows.duplicated(dup_keys, keep=False)].groupby(dup_keys):
         add("duplicate_timesheet", grp.iloc[0].to_dict(),
-            f"{len(grp)} identical entries for the same day and start time; only one is counted.")
+            f"{line(grp.iloc[0].to_dict())}: {len(grp)} identical entries for the same day and start time; only one is counted.")
 
     unique = rows[~rows["duplicate"]]
     # lines on the same day whose times overlap (an operative booked to two places at once)
@@ -248,7 +256,7 @@ def timesheet_hours(ts: pd.DataFrame, employees: pd.DataFrame | None, cfg: dict 
                 check, msg = "unknown_job", f"{hrs:g} hours on {days} booked to job {job}, which is not on the job list."
             else:
                 check, msg = "closed_job", (f"{hrs:g} hours on {days} booked to {job} ({rec.get('project_name', '')}), "
-                                            f"which is {status.lower()} on the job list.")
+                                            f"which is marked “{status}” on the job list.")
             add(check, grp.iloc[0].to_dict(), msg,
                 "Which job should these hours be booked to?", reference=str(job),
                 entry_keys=[hours_key(who, w) for w in grp["week_commencing"].dropna().unique()],

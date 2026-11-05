@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 import pandas as pd
 
 SEVERITY_ORDER = {"High": 0, "Medium": 1, "Low": 2}
+BUILT_IN_RECIPIENTS = ("supplier", "cardholder", "customer", "payroll_bureau")
 AREA_ORDER = ["Purchases", "VAT", "Card", "Payroll", "Sales", "Debtors", "Timesheets", "Orders", "Statements",
               "Filing", "Documents"]
 
@@ -183,6 +184,9 @@ def configure(f: Finding, config: dict) -> Finding | None:
     f.hold = bool(base.get("hold", False))
     f.letter = base.get("letter", "") or ""
     f.action = f.action or base.get("action", "")
+    fixed = (config.get("contacts") or {}).get(f.letter)
+    if f.letter not in BUILT_IN_RECIPIENTS and isinstance(fixed, dict) and fixed.get("name"):
+        f.contact = fixed["name"]  # e.g. timesheet queries go to one site manager, not to the employee
     f.contact = f.contact or f.subject
     return f
 

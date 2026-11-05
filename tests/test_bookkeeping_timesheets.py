@@ -55,7 +55,7 @@ def test_hours_on_closed_or_unknown_jobs_are_grouped_per_person_and_job():
     by = {f.check_id: f for f in findings}
     assert set(by) == {"closed_job", "unknown_job"}
     assert by["closed_job"].finding.startswith("16 hours on Mon 26 Oct, Tue 27 Oct booked to J-090 (Retail unit)")
-    assert "closed on the job list" in by["closed_job"].finding
+    assert "marked “Closed” on the job list" in by["closed_job"].finding
     assert by["unknown_job"].subject == "Bo Diaz" and by["unknown_job"].reference == "J-910"
     assert set(lines["job_status"]) == {"Open", "Closed", "Not on job list"}
     # without a job list the job checks do not run
@@ -116,6 +116,8 @@ def test_timesheet_queries_go_to_one_named_contact():
     [letter] = r.letters
     assert letter["key"] == "site_manager:Contracts manager" and letter["email"] == "gh@x.example"
     assert letter["points"][0]["ref"] == "Ann Lee · Sat 31 Oct 2026" and "Hello Gwen" in letter["body"]
+    assert r.exceptions.set_index("Check").loc["Timesheet not approved", "Email drafted to"] == "Contracts manager"
+    assert "Sat 31 Oct 2026 (08:00–13:00)" in r.findings[0].finding
     hours = r.hours.set_index("Employee")
     assert hours.loc["Ann Lee", "Status"] == "Held" and hours.loc["Ann Lee", "Weekend hours"] == 5.0
     assert r.facts["hours_ready"] == 8.0 and r.facts["hours_total"] == 21.0

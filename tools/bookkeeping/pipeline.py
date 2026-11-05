@@ -244,7 +244,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
         labels = [TABLE_SPECS[r].label for r in inputs.fallback_roles]
         listed = labels[0] if len(labels) == 1 else ", ".join(labels[:-1]) + " or " + labels[-1]
         warnings.append(f"No {listed} uploaded: using the demo's sample {'one' if len(labels) == 1 else 'ones'}.")
-    table_bits = ", ".join(f"{TABLE_SPECS[r].label} ({len(df)} rows)" for r, df in tables.items())
+    table_bits = ", ".join(f"{table_spec(r, config).label} ({len(df)} rows)" for r, df in tables.items())
     unread = len([f for f in findings if f.check_id == "unreadable_document"])
     (progress.warn if unread or warnings else progress.done)(
         f"Read {_plural(len(texts), 'document')} and {_plural(len(tables), 'spreadsheet')}",
@@ -471,7 +471,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     facts = _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_totals, payroll_diff, sales, debtors,
                    ts_rows, po_table, stmt_docs, filing, vat_box, findings, letter_requests, p_start, p_end, inputs)
     if not hours.empty:
-        facts.update(_hours_facts(hours))
+        facts.update(_hours_facts(hours, findings))
     by_check: dict[str, list[str]] = {}
     for f in findings:
         by_check.setdefault(f.check_id, []).append(f.id)
@@ -972,11 +972,16 @@ def _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_tota
     return facts
 
 
-def _hours_facts(hours: pd.DataFrame) -> dict:
+def _hours_facts(hours: pd.DataFrame, findings: list[Finding] = ()) -> dict:
     """Payroll-hours figures for the summary, checklist and time estimate."""
     ready = hours[hours["Status"] == "Ready"] if "Status" in hours else hours
     held = hours[hours["Status"] == "Held"] if "Status" in hours else hours.iloc[0:0]
     weeks = sorted(pd.to_datetime(hours["Week commencing"]).dropna().unique())
+    labels = {f.id: f.label for f in findings}
+
+    def why(ids: str) -> str:
+        return "; ".join(f"{labels.get(i, i)} ({i})" for i in ids.split(", ") if i)
+
     return {
         "hours_weeks": [f"{pd.Timestamp(w):%d %b %Y}" for w in weeks],
         "hours_total": round(float(hours["Total hours"].sum()), 2),
@@ -984,7 +989,7 @@ def _hours_facts(hours: pd.DataFrame) -> dict:
         "hours_overtime": round(float(hours["Overtime hours"].sum()), 2),
         "hours_weekend": round(float(hours["Weekend hours"].sum()), 2),
         "hours_employees_ready": int(ready["Employee"].nunique()),
-        "hours_held": [f"{r['Employee']} ({r['Held because']})" for r in held.to_dict("records")],
+        "hours_held": [f"{r['Employee']}: {why(r['Held because'])}" for r in held.to_dict("records")],
         "gross_pay_ready_est": round(float(pd.to_numeric(ready["Gross pay (est.)"], errors="coerce").sum()), 2),
     }
 

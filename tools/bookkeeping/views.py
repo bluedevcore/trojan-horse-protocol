@@ -362,10 +362,11 @@ def _po_tab(r: RunResult) -> None:
     _grid(r.po_table, [("Supplier", "text", 200), ("Invoice", "text", 105), ("Invoice date", "date", 90, "Date"),
                        ("PO on invoice", "text", 90, "PO quoted"), ("Matched PO", "text", 80, "PO"),
                        ("Matched by", "text", 120), ("Invoice net", "money", 85, "Invoice net"), ("PO net", "money", 85),
-                       ("Invoiced to date", "money", 95, "Invoiced"), ("Difference", "money", 80, "Over PO"),
+                       ("Invoiced to date", "money", 95, "Invoiced"), ("Difference", "money", 85, "Difference"),
                        ("Status", "text", 125)], status="Status", cap=25)
     st.caption("Matched on the PO number quoted, or on supplier and amount when no PO is quoted. “Invoiced” is the "
-               "running total against the PO; anything over its value (beyond the tolerance) is held. POs with no "
+               "running total against the PO and “Difference” is that total less the PO value (negative: not fully "
+               "invoiced yet). An invoice that takes a PO over its value, beyond the tolerance, is held. POs with no "
                "invoice yet are listed as awaiting invoice.")
 
 
