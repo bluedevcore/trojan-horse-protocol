@@ -164,16 +164,20 @@ def _exceptions_tab(exc: pd.DataFrame, spec) -> None:
     if exc.empty:
         st.success("No exceptions found.")
         return
-    cols = ["ID", "Severity", "Check", spec.key_label, *spec.display_columns.values(), "Date(s)", "Value",
-            "Needs human check"]
-    st.dataframe(exc[[c for c in cols if c in exc]], hide_index=True, width="stretch",
-                 column_config={"ID": st.column_config.TextColumn(width="small"),
-                                "Severity": st.column_config.TextColumn(width="small"),
-                                "Needs human check": st.column_config.TextColumn("Human check", width="small")})
+    site = next(iter(spec.display_columns.values()), None)
+    cols = ["ID", "Severity", "Check", spec.key_label, *([site] if site else []), "Date(s)", "Value", "Needs human check"]
+    st.dataframe(exc[[c for c in cols if c in exc]], hide_index=True, width="stretch", height=_table_height(len(exc)),
+                 column_config={"ID": st.column_config.TextColumn(width=60),
+                                "Severity": st.column_config.TextColumn(width=75),
+                                "Check": st.column_config.TextColumn(width=165),
+                                "Date(s)": st.column_config.TextColumn(width=170),
+                                "Needs human check": st.column_config.TextColumn("Review", width=70,
+                                                                                 help="Needs a human check")})
     st.markdown("**Discrepancy notes**")
     for _, e in exc.iterrows():
         where = " · ".join(str(e[h]) for h in spec.display_columns.values() if h in e and e[h])
-        with st.expander(f"{e['ID']} · {e['Severity']} · {e['Check']} · {where or e[spec.key_label]} · {e['Date(s)']}"):
+        title = " · ".join(str(x) for x in (e["ID"], e["Severity"], e["Check"], where or e[spec.key_label], e["Date(s)"]) if x)
+        with st.expander(title):
             st.markdown(f"**Finding** — {e['Finding']}")
             if e.get("Note"):
                 st.markdown(f"**Note** — {e['Note']}")
@@ -189,8 +193,15 @@ def _tracker_tab(r: RunResult) -> None:
         return
     colours = {"Red": "background-color:#FDE8E7;color:#8A1C12", "Amber": "background-color:#FFF4E0;color:#7A4A00",
                "Green": "background-color:#E8F6EE;color:#0F5A34"}
+    order = ["RAG", "Obligation", "Due", "Status", "Data readiness", "Recipient", "Period", "Owner"]
+    tracker = tracker[[c for c in order if c in tracker] + [c for c in tracker if c not in order]]
     styled = tracker.style.map(lambda v: colours.get(v, ""), subset=["RAG"])
-    st.dataframe(styled, hide_index=True, width="stretch")
+    st.dataframe(styled, hide_index=True, width="stretch", height=_table_height(len(tracker)),
+                 column_config={"RAG": st.column_config.TextColumn(width=60),
+                                "Obligation": st.column_config.TextColumn(width=355),
+                                "Due": st.column_config.TextColumn(width=90),
+                                "Status": st.column_config.TextColumn(width=125),
+                                "Data readiness": st.column_config.TextColumn(width=345)})
     st.caption(f"As at {r.facts['as_of']}. “Blocked” means open exceptions affect data that report depends on "
                "(same data type and period). Deadlines in the sample are illustrative.")
 
@@ -198,9 +209,10 @@ def _tracker_tab(r: RunResult) -> None:
 def _totals_tab(r: RunResult) -> None:
     if not r.totals_by_category.empty:
         st.markdown("**By type**")
-        st.dataframe(r.totals_by_category, hide_index=True, width="stretch")
+        st.dataframe(r.totals_by_category, hide_index=True, width="stretch", column_config=_number_format(r.totals_by_category),
+                     height=_table_height(len(r.totals_by_category)))
     st.markdown(f"**By {r.spec.key_label.lower()}**")
-    st.dataframe(r.totals_by_key, hide_index=True, width="stretch", height=420)
+    st.dataframe(r.totals_by_key, hide_index=True, width="stretch", height=420, column_config=_number_format(r.totals_by_key))
     st.caption("Validated totals exclude readings held for review. 'Valid days' counts days with a usable reading.")
 
 
@@ -211,5 +223,26 @@ def _data_tab(r: RunResult) -> None:
     only_flagged = st.toggle("Show flagged readings only", value=True)
     if only_flagged:
         data = data[data["Status"] != "OK"]
-    st.dataframe(data, hide_index=True, width="stretch", height=380)
+    front = ["Status", "Exceptions"]
+    data = data[front + [c for c in data.columns if c not in front]]
+    config = _number_format(data)
+    for col in data.columns:
+        if pd.api.types.is_datetime64_any_dtype(data[col]):
+            config[col] = st.column_config.DateColumn(col, format="DD MMM YYYY")
+    for col in data.columns:
+        if not pd.api.types.is_numeric_dtype(data[col]) and not pd.api.types.is_datetime64_any_dtype(data[col]):
+            data[col] = data[col].astype(object).where(data[col].notna(), "")
+    for col in r.spec.display_columns.values():
+        config.setdefault(col, st.column_config.TextColumn(col, width=150))
+    st.dataframe(data, hide_index=True, width="stretch", height=380, column_config=config)
     st.caption(f"{len(data):,} rows shown. The full table is in the Excel report pack.")
+
+
+def _table_height(rows: int) -> int:
+    """Tall enough to show every row (up to 20) without an inner scrollbar."""
+    return 38 + 35 * min(max(rows, 1), 20)
+
+
+def _number_format(df: pd.DataFrame) -> dict:
+    return {c: st.column_config.NumberColumn(c, format="localized") for c in df.columns
+            if pd.api.types.is_float_dtype(df[c]) and not c.lower().startswith(("completeness", "source"))}

@@ -176,6 +176,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     label_cols = list(spec.display_columns.keys())
     by_key, by_cat = period_totals(result, spec, label_columns=label_cols, reference=reference)
     by_key = by_key.rename(columns=spec.display_columns)
+    by_cat = by_cat.rename(columns=spec.display_columns)
     held = int(result.data["_held"].sum())
     total_col = next((c for c in by_key.columns if c.startswith("Total validated")), None)
     grand_total = float(by_key[total_col].sum()) if total_col else 0.0
@@ -290,7 +291,8 @@ def build_facts(result: ValidationResult, spec: DatasetSpec, by_cat: pd.DataFram
         "readings_held_from_totals": int(data["_held"].sum()),
     }
     if not by_cat.empty and total_col and total_col in by_cat:
-        facts["validated_totals"] = {row[spec.category_column]: _fmt_energy(row[total_col], spec.unit)
+        cat = spec.display_columns.get(spec.category_column, spec.category_column)
+        facts["validated_totals"] = {row[cat]: _fmt_energy(row[total_col], spec.unit)
                                      for _, row in by_cat.iterrows() if row[total_col]}
     if not tracker.empty:
         risky = tracker[(tracker["RAG"] != "Green")]

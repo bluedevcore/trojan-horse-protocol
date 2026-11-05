@@ -78,7 +78,7 @@ def test_totals_match_an_independent_sum(result):
     expected = round(ok["kwh"].sum(), 0)
     got = round(result.totals_by_key["Total validated (kWh)"].sum(), 0)
     assert got == expected
-    by_type = result.totals_by_category.set_index("meter_type")
+    by_type = result.totals_by_category.set_index("Meter type")
     assert by_type.loc["Solar PV generation", "Meters"] == 7
     assert by_type.loc["Biomass heat", "Meters"] == 5
 

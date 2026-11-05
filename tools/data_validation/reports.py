@@ -84,8 +84,12 @@ def validated_data_frame(r: "RunResult") -> pd.DataFrame:
     out["Status"] = d.apply(lambda x: "Held for review" if x["_held"] else ("Flagged" if x["_exception_ids"] else "OK"), axis=1)
     out = out.drop(columns=["_held"])
     labels = spec.column_labels
-    out = out.rename(columns={c: labels.get(c, c).capitalize() if c in labels else c for c in out.columns})
-    return out.sort_values([spec.key_label, labels.get(spec.date, spec.date).capitalize()], na_position="last")
+    def heading(c: str) -> str:
+        name = labels.get(c, c)
+        return name[:1].upper() + name[1:]
+
+    out = out.rename(columns={c: heading(c) for c in out.columns if c in labels})
+    return out.sort_values([spec.key_label, heading(spec.date)], na_position="last")
 
 
 def public(df: pd.DataFrame) -> pd.DataFrame:
