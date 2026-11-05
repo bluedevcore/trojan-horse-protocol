@@ -74,6 +74,15 @@ filing:
   reference_pattern: "J-\\d{4}"
   unfiled_folder: "_To file"
 
+# Suggested actions in the branch's own terms (defaults are in tools/bookkeeping/checks.py).
+checks:
+  final_notice: {action: "Branch manager to approve the final notice before it is sent; consider pausing new work for this customer."}
+  over_credit_limit: {action: "Ask the branch manager whether to take on more work before the balance is back under the limit."}
+  unallocated_payment: {action: "Check the paying-in book (a bank giro credit is money paid in over a bank counter, often a cheque), then allocate it."}
+  credit_balance: {action: "Agree with the customer whether to refund the credit or set it against their next invoice."}
+  no_contact: {action: "Add an accounts email for this customer, or send the chase letter by post."}
+  unfiled_document: {action: "Choose the project folder, or set up a new project if it is a new enquiry."}
+
 reports:
   pack_label: "Debtors & filing pack (Excel)"
   pack_help: "Aged debtors, customer balances, filing index, exceptions and drafted emails in one workbook"
