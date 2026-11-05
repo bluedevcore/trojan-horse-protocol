@@ -24,7 +24,7 @@ def attach_notes(exceptions: pd.DataFrame, notes: dict[str, dict]) -> pd.DataFra
     exc["Note"] = exc["ID"].map(lambda i: notes.get(i, {}).get("note", ""))
     exc["Likely cause"] = exc["ID"].map(lambda i: notes.get(i, {}).get("likely_cause", ""))
     exc["Suggested action"] = exc["ID"].map(lambda i: notes.get(i, {}).get("suggested_action", ""))
-    labels = {"api": "Claude", "cache": "Claude (cached)", "fixture": "Claude (recorded)", "mock": "Template",
+    labels = {"api": "Claude", "cache": "Claude (cached)", "fixture": "Pre-recorded (mock mode)", "mock": "Template",
               "fallback": "Template", "template": "Template"}
     exc["Note source"] = exc["ID"].map(lambda i: labels.get(notes.get(i, {}).get("source", ""), ""))
     return exc

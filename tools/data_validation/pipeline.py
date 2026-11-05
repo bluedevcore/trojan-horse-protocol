@@ -202,7 +202,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     facts = build_facts(result, spec, by_cat, tracker, files_read, inputs, total_col)
     ai_cfg = config.get("ai") or {}
     payloads = ai.exception_payloads(exc, result.findings, spec.key_label, list(spec.display_columns.values()))
-    source_word = "recorded Claude responses (mock mode)" if client.mock else f"Claude ({client.model})"
+    source_word = "pre-recorded AI text (mock mode)" if client.mock else f"Claude ({client.model})"
     progress.start(f"Drafting {len(payloads)} discrepancy notes and the manager summary with {source_word}…")
     notes, summary, calls = ai.draft_notes_and_summary(
         client, payloads, facts, domain=ai_cfg.get("domain", ""), audience=ai_cfg.get("audience", "an operations team"),
@@ -254,7 +254,7 @@ def _fmt_energy(value: float, unit: str) -> str:
 
 
 def _source_phrase(sources: dict, client: ClaudeClient) -> str:
-    labels = {"api": "written by Claude", "cache": "from cache", "fixture": "recorded Claude responses",
+    labels = {"api": "written by Claude", "cache": "from cache", "fixture": "pre-recorded AI text (mock mode)",
               "mock": "template text (mock mode)", "fallback": "template text (Claude unavailable)"}
     return ", ".join(f"{labels.get(k, k)} ×{v}" if v > 1 else labels.get(k, k) for k, v in sources.items())
 
@@ -263,7 +263,7 @@ def _summary_source(call, client: ClaudeClient) -> str:
     return {
         "api": f"Written by Claude ({call.model}) from the validated figures.",
         "cache": "Written by Claude from the validated figures (cached).",
-        "fixture": "Recorded Claude response for the sample data (mock mode: no API key set).",
+        "fixture": "Pre-recorded AI text for the sample data (mock mode: no API key set, no network calls).",
         "mock": "Template summary (mock mode: no recorded Claude response for these files).",
         "fallback": "Template summary (Claude unavailable).",
     }.get(call.source, "")

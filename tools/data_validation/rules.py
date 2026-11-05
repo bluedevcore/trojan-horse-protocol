@@ -110,6 +110,21 @@ def _row_context(row: pd.Series, extra_cols: list[str]) -> dict:
     return out
 
 
+def _series_context(ctx: RuleContext, rid: int, extra: list[str] = ()) -> dict:
+    """Neighbouring readings for one row, from its group's sorted series."""
+    w = ctx.working
+    if w is None or w.empty or rid not in set(w["_rid"]):
+        return {}
+    key = w.loc[w["_rid"] == rid, ctx.key].iloc[0]
+    grp = w[w[ctx.key] == key].reset_index(drop=True)
+    pos = int(grp.index[grp["_rid"] == rid][0])
+    out = _neighbours(grp, pos, ctx)
+    for col in extra:
+        if col in grp and pos > 0 and pd.notna(grp[col].iloc[pos - 1]):
+            out["previous_" + col] = round(float(grp[col].iloc[pos - 1]), 1)
+    return out
+
+
 def _groups(ctx: RuleContext, rule: dict):
     working = _where(ctx.working, rule)
     for key, grp in working.groupby(ctx.key, sort=True):
@@ -131,7 +146,8 @@ def check_missing(df: pd.DataFrame, rule: dict, ctx: RuleContext) -> list[Findin
         detail = f"No {names} recorded" + (f" ({', '.join(ctx.label(c) for c in present)} present)." if present else ".")
         out.append(_finding(rule, "missing", detail=detail, group=row.get(ctx.key), date_from=_date(row.get(ctx.date)),
                             column=missing[0], value=None, expected="a value", rids=[int(row["_rid"])],
-                            context={**_row_context(row, cols), "missing_columns": missing}))
+                            context={**_row_context(row, cols), "missing_columns": missing,
+                                     **_series_context(ctx, int(row["_rid"]), cols)}))
     return out
 
 
@@ -158,9 +174,10 @@ def check_range(df: pd.DataFrame, rule: dict, ctx: RuleContext) -> list[Finding]
         else:
             continue
         expected = f"{ctx.fmt(low) if pd.notna(low) else '…'} to {ctx.fmt(high) if pd.notna(high) else '…'}"
+        extra = rule.get("context_columns", [])
         out.append(_finding(rule, "range", detail=detail, group=row.get(ctx.key), date_from=_date(row.get(ctx.date)),
                             column=col, value=value, expected=expected, rids=[int(row["_rid"])],
-                            context=_row_context(row, rule.get("context_columns", []))))
+                            context={**_row_context(row, extra), **_series_context(ctx, int(row["_rid"]), extra[:1])}))
     return out
 
 
@@ -217,7 +234,8 @@ def check_spike(df: pd.DataFrame, rule: dict, ctx: RuleContext) -> list[Finding]
             out.append(_finding(rule, "spike", detail=detail, group=key, date_from=_date(row[ctx.date]), column=col,
                                 value=value, expected=f"around {ctx.fmt(base)}", rids=[int(row["_rid"])],
                                 context={**_row_context(row, rule.get("context_columns", [])), "typical_level": round(base, 1),
-                                         "ratio": round(value / base, 2), **_neighbours(grp, pos, ctx)}))
+                                         "ratio": round(value / base, 2),
+                                         **_series_context(ctx, int(row["_rid"]), rule.get("context_columns", []))}))
     return out
 
 
