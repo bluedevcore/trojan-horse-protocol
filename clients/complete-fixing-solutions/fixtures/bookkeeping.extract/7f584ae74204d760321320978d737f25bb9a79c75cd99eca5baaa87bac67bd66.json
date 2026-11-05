@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "7f584ae74204d760321320978d737f25bb9a79c75cd99eca5baaa87bac67bd66",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-16_dee-valley_DVF-CN-0931.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nDee Valley Fixings Ltd\nUnit 12, Riverside Trade Park\nChester CH4 0XX\nTel 01632 960 412 · accounts@deevalley-fixings.example\nVAT Reg No: GB 441 9027 63\nCREDIT NOTE\nCredit note number: DVF-CN-0931\nCredit note date: 16/10/2026\nDelivered to site / job ref: J-2601 Wrexham Gateway student flats - drylining\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nReturned: M10 through bolts 10x100 (wrong length), box of 50\n3\n£28.80\n£86.40\nTotal net\n£86.40\nVAT @ 20% on £86.40\n£17.28\nTotal credit\n£103.68\nCredit against invoice DVF-55120: goods returned unused. This credit will be taken off your next payment.",
+  "response": {
+    "text": "{\"doc_type\": \"credit_note\", \"counterparty\": \"Dee Valley Fixings Ltd\", \"counterparty_vat_number\": \"GB 441 9027 63\", \"document_number\": \"DVF-CN-0931\", \"document_date\": \"2026-10-16\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-2601\", \"currency\": \"GBP\", \"net_total\": 86.4, \"vat_total\": 17.28, \"gross_total\": 103.68, \"vat_lines\": [{\"rate\": 20, \"net\": 86.4, \"vat\": 17.28}], \"line_items\": [{\"description\": \"Returned: M10 through bolts 10x100 (wrong length), box of 50\", \"quantity\": 3, \"unit_price\": 28.8, \"net\": 86.4, \"vat_rate\": 20}], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Credit note for three boxes of M10 through bolts returned unused.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Credit against invoice DVF-55120; the supplier will take it off the next payment.\"}",
+    "data": {
+      "doc_type": "credit_note",
+      "counterparty": "Dee Valley Fixings Ltd",
+      "counterparty_vat_number": "GB 441 9027 63",
+      "document_number": "DVF-CN-0931",
+      "document_date": "2026-10-16",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-2601",
+      "currency": "GBP",
+      "net_total": 86.4,
+      "vat_total": 17.28,
+      "gross_total": 103.68,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 86.4,
+          "vat": 17.28
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Returned: M10 through bolts 10x100 (wrong length), box of 50",
+          "quantity": 3,
+          "unit_price": 28.8,
+          "net": 86.4,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Credit note for three boxes of M10 through bolts returned unused.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Credit against invoice DVF-55120; the supplier will take it off the next payment."
+    }
+  }
+}

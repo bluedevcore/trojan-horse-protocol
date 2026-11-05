@@ -1,0 +1,29 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "499e1631bcb9b6e8f7f4e31584189e028149291d56c6eee15a8dd39066f8c6a0",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"supplier:Dee Valley Fixings Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Dee Valley Fixings Ltd\",\n  \"contact\": \"Nia Bowen\",\n  \"email\": \"accounts@deevalley-fixings.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice DVF-55187 · 21 Oct 2026 · £891.36\",\n    \"issue\": \"Bank details on the document (sort code 00-98-76, account ••••1234) differ from the supplier list (sort code 00-14-27, account ••••1184). This is a common invoice-fraud pattern.\",\n    \"ask\": \"We received new bank details with Invoice DVF-55187 from Dee Valley Fixings Ltd. We will phone you on the number we already hold to confirm the change before any payment is made. We never change bank details from an email.\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-01\"\n  ]\n },\n {\n  \"key\": \"supplier:Pandy Timber & Sheet Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Pandy Timber & Sheet Ltd\",\n  \"contact\": \"Elin Morgan\",\n  \"email\": \"office@pandy-timber.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice PTS-6604 · 26 Oct 2026 · £1,152.60\",\n    \"issue\": \"Net £948.00 + VAT £189.60 = £1,137.60, but the total shown is £1,152.60 (difference £15.00).\",\n    \"ask\": \"Could you send a corrected invoice?\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-02\"\n  ]\n },\n {\n  \"key\": \"supplier:Ridgeway Safety & Workwear Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Ridgeway Safety & Workwear Ltd\",\n  \"contact\": \"\",\n  \"email\": \"\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice RSW-2208 · 27 Oct 2026 · £667.20\",\n    \"issue\": \"The invoice quotes no purchase order and none matches by supplier and amount.\",\n    \"ask\": \"Your invoice RSW-2208 has no purchase order number. Which order is it for?\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-18\"\n  ]\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"supplier:Dee Valley Fixings Ltd\", \"subject\": \"Invoice DVF-55187: change of bank details to confirm by phone\", \"body\": \"Hello Nia,\\n\\nWe have received invoice DVF-55187 dated 21 October 2026 for £891.36. The bank details on it (sort code 00-98-76, account ending 1234) are different from the ones we hold for you (sort code 00-14-27, account ending 1184).\\n\\nBefore any payment is made, we will phone you on the number we already have on file to confirm the change. We never change bank details because of an email, so please don't send bank details by reply. If you have not changed banks, please let us know straight away.\\n\\nKind regards,\\nOffice Administrator\\nDemo Fixings Ltd\"}, {\"key\": \"supplier:Pandy Timber & Sheet Ltd\", \"subject\": \"Invoice PTS-6604: total does not add up\", \"body\": \"Hello Elin,\\n\\nThank you for invoice PTS-6604 dated 26 October 2026. The net of £948.00 plus VAT of £189.60 comes to £1,137.60, but the total shown is £1,152.60, a difference of £15.00.\\n\\nCould you send a corrected invoice, please? A reply by Monday 9 November would be appreciated.\\n\\nKind regards,\\nOffice Administrator\\nDemo Fixings Ltd\"}, {\"key\": \"supplier:Ridgeway Safety & Workwear Ltd\", \"subject\": \"Invoice RSW-2208: purchase order number needed\", \"body\": \"Hello,\\n\\nThank you for invoice RSW-2208 dated 27 October 2026 for £667.20. It doesn't quote a purchase order number, and we can't match it to one of our orders by supplier and amount.\\n\\nCould you let us know which order it is for by Monday 9 November?\\n\\nKind regards,\\nOffice Administrator\\nDemo Fixings Ltd\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "supplier:Dee Valley Fixings Ltd",
+          "subject": "Invoice DVF-55187: change of bank details to confirm by phone",
+          "body": "Hello Nia,\n\nWe have received invoice DVF-55187 dated 21 October 2026 for £891.36. The bank details on it (sort code 00-98-76, account ending 1234) are different from the ones we hold for you (sort code 00-14-27, account ending 1184).\n\nBefore any payment is made, we will phone you on the number we already have on file to confirm the change. We never change bank details because of an email, so please don't send bank details by reply. If you have not changed banks, please let us know straight away.\n\nKind regards,\nOffice Administrator\nDemo Fixings Ltd"
+        },
+        {
+          "key": "supplier:Pandy Timber & Sheet Ltd",
+          "subject": "Invoice PTS-6604: total does not add up",
+          "body": "Hello Elin,\n\nThank you for invoice PTS-6604 dated 26 October 2026. The net of £948.00 plus VAT of £189.60 comes to £1,137.60, but the total shown is £1,152.60, a difference of £15.00.\n\nCould you send a corrected invoice, please? A reply by Monday 9 November would be appreciated.\n\nKind regards,\nOffice Administrator\nDemo Fixings Ltd"
+        },
+        {
+          "key": "supplier:Ridgeway Safety & Workwear Ltd",
+          "subject": "Invoice RSW-2208: purchase order number needed",
+          "body": "Hello,\n\nThank you for invoice RSW-2208 dated 27 October 2026 for £667.20. It doesn't quote a purchase order number, and we can't match it to one of our orders by supplier and amount.\n\nCould you let us know which order it is for by Monday 9 November?\n\nKind regards,\nOffice Administrator\nDemo Fixings Ltd"
+        }
+      ]
+    }
+  }
+}
