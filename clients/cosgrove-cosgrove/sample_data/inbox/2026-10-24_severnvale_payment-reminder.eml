@@ -4,9 +4,9 @@ Subject: Copy invoice SOS-20931 - payment reminder
 Date: Sat, 24 Oct 2026 09:12:00 +0100
 Message-ID: <dfda22fadd169386@mail.example>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============3891843884763835998=="
+Content-Type: multipart/mixed; boundary="==demo-4590c17a88bd5fe3b098"
 
---===============3891843884763835998==
+--==demo-4590c17a88bd5fe3b098
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -20,7 +20,7 @@ Many thanks,
 Karen Wilde
 Credit Control, Severnvale Office Supplies Ltd
 
---===============3891843884763835998==
+--==demo-4590c17a88bd5fe3b098
 Content-Type: application/pdf
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="SOS-20931.pdf"
@@ -70,4 +70,4 @@ YTUxYjI1OTk1ZDg5ZDQxMDIwNDM+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50
 IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDYgMCBSCi9Sb290IDUgMCBSCi9TaXplIDkK
 Pj4Kc3RhcnR4cmVmCjIwMjcKJSVFT0YK
 
---===============3891843884763835998==--
+--==demo-4590c17a88bd5fe3b098--

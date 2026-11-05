@@ -7,8 +7,9 @@ domains end .example. No real personal or company data. Re-run to regenerate:
 
     python clients/cosgrove-cosgrove/sample_data/generate.py
 
-October 2026 month end. Inbox: 29 documents (15 supplier invoices / credit
-notes as PDF or email, 14 receipts and paid invoices for card spend), a
+October 2026 month end. Inbox: 28 documents (14 supplier invoices / credit
+notes as PDF or email, one of them a duplicate, and 14 receipts and paid
+invoices for card spend), a
 company credit card statement (17 card payments + 1 repayment), a payroll
 bureau report (14 staff), work to invoice (5 customers), and the supplier
 list, customer list and chart of accounts.
@@ -18,7 +19,7 @@ Deliberate problems planted for the agent to find (17 exceptions):
   2  Brindlecote IT Services     invoice email says "we have changed banks": bank details differ from supplier list
   3  Coalbrook Waste Services    CWS-40218 total £262.00, but £210.00 + £42.00 VAT = £252.00
   4  Hadley Brook Cleaning       charges £64.00 VAT but shows no VAT number (not VAT registered on our list)
-  5  Norbridge Tool Supplies     VAT number GB 571 2240 31 fails the HMRC check digits ...
+  5  Norbridge Tool Supplies     VAT number GB 571 2240 71 fails the HMRC check digits ...
   6  Norbridge Tool Supplies     ... and is not on the supplier list (new supplier)
   7  Stirling Lane Packaging     SLP-10442 dated 26 Sep 2026, before the October period
   8  Marchmont Insurance         annual policy Oct 2026 – Sep 2027: prepayment to spread
@@ -37,6 +38,7 @@ from __future__ import annotations
 
 import hashlib
 import sys
+from datetime import datetime
 from email.message import EmailMessage
 from email.utils import format_datetime
 from io import BytesIO
@@ -207,6 +209,7 @@ def eml(*, sender: str, subject: str, date: str, body: str, attachment: tuple[st
     msg.set_content(body)
     if attachment:
         msg.add_attachment(attachment[1], maintype="application", subtype="pdf", filename=attachment[0])
+        msg.set_boundary("==demo-" + hashlib.sha1(subject.encode()).hexdigest()[:20])  # reproducible bytes
     return bytes(msg)
 
 # ------------------------------------------------------------------ documents
@@ -514,7 +517,9 @@ def main() -> None:
     payroll_report().to_csv(OUT / "payroll_summary_oct-2026.csv", index=False)
     suppliers_csv().to_csv(OUT / "supplier_list.csv", index=False)
     customers_csv().to_csv(OUT / "customer_list.csv", index=False)
-    sales_csv().to_excel(OUT / "work_to_invoice_oct-2026.xlsx", index=False, sheet_name="Completed jobs")
+    with pd.ExcelWriter(OUT / "work_to_invoice_oct-2026.xlsx", engine="xlsxwriter") as writer:
+        sales_csv().to_excel(writer, index=False, sheet_name="Completed jobs")
+        writer.book.set_properties({"created": datetime(2026, 11, 1, 9, 0)})  # reproducible bytes
     chart_csv().to_csv(OUT / "chart_of_accounts.csv", index=False)
     print(f"Wrote {len(docs)} documents to {INBOX} and 6 spreadsheets to {OUT}")
     print("Norbridge VAT number (invalid on purpose):", NORBRIDGE["vat"])

@@ -4,9 +4,9 @@ Subject: Invoice BIT-2026-1043 - NEW BANK DETAILS
 Date: Thu, 01 Oct 2026 16:47:00 +0100
 Message-ID: <2dc7796fd9ade59c@mail.example>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============7903722077410676188=="
+Content-Type: multipart/mixed; boundary="==demo-388ae0fe8df2cb25034e"
 
---===============7903722077410676188==
+--==demo-388ae0fe8df2cb25034e
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -22,7 +22,7 @@ Regards,
 Accounts Team
 Brindlecote IT Services Ltd
 
---===============7903722077410676188==
+--==demo-388ae0fe8df2cb25034e
 Content-Type: application/pdf
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="BIT-2026-1043.pdf"
@@ -70,4 +70,4 @@ NTFiMjU5OTVkODlkNDEwMjA0Mz5dCiUgUmVwb3J0TGFiIGdlbmVyYXRlZCBQREYgZG9jdW1lbnQg
 LS0gZGlnZXN0IChvcGVuc291cmNlKQoKL0luZm8gNiAwIFIKL1Jvb3QgNSAwIFIKL1NpemUgOQo+
 PgpzdGFydHhyZWYKMTkxMgolJUVPRgo=
 
---===============7903722077410676188==--
+--==demo-388ae0fe8df2cb25034e--
