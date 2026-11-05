@@ -1,0 +1,65 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "4c88372a3cb7780f655faa4a18572c845cf2a82461ab2bc789db843c8a0d9383",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-14_coldharbour_CIG-55190.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nColdharbour Industrial Gases Ltd\nColdharbour Road\nBridgwater TA6 0XX\nTel 01632 960 749 · accounts@coldharbour-gases.example\nVAT Reg No: GB 601 4298 69\nINVOICE\nInvoice number: CIG-55190\nInvoice date: 14/10/2026\nDue date: 13/11/2026\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nOxygen-free nitrogen, size W cylinder refill\n10\n£28.40\n20%\n£284.00\nCylinder rental - October, per cylinder\n14\n£4.25\n20%\n£59.50\nDelivery charge\n1\n£22.00\n20%\n£22.00\nSubtotal (net)\n£365.50\nVAT @ 20% on £365.50\n£73.10\nTotal due\n£483.60\nTerms: 30 days net. Cylinder account CA-0571.\nPay by bank transfer to Coldharbour Industrial Gases Ltd: sort code 00-58-96, account number 10274852.\nPlease quote CIG-55190 as the payment reference.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Coldharbour Industrial Gases Ltd\", \"counterparty_vat_number\": \"GB 601 4298 69\", \"document_number\": \"CIG-55190\", \"document_date\": \"2026-10-14\", \"due_date\": \"2026-11-13\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 365.5, \"vat_total\": 73.1, \"gross_total\": 483.6, \"vat_lines\": [{\"rate\": 20, \"net\": 365.5, \"vat\": 73.1}], \"line_items\": [{\"description\": \"Oxygen-free nitrogen, size W cylinder refill\", \"quantity\": 10, \"unit_price\": 28.4, \"net\": 284.0, \"vat_rate\": 20}, {\"description\": \"Cylinder rental - October, per cylinder\", \"quantity\": 14, \"unit_price\": 4.25, \"net\": 59.5, \"vat_rate\": 20}, {\"description\": \"Delivery charge\", \"quantity\": 1, \"unit_price\": 22.0, \"net\": 22.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-58-96\", \"bank_account_number\": \"10274852\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for nitrogen cylinder refills, October cylinder rental and delivery.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"The printed total due does not equal the subtotal plus VAT shown.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Coldharbour Industrial Gases Ltd",
+      "counterparty_vat_number": "GB 601 4298 69",
+      "document_number": "CIG-55190",
+      "document_date": "2026-10-14",
+      "due_date": "2026-11-13",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 365.5,
+      "vat_total": 73.1,
+      "gross_total": 483.6,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 365.5,
+          "vat": 73.1
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Oxygen-free nitrogen, size W cylinder refill",
+          "quantity": 10,
+          "unit_price": 28.4,
+          "net": 284.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Cylinder rental - October, per cylinder",
+          "quantity": 14,
+          "unit_price": 4.25,
+          "net": 59.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Delivery charge",
+          "quantity": 1,
+          "unit_price": 22.0,
+          "net": 22.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-58-96",
+      "bank_account_number": "10274852",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for nitrogen cylinder refills, October cylinder rental and delivery.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The printed total due does not equal the subtotal plus VAT shown."
+    }
+  }
+}

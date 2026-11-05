@@ -1,0 +1,171 @@
+# Bookkeeping Agent — prototype demo for Somerset Solders Ltd.
+# All wording, file names, rules and accounts for this client live here;
+# the engine in tools/bookkeeping/ is generic (see tools/bookkeeping/README.md).
+
+slug: somerset-solders
+client_name: Somerset Solders Ltd
+tool_name: Bookkeeping Agent
+role: P/T Accounts Administrator/Bookkeeper
+headline: "Bookkeeping Agent: built as a prototype for Somerset Solders Ltd"
+replaces: >-
+  Replaces a day of month-end ledger work: it reads supplier invoices and statements, codes and checks every
+  bill, raises the sales invoices, allocates customer receipts, drafts the supplier and customer queries and
+  prepares the VAT return workings for Xero.
+badges: ["Prototype", "Synthetic sample data", "Xero CSV import", "VAT return workings"]
+footer: >-
+  Independent prototype built for a job application. Not affiliated with or endorsed by Somerset Solders Ltd
+  or Xero. All sample data is synthetic: the company, suppliers, customers and amounts are invented.
+footer_short: "Independent prototype · synthetic data · not affiliated with Somerset Solders Ltd"
+sample_caption: >-
+  Uses an October month end for an invented solder manufacturer: 19 supplier invoices, emails and a statement,
+  plus the despatches to invoice, open sales invoices from Xero, the bank statement and the purchase order log.
+  No setup needed.
+upload_help: >-
+  Drop in supplier invoices, credit notes and statements (PDF or .eml), plus any of: a list of despatches to
+  invoice, open sales invoices exported from Xero, a bank statement (CSV/Excel with Date, Description and Amount
+  or Money in/Money out) and a purchase order log. Missing reference lists (chart of accounts, supplier and
+  customer lists) fall back to the demo's sample ones. Use synthetic or anonymised files only: this is a public demo.
+
+# Pause after each progress step so a screen recording can follow along (seconds).
+step_delay_seconds: 0.4
+
+# The sample runs "as at" this date for a fixed October month end, so ageing and results are reproducible.
+sample_as_of: 2026-11-05
+period: {start: 2026-10-01, end: 2026-10-31}
+
+company:
+  name: Demo Company Ltd
+accounting_system: xero
+
+sample_data:
+  documents: ["sample_data/inbox/*"]
+  tables:
+    sales_to_invoice: sample_data/despatches_to_invoice_oct-2026.xlsx
+    open_invoices: sample_data/open_sales_invoices_31-oct-2026.csv
+    bank_statement: sample_data/bank_statement_oct-2026.csv
+    purchase_orders: sample_data/purchase_orders_log.csv
+    suppliers: sample_data/supplier_list.csv
+    customers: sample_data/customer_list.csv
+    chart_of_accounts: sample_data/chart_of_accounts.csv
+
+# Which parts of the engine run (each also needs its input files).
+modules:
+  documents: true
+  card_matching: false
+  coding: true
+  payroll_journal: false
+  sales_invoices: true
+  debtors: true
+  timesheets: false
+  purchase_orders: true
+  statements: true
+  filing: false
+  vat_return: true
+  letters: true
+  month_end: true
+
+# Column names used in this business's exports, on top of the engine's defaults.
+tables:
+  open_invoices: {aliases: {customer: ["Contact"]}}
+  sales_to_invoice: {aliases: {date: ["Despatch Date"], job: ["Sales Order"], item: ["Item Code"]}}
+
+export_settings:
+  sales_account_code: "200"
+
+coding:
+  fallback_account: Suspense
+  account_types: [Expense, Direct costs, Fixed asset, Suspense]   # accounts Claude may choose from
+  items_per_request: 12
+  # Keyword rules run after the supplier list and before Claude (regex on the supplier name).
+  rules:
+    - {match: "\\b(TIN|SILVER|COPPER|BISMUTH|INGOT|METALS?)\\b", account: Raw materials - metals, reason: "Metal for alloying"}
+    - {match: "FLUX|ROSIN|ISOPROPYL|SOLVENT|CHEMICAL", account: Flux and chemicals, reason: "Flux ingredients"}
+    - {match: "SPOOL|REEL|CARTON|PACKAGING", account: Packaging and spools, reason: "Packaging for finished goods"}
+    - {match: "NITROGEN|ARGON|INDUSTRIAL GAS", account: Industrial gases, reason: "Process gases"}
+    - {match: "FREIGHT|COURIER|PALLET|HAULAGE|CARRIAGE", account: Carriage outwards, reason: "Deliveries to customers"}
+    - {match: "ASSAY|LABORATOR", account: Laboratory testing, reason: "Alloy testing"}
+    - {match: "ELECTRICITY|ENERGY", account: "Light, power and heat", reason: "Power for the melting pots"}
+    - {match: "CALIBRATION|ELECTRICAL", account: Repairs and maintenance, reason: "Machinery service and repairs"}
+    - {match: "WASTE|RECYCLING", account: Waste disposal, reason: "Waste collection"}
+    - {match: "BANK CHARGE|INTEREST", account: Bank fees, vat_code: E, receipt_needed: false, reason: "Bank charges (exempt)"}
+
+vat:
+  allowed_rates: [0, 5, 20]
+  blocked_accounts: [Entertainment]   # input VAT not reclaimable on business entertainment
+
+checks_settings:
+  prepayment_min_amount: 500
+
+purchase_orders:
+  tolerance_pct: 2
+  tolerance_abs: 5
+  require_po: false   # only metals, chemicals and packaging are bought on a PO
+
+sales:
+  invoice_prefix: "INV-"
+  first_invoice_number: 3141
+  default_terms_days: 30
+  default_vat_code: S
+  group_by: job   # one invoice per customer and sales order
+
+debtors:
+  buckets: [0, 30, 60, 90]
+  default_terms_days: 30
+  tiers:
+    - {from: 1, tier: Reminder, tone: "friendly reminder"}
+    - {from: 31, tier: Second reminder, tone: "firm but polite"}
+    - {from: 61, tier: Final notice, tone: "final notice: ask for payment within 7 days and say that further orders may be put on hold"}
+
+# Letters go to the contacts on the supplier and customer lists (no card holders or payroll bureau here).
+contacts: {}
+
+month_end:
+  checklist:
+    - {id: purchase_invoices}
+    - {id: duplicates}
+    - {id: bank_details}
+    - {id: po_matched}
+    - {id: statements_reconciled}
+    - {id: vat_checks}
+    - {id: supplier_queries}
+    - {id: coding_review}
+    - {id: prepayments_accruals}
+    - {id: sales_invoices}
+    - {id: debtors_chased}
+    - {id: vat_return}
+    - {label: "Import the files into Xero and reconcile the bank feed", manual: true}
+    - {label: "Post the prepayment release and any accruals journals", manual: true}
+    - {label: "Review the VAT return in Xero and submit it through Making Tax Digital once approved", manual: true}
+    - {label: "Send the month-end pack and aged debtors to the managing director", manual: true}
+
+views:
+  tabs: [entries, vat, sales, debtors, po, statements, emails, checklist, exceptions, documents]
+
+# Plain-English context passed to Claude.
+ai:
+  domain: >-
+    A small Somerset manufacturer (about 20 staff) of lead-free and plumbing solder wire, solder bar and flux,
+    selling to electronics assemblers, plumbers' merchants and distributors in the UK, with some exports to
+    Ireland and the EU. The books are kept in Xero by a part-time bookkeeper. Typical purchases: tin, silver and
+    copper; flux chemicals; spools and packaging; nitrogen; electricity for the melting pots; carriage and export
+    freight; alloy assays; machinery calibration and repairs; safety supplies and waste collection.
+  signature: "Accounts Administrator\nDemo Company Ltd"
+  reply_by: "by Friday 13 November"
+  letters_per_request: 3
+
+# Time-saved estimate shown on the results screen. Assumptions are displayed.
+time_estimate:
+  manual:
+    - ["key and code a supplier invoice or credit note in Xero", "invoices", 5]
+    - ["match invoices to purchase orders and reconcile the supplier statement", "fixed", 25]
+    - ["raise a sales invoice", "sales_invoices", 6]
+    - ["allocate receipts and update an open sales invoice", "debtor_items", 3]
+    - ["investigate an exception", "exceptions", 8]
+    - ["write a supplier query or customer chase email", "emails", 6]
+    - ["prepare the VAT return workings and check the VAT codes", "fixed", 60]
+    - ["work through the month-end checklist", "fixed", 20]
+  with_tool:
+    - ["review an item on the needs-human-check list", "human_checks", 4]
+    - ["check and send a drafted email", "emails", 2]
+    - ["check and import the Xero files", "fixed", 15]
+    - ["review the VAT return workings before filing", "fixed", 15]

@@ -1,0 +1,80 @@
+{
+  "task": "bookkeeping.coding",
+  "key": "db3b590d135e0ef18b031faa2e5a2f0c54a91a0aa21d50ac765ab9c017025922",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Entries to code (JSON):\n\n[\n {\n  \"id\": \"D-22\",\n  \"payee\": \"Forgeway Trade Counter\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 47.94,\n  \"document\": \"Trade counter receipt for wall plugs, screws, sealant and dust sheets.\",\n  \"items\": [\n   \"Wall plugs brown x 100\",\n   \"Wood screws 4x40 x 200\",\n   \"Silicone sealant clear x 3\",\n   \"Dust sheets x 2\"\n  ],\n  \"notes\": \"Paid with a Visa debit card ending 1234.\"\n },\n {\n  \"id\": \"D-23\",\n  \"payee\": \"Norbridge Tool Supplies Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 228.0,\n  \"document\": \"First invoice from a new tools supplier: a cordless drill, drill bits and safety glasses.\",\n  \"items\": [\n   \"Cordless drill driver 18V with 2 batteries\",\n   \"HSS drill bit set, 25 pieces\",\n   \"Safety glasses, box of 12\"\n  ],\n  \"notes\": \"Marked 'New account - welcome!'.\"\n },\n {\n  \"id\": \"T-04\",\n  \"payee\": \"Ember & Oak Café\",\n  \"card_description\": \"SQ *EMBER & OAK CAFE TELFORD\",\n  \"amount_gbp\": 43.4,\n  \"document\": \"Café receipt for lunch for two.\",\n  \"items\": [\n   \"2 x Soup & sandwich\",\n   \"2 x Flat white\",\n   \"1 x Brownie\",\n   \"1 x Sparkling water\"\n  ],\n  \"notes\": \"Handwritten on the receipt: 'client lunch - Brightwater Facilities, contract review. AM'. The receipt says a tip was added at the terminal; the tip is not included in this total.\"\n },\n {\n  \"id\": \"T-05\",\n  \"payee\": \"Parcelbay Marketplace\",\n  \"card_description\": \"PARCELBAY MARKETPLACE\",\n  \"amount_gbp\": 57.93,\n  \"document\": \"Online marketplace order: two USB-C cables, coffee beans, a desk plant and a phone stand.\",\n  \"items\": [\n   \"USB-C charging cable 2m\",\n   \"Coffee beans 1kg, medium roast\",\n   \"Desk plant in ceramic pot\",\n   \"Adjustable phone stand\"\n  ],\n  \"notes\": \"Sold by Parcelbay Retail Ltd. Mixed items with different VAT rates; the purpose of the order is not stated.\"\n },\n {\n  \"id\": \"T-06\",\n  \"payee\": \"MERECROFT TYRE & AUTO\",\n  \"card_description\": \"MERECROFT TYRE & AUTO\",\n  \"amount_gbp\": 126.0,\n  \"document\": \"\",\n  \"items\": [],\n  \"notes\": \"\"\n },\n {\n  \"id\": \"T-07\",\n  \"payee\": \"STOCKFRAME IMAGES\",\n  \"card_description\": \"STOCKFRAME IMAGES\",\n  \"amount_gbp\": 24.0,\n  \"document\": \"\",\n  \"items\": [],\n  \"notes\": \"\"\n },\n {\n  \"id\": \"T-08\",\n  \"payee\": \"Layoutly Inc.\",\n  \"card_description\": \"LAYOUTLY INC\",\n  \"amount_gbp\": 11.86,\n  \"document\": \"Monthly subscription receipt for Layoutly Pro design software.\",\n  \"items\": [\n   \"Layoutly Pro, monthly plan (1 seat)\"\n  ],\n  \"notes\": \"US supplier; amounts are in US dollars and no tax was charged. The receipt says business customers outside the US account for VAT themselves.\"\n },\n {\n  \"id\": \"T-10\",\n  \"payee\": \"Fixtrade Direct\",\n  \"card_description\": \"FIXTRADE DIRECT\",\n  \"amount_gbp\": 89.94,\n  \"document\": \"VAT receipt for a saw blade, masonry drill bits and an extension reel, collected in store.\",\n  \"items\": [\n   \"Mitre saw blade 254mm 60T\",\n   \"Masonry drill bits set\",\n   \"Heavy-duty extension reel 25m\"\n  ],\n  \"notes\": \"Seller: Fixtrade Direct Ltd.\"\n },\n {\n  \"id\": \"T-12\",\n  \"payee\": \"Greenway Corner Shop\",\n  \"card_description\": \"GREENWAY CORNER SHOP\",\n  \"amount_gbp\": 9.85,\n  \"document\": \"Corner shop receipt for milk, tea bags and biscuits.\",\n  \"items\": [\n   \"Semi-skimmed milk 4 pints\",\n   \"Tea bags 240\",\n   \"Digestive biscuits x 2\"\n  ],\n  \"notes\": \"All items zero-rated.\"\n },\n {\n  \"id\": \"T-15\",\n  \"payee\": \"CloudNest Hosting Ltd\",\n  \"card_description\": \"CLOUDNEST HOSTING\",\n  \"amount_gbp\": 18.0,\n  \"document\": \"Paid invoice for November web hosting.\",\n  \"items\": [\n   \"Web hosting, business plan - November 2026\"\n  ],\n  \"notes\": \"\"\n },\n {\n  \"id\": \"T-16\",\n  \"payee\": \"Printdrop Online Ltd\",\n  \"card_description\": \"PRINTDROP ONLINE\",\n  \"amount_gbp\": 42.0,\n  \"document\": \"Paid VAT invoice for 500 business cards.\",\n  \"items\": [\n   \"Business cards, 500, double-sided, 2 designs\"\n  ],\n  \"notes\": \"\"\n }\n]",
+  "response": {
+    "text": "{\"codes\": [{\"id\": \"D-22\", \"account\": \"Repairs and maintenance\", \"confidence\": \"high\", \"reason\": \"Wall plugs, screws, sealant and dust sheets are small materials for building repairs.\"}, {\"id\": \"D-23\", \"account\": \"Tools and equipment\", \"confidence\": \"high\", \"reason\": \"A cordless drill, drill bits and safety glasses are small tools, each well under £500.\"}, {\"id\": \"T-04\", \"account\": \"Entertainment\", \"confidence\": \"high\", \"reason\": \"The handwritten note says it was a client lunch with Brightwater Facilities, which is client hospitality.\"}, {\"id\": \"T-05\", \"account\": \"Office supplies\", \"confidence\": \"low\", \"reason\": \"Mixed order of USB-C cables (IT), coffee beans (staff welfare), a desk plant and a phone stand (office); the purpose is not stated, so it may need splitting.\"}, {\"id\": \"T-06\", \"account\": \"Motor expenses\", \"confidence\": \"medium\", \"reason\": \"A tyre and auto business suggests van tyres or repairs, but there is no receipt to confirm what was bought.\"}, {\"id\": \"T-07\", \"account\": \"Advertising and marketing\", \"confidence\": \"medium\", \"reason\": \"The name suggests stock images for marketing material; there is no receipt to confirm it.\"}, {\"id\": \"T-08\", \"account\": \"Software subscriptions\", \"confidence\": \"high\", \"reason\": \"Monthly Layoutly Pro plan, an online design software subscription.\"}, {\"id\": \"T-10\", \"account\": \"Tools and equipment\", \"confidence\": \"high\", \"reason\": \"A saw blade, masonry drill bits and an extension reel are small tools and equipment.\"}, {\"id\": \"T-12\", \"account\": \"Staff welfare\", \"confidence\": \"high\", \"reason\": \"Milk, tea bags and biscuits are staff refreshments.\"}, {\"id\": \"T-15\", \"account\": \"Computer and IT costs\", \"confidence\": \"high\", \"reason\": \"Web hosting for November; the chart lists hosting under computer and IT costs.\"}, {\"id\": \"T-16\", \"account\": \"Advertising and marketing\", \"confidence\": \"high\", \"reason\": \"500 business cards; the chart lists business cards under advertising and marketing.\"}]}",
+    "data": {
+      "codes": [
+        {
+          "id": "D-22",
+          "account": "Repairs and maintenance",
+          "confidence": "high",
+          "reason": "Wall plugs, screws, sealant and dust sheets are small materials for building repairs."
+        },
+        {
+          "id": "D-23",
+          "account": "Tools and equipment",
+          "confidence": "high",
+          "reason": "A cordless drill, drill bits and safety glasses are small tools, each well under £500."
+        },
+        {
+          "id": "T-04",
+          "account": "Entertainment",
+          "confidence": "high",
+          "reason": "The handwritten note says it was a client lunch with Brightwater Facilities, which is client hospitality."
+        },
+        {
+          "id": "T-05",
+          "account": "Office supplies",
+          "confidence": "low",
+          "reason": "Mixed order of USB-C cables (IT), coffee beans (staff welfare), a desk plant and a phone stand (office); the purpose is not stated, so it may need splitting."
+        },
+        {
+          "id": "T-06",
+          "account": "Motor expenses",
+          "confidence": "medium",
+          "reason": "A tyre and auto business suggests van tyres or repairs, but there is no receipt to confirm what was bought."
+        },
+        {
+          "id": "T-07",
+          "account": "Advertising and marketing",
+          "confidence": "medium",
+          "reason": "The name suggests stock images for marketing material; there is no receipt to confirm it."
+        },
+        {
+          "id": "T-08",
+          "account": "Software subscriptions",
+          "confidence": "high",
+          "reason": "Monthly Layoutly Pro plan, an online design software subscription."
+        },
+        {
+          "id": "T-10",
+          "account": "Tools and equipment",
+          "confidence": "high",
+          "reason": "A saw blade, masonry drill bits and an extension reel are small tools and equipment."
+        },
+        {
+          "id": "T-12",
+          "account": "Staff welfare",
+          "confidence": "high",
+          "reason": "Milk, tea bags and biscuits are staff refreshments."
+        },
+        {
+          "id": "T-15",
+          "account": "Computer and IT costs",
+          "confidence": "high",
+          "reason": "Web hosting for November; the chart lists hosting under computer and IT costs."
+        },
+        {
+          "id": "T-16",
+          "account": "Advertising and marketing",
+          "confidence": "high",
+          "reason": "500 business cards; the chart lists business cards under advertising and marketing."
+        }
+      ]
+    }
+  }
+}

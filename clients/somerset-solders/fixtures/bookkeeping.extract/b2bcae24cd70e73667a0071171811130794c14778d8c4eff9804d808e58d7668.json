@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "b2bcae24cd70e73667a0071171811130794c14778d8c4eff9804d808e58d7668",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-13_penhallow_PAL-6620.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Penhallow Accounts <penhallow.accounts@mailbox.example>\nTo: accounts@demo-company.example\nDate: Tue, 13 Oct 2026 17:52:00 +0100\nSubject: Invoice PAL-6620 - updated bank details\n\nDear Accounts,\n\nPlease find attached invoice PAL-6620 for October's assay work.\n\nPlease note that we have moved our banking. Please update your records and pay this and all future invoices to the new account shown on the invoice.\n\nKind regards,\nAccounts Department\nPenhallow Assay Laboratories Ltd\n\n--- Attachment: PAL-6620.pdf ---\nPenhallow Assay Laboratories Ltd\n2 Science Park Way\nPlymouth PL6 0XX\nTel 01632 960 183 · accounts@penhallow-assay.example\nVAT Reg No: GB 259 1746 32\nINVOICE\nInvoice number: PAL-6620\nInvoice date: 13/10/2026\nDue date: 12/11/2026\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nAlloy analysis (ICP-OES), SAC305 batch certificate\n8\n£38.00\n20%\n£304.00\nRoHS lead screening, per batch\n8\n£12.50\n20%\n£100.00\nSubtotal (net)\n£404.00\nVAT @ 20% on £404.00\n£80.80\nTotal due\n£484.80\nTerms: 30 days net.\nPay by bank transfer to Penhallow Assay Laboratories Ltd: sort code 00-99-07, account number 99990417.\nPlease quote PAL-6620 as the payment reference.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Penhallow Assay Laboratories Ltd\", \"counterparty_vat_number\": \"GB 259 1746 32\", \"document_number\": \"PAL-6620\", \"document_date\": \"2026-10-13\", \"due_date\": \"2026-11-12\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 404.0, \"vat_total\": 80.8, \"gross_total\": 484.8, \"vat_lines\": [{\"rate\": 20, \"net\": 404.0, \"vat\": 80.8}], \"line_items\": [{\"description\": \"Alloy analysis (ICP-OES), SAC305 batch certificate\", \"quantity\": 8, \"unit_price\": 38.0, \"net\": 304.0, \"vat_rate\": 20}, {\"description\": \"RoHS lead screening, per batch\", \"quantity\": 8, \"unit_price\": 12.5, \"net\": 100.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-99-07\", \"bank_account_number\": \"99990417\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for October's alloy analysis and RoHS screening on eight SAC305 batches, sent with an email about new bank details.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"The covering email comes from penhallow.accounts@mailbox.example, not the address on the invoice, says the laboratory has moved its banking and asks for this and all future invoices to be paid to the new account.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Penhallow Assay Laboratories Ltd",
+      "counterparty_vat_number": "GB 259 1746 32",
+      "document_number": "PAL-6620",
+      "document_date": "2026-10-13",
+      "due_date": "2026-11-12",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 404.0,
+      "vat_total": 80.8,
+      "gross_total": 484.8,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 404.0,
+          "vat": 80.8
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Alloy analysis (ICP-OES), SAC305 batch certificate",
+          "quantity": 8,
+          "unit_price": 38.0,
+          "net": 304.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "RoHS lead screening, per batch",
+          "quantity": 8,
+          "unit_price": 12.5,
+          "net": 100.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-99-07",
+      "bank_account_number": "99990417",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for October's alloy analysis and RoHS screening on eight SAC305 batches, sent with an email about new bank details.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The covering email comes from penhallow.accounts@mailbox.example, not the address on the invoice, says the laboratory has moved its banking and asks for this and all future invoices to be paid to the new account."
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "7a5122981fe080393a0540f95908a769b02e2678866bac13adc9783b5dd224e2",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"customer:Larkhollow Hotels Ltd\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Larkhollow Hotels Ltd\",\n  \"contact\": \"Sophie Kendrick\",\n  \"email\": \"accounts@larkhollow-hotels.example\",\n  \"tone\": \"friendly reminder: assume it has been overlooked and ask when it will be paid\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice SI-30384\",\n    \"issue\": \"£7,560.00 was due on 15 Oct 2026 and is 21 days overdue.\",\n    \"ask\": \"\"\n   }\n  ],\n  \"exceptions\": [],\n  \"tone_label\": \"Reminder\"\n },\n {\n  \"key\": \"customer:Lessmoor Academy Trust\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Lessmoor Academy Trust\",\n  \"contact\": \"Rebecca Thorne\",\n  \"email\": \"finance@lessmoor-trust.example\",\n  \"tone\": \"friendly reminder: assume it has been overlooked and ask when it will be paid\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice SI-30389\",\n    \"issue\": \"£1,512.00 was due on 18 Oct 2026 and is 18 days overdue.\",\n    \"ask\": \"\"\n   }\n  ],\n  \"exceptions\": [],\n  \"tone_label\": \"Reminder\"\n },\n {\n  \"key\": \"customer:Quarrendon Court RMC Ltd\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Quarrendon Court RMC Ltd\",\n  \"contact\": \"Brian Ellwood\",\n  \"email\": \"\",\n  \"tone\": \"firm but polite second reminder: ask for a payment date this week\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice SI-30370\",\n    \"issue\": \"£2,460.00 was due on 18 Sep 2026 and is 48 days overdue.\",\n    \"ask\": \"\"\n   },\n   {\n    \"ref\": \"Invoice SI-30396\",\n    \"issue\": \"£1,380.00 was due on 09 Oct 2026 and is 27 days overdue.\",\n    \"ask\": \"\"\n   }\n  ],\n  \"exceptions\": [],\n  \"tone_label\": \"Second reminder\"\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"customer:Larkhollow Hotels Ltd\", \"subject\": \"Reminder: invoice SI-30384 (£7,560.00)\", \"body\": \"Hello Sophie,\\n\\nA quick reminder that invoice SI-30384 for £7,560.00 was due on 15 October 2026 and is now 21 days overdue. It may simply have been missed.\\n\\nCould you let me know when it will be paid? I'd be grateful for a reply by Thursday 12 November.\\n\\nKind regards,\\nBranch Administrator\\nDemo Decorating Contractors Ltd, Erith branch\"}, {\"key\": \"customer:Lessmoor Academy Trust\", \"subject\": \"Reminder: invoice SI-30389 (£1,512.00)\", \"body\": \"Hello Rebecca,\\n\\nJust a friendly reminder that invoice SI-30389 for £1,512.00 was due on 18 October 2026 and is now 18 days overdue. It may have been overlooked.\\n\\nCould you let me know when it will be paid? A reply by Thursday 12 November would be very helpful.\\n\\nKind regards,\\nBranch Administrator\\nDemo Decorating Contractors Ltd, Erith branch\"}, {\"key\": \"customer:Quarrendon Court RMC Ltd\", \"subject\": \"Second reminder: invoices SI-30370 and SI-30396\", \"body\": \"Hello Brian,\\n\\nInvoice SI-30370 for £2,460.00 was due on 18 September 2026 and is now 48 days overdue. Invoice SI-30396 for £1,380.00 was due on 9 October 2026 and is 27 days overdue.\\n\\nCould you let me know this week the date these will be paid? If anything is holding them up, please tell me. I'd be grateful for a reply by Thursday 12 November.\\n\\nKind regards,\\nBranch Administrator\\nDemo Decorating Contractors Ltd, Erith branch\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "customer:Larkhollow Hotels Ltd",
+          "subject": "Reminder: invoice SI-30384 (£7,560.00)",
+          "body": "Hello Sophie,\n\nA quick reminder that invoice SI-30384 for £7,560.00 was due on 15 October 2026 and is now 21 days overdue. It may simply have been missed.\n\nCould you let me know when it will be paid? I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+        },
+        {
+          "key": "customer:Lessmoor Academy Trust",
+          "subject": "Reminder: invoice SI-30389 (£1,512.00)",
+          "body": "Hello Rebecca,\n\nJust a friendly reminder that invoice SI-30389 for £1,512.00 was due on 18 October 2026 and is now 18 days overdue. It may have been overlooked.\n\nCould you let me know when it will be paid? A reply by Thursday 12 November would be very helpful.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+        },
+        {
+          "key": "customer:Quarrendon Court RMC Ltd",
+          "subject": "Second reminder: invoices SI-30370 and SI-30396",
+          "body": "Hello Brian,\n\nInvoice SI-30370 for £2,460.00 was due on 18 September 2026 and is now 48 days overdue. Invoice SI-30396 for £1,380.00 was due on 9 October 2026 and is 27 days overdue.\n\nCould you let me know this week the date these will be paid? If anything is holding them up, please tell me. I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+        }
+      ]
+    }
+  }
+}

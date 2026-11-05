@@ -1,0 +1,24 @@
+Nominal Code,Account Name,Account Type,Notes
+4000,Sales - contract work,Income,
+4010,Sales - day work and variations,Income,
+5000,Boards and studwork,Cost of sales,"Plasterboard, metal studs, track and partition materials"
+5010,Fixings and sundries,Cost of sales,"Anchors, screws, bolts, adhesives, sealants, site sundries"
+5020,Ceilings and grid,Cost of sales,"Suspended ceiling grid, tiles and MF ceiling sections"
+5030,Timber and sheet materials,Cost of sales,"Timber, ply and sheet materials"
+5100,Plant and access hire,Cost of sales,"Scissor lifts, towers and power tools on hire"
+5200,Waste disposal and skips,Cost of sales,Skip hire and waste transfer
+7000,Gross wages - site operatives,Payroll,
+7006,Employer's NI,Payroll,
+7010,Gross wages - office,Payroll,
+7100,Rent and rates,Expense,Yard and office
+7300,Motor fuel,Expense,Van fuel cards
+7310,Motor repairs and servicing,Expense,Vans
+7400,Travel and site accommodation,Expense,
+7500,Printing and stationery,Expense,
+7502,Telephone and internet,Expense,
+7600,Protective clothing and PPE,Expense,"Hi-vis, boots, gloves, hard hats, eye and ear protection"
+7610,Small tools and equipment,Expense,Tools under £500 bought outright
+7700,Training and site cards,Expense,CSCS cards and courses
+7800,Repairs and maintenance,Expense,Yard and office repairs
+7900,Bank charges,Expense,
+9998,Suspense,Suspense,Use only when the right account is genuinely unclear

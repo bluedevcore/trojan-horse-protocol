@@ -1,0 +1,29 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "e5badbb0e9bb5c53997b57cbea08fa892233ac407037c63a4f6537ad847b2ca2",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"customer:Ashwick Heating Supplies Ltd\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Ashwick Heating Supplies Ltd\",\n  \"contact\": \"Debbie Lane\",\n  \"email\": \"purchase.ledger@ashwick-heating.example\",\n  \"tone\": \"friendly reminder\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice INV-3140\",\n    \"issue\": \"£948.00 was due on 30 Oct 2026 and is 6 days overdue.\",\n    \"ask\": \"\"\n   }\n  ],\n  \"exceptions\": [],\n  \"tone_label\": \"Reminder\"\n },\n {\n  \"key\": \"customer:Harbourside Plumbers' Merchants Ltd\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Harbourside Plumbers' Merchants Ltd\",\n  \"contact\": \"Colin Marsh\",\n  \"email\": \"accounts@harbourside-pm.example\",\n  \"tone\": \"firm but polite\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice INV-3091\",\n    \"issue\": \"£1,414.20 was due on 30 Sep 2026 and is 36 days overdue.\",\n    \"ask\": \"\"\n   },\n   {\n    \"ref\": \"Invoice INV-3130\",\n    \"issue\": \"£3,102.00 was due on 30 Oct 2026 and is 6 days overdue.\",\n    \"ask\": \"\"\n   }\n  ],\n  \"exceptions\": [],\n  \"tone_label\": \"Second reminder\"\n },\n {\n  \"key\": \"customer:Kingsdown Circuits Ltd\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Kingsdown Circuits Ltd\",\n  \"contact\": \"Rob Ellery\",\n  \"email\": \"accounts.payable@kingsdown-circuits.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"SO-6107 · 31 Oct 2026 · £9,216.00\",\n    \"issue\": \"Kingsdown Circuits Ltd needs a purchase order number on every invoice, but the work for job SO-6107 has none.\",\n    \"ask\": \"Could you send your purchase order number for job SO-6107 (SAC305 solder bar, 1kg) so we can invoice it?\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-11\"\n  ]\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"customer:Ashwick Heating Supplies Ltd\", \"subject\": \"Payment reminder: invoice INV-3140\", \"body\": \"Hello Debbie,\\n\\nA quick reminder that invoice INV-3140 for £948.00 was due on 30 October 2026 and is now 6 days overdue.\\n\\nIf it has already been paid, thank you, and please ignore this email. If not, could you let me know when payment will be made, by Friday 13 November?\\n\\nKind regards,\\nAccounts Administrator\\nDemo Company Ltd\"}, {\"key\": \"customer:Harbourside Plumbers' Merchants Ltd\", \"subject\": \"Second reminder: invoices INV-3091 and INV-3130\", \"body\": \"Hello Colin,\\n\\nOur records show two amounts overdue on your account:\\n\\nInvoice INV-3091: £1,414.20, due on 30 September 2026, now 36 days overdue\\nInvoice INV-3130: £3,102.00, due on 30 October 2026, now 6 days overdue\\n\\nCould you arrange payment, or let me know when it will be made, by Friday 13 November? If there is a problem with either invoice, please tell me so we can sort it out.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Company Ltd\"}, {\"key\": \"customer:Kingsdown Circuits Ltd\", \"subject\": \"Purchase order number needed for sales order SO-6107\", \"body\": \"Hello Rob,\\n\\nWe are ready to invoice sales order SO-6107 (SAC305 solder bar, 1kg) for £9,216.00. Your account needs a purchase order number on every invoice, and we don't have one for this order.\\n\\nCould you send us the PO number, please? We will raise the invoice as soon as we have it, so a reply by Friday 13 November would be appreciated.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Company Ltd\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "customer:Ashwick Heating Supplies Ltd",
+          "subject": "Payment reminder: invoice INV-3140",
+          "body": "Hello Debbie,\n\nA quick reminder that invoice INV-3140 for £948.00 was due on 30 October 2026 and is now 6 days overdue.\n\nIf it has already been paid, thank you, and please ignore this email. If not, could you let me know when payment will be made, by Friday 13 November?\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+        },
+        {
+          "key": "customer:Harbourside Plumbers' Merchants Ltd",
+          "subject": "Second reminder: invoices INV-3091 and INV-3130",
+          "body": "Hello Colin,\n\nOur records show two amounts overdue on your account:\n\nInvoice INV-3091: £1,414.20, due on 30 September 2026, now 36 days overdue\nInvoice INV-3130: £3,102.00, due on 30 October 2026, now 6 days overdue\n\nCould you arrange payment, or let me know when it will be made, by Friday 13 November? If there is a problem with either invoice, please tell me so we can sort it out.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+        },
+        {
+          "key": "customer:Kingsdown Circuits Ltd",
+          "subject": "Purchase order number needed for sales order SO-6107",
+          "body": "Hello Rob,\n\nWe are ready to invoice sales order SO-6107 (SAC305 solder bar, 1kg) for £9,216.00. Your account needs a purchase order number on every invoice, and we don't have one for this order.\n\nCould you send us the PO number, please? We will raise the invoice as soon as we have it, so a reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+        }
+      ]
+    }
+  }
+}

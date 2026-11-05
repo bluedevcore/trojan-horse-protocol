@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "6ddfeea0ca0aa2663c346782d909c45fc4d9526d1989fdcc62328f0f6e4b64fa",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-20_wellington-road_fuel.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nWELLINGTON ROAD SERVICE STATION\nWellington Road, Telford\nVAT No GB 663 1045 59\n20/10/2026 17:32\nPump 2 DIESEL 47.35 L @ 152.9p   £72.40\nTOTAL                 £72.40\nVAT @20%  net £60.33  VAT £12.07\nCARD ************4417   CHIP & PIN\nReceipt 004-121907",
+  "response": {
+    "text": "{\"doc_type\": \"receipt\", \"counterparty\": \"Wellington Road Service Station\", \"counterparty_vat_number\": \"GB 663 1045 59\", \"document_number\": \"004-121907\", \"document_date\": \"2026-10-20\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 60.33, \"vat_total\": 12.07, \"gross_total\": 72.4, \"vat_lines\": [{\"rate\": 20, \"net\": 60.33, \"vat\": 12.07}], \"line_items\": [{\"description\": \"Diesel 47.35 litres @ 152.9p\", \"quantity\": 47.35, \"unit_price\": 1.529, \"net\": 72.4, \"vat_rate\": 20}], \"payment_status\": \"paid\", \"card_last4\": \"4417\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Fuel receipt for 47.35 litres of diesel.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "receipt",
+      "counterparty": "Wellington Road Service Station",
+      "counterparty_vat_number": "GB 663 1045 59",
+      "document_number": "004-121907",
+      "document_date": "2026-10-20",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 60.33,
+      "vat_total": 12.07,
+      "gross_total": 72.4,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 60.33,
+          "vat": 12.07
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Diesel 47.35 litres @ 152.9p",
+          "quantity": 47.35,
+          "unit_price": 1.529,
+          "net": 72.4,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Fuel receipt for 47.35 litres of diesel.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

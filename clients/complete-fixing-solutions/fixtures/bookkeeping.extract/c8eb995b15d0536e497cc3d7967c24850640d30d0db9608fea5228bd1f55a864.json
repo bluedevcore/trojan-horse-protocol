@@ -1,0 +1,72 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "c8eb995b15d0536e497cc3d7967c24850640d30d0db9608fea5228bd1f55a864",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-27_ridgeway_RSW-2208.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Dan Shaw <orders@ridgeway-workwear.example>\nTo: accounts@demo-fixings.example\nDate: Tue, 27 Oct 2026 11:20:00 +0000\nSubject: Your order and invoice RSW-2208\n\nHi,\n\nThanks for your telephone order on 23 October and welcome to Ridgeway. The PPE was delivered to your yard this morning and our invoice RSW-2208 is attached. We'll set up your account on 30-day terms.\n\nBest wishes,\nDan Shaw\nRidgeway Workwear Ltd\n\n--- Attachment: RSW-2208.pdf ---\nRidgeway Workwear Ltd\nUnit 8, Ridgeway Court\nWarrington WA2 0XX\nTel 01632 960 301 · orders@ridgeway-workwear.example\nVAT Reg No: GB 703 8826 30\nINVOICE\nInvoice number: RSW-2208\nInvoice date: 27/10/2026\nDue date: 26/11/2026\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nHi-vis vest, orange, company print on back\n20\n£3.95\n£79.00\nCut-resistant gloves level C, pair\n60\n£3.20\n£192.00\nSafety boots S3, assorted sizes\n6\n£38.50\n£231.00\nSafety glasses, clear\n24\n£2.25\n£54.00\nTotal net\n£556.00\nVAT @ 20% on £556.00\n£111.20\nTotal due\n£667.20\nPayment terms: 30 days. BACS to Ridgeway Workwear Ltd, sort code 00-13-24, account 20120071.\nDelivered to: Demo Fixings Ltd yard, Example Industrial Estate.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Ridgeway Workwear Ltd\", \"counterparty_vat_number\": \"GB 703 8826 30\", \"document_number\": \"RSW-2208\", \"document_date\": \"2026-10-27\", \"due_date\": \"2026-11-26\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 556.0, \"vat_total\": 111.2, \"gross_total\": 667.2, \"vat_lines\": [{\"rate\": 20, \"net\": 556.0, \"vat\": 111.2}], \"line_items\": [{\"description\": \"Hi-vis vest, orange, company print on back\", \"quantity\": 20, \"unit_price\": 3.95, \"net\": 79.0, \"vat_rate\": 20}, {\"description\": \"Cut-resistant gloves level C, pair\", \"quantity\": 60, \"unit_price\": 3.2, \"net\": 192.0, \"vat_rate\": 20}, {\"description\": \"Safety boots S3, assorted sizes\", \"quantity\": 6, \"unit_price\": 38.5, \"net\": 231.0, \"vat_rate\": 20}, {\"description\": \"Safety glasses, clear\", \"quantity\": 24, \"unit_price\": 2.25, \"net\": 54.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-13-24\", \"bank_account_number\": \"20120071\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for hi-vis vests, cut-resistant gloves, safety boots and safety glasses delivered to the yard.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Covering email says this was a telephone order on 23 October from a new customer account; no purchase order number is quoted.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Ridgeway Workwear Ltd",
+      "counterparty_vat_number": "GB 703 8826 30",
+      "document_number": "RSW-2208",
+      "document_date": "2026-10-27",
+      "due_date": "2026-11-26",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 556.0,
+      "vat_total": 111.2,
+      "gross_total": 667.2,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 556.0,
+          "vat": 111.2
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Hi-vis vest, orange, company print on back",
+          "quantity": 20,
+          "unit_price": 3.95,
+          "net": 79.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Cut-resistant gloves level C, pair",
+          "quantity": 60,
+          "unit_price": 3.2,
+          "net": 192.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Safety boots S3, assorted sizes",
+          "quantity": 6,
+          "unit_price": 38.5,
+          "net": 231.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Safety glasses, clear",
+          "quantity": 24,
+          "unit_price": 2.25,
+          "net": 54.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-13-24",
+      "bank_account_number": "20120071",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for hi-vis vests, cut-resistant gloves, safety boots and safety glasses delivered to the yard.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Covering email says this was a telephone order on 23 October from a new customer account; no purchase order number is quoted."
+    }
+  }
+}

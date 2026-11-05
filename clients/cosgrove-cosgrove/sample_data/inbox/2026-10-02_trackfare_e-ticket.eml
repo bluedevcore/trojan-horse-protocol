@@ -1,0 +1,21 @@
+From: TrackFare Rail Tickets <tickets@trackfare.example>
+To: accounts@demo-company.example
+Subject: Your e-ticket and receipt TF-88301245
+Date: Fri, 02 Oct 2026 07:41:00 +0100
+Message-ID: <a91576c2aa53ce5d@mail.example>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+
+Thanks for booking with TrackFare.
+
+Booking reference: TF-88301245
+Journey: Telford Central to London Euston, return, travelling 2 October 2026
+Passenger: R. Shah
+Ticket type: Off-Peak Return
+
+Total paid: £64.50
+Paid with Visa card ending 8802
+Rail fares are zero-rated for VAT (VAT £0.00).
+
+TrackFare Rail Tickets

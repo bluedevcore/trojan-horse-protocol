@@ -1,0 +1,29 @@
+Account Code,Account Name,Account Type,Notes
+200,Sales,Revenue,"Sales of solder, flux and related products"
+260,Other revenue,Revenue,
+300,Raw materials - metals,Direct costs,"Tin, silver, copper and other metals for alloying"
+305,Flux and chemicals,Direct costs,"Rosin, activators, solvents and other flux ingredients"
+310,Packaging and spools,Direct costs,"Spools, reels, labels and cartons for finished goods"
+315,Industrial gases,Direct costs,"Nitrogen and argon, cylinder rental"
+320,Production consumables,Direct costs,"Crucibles, thermocouples, extraction filters and other items used up in production"
+325,Carriage outwards,Direct costs,"Deliveries to customers, including export freight"
+330,Laboratory testing,Direct costs,Alloy assays and test certificates
+404,Bank fees,Expense,Bank charges
+412,Accountancy fees,Expense,Accountants and payroll bureau
+420,Entertainment,Expense,Customer hospitality (VAT not reclaimable)
+429,General expenses,Expense,Small items that fit nowhere else
+433,Insurance,Expense,
+445,"Light, power and heat",Expense,"Electricity and gas, including the melting pots"
+461,Printing and stationery,Expense,"Paper, toner, labels and office supplies"
+468,Health and safety,Expense,"PPE, gloves, first aid and safety equipment"
+473,Repairs and maintenance,Expense,"Machinery repairs, electrical work, service and calibration contracts"
+476,Plant and equipment hire,Expense,Forklift and equipment hire
+477,Wages and salaries,Payroll,
+485,Subscriptions,Expense,Software and memberships
+489,Telephone and internet,Expense,
+493,Travel,Expense,
+495,Waste disposal,Expense,General and hazardous waste collection
+620,Prepayments,Current asset,
+710,Office equipment,Fixed asset,Furniture and equipment over £250 kept for more than a year
+820,VAT,Current liability,
+9999,Suspense,Suspense,Use only when the right account is genuinely unclear

@@ -1,0 +1,86 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "27631a1997e9d3a4232fedd4ececd8c2b5652524c6d225ce7719ef7f4eceadc5",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-02_dee-valley_DVF-55120.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nDee Valley Fixings Ltd\nUnit 12, Riverside Trade Park\nChester CH4 0XX\nTel 01632 960 412 · accounts@deevalley-fixings.example\nVAT Reg No: GB 441 9027 63\nINVOICE\nInvoice number: DVF-55120\nInvoice date: 02/10/2026\nDue date: 01/11/2026\nYour order no: PO-4402\nDelivered to site / job ref: J-2601 Wrexham Gateway student flats - drylining\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nHammer-fix anchors 6x40mm, box of 100\n12\n£14.20\n£170.40\nDrywall screws 3.5x25mm, box of 1000\n20\n£9.80\n£196.00\nDrywall screws 3.5x38mm, box of 1000\n15\n£11.60\n£174.00\nM10 through bolts 10x100, box of 50\n6\n£28.80\n£172.80\nLow-modulus sealant, grey, 310ml\n48\n£5.40\n£259.20\nSteel angle bracket 90x90x65, pack of 25\n5\n£42.80\n£214.00\nTotal net\n£1,186.40\nVAT @ 20% on £1,186.40\n£237.28\nTotal due\n£1,423.68\nPayment terms: 30 days. BACS to Dee Valley Fixings Ltd, sort code 00-14-27, account 20031184.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Dee Valley Fixings Ltd\", \"counterparty_vat_number\": \"GB 441 9027 63\", \"document_number\": \"DVF-55120\", \"document_date\": \"2026-10-02\", \"due_date\": \"2026-11-01\", \"po_number\": \"PO-4402\", \"project_reference\": \"J-2601\", \"currency\": \"GBP\", \"net_total\": 1186.4, \"vat_total\": 237.28, \"gross_total\": 1423.68, \"vat_lines\": [{\"rate\": 20, \"net\": 1186.4, \"vat\": 237.28}], \"line_items\": [{\"description\": \"Hammer-fix anchors 6x40mm, box of 100\", \"quantity\": 12, \"unit_price\": 14.2, \"net\": 170.4, \"vat_rate\": 20}, {\"description\": \"Drywall screws 3.5x25mm, box of 1000\", \"quantity\": 20, \"unit_price\": 9.8, \"net\": 196.0, \"vat_rate\": 20}, {\"description\": \"Drywall screws 3.5x38mm, box of 1000\", \"quantity\": 15, \"unit_price\": 11.6, \"net\": 174.0, \"vat_rate\": 20}, {\"description\": \"M10 through bolts 10x100, box of 50\", \"quantity\": 6, \"unit_price\": 28.8, \"net\": 172.8, \"vat_rate\": 20}, {\"description\": \"Low-modulus sealant, grey, 310ml\", \"quantity\": 48, \"unit_price\": 5.4, \"net\": 259.2, \"vat_rate\": 20}, {\"description\": \"Steel angle bracket 90x90x65, pack of 25\", \"quantity\": 5, \"unit_price\": 42.8, \"net\": 214.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-14-27\", \"bank_account_number\": \"20031184\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for anchors, drywall screws, through bolts, sealant and angle brackets delivered to the Wrexham Gateway job.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Dee Valley Fixings Ltd",
+      "counterparty_vat_number": "GB 441 9027 63",
+      "document_number": "DVF-55120",
+      "document_date": "2026-10-02",
+      "due_date": "2026-11-01",
+      "po_number": "PO-4402",
+      "project_reference": "J-2601",
+      "currency": "GBP",
+      "net_total": 1186.4,
+      "vat_total": 237.28,
+      "gross_total": 1423.68,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 1186.4,
+          "vat": 237.28
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Hammer-fix anchors 6x40mm, box of 100",
+          "quantity": 12,
+          "unit_price": 14.2,
+          "net": 170.4,
+          "vat_rate": 20
+        },
+        {
+          "description": "Drywall screws 3.5x25mm, box of 1000",
+          "quantity": 20,
+          "unit_price": 9.8,
+          "net": 196.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Drywall screws 3.5x38mm, box of 1000",
+          "quantity": 15,
+          "unit_price": 11.6,
+          "net": 174.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "M10 through bolts 10x100, box of 50",
+          "quantity": 6,
+          "unit_price": 28.8,
+          "net": 172.8,
+          "vat_rate": 20
+        },
+        {
+          "description": "Low-modulus sealant, grey, 310ml",
+          "quantity": 48,
+          "unit_price": 5.4,
+          "net": 259.2,
+          "vat_rate": 20
+        },
+        {
+          "description": "Steel angle bracket 90x90x65, pack of 25",
+          "quantity": 5,
+          "unit_price": 42.8,
+          "net": 214.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-14-27",
+      "bank_account_number": "20031184",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for anchors, drywall screws, through bolts, sealant and angle brackets delivered to the Wrexham Gateway job.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

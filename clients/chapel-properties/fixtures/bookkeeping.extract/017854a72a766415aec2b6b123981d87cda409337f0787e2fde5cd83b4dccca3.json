@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "017854a72a766415aec2b6b123981d87cda409337f0787e2fde5cd83b4dccca3",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-09-29_brightcote_BES-4471.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nBrightcote Electrical Services Ltd\n18 Foundry Lane\nIpswich IP3 0XX\nTel 01632 960 245 · office@brightcote-electrical.example\nVAT Reg No: GB 336 0912 70\nINVOICE\nInvoice number: BES-4471\nInvoice date: 29/09/2026\nDue date: 29/10/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSite: Granary Court, 2 Granary Lane, Ipswich\nDescription\nQty\nUnit price\nNet\nReplace failed emergency light fittings, communal stairwell\n2\n£86.00\n£172.00\nLabour, testing and certificate\n1\n£68.00\n£68.00\nSubtotal (net)\n£240.00\nVAT @ 20%\n£48.00\nTotal due\n£288.00\nTerms: 30 days.\nPay by bank transfer: sort code 00-25-38, account number 20052538. Quote BES-4471.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Brightcote Electrical Services Ltd\", \"counterparty_vat_number\": \"GB 336 0912 70\", \"document_number\": \"BES-4471\", \"document_date\": \"2026-09-29\", \"due_date\": \"2026-10-29\", \"po_number\": \"\", \"project_reference\": \"Granary Court\", \"currency\": \"GBP\", \"net_total\": 240.0, \"vat_total\": 48.0, \"gross_total\": 288.0, \"vat_lines\": [{\"rate\": 20, \"net\": 240.0, \"vat\": 48.0}], \"line_items\": [{\"description\": \"Replace failed emergency light fittings, communal stairwell\", \"quantity\": 2, \"unit_price\": 86.0, \"net\": 172.0, \"vat_rate\": 20}, {\"description\": \"Labour, testing and certificate\", \"quantity\": 1, \"unit_price\": 68.0, \"net\": 68.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-25-38\", \"bank_account_number\": \"20052538\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for replacing two failed emergency light fittings in the communal stairwell at Granary Court.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Brightcote Electrical Services Ltd",
+      "counterparty_vat_number": "GB 336 0912 70",
+      "document_number": "BES-4471",
+      "document_date": "2026-09-29",
+      "due_date": "2026-10-29",
+      "po_number": "",
+      "project_reference": "Granary Court",
+      "currency": "GBP",
+      "net_total": 240.0,
+      "vat_total": 48.0,
+      "gross_total": 288.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 240.0,
+          "vat": 48.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Replace failed emergency light fittings, communal stairwell",
+          "quantity": 2,
+          "unit_price": 86.0,
+          "net": 172.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Labour, testing and certificate",
+          "quantity": 1,
+          "unit_price": 68.0,
+          "net": 68.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-25-38",
+      "bank_account_number": "20052538",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for replacing two failed emergency light fittings in the communal stairwell at Granary Court.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

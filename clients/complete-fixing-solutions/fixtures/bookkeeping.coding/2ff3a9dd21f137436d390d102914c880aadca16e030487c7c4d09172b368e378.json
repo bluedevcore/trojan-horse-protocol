@@ -1,0 +1,20 @@
+{
+  "task": "bookkeeping.coding",
+  "key": "2ff3a9dd21f137436d390d102914c880aadca16e030487c7c4d09172b368e378",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Entries to code (JSON):\n\n[\n {\n  \"id\": \"D-14\",\n  \"payee\": \"Ridgeway Workwear Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 667.2,\n  \"document\": \"Invoice for hi-vis vests, cut-resistant gloves, safety boots and safety glasses delivered to the yard.\",\n  \"items\": [\n   \"Hi-vis vest, orange, company print on back\",\n   \"Cut-resistant gloves level C, pair\",\n   \"Safety boots S3, assorted sizes\",\n   \"Safety glasses, clear\"\n  ],\n  \"notes\": \"Covering email says this was a telephone order on 23 October from a new customer account; no purchase order number is quoted.\"\n }\n]",
+  "response": {
+    "text": "{\"codes\": [{\"id\": \"D-14\", \"account\": \"Protective clothing and PPE\", \"confidence\": \"high\", \"reason\": \"Hi-vis vests, cut-resistant gloves, S3 safety boots and safety glasses are protective clothing for site staff.\"}]}",
+    "data": {
+      "codes": [
+        {
+          "id": "D-14",
+          "account": "Protective clothing and PPE",
+          "confidence": "high",
+          "reason": "Hi-vis vests, cut-resistant gloves, S3 safety boots and safety glasses are protective clothing for site staff."
+        }
+      ]
+    }
+  }
+}

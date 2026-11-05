@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "7b486d75d1ee6d82697a304964e442e3ff198e65960cfdad6eb0cdb131b7cb12",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-02_willowmere_WGM-2210.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Willowmere Grounds Accounts <willowmere.accounts@mailbox.example>\nTo: accounts@demo-properties.example\nDate: Fri, 02 Oct 2026 17:52:00 +0100\nSubject: Invoice WGM-2210 - UPDATED BANK DETAILS\n\nGood afternoon,\n\nPlease find attached our invoice for October's grounds maintenance at Granary Court.\n\nPlease note we have moved to a new bank. Kindly update your records and use the account details on the attached invoice for this and all future payments. Payment is due by 16 October.\n\nMany thanks,\nAccounts, Willowmere Grounds Maintenance Ltd\n\n--- Attachment: WGM-2210.pdf ---\nWillowmere Grounds Maintenance Ltd\nWillowmere Nursery, Back Lane\nMartlesham IP5 0XX\nTel 01632 960 428 · tom@willowmere-grounds.example\nVAT Reg No: GB 663 1290 46\nINVOICE\nInvoice number: WGM-2210\nInvoice date: 02/10/2026\nDue date: 16/10/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSite: Granary Court, 2 Granary Lane, Ipswich\nDescription\nQty\nUnit price\nNet\nCommunal gardens: grass cutting, hedge trimming and leaf clearance, October\n1\n£220.00\n£220.00\nSubtotal (net)\n£220.00\nVAT @ 20%\n£44.00\nTotal due\n£264.00\nTerms: 14 days.\nPay by bank transfer: sort code 00-98-76, account number 99987601. Quote WGM-2210.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Willowmere Grounds Maintenance Ltd\", \"counterparty_vat_number\": \"GB 663 1290 46\", \"document_number\": \"WGM-2210\", \"document_date\": \"2026-10-02\", \"due_date\": \"2026-10-16\", \"po_number\": \"\", \"project_reference\": \"Granary Court\", \"currency\": \"GBP\", \"net_total\": 220.0, \"vat_total\": 44.0, \"gross_total\": 264.0, \"vat_lines\": [{\"rate\": 20, \"net\": 220.0, \"vat\": 44.0}], \"line_items\": [{\"description\": \"Communal gardens: grass cutting, hedge trimming and leaf clearance, October\", \"quantity\": 1, \"unit_price\": 220.0, \"net\": 220.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-98-76\", \"bank_account_number\": \"99987601\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"October grounds maintenance invoice for the communal gardens at Granary Court, sent with an email announcing new bank details.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"The covering email comes from willowmere.accounts@mailbox.example, not the address on the invoice (tom@willowmere-grounds.example). It says the supplier has moved to a new bank and asks for this and all future payments to go to the account on the attached invoice.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Willowmere Grounds Maintenance Ltd",
+      "counterparty_vat_number": "GB 663 1290 46",
+      "document_number": "WGM-2210",
+      "document_date": "2026-10-02",
+      "due_date": "2026-10-16",
+      "po_number": "",
+      "project_reference": "Granary Court",
+      "currency": "GBP",
+      "net_total": 220.0,
+      "vat_total": 44.0,
+      "gross_total": 264.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 220.0,
+          "vat": 44.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Communal gardens: grass cutting, hedge trimming and leaf clearance, October",
+          "quantity": 1,
+          "unit_price": 220.0,
+          "net": 220.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-98-76",
+      "bank_account_number": "99987601",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "October grounds maintenance invoice for the communal gardens at Granary Court, sent with an email announcing new bank details.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The covering email comes from willowmere.accounts@mailbox.example, not the address on the invoice (tom@willowmere-grounds.example). It says the supplier has moved to a new bank and asks for this and all future payments to go to the account on the attached invoice."
+    }
+  }
+}

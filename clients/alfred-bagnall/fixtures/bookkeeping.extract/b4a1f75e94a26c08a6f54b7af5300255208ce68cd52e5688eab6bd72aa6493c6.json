@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "b4a1f75e94a26c08a6f54b7af5300255208ce68cd52e5688eab6bd72aa6493c6",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-08-03_riverholt_letter-of-acceptance_J-4102.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nRiverholt Housing Association\nRiverside House, 2 Example Wharf\nWoolwich SE18 0XX\nAsset Management · Tel 020 7946 0127 · assets@riverholt-ha.example\nFor the attention of Paul Denning, Branch Manager\nDemo Decorating Contractors Ltd (Erith branch)\nUnit 4, Example Trade Park\nErith DA8 2XX\n3 August 2026\nLetter of acceptance\nContract: External redecoration programme 2026 - Marsh View Estate (your job J-4102)\nOur contract reference: RHA/AM/2026/014\nFollowing the tender returned on 14 July 2026, Riverholt Housing Association accepts your tender for the external\nredecoration of Heron Court, Plover Court and Avocet Court, Marsh View Estate, in the sum of £148,600.00\nexcluding VAT.\nThe works will be carried out under the terms of the measured term contract dated 1 April 2025. Start on site: 17\nAugust 2026. Completion: 18 December 2026. Retention: 3%, half released at completion.\nMonthly valuations are to be submitted to the contract administrator, Graham Lister, by the last working day of\neach month. Payment is due 30 days from the date of a valid invoice.\nPlease sign and return the attached copy to confirm acceptance.\nYours faithfully,\nAndrea Wills\nHead of Asset Management, Riverholt Housing Association",
+  "response": {
+    "text": "{\"doc_type\": \"contract\", \"counterparty\": \"Riverholt Housing Association\", \"counterparty_vat_number\": \"\", \"document_number\": \"RHA/AM/2026/014\", \"document_date\": \"2026-08-03\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-4102\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Letter of acceptance for the Marsh View Estate external redecoration (Heron, Plover and Avocet Court) at £148,600.00 excluding VAT, on site 17 August to 18 December 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Retention 3%, half released at completion. Monthly valuations go to the contract administrator, Graham Lister, by the last working day of the month; payment 30 days from a valid invoice. Riverholt asks for a signed copy to be returned.\"}",
+    "data": {
+      "doc_type": "contract",
+      "counterparty": "Riverholt Housing Association",
+      "counterparty_vat_number": "",
+      "document_number": "RHA/AM/2026/014",
+      "document_date": "2026-08-03",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-4102",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Letter of acceptance for the Marsh View Estate external redecoration (Heron, Plover and Avocet Court) at £148,600.00 excluding VAT, on site 17 August to 18 December 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Retention 3%, half released at completion. Monthly valuations go to the contract administrator, Graham Lister, by the last working day of the month; payment 30 days from a valid invoice. Riverholt asks for a signed copy to be returned."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+Customer,Account Ref,Email,Contact,Terms (days),PO Required,Credit Limit
+Vantage Board Assembly Ltd,VANTAG01,purchase.ledger@vantage-board.example,Priya Khanna,30,Yes,25000
+Kingsdown Circuits Ltd,KINGSD01,accounts.payable@kingsdown-circuits.example,Rob Ellery,30,Yes,20000
+Ballykeel Electronics Ltd,BALLYK01,accounts@ballykeel-electronics.example,Siobhan Duggan,45,No,15000
+Verhoeven Elektronica B.V.,VERHOE01,crediteuren@verhoeven-elektronica.example,Daan de Vries,30,Yes,15000
+Harbourside Plumbers' Merchants Ltd,HARBOU01,accounts@harbourside-pm.example,Colin Marsh,30,No,8000
+Tidewell Controls Ltd,TIDEWE01,payables@tidewell-controls.example,Anita Shaw,30,Yes,10000
+Saltmarsh Marine Electronics Ltd,SALTMA01,accounts@saltmarsh-marine.example,Gavin Treloar,30,No,5000
+Ashwick Heating Supplies Ltd,ASHWIC01,purchase.ledger@ashwick-heating.example,Debbie Lane,30,No,3000
+Penrose Audio Ltd,PENROS01,accounts@penrose-audio.example,Ollie Grant,30,No,2000

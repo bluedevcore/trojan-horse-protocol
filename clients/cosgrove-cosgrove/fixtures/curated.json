@@ -1,0 +1,1266 @@
+{
+  "extract": {
+    "2026-09-26_stirling-lane_SLP-10442.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Stirling Lane Packaging Ltd",
+      "counterparty_vat_number": "GB 330 7761 66",
+      "document_number": "SLP-10442",
+      "document_date": "2026-09-26",
+      "due_date": "2026-10-26",
+      "net_total": 1240.0,
+      "vat_total": 248.0,
+      "gross_total": 1488.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 1240.0,
+          "vat": 248.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Double-wall cartons 457x305x305mm, bundle of 25",
+          "quantity": 20,
+          "unit_price": 38.0,
+          "net": 760.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Bubble wrap 750mm x 100m",
+          "quantity": 8,
+          "unit_price": 35.0,
+          "net": 280.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Packing tape, case of 36 rolls",
+          "quantity": 4,
+          "unit_price": 50.0,
+          "net": 200.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for packaging materials: cartons, bubble wrap and tape.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-13-57",
+      "bank_account_number": "10116623",
+      "po_number": "PO-0912"
+    },
+    "2026-10-01_brindlecote_BIT-2026-1043.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Brindlecote IT Services Ltd",
+      "counterparty_vat_number": "GB 287 5316 28",
+      "document_number": "BIT-2026-1043",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-15",
+      "net_total": 450.0,
+      "vat_total": 90.0,
+      "gross_total": 540.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 450.0,
+          "vat": 90.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Managed IT support - October 2026 (up to 15 users)",
+          "quantity": 1,
+          "unit_price": 450.0,
+          "net": 450.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "October managed IT support invoice, sent with an email announcing new bank details.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The covering email comes from accounts-brindlecote@mailbox.example rather than the supplier's own domain, says the supplier has changed banks and asks for this and all future payments to go to the new details on the invoice.",
+      "bank_sort_code": "00-99-01",
+      "bank_account_number": "99990001"
+    },
+    "2026-10-02_marchmont_MIB-66120.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Marchmont Insurance Brokers Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "MIB-66120",
+      "document_date": "2026-10-02",
+      "due_date": "2026-11-01",
+      "net_total": 1846.2,
+      "vat_total": 0.0,
+      "gross_total": 1846.2,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 1846.2,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Commercial combined policy renewal, cover 01/10/2026 to 30/09/2027 - premium",
+          "quantity": 1,
+          "unit_price": 1648.39,
+          "net": 1648.39,
+          "vat_rate": 0
+        },
+        {
+          "description": "Insurance Premium Tax at 12%",
+          "quantity": 1,
+          "unit_price": 197.81,
+          "net": 197.81,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Annual commercial combined insurance renewal covering October 2026 to September 2027.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Total includes Insurance Premium Tax of £197.81. Insurance is exempt from VAT. Policy CC-4471-2026.",
+      "bank_sort_code": "00-87-09",
+      "bank_account_number": "10094471",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2027-09-30"
+    },
+    "2026-10-02_trackfare_e-ticket.eml": {
+      "doc_type": "receipt",
+      "counterparty": "TrackFare Rail Tickets",
+      "counterparty_vat_number": "",
+      "document_number": "TF-88301245",
+      "document_date": "2026-10-02",
+      "net_total": 64.5,
+      "vat_total": 0.0,
+      "gross_total": 64.5,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 64.5,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Off-Peak Return, Telford Central to London Euston, 2 October 2026",
+          "quantity": 1,
+          "unit_price": 64.5,
+          "net": 64.5,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "summary": "Rail e-ticket receipt for a return journey from Telford to London Euston on 2 October.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Rail fares are zero-rated."
+    },
+    "2026-10-03_severnvale_SOS-20931.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Severnvale Office Supplies Ltd",
+      "counterparty_vat_number": "GB 312 4570 90",
+      "document_number": "SOS-20931",
+      "document_date": "2026-10-03",
+      "due_date": "2026-11-02",
+      "net_total": 186.4,
+      "vat_total": 37.28,
+      "gross_total": 223.68,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 186.4,
+          "vat": 37.28
+        }
+      ],
+      "line_items": [
+        {
+          "description": "A4 copier paper 80gsm, box of 5 reams",
+          "quantity": 6,
+          "unit_price": 22.4,
+          "net": 134.4,
+          "vat_rate": 20
+        },
+        {
+          "description": "Black toner cartridge (compatible)",
+          "quantity": 1,
+          "unit_price": 38.5,
+          "net": 38.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Lever arch files, pack of 10",
+          "quantity": 1,
+          "unit_price": 13.5,
+          "net": 13.5,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for office supplies: copier paper, a toner cartridge and lever arch files.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-11-22",
+      "bank_account_number": "10004417"
+    },
+    "2026-10-03_wellington-road_fuel.pdf": {
+      "doc_type": "receipt",
+      "counterparty": "Wellington Road Service Station",
+      "counterparty_vat_number": "GB 663 1045 59",
+      "document_number": "004-118842",
+      "document_date": "2026-10-03",
+      "net_total": 50.0,
+      "vat_total": 10.0,
+      "gross_total": 60.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 50.0,
+          "vat": 10.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Diesel 39.24 litres @ 152.9p",
+          "quantity": 39.24,
+          "unit_price": 1.529,
+          "net": 60.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "summary": "Fuel receipt for 39.24 litres of diesel.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    },
+    "2026-10-06_kingfisher-lodge_booking.eml": {
+      "doc_type": "receipt",
+      "counterparty": "Kingfisher Lodge Hotel",
+      "counterparty_vat_number": "GB 501 3377 86",
+      "document_number": "KL-55120",
+      "document_date": "2026-10-06",
+      "net_total": 80.0,
+      "vat_total": 16.0,
+      "gross_total": 96.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 80.0,
+          "vat": 16.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Room only, 1 night (Standard double), 5 October 2026",
+          "quantity": 1,
+          "unit_price": 80.0,
+          "net": 80.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "summary": "Hotel invoice for one night in Birmingham on 5 October, paid in full by card.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    },
+    "2026-10-06_wrekinlink_WL-883412.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Wrekinlink Telecom Ltd",
+      "counterparty_vat_number": "GB 441 0829 72",
+      "document_number": "WL-883412",
+      "document_date": "2026-10-06",
+      "due_date": "2026-10-20",
+      "net_total": 142.5,
+      "vat_total": 28.5,
+      "gross_total": 171.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 142.5,
+          "vat": 28.5
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Business fibre broadband - October",
+          "quantity": 1,
+          "unit_price": 65.0,
+          "net": 65.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Hosted phone system - 6 users",
+          "quantity": 6,
+          "unit_price": 12.5,
+          "net": 75.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Call charges - September",
+          "quantity": 1,
+          "unit_price": 2.5,
+          "net": 2.5,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Monthly invoice for broadband, hosted phones and September call charges.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Collected by Direct Debit on or after 20 October; no payment action needed."
+    },
+    "2026-10-07_ember-and-oak_receipt.pdf": {
+      "doc_type": "receipt",
+      "counterparty": "Ember & Oak Café",
+      "counterparty_vat_number": "GB 712 0443 85",
+      "document_number": "2214",
+      "document_date": "2026-10-07",
+      "net_total": 32.0,
+      "vat_total": 6.4,
+      "gross_total": 38.4,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 32.0,
+          "vat": 6.4
+        }
+      ],
+      "line_items": [
+        {
+          "description": "2 x Soup & sandwich",
+          "quantity": 2,
+          "unit_price": 11.4,
+          "net": 22.8,
+          "vat_rate": 20
+        },
+        {
+          "description": "2 x Flat white",
+          "quantity": 2,
+          "unit_price": 4.1,
+          "net": 8.2,
+          "vat_rate": 20
+        },
+        {
+          "description": "1 x Brownie",
+          "quantity": 1,
+          "unit_price": 4.75,
+          "net": 4.75,
+          "vat_rate": 20
+        },
+        {
+          "description": "1 x Sparkling water",
+          "quantity": 1,
+          "unit_price": 2.65,
+          "net": 2.65,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "summary": "Café receipt for lunch for two.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Handwritten on the receipt: 'client lunch - Brightwater Facilities, contract review. AM'. The receipt says a tip was added at the terminal; the tip is not included in this total."
+    },
+    "2026-10-08_parcelbay_order.eml": {
+      "doc_type": "receipt",
+      "counterparty": "Parcelbay Marketplace",
+      "counterparty_vat_number": "GB 204 7719 70",
+      "document_number": "PB-30-118845",
+      "document_date": "2026-10-08",
+      "net_total": 50.69,
+      "vat_total": 7.24,
+      "gross_total": 57.93,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 36.19,
+          "vat": 7.24
+        },
+        {
+          "rate": 0,
+          "net": 14.5,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "USB-C charging cable 2m",
+          "quantity": 2,
+          "unit_price": 8.99,
+          "net": 17.98,
+          "vat_rate": 20
+        },
+        {
+          "description": "Coffee beans 1kg, medium roast",
+          "quantity": 1,
+          "unit_price": 14.5,
+          "net": 14.5,
+          "vat_rate": 0
+        },
+        {
+          "description": "Desk plant in ceramic pot",
+          "quantity": 1,
+          "unit_price": 18.95,
+          "net": 18.95,
+          "vat_rate": 20
+        },
+        {
+          "description": "Adjustable phone stand",
+          "quantity": 1,
+          "unit_price": 6.5,
+          "net": 6.5,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "summary": "Online marketplace order: two USB-C cables, coffee beans, a desk plant and a phone stand.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Sold by Parcelbay Retail Ltd. Mixed items with different VAT rates; the purpose of the order is not stated."
+    },
+    "2026-10-09_midshire_MPD-5531872.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Midshire Power Direct Ltd",
+      "counterparty_vat_number": "GB 553 9120 46",
+      "document_number": "MPD-5531872",
+      "document_date": "2026-10-09",
+      "due_date": "2026-10-23",
+      "net_total": 643.75,
+      "vat_total": 128.75,
+      "gross_total": 772.5,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 643.75,
+          "vat": 128.75
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electricity 01/09/2026-30/09/2026: day units 3,412 kWh @ 15.62p",
+          "quantity": 3412,
+          "unit_price": 0.1562,
+          "net": 532.95,
+          "vat_rate": 20
+        },
+        {
+          "description": "Night units 640 kWh @ 9.84p",
+          "quantity": 640,
+          "unit_price": 0.0984,
+          "net": 62.98,
+          "vat_rate": 20
+        },
+        {
+          "description": "Standing charge 30 days @ 54.74p",
+          "quantity": 30,
+          "unit_price": 0.5474,
+          "net": 16.42,
+          "vat_rate": 20
+        },
+        {
+          "description": "Climate Change Levy 4,052 kWh @ 0.775p",
+          "quantity": 4052,
+          "unit_price": 0.00775,
+          "net": 31.4,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Electricity bill for September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-77-88",
+      "bank_account_number": "10045630",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30"
+    },
+    "2026-10-13_layoutly_receipt.eml": {
+      "doc_type": "receipt",
+      "counterparty": "Layoutly Inc.",
+      "counterparty_vat_number": "",
+      "document_number": "LY-2026-554120",
+      "document_date": "2026-10-13",
+      "net_total": 14.99,
+      "vat_total": 0.0,
+      "gross_total": 14.99,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 14.99,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Layoutly Pro, monthly plan (1 seat)",
+          "quantity": 1,
+          "unit_price": 14.99,
+          "net": 14.99,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "summary": "Monthly subscription receipt for Layoutly Pro design software.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "US supplier; amounts are in US dollars and no tax was charged. The receipt says business customers outside the US account for VAT themselves.",
+      "currency": "USD"
+    },
+    "2026-10-14_coalbrook_CWS-40218.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Coalbrook Waste Services Ltd",
+      "counterparty_vat_number": "GB 612 0385 81",
+      "document_number": "CWS-40218",
+      "document_date": "2026-10-14",
+      "due_date": "2026-11-13",
+      "net_total": 210.0,
+      "vat_total": 42.0,
+      "gross_total": 262.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 210.0,
+          "vat": 42.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "General waste 1100L bin - 4 lifts",
+          "quantity": 4,
+          "unit_price": 38.5,
+          "net": 154.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Mixed recycling 1100L bin - 2 lifts",
+          "quantity": 2,
+          "unit_price": 28.0,
+          "net": 56.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for general waste and recycling collections in October.",
+      "confidence": "medium",
+      "uncertain_fields": [
+        "gross_total"
+      ],
+      "notes": "The printed total due is £262.00.",
+      "bank_sort_code": "00-43-65",
+      "bank_account_number": "10071224"
+    },
+    "2026-10-14_fixtrade_order.eml": {
+      "doc_type": "receipt",
+      "counterparty": "Fixtrade Direct",
+      "counterparty_vat_number": "GB 665 0274 37",
+      "document_number": "FD-447210",
+      "document_date": "2026-10-14",
+      "net_total": 74.95,
+      "vat_total": 14.99,
+      "gross_total": 89.94,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 74.95,
+          "vat": 14.99
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Mitre saw blade 254mm 60T",
+          "quantity": 1,
+          "unit_price": 34.99,
+          "net": 34.99,
+          "vat_rate": 20
+        },
+        {
+          "description": "Masonry drill bits set",
+          "quantity": 2,
+          "unit_price": 13.99,
+          "net": 27.98,
+          "vat_rate": 20
+        },
+        {
+          "description": "Heavy-duty extension reel 25m",
+          "quantity": 1,
+          "unit_price": 26.97,
+          "net": 26.97,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "summary": "VAT receipt for a saw blade, masonry drill bits and an extension reel, collected in store.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Seller: Fixtrade Direct Ltd."
+    },
+    "2026-10-15_parcel-point_postage.pdf": {
+      "doc_type": "receipt",
+      "counterparty": "Parcel Point Telford",
+      "counterparty_vat_number": "",
+      "document_number": "",
+      "document_date": "2026-10-15",
+      "net_total": 18.45,
+      "vat_total": 0.0,
+      "gross_total": 18.45,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 18.45,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Special delivery x 2",
+          "quantity": 2,
+          "unit_price": 7.85,
+          "net": 15.7,
+          "vat_rate": 0
+        },
+        {
+          "description": "Signed for x 1",
+          "quantity": 1,
+          "unit_price": 2.75,
+          "net": 2.75,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "summary": "Postage receipt for two special deliveries and one signed-for item.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Postal services are exempt from VAT. Session 7741."
+    },
+    "2026-10-15_quarrybank_QFF-77120.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Quarrybank Fleet Fuels Ltd",
+      "counterparty_vat_number": "GB 338 1204 80",
+      "document_number": "QFF-77120",
+      "document_date": "2026-10-15",
+      "due_date": "2026-11-14",
+      "net_total": 389.2,
+      "vat_total": 77.84,
+      "gross_total": 467.04,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 389.2,
+          "vat": 77.84
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Fuel card: diesel, 4 vans, 01-15 Oct (312.6 litres)",
+          "quantity": 1,
+          "unit_price": 389.2,
+          "net": 389.2,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Fuel card invoice for diesel for four vans, 1 to 15 October.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Fuel card account FC-2201.",
+      "bank_sort_code": "00-12-34",
+      "bank_account_number": "10052281"
+    },
+    "2026-10-16_greenway_corner-shop.pdf": {
+      "doc_type": "receipt",
+      "counterparty": "Greenway Corner Shop",
+      "counterparty_vat_number": "",
+      "document_number": "",
+      "document_date": "2026-10-16",
+      "net_total": 9.85,
+      "vat_total": 0.0,
+      "gross_total": 9.85,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 9.85,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Semi-skimmed milk 4 pints",
+          "quantity": 1,
+          "unit_price": 2.45,
+          "net": 2.45,
+          "vat_rate": 0
+        },
+        {
+          "description": "Tea bags 240",
+          "quantity": 1,
+          "unit_price": 4.2,
+          "net": 4.2,
+          "vat_rate": 0
+        },
+        {
+          "description": "Digestive biscuits x 2",
+          "quantity": 2,
+          "unit_price": 1.6,
+          "net": 3.2,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "summary": "Corner shop receipt for milk, tea bags and biscuits.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "All items zero-rated."
+    },
+    "2026-10-17_severnvale_CN-1187.pdf": {
+      "doc_type": "credit_note",
+      "counterparty": "Severnvale Office Supplies Ltd",
+      "counterparty_vat_number": "GB 312 4570 90",
+      "document_number": "CN-1187",
+      "document_date": "2026-10-17",
+      "due_date": "",
+      "net_total": 38.5,
+      "vat_total": 7.7,
+      "gross_total": 46.2,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 38.5,
+          "vat": 7.7
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Returned: black toner cartridge (damaged in transit)",
+          "quantity": 1,
+          "unit_price": 38.5,
+          "net": 38.5,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unknown",
+      "summary": "Credit note for a toner cartridge returned damaged.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Credit against invoice SOS-20877, to be deducted from the account."
+    },
+    "2026-10-20_dawbury_DPS-3307.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Dawbury Print & Signs Ltd",
+      "counterparty_vat_number": "GB 775 4102 31",
+      "document_number": "DPS-3307",
+      "document_date": "2026-10-20",
+      "due_date": "2026-11-19",
+      "net_total": 720.0,
+      "vat_total": 36.0,
+      "gross_total": 756.0,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 540.0,
+          "vat": 0.0
+        },
+        {
+          "rate": 20,
+          "net": 180.0,
+          "vat": 36.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "A5 leaflets, full colour, 5,000",
+          "quantity": 1,
+          "unit_price": 540.0,
+          "net": 540.0,
+          "vat_rate": 0
+        },
+        {
+          "description": "Vinyl van livery graphics, one van",
+          "quantity": 1,
+          "unit_price": 180.0,
+          "net": 180.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for 5,000 printed leaflets (zero-rated) and vinyl van graphics.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-90-12",
+      "bank_account_number": "10105517"
+    },
+    "2026-10-20_wellington-road_fuel.pdf": {
+      "doc_type": "receipt",
+      "counterparty": "Wellington Road Service Station",
+      "counterparty_vat_number": "GB 663 1045 59",
+      "document_number": "004-121907",
+      "document_date": "2026-10-20",
+      "net_total": 60.33,
+      "vat_total": 12.07,
+      "gross_total": 72.4,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 60.33,
+          "vat": 12.07
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Diesel 47.35 litres @ 152.9p",
+          "quantity": 47.35,
+          "unit_price": 1.529,
+          "net": 72.4,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "summary": "Fuel receipt for 47.35 litres of diesel.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    },
+    "2026-10-21_trackfare_e-ticket.eml": {
+      "doc_type": "receipt",
+      "counterparty": "TrackFare Rail Tickets",
+      "counterparty_vat_number": "",
+      "document_number": "TF-88417730",
+      "document_date": "2026-10-21",
+      "net_total": 38.2,
+      "vat_total": 0.0,
+      "gross_total": 38.2,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 38.2,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Anytime Day Return, Telford Central to Birmingham New Street, 21 October 2026",
+          "quantity": 1,
+          "unit_price": 38.2,
+          "net": 38.2,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "summary": "Rail e-ticket receipt for a day return from Telford to Birmingham on 21 October.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Rail fares are zero-rated."
+    },
+    "2026-10-22_forgeway_trade-counter.pdf": {
+      "doc_type": "receipt",
+      "counterparty": "Forgeway Trade Counter",
+      "counterparty_vat_number": "GB 552 8830 26",
+      "document_number": "FT-55418",
+      "document_date": "2026-10-22",
+      "net_total": 39.95,
+      "vat_total": 7.99,
+      "gross_total": 47.94,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 39.95,
+          "vat": 7.99
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Wall plugs brown x 100",
+          "quantity": 1,
+          "unit_price": 5.99,
+          "net": 5.99,
+          "vat_rate": 20
+        },
+        {
+          "description": "Wood screws 4x40 x 200",
+          "quantity": 1,
+          "unit_price": 11.98,
+          "net": 11.98,
+          "vat_rate": 20
+        },
+        {
+          "description": "Silicone sealant clear x 3",
+          "quantity": 3,
+          "unit_price": 5.99,
+          "net": 17.97,
+          "vat_rate": 20
+        },
+        {
+          "description": "Dust sheets x 2",
+          "quantity": 2,
+          "unit_price": 6.0,
+          "net": 12.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "1234",
+      "summary": "Trade counter receipt for wall plugs, screws, sealant and dust sheets.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Paid with a Visa debit card ending 1234."
+    },
+    "2026-10-22_norbridge_NTS-5521.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Norbridge Tool Supplies Ltd",
+      "counterparty_vat_number": "GB 571 2240 71",
+      "document_number": "NTS-5521",
+      "document_date": "2026-10-22",
+      "due_date": "2026-11-21",
+      "net_total": 190.0,
+      "vat_total": 38.0,
+      "gross_total": 228.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 190.0,
+          "vat": 38.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Cordless drill driver 18V with 2 batteries",
+          "quantity": 1,
+          "unit_price": 129.0,
+          "net": 129.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "HSS drill bit set, 25 pieces",
+          "quantity": 2,
+          "unit_price": 18.5,
+          "net": 37.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Safety glasses, box of 12",
+          "quantity": 1,
+          "unit_price": 24.0,
+          "net": 24.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "First invoice from a new tools supplier: a cordless drill, drill bits and safety glasses.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Marked 'New account - welcome!'.",
+      "bank_sort_code": "00-46-80",
+      "bank_account_number": "10138845"
+    },
+    "2026-10-23_cloudnest_invoice.eml": {
+      "doc_type": "invoice",
+      "counterparty": "CloudNest Hosting Ltd",
+      "counterparty_vat_number": "GB 390 6128 51",
+      "document_number": "CN-INV-77310",
+      "document_date": "2026-10-23",
+      "due_date": "",
+      "net_total": 15.0,
+      "vat_total": 3.0,
+      "gross_total": 18.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 15.0,
+          "vat": 3.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Web hosting, business plan - November 2026",
+          "quantity": 1,
+          "unit_price": 15.0,
+          "net": 15.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "summary": "Paid invoice for November web hosting.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "card_last4": "8802",
+      "service_period_start": "2026-11-01",
+      "service_period_end": "2026-11-30"
+    },
+    "2026-10-24_printdrop_invoice.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Printdrop Online Ltd",
+      "counterparty_vat_number": "GB 447 1396 36",
+      "document_number": "PD-209981",
+      "document_date": "2026-10-24",
+      "due_date": "",
+      "net_total": 35.0,
+      "vat_total": 7.0,
+      "gross_total": 42.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 35.0,
+          "vat": 7.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Business cards, 500, double-sided, 2 designs",
+          "quantity": 1,
+          "unit_price": 35.0,
+          "net": 35.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "summary": "Paid VAT invoice for 500 business cards.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "card_last4": "8802"
+    },
+    "2026-10-24_severnvale_payment-reminder.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Severnvale Office Supplies Ltd",
+      "counterparty_vat_number": "GB 312 4570 90",
+      "document_number": "SOS-20931",
+      "document_date": "2026-10-03",
+      "due_date": "2026-11-02",
+      "net_total": 186.4,
+      "vat_total": 37.28,
+      "gross_total": 223.68,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 186.4,
+          "vat": 37.28
+        }
+      ],
+      "line_items": [
+        {
+          "description": "A4 copier paper 80gsm, box of 5 reams",
+          "quantity": 6,
+          "unit_price": 22.4,
+          "net": 134.4,
+          "vat_rate": 20
+        },
+        {
+          "description": "Black toner cartridge (compatible)",
+          "quantity": 1,
+          "unit_price": 38.5,
+          "net": 38.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Lever arch files, pack of 10",
+          "quantity": 1,
+          "unit_price": 13.5,
+          "net": 13.5,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Payment reminder email with a copy of invoice SOS-20931 attached.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The email is a reminder from Severnvale's credit control and the attachment is a copy of invoice SOS-20931 dated 3 October.",
+      "bank_sort_code": "00-11-22",
+      "bank_account_number": "10004417"
+    },
+    "2026-10-31_hadley-brook_118.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Hadley Brook Cleaning",
+      "counterparty_vat_number": "",
+      "document_number": "118",
+      "document_date": "2026-10-31",
+      "due_date": "2026-11-14",
+      "net_total": 320.0,
+      "vat_total": 64.0,
+      "gross_total": 384.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 320.0,
+          "vat": 64.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Office cleaning - October (2 visits a week, 4 weeks)",
+          "quantity": 8,
+          "unit_price": 40.0,
+          "net": 320.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for October office cleaning.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Shows VAT at 20% but no VAT registration number. Jo Mason trading as Hadley Brook Cleaning.",
+      "bank_sort_code": "00-21-43",
+      "bank_account_number": "10060318"
+    },
+    "2026-10-31_kettlewell_KPA-1192.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Kettlewell Payroll & Accounts Ltd",
+      "counterparty_vat_number": "GB 229 9618 22",
+      "document_number": "KPA-1192",
+      "document_date": "2026-10-31",
+      "due_date": "2026-11-14",
+      "net_total": 185.0,
+      "vat_total": 37.0,
+      "gross_total": 222.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 185.0,
+          "vat": 37.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Payroll bureau service - October (14 employees)",
+          "quantity": 14,
+          "unit_price": 9.5,
+          "net": 133.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Auto-enrolment pension submissions",
+          "quantity": 1,
+          "unit_price": 52.0,
+          "net": 52.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for October payroll bureau services and pension submissions.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-65-87",
+      "bank_account_number": "10083390"
+    }
+  },
+  "coding": {
+    "D-22": {
+      "payee": "Forgeway Trade Counter",
+      "account": "Repairs and maintenance",
+      "confidence": "high",
+      "reason": "Wall plugs, screws, sealant and dust sheets are small materials for building repairs."
+    },
+    "D-23": {
+      "payee": "Norbridge Tool Supplies Ltd",
+      "account": "Tools and equipment",
+      "confidence": "high",
+      "reason": "A cordless drill, drill bits and safety glasses are small tools, each well under £500."
+    },
+    "T-04": {
+      "payee": "Ember & Oak Café",
+      "account": "Entertainment",
+      "confidence": "high",
+      "reason": "The handwritten note says it was a client lunch with Brightwater Facilities, which is client hospitality."
+    },
+    "T-05": {
+      "payee": "Parcelbay Marketplace",
+      "account": "Office supplies",
+      "confidence": "low",
+      "reason": "Mixed order of USB-C cables (IT), coffee beans (staff welfare), a desk plant and a phone stand (office); the purpose is not stated, so it may need splitting."
+    },
+    "T-06": {
+      "payee": "MERECROFT TYRE & AUTO",
+      "account": "Motor expenses",
+      "confidence": "medium",
+      "reason": "A tyre and auto business suggests van tyres or repairs, but there is no receipt to confirm what was bought."
+    },
+    "T-07": {
+      "payee": "STOCKFRAME IMAGES",
+      "account": "Advertising and marketing",
+      "confidence": "medium",
+      "reason": "The name suggests stock images for marketing material; there is no receipt to confirm it."
+    },
+    "T-08": {
+      "payee": "Layoutly Inc.",
+      "account": "Software subscriptions",
+      "confidence": "high",
+      "reason": "Monthly Layoutly Pro plan, an online design software subscription."
+    },
+    "T-10": {
+      "payee": "Fixtrade Direct",
+      "account": "Tools and equipment",
+      "confidence": "high",
+      "reason": "A saw blade, masonry drill bits and an extension reel are small tools and equipment."
+    },
+    "T-12": {
+      "payee": "Greenway Corner Shop",
+      "account": "Staff welfare",
+      "confidence": "high",
+      "reason": "Milk, tea bags and biscuits are staff refreshments."
+    },
+    "T-15": {
+      "payee": "CloudNest Hosting Ltd",
+      "account": "Computer and IT costs",
+      "confidence": "high",
+      "reason": "Web hosting for November; the chart lists hosting under computer and IT costs."
+    },
+    "T-16": {
+      "payee": "Printdrop Online Ltd",
+      "account": "Advertising and marketing",
+      "confidence": "high",
+      "reason": "500 business cards; the chart lists business cards under advertising and marketing."
+    }
+  },
+  "letters": {
+    "supplier:Brindlecote IT Services Ltd": {
+      "subject": "Invoice BIT-2026-1043: change of bank details",
+      "body": "Hello Dan,\n\nWe have received invoice BIT-2026-1043, dated 1 October 2026, for £540.00, together with an email saying your bank details have changed. The new details on the invoice (sort code 00-99-01) are different from the ones we hold for you.\n\nBefore any payment is made, we will phone you on the number we already have on file to confirm the change. We never change bank details because of an email, so please don't send bank details by reply.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    },
+    "supplier:Coalbrook Waste Services Ltd": {
+      "subject": "Invoice CWS-40218: total doesn't add up",
+      "body": "Hello Steve,\n\nThank you for invoice CWS-40218, dated 14 October 2026. The net amount is £210.00 and the VAT is £42.00, which comes to £252.00, but the total due is shown as £262.00, a difference of £10.00.\n\nCould you send a corrected invoice, please? We will hold this one until it arrives, so a reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    },
+    "supplier:Hadley Brook Cleaning": {
+      "subject": "Invoice 118: VAT registration number",
+      "body": "Hello Jo,\n\nThank you for invoice 118, dated 31 October 2026, for £384.00. It includes £64.00 VAT, but no VAT registration number is shown and we don't have one on our records for you.\n\nCould you send a VAT invoice showing your VAT registration number? If you are not VAT registered, please send a corrected invoice without VAT instead. A reply by Friday 13 November would help us pay you on time.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    },
+    "supplier:Norbridge Tool Supplies Ltd": {
+      "subject": "Invoice NTS-5521: please confirm your VAT number",
+      "body": "Hello,\n\nThank you for invoice NTS-5521, dated 22 October 2026, for £228.00. The VAT registration number shown, GB 571 2240 71, does not pass HMRC's check, so we can't reclaim the £38.00 VAT until it is confirmed.\n\nCould you confirm your VAT registration number, please, by Friday 13 November? It may just be a typing error on the invoice.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    },
+    "payroll_bureau:Kettlewell Payroll & Accounts Ltd": {
+      "subject": "October payroll query: Jordan Hale (E008)",
+      "body": "Hello Priya,\n\nWe have a query on the October payroll report before wages are paid. For Jordan Hale (E008), the report shows net pay of £2,013.94, but gross pay of £2,380.00 less the deductions shown comes to £1,913.94, a difference of £100.00.\n\nCould you confirm which figure is correct and send a corrected report if needed? We need a reply by Friday 13 November at the latest, and sooner if possible, as it affects the wages payment.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    },
+    "cardholder:Alex Morgan": {
+      "subject": "Receipt needed: Merecroft Tyre & Auto, 9 October",
+      "body": "Hello Alex,\n\nI'm missing a receipt for one payment on your company card:\n\n9 October 2026, Merecroft Tyre & Auto, £126.00\n\nCould you send me the receipt by Friday 13 November, please? A photo or PDF is fine. A quick note of what it was for would help me code it correctly.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    },
+    "cardholder:Ravi Shah": {
+      "subject": "Receipt needed: Stockframe Images, 12 October",
+      "body": "Hello Ravi,\n\nI'm missing a receipt for one payment on your company card:\n\n12 October 2026, Stockframe Images, £24.00\n\nCould you send me the receipt or invoice by Friday 13 November, please? A PDF or a screenshot of the download page is fine.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    },
+    "customer:Castlegate Developments Ltd": {
+      "subject": "Purchase order number for job J-2302",
+      "body": "Hello Mark,\n\nWe have completed job J-2302 (site works over 3 days, plus materials supplied) and are ready to invoice £2,319.30. Your account needs a purchase order number on every invoice, and we don't have one for this job.\n\nCould you send us the PO number, please? We will raise the invoice as soon as we have it, so a reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+    }
+  },
+  "summary": "October is processed: 28 documents were read and 29 purchase and card lines worth £6,679.88 are ready to import, with 4 supplier invoices held. Two items need attention first: Brindlecote IT Services' invoice came with changed bank details, a common fraud pattern, and Jordan Hale's net pay on the payroll report is £100.00 out. Coalbrook's invoice total is £10.00 too high and Norbridge's VAT number fails HMRC's check. 12 items need a decision and 8 emails are drafted, including requests for 2 missing card receipts."
+}

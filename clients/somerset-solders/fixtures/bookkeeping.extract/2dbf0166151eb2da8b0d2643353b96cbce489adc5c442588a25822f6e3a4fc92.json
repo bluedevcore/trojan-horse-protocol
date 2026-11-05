@@ -1,0 +1,79 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "2dbf0166151eb2da8b0d2643353b96cbce489adc5c442588a25822f6e3a4fc92",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-09_southvane_SV-8812046.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nSouthvane Energy Ltd\nPO Box 4XX\nExeter EX2 0XX\nTel 01632 960 850 · business@southvane-energy.example\nVAT Reg No: GB 742 5816 26\nINVOICE\nInvoice number: SV-8812046\nInvoice date: 09/10/2026\nDue date: 23/10/2026\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nDay units, kWh\n18,420\n£0.2184\n20%\n£4,022.93\nNight units, kWh\n6,150\n£0.1462\n20%\n£899.13\nStanding charge, days\n30\n£2.15\n20%\n£64.50\nCapacity charge, days\n30\n£1.80\n20%\n£54.00\nClimate Change Levy, kWh\n24,570\n£0.00775\n20%\n£190.42\nSubtotal (net)\n£5,230.98\nVAT @ 20% on £5,230.98\n£1,046.20\nTotal due\n£6,277.18\nSupply period 01/09/2026 to 30/09/2026. Paid by Direct Debit on or after 23/10/2026.\nSupply address: Unit 4, Example Trading Estate. Meter 2200 0418 7731.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Southvane Energy Ltd\", \"counterparty_vat_number\": \"GB 742 5816 26\", \"document_number\": \"SV-8812046\", \"document_date\": \"2026-10-09\", \"due_date\": \"2026-10-23\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 5230.98, \"vat_total\": 1046.2, \"gross_total\": 6277.18, \"vat_lines\": [{\"rate\": 20, \"net\": 5230.98, \"vat\": 1046.2}], \"line_items\": [{\"description\": \"Day units, kWh\", \"quantity\": 18420, \"unit_price\": 0.2184, \"net\": 4022.93, \"vat_rate\": 20}, {\"description\": \"Night units, kWh\", \"quantity\": 6150, \"unit_price\": 0.1462, \"net\": 899.13, \"vat_rate\": 20}, {\"description\": \"Standing charge, days\", \"quantity\": 30, \"unit_price\": 2.15, \"net\": 64.5, \"vat_rate\": 20}, {\"description\": \"Capacity charge, days\", \"quantity\": 30, \"unit_price\": 1.8, \"net\": 54.0, \"vat_rate\": 20}, {\"description\": \"Climate Change Levy, kWh\", \"quantity\": 24570, \"unit_price\": 0.00775, \"net\": 190.42, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"2026-09-01\", \"service_period_end\": \"2026-09-30\", \"statement_lines\": [], \"summary\": \"Electricity invoice for the factory supply in September 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Paid by Direct Debit on or after 23/10/2026.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Southvane Energy Ltd",
+      "counterparty_vat_number": "GB 742 5816 26",
+      "document_number": "SV-8812046",
+      "document_date": "2026-10-09",
+      "due_date": "2026-10-23",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 5230.98,
+      "vat_total": 1046.2,
+      "gross_total": 6277.18,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 5230.98,
+          "vat": 1046.2
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Day units, kWh",
+          "quantity": 18420,
+          "unit_price": 0.2184,
+          "net": 4022.93,
+          "vat_rate": 20
+        },
+        {
+          "description": "Night units, kWh",
+          "quantity": 6150,
+          "unit_price": 0.1462,
+          "net": 899.13,
+          "vat_rate": 20
+        },
+        {
+          "description": "Standing charge, days",
+          "quantity": 30,
+          "unit_price": 2.15,
+          "net": 64.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Capacity charge, days",
+          "quantity": 30,
+          "unit_price": 1.8,
+          "net": 54.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Climate Change Levy, kWh",
+          "quantity": 24570,
+          "unit_price": 0.00775,
+          "net": 190.42,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30",
+      "statement_lines": [],
+      "summary": "Electricity invoice for the factory supply in September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Paid by Direct Debit on or after 23/10/2026."
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "1383d4e8bcae9a2b75d13e52b7bdf76bbf368c9722839636e0cded5081d82e7e",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"customer:Saltmarsh Marine Electronics Ltd\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Saltmarsh Marine Electronics Ltd\",\n  \"contact\": \"Gavin Treloar\",\n  \"email\": \"accounts@saltmarsh-marine.example\",\n  \"tone\": \"final notice: ask for payment within 7 days and say that further orders may be put on hold\",\n  \"points\": [\n   {\n    \"ref\": \"INV-3051 · £1,846.80\",\n    \"issue\": \"1 invoice(s) totalling £1,846.80 are more than 60 days overdue; a final notice has been drafted.\",\n    \"ask\": \"\"\n   },\n   {\n    \"ref\": \"Invoice INV-3051\",\n    \"issue\": \"£1,846.80 was due on 30 Aug 2026 and is 67 days overdue.\",\n    \"ask\": \"\"\n   },\n   {\n    \"ref\": \"Invoice INV-3133\",\n    \"issue\": \"£1,254.00 was due on 30 Oct 2026 and is 6 days overdue.\",\n    \"ask\": \"\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-12\"\n  ],\n  \"tone_label\": \"Final notice\"\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"customer:Saltmarsh Marine Electronics Ltd\", \"subject\": \"Final notice: overdue invoices INV-3051 and INV-3133\", \"body\": \"Hello Gavin,\\n\\nThis is a final notice about the overdue invoices on your account:\\n\\nInvoice INV-3051: £1,846.80, due on 30 August 2026, now 67 days overdue\\nInvoice INV-3133: £1,254.00, due on 30 October 2026, now 6 days overdue\\n\\nPlease pay these within 7 days, and no later than Friday 13 November. If we don't receive payment or hear from you by then, further orders may be put on hold until the account is up to date. If you have already paid, or have a query on either invoice, please let me know straight away.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Company Ltd\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "customer:Saltmarsh Marine Electronics Ltd",
+          "subject": "Final notice: overdue invoices INV-3051 and INV-3133",
+          "body": "Hello Gavin,\n\nThis is a final notice about the overdue invoices on your account:\n\nInvoice INV-3051: £1,846.80, due on 30 August 2026, now 67 days overdue\nInvoice INV-3133: £1,254.00, due on 30 October 2026, now 6 days overdue\n\nPlease pay these within 7 days, and no later than Friday 13 November. If we don't receive payment or hear from you by then, further orders may be put on hold until the account is up to date. If you have already paid, or have a query on either invoice, please let me know straight away.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+        }
+      ]
+    }
+  }
+}

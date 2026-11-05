@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "1424b22b8e96d4c28a5348321c8a3629e147a4327c97ba3d5d51bd90b2786716",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-21_trackfare_e-ticket.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: TrackFare Rail Tickets <tickets@trackfare.example>\nTo: accounts@demo-company.example\nDate: Wed, 21 Oct 2026 06:58:00 +0100\nSubject: Your e-ticket and receipt TF-88417730\n\nThanks for booking with TrackFare.\n\nBooking reference: TF-88417730\nJourney: Telford Central to Birmingham New Street, return, travelling 21 October 2026\nPassenger: R. Shah\nTicket type: Anytime Day Return\n\nTotal paid: £38.20\nPaid with Visa card ending 8802\nRail fares are zero-rated for VAT (VAT £0.00).\n\nTrackFare Rail Tickets",
+  "response": {
+    "text": "{\"doc_type\": \"receipt\", \"counterparty\": \"TrackFare Rail Tickets\", \"counterparty_vat_number\": \"\", \"document_number\": \"TF-88417730\", \"document_date\": \"2026-10-21\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 38.2, \"vat_total\": 0.0, \"gross_total\": 38.2, \"vat_lines\": [{\"rate\": 0, \"net\": 38.2, \"vat\": 0.0}], \"line_items\": [{\"description\": \"Anytime Day Return, Telford Central to Birmingham New Street, 21 October 2026\", \"quantity\": 1, \"unit_price\": 38.2, \"net\": 38.2, \"vat_rate\": 0}], \"payment_status\": \"paid\", \"card_last4\": \"8802\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Rail e-ticket receipt for a day return from Telford to Birmingham on 21 October.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Rail fares are zero-rated.\"}",
+    "data": {
+      "doc_type": "receipt",
+      "counterparty": "TrackFare Rail Tickets",
+      "counterparty_vat_number": "",
+      "document_number": "TF-88417730",
+      "document_date": "2026-10-21",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 38.2,
+      "vat_total": 0.0,
+      "gross_total": 38.2,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 38.2,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Anytime Day Return, Telford Central to Birmingham New Street, 21 October 2026",
+          "quantity": 1,
+          "unit_price": 38.2,
+          "net": 38.2,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Rail e-ticket receipt for a day return from Telford to Birmingham on 21 October.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Rail fares are zero-rated."
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "fb5393a647a7753dcf073194086003b5e83cc0ea18086ae5df135039c3b86eb1",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"supplier:Norbridge Tool Supplies Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Norbridge Tool Supplies Ltd\",\n  \"contact\": \"\",\n  \"email\": \"\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice NTS-5521 · 22 Oct 2026 · £228.00\",\n    \"issue\": \"VAT number GB 571 2240 71 fails HMRC's check-digit test, so the £38.00 VAT may not be reclaimable.\",\n    \"ask\": \"Could you confirm your VAT registration number? The one on the invoice does not pass HMRC's check.\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-08\"\n  ]\n },\n {\n  \"key\": \"payroll_bureau:Kettlewell Payroll & Accounts Ltd\",\n  \"recipient_type\": \"payroll_bureau\",\n  \"to\": \"Kettlewell Payroll & Accounts Ltd\",\n  \"contact\": \"Priya Nair\",\n  \"email\": \"payroll@kettlewell-pa.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Jordan Hale (E008)\",\n    \"issue\": \"Net pay on the report is £2,013.94, but gross £2,380.00 less deductions comes to £1,913.94 (difference £100.00).\",\n    \"ask\": \"Please confirm Jordan Hale's net pay: the report shows £2,013.94 but gross less deductions is £1,913.94.\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-16\"\n  ]\n },\n {\n  \"key\": \"cardholder:Alex Morgan\",\n  \"recipient_type\": \"cardholder\",\n  \"to\": \"Alex Morgan\",\n  \"contact\": \"Alex Morgan\",\n  \"email\": \"alex.morgan@demo-company.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"09 Oct 2026 · MERECROFT TYRE & AUTO · £126.00\",\n    \"issue\": \"No receipt or invoice found for £126.00 to MERECROFT TYRE & AUTO on 09 Oct 2026 (Alex Morgan).\",\n    \"ask\": \"Could you send the receipt (a photo or PDF is fine)?\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-12\"\n  ]\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"supplier:Norbridge Tool Supplies Ltd\", \"subject\": \"Invoice NTS-5521: please confirm your VAT number\", \"body\": \"Hello,\\n\\nThank you for invoice NTS-5521, dated 22 October 2026, for £228.00. The VAT registration number shown, GB 571 2240 71, does not pass HMRC's check, so we can't reclaim the £38.00 VAT until it is confirmed.\\n\\nCould you confirm your VAT registration number, please, by Friday 13 November? It may just be a typing error on the invoice.\\n\\nKind regards,\\nAccounts Assistant\\nDemo Company Ltd\"}, {\"key\": \"payroll_bureau:Kettlewell Payroll & Accounts Ltd\", \"subject\": \"October payroll query: Jordan Hale (E008)\", \"body\": \"Hello Priya,\\n\\nWe have a query on the October payroll report before wages are paid. For Jordan Hale (E008), the report shows net pay of £2,013.94, but gross pay of £2,380.00 less the deductions shown comes to £1,913.94, a difference of £100.00.\\n\\nCould you confirm which figure is correct and send a corrected report if needed? We need a reply by Friday 13 November at the latest, and sooner if possible, as it affects the wages payment.\\n\\nKind regards,\\nAccounts Assistant\\nDemo Company Ltd\"}, {\"key\": \"cardholder:Alex Morgan\", \"subject\": \"Receipt needed: Merecroft Tyre & Auto, 9 October\", \"body\": \"Hello Alex,\\n\\nI'm missing a receipt for one payment on your company card:\\n\\n9 October 2026, Merecroft Tyre & Auto, £126.00\\n\\nCould you send me the receipt by Friday 13 November, please? A photo or PDF is fine. A quick note of what it was for would help me code it correctly.\\n\\nKind regards,\\nAccounts Assistant\\nDemo Company Ltd\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "supplier:Norbridge Tool Supplies Ltd",
+          "subject": "Invoice NTS-5521: please confirm your VAT number",
+          "body": "Hello,\n\nThank you for invoice NTS-5521, dated 22 October 2026, for £228.00. The VAT registration number shown, GB 571 2240 71, does not pass HMRC's check, so we can't reclaim the £38.00 VAT until it is confirmed.\n\nCould you confirm your VAT registration number, please, by Friday 13 November? It may just be a typing error on the invoice.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+        },
+        {
+          "key": "payroll_bureau:Kettlewell Payroll & Accounts Ltd",
+          "subject": "October payroll query: Jordan Hale (E008)",
+          "body": "Hello Priya,\n\nWe have a query on the October payroll report before wages are paid. For Jordan Hale (E008), the report shows net pay of £2,013.94, but gross pay of £2,380.00 less the deductions shown comes to £1,913.94, a difference of £100.00.\n\nCould you confirm which figure is correct and send a corrected report if needed? We need a reply by Friday 13 November at the latest, and sooner if possible, as it affects the wages payment.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+        },
+        {
+          "key": "cardholder:Alex Morgan",
+          "subject": "Receipt needed: Merecroft Tyre & Auto, 9 October",
+          "body": "Hello Alex,\n\nI'm missing a receipt for one payment on your company card:\n\n9 October 2026, Merecroft Tyre & Auto, £126.00\n\nCould you send me the receipt by Friday 13 November, please? A photo or PDF is fine. A quick note of what it was for would help me code it correctly.\n\nKind regards,\nAccounts Assistant\nDemo Company Ltd"
+        }
+      ]
+    }
+  }
+}

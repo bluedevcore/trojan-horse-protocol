@@ -16,3 +16,6 @@ venv/
 .DS_Store
 .idea/
 .vscode/
+
+# Agent worktrees and local Claude Code state
+.claude/

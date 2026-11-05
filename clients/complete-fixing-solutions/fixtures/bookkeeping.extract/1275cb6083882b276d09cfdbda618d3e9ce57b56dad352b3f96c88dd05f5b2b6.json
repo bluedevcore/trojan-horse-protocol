@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "1275cb6083882b276d09cfdbda618d3e9ce57b56dad352b3f96c88dd05f5b2b6",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-26_pandy-timber_PTS-6604.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nPandy Timber & Sheet Ltd\nPandy Sawmill, Glyn Road\nLlangollen LL20 0XX\nTel 01632 960 856 · office@pandy-timber.example\nVAT Reg No: GB 279 4408 23\nINVOICE\nInvoice number: PTS-6604\nInvoice date: 26/10/2026\nDue date: 25/11/2026\nYour order no: PO-4413\nDelivered to site / job ref: J-2614 Llay primary school extension - ceilings and partitions\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nCLS timber 38x89mm x 3.0m\n120\n£4.40\n£528.00\nWBP plywood 12mm 2440x1220\n20\n£21.00\n£420.00\nTotal net\n£948.00\nVAT @ 20% on £948.00\n£189.60\nTotal due\n£1,152.60\nPayment terms: 30 days. BACS to Pandy Timber & Sheet Ltd, sort code 00-58-61, account 20073142.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Pandy Timber & Sheet Ltd\", \"counterparty_vat_number\": \"GB 279 4408 23\", \"document_number\": \"PTS-6604\", \"document_date\": \"2026-10-26\", \"due_date\": \"2026-11-25\", \"po_number\": \"PO-4413\", \"project_reference\": \"J-2614\", \"currency\": \"GBP\", \"net_total\": 948.0, \"vat_total\": 189.6, \"gross_total\": 1152.6, \"vat_lines\": [{\"rate\": 20, \"net\": 948.0, \"vat\": 189.6}], \"line_items\": [{\"description\": \"CLS timber 38x89mm x 3.0m\", \"quantity\": 120, \"unit_price\": 4.4, \"net\": 528.0, \"vat_rate\": 20}, {\"description\": \"WBP plywood 12mm 2440x1220\", \"quantity\": 20, \"unit_price\": 21.0, \"net\": 420.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-58-61\", \"bank_account_number\": \"20073142\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for CLS timber and 12mm plywood for the Llay school extension.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Pandy Timber & Sheet Ltd",
+      "counterparty_vat_number": "GB 279 4408 23",
+      "document_number": "PTS-6604",
+      "document_date": "2026-10-26",
+      "due_date": "2026-11-25",
+      "po_number": "PO-4413",
+      "project_reference": "J-2614",
+      "currency": "GBP",
+      "net_total": 948.0,
+      "vat_total": 189.6,
+      "gross_total": 1152.6,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 948.0,
+          "vat": 189.6
+        }
+      ],
+      "line_items": [
+        {
+          "description": "CLS timber 38x89mm x 3.0m",
+          "quantity": 120,
+          "unit_price": 4.4,
+          "net": 528.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "WBP plywood 12mm 2440x1220",
+          "quantity": 20,
+          "unit_price": 21.0,
+          "net": 420.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-58-61",
+      "bank_account_number": "20073142",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for CLS timber and 12mm plywood for the Llay school extension.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

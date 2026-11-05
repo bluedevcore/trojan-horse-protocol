@@ -1,0 +1,38 @@
+{
+  "task": "bookkeeping.coding",
+  "key": "6e714d3f91484f69b199fe5b895f41dee22da037302617ecbd15fd8e2ad81850",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Entries to code (JSON):\n\n[\n {\n  \"id\": \"D-12\",\n  \"payee\": \"Corndell Building Supplies Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 246.0,\n  \"document\": \"Decorating materials (paint, filler and sundries) delivered to 22 Thistle Close.\",\n  \"items\": [\n   \"Trade emulsion, white, 10L\",\n   \"Satinwood, white, 2.5L\",\n   \"Multi-purpose filler, 5kg\",\n   \"Decorating sundries (rollers, trays, tape)\"\n  ],\n  \"notes\": \"Account DEMO01.\"\n },\n {\n  \"id\": \"D-15\",\n  \"payee\": \"Corndell Building Supplies Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 375.0,\n  \"document\": \"Fencing materials (6 closeboard panels, 3 concrete posts and postcrete) delivered to 31 Heron Walk.\",\n  \"items\": [\n   \"Closeboard fence panel 1.8m x 1.8m\",\n   \"Concrete fence post 2.4m\",\n   \"Postcrete 20kg\"\n  ],\n  \"notes\": \"Account DEMO01.\"\n },\n {\n  \"id\": \"D-17\",\n  \"payee\": \"Corndell Building Supplies Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 94.8,\n  \"document\": \"Credit note for two surplus fence panels returned from 31 Heron Walk (from invoice CBS-55187).\",\n  \"items\": [\n   \"Returned: closeboard fence panel 1.8m x 1.8m (surplus, from invoice CBS-55187)\"\n  ],\n  \"notes\": \"To be deducted from the account balance (account DEMO01).\"\n },\n {\n  \"id\": \"D-18\",\n  \"payee\": \"Oakmere Kitchens & Joinery Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 5820.0,\n  \"document\": \"Invoice for replacing the kitchen at 31 Heron Walk: units, worktops, fitting and waste removal.\",\n  \"items\": [\n   \"Kitchen units (8 base and wall units), doors and handles\",\n   \"Laminate worktops and upstands\",\n   \"Strip out old kitchen, fit new kitchen, connect sink and hob\",\n   \"Waste removal\"\n  ],\n  \"notes\": \"The invoice says the layout is as existing, with an integrated dishwasher added.\"\n }\n]",
+  "response": {
+    "text": "{\"codes\": [{\"id\": \"D-12\", \"account\": \"Repairs and maintenance\", \"confidence\": \"high\", \"reason\": \"Paint, filler and decorating sundries delivered to 22 Thistle Close are materials for redecorating a let property.\"}, {\"id\": \"D-15\", \"account\": \"Repairs and maintenance\", \"confidence\": \"high\", \"reason\": \"Closeboard fence panels, concrete posts and postcrete delivered to 31 Heron Walk are fencing repair materials.\"}, {\"id\": \"D-17\", \"account\": \"Repairs and maintenance\", \"confidence\": \"high\", \"reason\": \"Credit for two surplus fence panels returned from invoice CBS-55187, so it reverses part of that repairs cost.\"}, {\"id\": \"D-18\", \"account\": \"Repairs and maintenance\", \"confidence\": \"low\", \"reason\": \"Replacing the kitchen at 31 Heron Walk with the layout as existing points to a like-for-like repair, but the added integrated dishwasher is an improvement, so part may be Property improvements (capital); a person should decide.\"}]}",
+    "data": {
+      "codes": [
+        {
+          "id": "D-12",
+          "account": "Repairs and maintenance",
+          "confidence": "high",
+          "reason": "Paint, filler and decorating sundries delivered to 22 Thistle Close are materials for redecorating a let property."
+        },
+        {
+          "id": "D-15",
+          "account": "Repairs and maintenance",
+          "confidence": "high",
+          "reason": "Closeboard fence panels, concrete posts and postcrete delivered to 31 Heron Walk are fencing repair materials."
+        },
+        {
+          "id": "D-17",
+          "account": "Repairs and maintenance",
+          "confidence": "high",
+          "reason": "Credit for two surplus fence panels returned from invoice CBS-55187, so it reverses part of that repairs cost."
+        },
+        {
+          "id": "D-18",
+          "account": "Repairs and maintenance",
+          "confidence": "low",
+          "reason": "Replacing the kitchen at 31 Heron Walk with the layout as existing points to a like-for-like repair, but the added integrated dishwasher is an improvement, so part may be Property improvements (capital); a person should decide."
+        }
+      ]
+    }
+  }
+}

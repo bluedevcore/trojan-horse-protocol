@@ -1,0 +1,65 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "c2f5b37c8423a4409eb08f5b474f1e9691a00396b9be2b62b1f4d789dc39fc22",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-06_northlight_NES-448377.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nNorthlight Energy Supply Ltd\nPO Box 4XX\nNorwich NR1 0XX\nTel 01632 960 750 · business@northlight-energy.example\nVAT Reg No: GB 391 5546 32\nINVOICE\nInvoice number: NES-448377\nInvoice date: 06/10/2026\nDue date: 20/10/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSupply address: Granary Court landlord supply (communal lighting and door entry)\nDescription\nQty\nUnit price\nNet\nElectricity 01/09/2026-30/09/2026: 412 kWh @ 26.10p\n412\n£0.26\n£107.53\nStanding charge 30 days @ 61.40p\n30\n£0.61\n£18.42\nClimate Change Levy 412 kWh @ 0.775p\n412\n£0.01\n£3.19\nSubtotal (net)\n£129.14\nVAT @ 20%\n£25.83\nTotal due\n£154.97\nPaid by Direct Debit on or after 20/10/2026. No action needed.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Northlight Energy Supply Ltd\", \"counterparty_vat_number\": \"GB 391 5546 32\", \"document_number\": \"NES-448377\", \"document_date\": \"2026-10-06\", \"due_date\": \"2026-10-20\", \"po_number\": \"\", \"project_reference\": \"Granary Court\", \"currency\": \"GBP\", \"net_total\": 129.14, \"vat_total\": 25.83, \"gross_total\": 154.97, \"vat_lines\": [{\"rate\": 20, \"net\": 129.14, \"vat\": 25.83}], \"line_items\": [{\"description\": \"Electricity 01/09/2026-30/09/2026: 412 kWh @ 26.10p\", \"quantity\": 412, \"unit_price\": 0.261, \"net\": 107.53, \"vat_rate\": 20}, {\"description\": \"Standing charge 30 days @ 61.40p\", \"quantity\": 30, \"unit_price\": 0.614, \"net\": 18.42, \"vat_rate\": 20}, {\"description\": \"Climate Change Levy 412 kWh @ 0.775p\", \"quantity\": 412, \"unit_price\": 0.00775, \"net\": 3.19, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"2026-09-01\", \"service_period_end\": \"2026-09-30\", \"statement_lines\": [], \"summary\": \"September electricity bill for the Granary Court landlord supply (communal lighting and door entry).\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Collected by Direct Debit on or after 20 October 2026; no payment needs to be made.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Northlight Energy Supply Ltd",
+      "counterparty_vat_number": "GB 391 5546 32",
+      "document_number": "NES-448377",
+      "document_date": "2026-10-06",
+      "due_date": "2026-10-20",
+      "po_number": "",
+      "project_reference": "Granary Court",
+      "currency": "GBP",
+      "net_total": 129.14,
+      "vat_total": 25.83,
+      "gross_total": 154.97,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 129.14,
+          "vat": 25.83
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electricity 01/09/2026-30/09/2026: 412 kWh @ 26.10p",
+          "quantity": 412,
+          "unit_price": 0.261,
+          "net": 107.53,
+          "vat_rate": 20
+        },
+        {
+          "description": "Standing charge 30 days @ 61.40p",
+          "quantity": 30,
+          "unit_price": 0.614,
+          "net": 18.42,
+          "vat_rate": 20
+        },
+        {
+          "description": "Climate Change Levy 412 kWh @ 0.775p",
+          "quantity": 412,
+          "unit_price": 0.00775,
+          "net": 3.19,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30",
+      "statement_lines": [],
+      "summary": "September electricity bill for the Granary Court landlord supply (communal lighting and door entry).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Collected by Direct Debit on or after 20 October 2026; no payment needs to be made."
+    }
+  }
+}

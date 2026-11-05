@@ -1,0 +1,59 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "baef446b6fa3c6cf13c84ab15e684d4a5cf96042217f31fd1352db9d785b8e57",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-09-07_larkhollow_signed-quotation-Q-2207_J-4134.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nDemo Decorating Contractors Ltd\nUnit 4, Example Trade Park\nErith DA8 2XX\nErith branch · Tel 020 7946 0410 · erith.office@demo-decorating.example\nQuotation Q-2207 - acceptance\nClient: Larkhollow Hotels Ltd · Site: Larkhollow Hotel, Bexleyheath · Job: J-4134\nItem\nRooms\nPrice\nBedroom redecoration, floor 2\n18\n£6,300.00\nBedroom redecoration, floor 3\n16\n£5,741.67\nCorridors, floors 2 and 3\n2\n£960.00\nTotal excluding VAT\n£13,001.67\nTerms: deposit of £2,700.00 plus VAT on acceptance; each floor invoiced on completion; corridors and the deposit\nsettled in the final account. Payment within 30 days of invoice.\nAccepted for Larkhollow Hotels Ltd: Tom Whitlock, General Manager · 07/09/2026",
+  "response": {
+    "text": "{\"doc_type\": \"contract\", \"counterparty\": \"Larkhollow Hotels Ltd\", \"counterparty_vat_number\": \"\", \"document_number\": \"Q-2207\", \"document_date\": \"2026-09-07\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-4134\", \"currency\": \"GBP\", \"net_total\": 13001.67, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [{\"description\": \"Bedroom redecoration, floor 2\", \"quantity\": 18, \"unit_price\": null, \"net\": 6300.0, \"vat_rate\": null}, {\"description\": \"Bedroom redecoration, floor 3\", \"quantity\": 16, \"unit_price\": null, \"net\": 5741.67, \"vat_rate\": null}, {\"description\": \"Corridors, floors 2 and 3\", \"quantity\": 2, \"unit_price\": null, \"net\": 960.0, \"vat_rate\": null}], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Quotation Q-2207 for redecorating bedrooms on floors 2 and 3 and the corridors at the Larkhollow Hotel, £13,001.67 excluding VAT, accepted by the General Manager.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Deposit of £2,700.00 plus VAT on acceptance; each floor invoiced on completion; corridors and the deposit settled in the final account; 30 days. Accepted by Tom Whitlock on 07/09/2026.\"}",
+    "data": {
+      "doc_type": "contract",
+      "counterparty": "Larkhollow Hotels Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "Q-2207",
+      "document_date": "2026-09-07",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-4134",
+      "currency": "GBP",
+      "net_total": 13001.67,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [
+        {
+          "description": "Bedroom redecoration, floor 2",
+          "quantity": 18,
+          "unit_price": null,
+          "net": 6300.0,
+          "vat_rate": null
+        },
+        {
+          "description": "Bedroom redecoration, floor 3",
+          "quantity": 16,
+          "unit_price": null,
+          "net": 5741.67,
+          "vat_rate": null
+        },
+        {
+          "description": "Corridors, floors 2 and 3",
+          "quantity": 2,
+          "unit_price": null,
+          "net": 960.0,
+          "vat_rate": null
+        }
+      ],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Quotation Q-2207 for redecorating bedrooms on floors 2 and 3 and the corridors at the Larkhollow Hotel, £13,001.67 excluding VAT, accepted by the General Manager.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Deposit of £2,700.00 plus VAT on acceptance; each floor invoiced on completion; corridors and the deposit settled in the final account; 30 days. Accepted by Tom Whitlock on 07/09/2026."
+    }
+  }
+}

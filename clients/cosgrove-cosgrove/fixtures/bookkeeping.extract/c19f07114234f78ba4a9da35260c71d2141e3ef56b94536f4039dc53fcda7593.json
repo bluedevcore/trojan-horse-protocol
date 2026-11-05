@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "c19f07114234f78ba4a9da35260c71d2141e3ef56b94536f4039dc53fcda7593",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-31_hadley-brook_118.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nHadley Brook Cleaning\n12 Brook Close\nTelford TF5 0XX\nTel 07700 900 214 · jo@hadleybrook-cleaning.example\nINVOICE\nInvoice number: 118\nInvoice date: 31/10/2026\nDue date: 14/11/2026\nInvoice to:\nDemo Company Ltd\nUnit 7, Example Business Park\nTelford TF3 0XX\nDescription\nQty\nUnit price\nNet\nOffice cleaning - October (2 visits a week, 4 weeks) (20% VAT)\n8\n£40.00\n£320.00\nSubtotal (net)\n£320.00\nVAT @ 20% on £320.00\n£64.00\nTotal due\n£384.00\nThank you for your business. Jo Mason, trading as Hadley Brook Cleaning.\nPay by bank transfer to Hadley Brook Cleaning: sort code 00-21-43, account number 10060318. Quote 118.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Hadley Brook Cleaning\", \"counterparty_vat_number\": \"\", \"document_number\": \"118\", \"document_date\": \"2026-10-31\", \"due_date\": \"2026-11-14\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 320.0, \"vat_total\": 64.0, \"gross_total\": 384.0, \"vat_lines\": [{\"rate\": 20, \"net\": 320.0, \"vat\": 64.0}], \"line_items\": [{\"description\": \"Office cleaning - October (2 visits a week, 4 weeks)\", \"quantity\": 8, \"unit_price\": 40.0, \"net\": 320.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-21-43\", \"bank_account_number\": \"10060318\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for October office cleaning.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Shows VAT at 20% but no VAT registration number. Jo Mason trading as Hadley Brook Cleaning.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Hadley Brook Cleaning",
+      "counterparty_vat_number": "",
+      "document_number": "118",
+      "document_date": "2026-10-31",
+      "due_date": "2026-11-14",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 320.0,
+      "vat_total": 64.0,
+      "gross_total": 384.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 320.0,
+          "vat": 64.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Office cleaning - October (2 visits a week, 4 weeks)",
+          "quantity": 8,
+          "unit_price": 40.0,
+          "net": 320.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-21-43",
+      "bank_account_number": "10060318",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for October office cleaning.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Shows VAT at 20% but no VAT registration number. Jo Mason trading as Hadley Brook Cleaning."
+    }
+  }
+}

@@ -1,0 +1,13 @@
+Supplier,Account Ref,Default Account,Default VAT,VAT Number,Sort Code,Account Number,Terms (days),Email,Contact
+Severnvale Office Supplies Ltd,SEVERN01,Office supplies,S,GB 312 4570 90,00-11-22,10004417,30,accounts@severnvale-office.example,Karen Wilde
+Brindlecote IT Services Ltd,BRINDL01,Computer and IT costs,S,GB 287 5316 28,00-33-44,10027719,14,billing@brindlecote-it.example,Dan Price
+Wrekinlink Telecom Ltd,WREKIN01,Telephone and internet,S,GB 441 0829 72,00-55-66,10031552,14,billing@wrekinlink.example,
+Midshire Power Direct Ltd,MIDSHI01,"Light, power and heating",S,GB 553 9120 46,00-77-88,10045630,14,business@midshire-power.example,
+Quarrybank Fleet Fuels Ltd,QUARRY01,Motor expenses,S,GB 338 1204 80,00-12-34,10052281,30,cards@quarrybank-fuels.example,
+Hadley Brook Cleaning,HADLEY01,Cleaning,O,,00-21-43,10060318,14,jo@hadleybrook-cleaning.example,Jo Mason
+Coalbrook Waste Services Ltd,COALBR01,Waste disposal,S,GB 612 0385 81,00-43-65,10071224,30,accounts@coalbrook-waste.example,Steve Hollins
+Kettlewell Payroll & Accounts Ltd,KETTLE01,Accountancy fees,S,GB 229 9618 22,00-65-87,10083390,14,payroll@kettlewell-pa.example,Priya Nair
+Marchmont Insurance Brokers Ltd,MARCHM01,Insurance,E,,00-87-09,10094471,30,renewals@marchmont-insurance.example,
+Dawbury Print & Signs Ltd,DAWBUR01,Advertising and marketing,S,GB 775 4102 31,00-90-12,10105517,30,studio@dawbury-print.example,Mel Carter
+Stirling Lane Packaging Ltd,STIRLI01,Purchases,S,GB 330 7761 66,00-13-57,10116623,30,sales@stirlinglane-packaging.example,
+Madeley Van Hire Ltd,MADELE01,Motor expenses,S,GB 490 8815 14,00-24-68,10127739,30,hire@madeley-vans.example,

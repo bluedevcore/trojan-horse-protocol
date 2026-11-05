@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "a3b9972d379e7be1c4fa1bd01c6696a99b509174dce8db35adc55f6073252ce5",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-05_carrowdene_CM-118204.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nCarrowdene Metals Ltd\nFoundry Lane\nAvonmouth BS11 0XX\nTel 0117 496 0412 · sales.ledger@carrowdene-metals.example\nVAT Reg No: GB 482 1706 49\nINVOICE\nInvoice number: CM-118204\nInvoice date: 05/10/2026\nDue date: 04/11/2026\nYour order ref: PO-2614\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nFine silver grain 99.99%, per kg\n6\n£860.00\n20%\n£5,160.00\nAssay certificate\n1\n£35.00\n20%\n£35.00\nSubtotal (net)\n£5,195.00\nVAT @ 20% on £5,195.00\n£1,039.00\nTotal due\n£6,234.00\nTerms: 30 days net. Metal prices fixed on the order date.\nPay by bank transfer to Carrowdene Metals Ltd: sort code 00-14-52, account number 10230418.\nPlease quote CM-118204 as the payment reference.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Carrowdene Metals Ltd\", \"counterparty_vat_number\": \"GB 482 1706 49\", \"document_number\": \"CM-118204\", \"document_date\": \"2026-10-05\", \"due_date\": \"2026-11-04\", \"po_number\": \"PO-2614\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 5195.0, \"vat_total\": 1039.0, \"gross_total\": 6234.0, \"vat_lines\": [{\"rate\": 20, \"net\": 5195.0, \"vat\": 1039.0}], \"line_items\": [{\"description\": \"Fine silver grain 99.99%, per kg\", \"quantity\": 6, \"unit_price\": 860.0, \"net\": 5160.0, \"vat_rate\": 20}, {\"description\": \"Assay certificate\", \"quantity\": 1, \"unit_price\": 35.0, \"net\": 35.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-14-52\", \"bank_account_number\": \"10230418\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for 6 kg of fine silver grain with an assay certificate, ordered on PO-2614.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Carrowdene Metals Ltd",
+      "counterparty_vat_number": "GB 482 1706 49",
+      "document_number": "CM-118204",
+      "document_date": "2026-10-05",
+      "due_date": "2026-11-04",
+      "po_number": "PO-2614",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 5195.0,
+      "vat_total": 1039.0,
+      "gross_total": 6234.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 5195.0,
+          "vat": 1039.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Fine silver grain 99.99%, per kg",
+          "quantity": 6,
+          "unit_price": 860.0,
+          "net": 5160.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Assay certificate",
+          "quantity": 1,
+          "unit_price": 35.0,
+          "net": 35.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-14-52",
+      "bank_account_number": "10230418",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for 6 kg of fine silver grain with an assay certificate, ordered on PO-2614.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

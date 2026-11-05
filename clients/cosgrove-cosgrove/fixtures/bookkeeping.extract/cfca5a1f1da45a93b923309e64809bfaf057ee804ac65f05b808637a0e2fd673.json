@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "cfca5a1f1da45a93b923309e64809bfaf057ee804ac65f05b808637a0e2fd673",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-23_cloudnest_invoice.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: CloudNest Hosting <billing@cloudnest.example>\nTo: accounts@demo-company.example\nDate: Fri, 23 Oct 2026 00:05:00 +0100\nSubject: Invoice CN-INV-77310 (paid)\n\nInvoice CN-INV-77310 - PAID\nDate: 23/10/2026\nBill to: Demo Company Ltd\n\nWeb hosting, business plan - November 2026   £15.00\nVAT @ 20%   £3.00\nTotal   £18.00\n\nPaid by card ending 8802. Thank you.\nCloudNest Hosting Ltd · VAT Reg GB 390 6128 51",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"CloudNest Hosting Ltd\", \"counterparty_vat_number\": \"GB 390 6128 51\", \"document_number\": \"CN-INV-77310\", \"document_date\": \"2026-10-23\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 15.0, \"vat_total\": 3.0, \"gross_total\": 18.0, \"vat_lines\": [{\"rate\": 20, \"net\": 15.0, \"vat\": 3.0}], \"line_items\": [{\"description\": \"Web hosting, business plan - November 2026\", \"quantity\": 1, \"unit_price\": 15.0, \"net\": 15.0, \"vat_rate\": 20}], \"payment_status\": \"paid\", \"card_last4\": \"8802\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"2026-11-01\", \"service_period_end\": \"2026-11-30\", \"statement_lines\": [], \"summary\": \"Paid invoice for November web hosting.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "CloudNest Hosting Ltd",
+      "counterparty_vat_number": "GB 390 6128 51",
+      "document_number": "CN-INV-77310",
+      "document_date": "2026-10-23",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 15.0,
+      "vat_total": 3.0,
+      "gross_total": 18.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 15.0,
+          "vat": 3.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Web hosting, business plan - November 2026",
+          "quantity": 1,
+          "unit_price": 15.0,
+          "net": 15.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "2026-11-01",
+      "service_period_end": "2026-11-30",
+      "statement_lines": [],
+      "summary": "Paid invoice for November web hosting.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

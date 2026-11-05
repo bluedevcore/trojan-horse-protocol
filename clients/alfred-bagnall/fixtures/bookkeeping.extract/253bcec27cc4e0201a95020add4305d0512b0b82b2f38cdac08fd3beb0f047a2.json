@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "253bcec27cc4e0201a95020add4305d0512b0b82b2f38cdac08fd3beb0f047a2",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-14_marsh-view_site-meeting-minutes-06.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nRiverholt Housing Association\nRiverside House, 2 Example Wharf\nWoolwich SE18 0XX\nAsset Management · Tel 020 7946 0127 · assets@riverholt-ha.example\nSite progress meeting no. 6\nContract: Marsh View Estate external redecoration (contractor's job no. J-4102)\nDate: 14 October 2026, site cabin, Heron Court\nPresent: Graham Lister (Riverholt, CA), Kerry Walsh (contracts manager), Dean Foley (site supervisor), Mrs P.\nGrant (residents' representative)\n1. Progress\nHeron Court complete apart from bin stores (VI-07). Plover Court 60% complete. Avocet Court scaffold to go up\nweek commencing 26 October.\n2. Health and safety\nNo accidents reported. Scaffold inspection tags in date.\n3. Residents\nTwo complaints about paint on balcony glass at Heron Court, flats 12 and 14. Contractor to clean by 21 October.\n4. Valuation\nValuation 5 agreed at £13,300.00 plus VAT. Contractor to invoice. CA confirmed valuation 4 is with Riverholt\nfinance for payment.\n5. Next meeting\n11 November 2026, 10:00, Heron Court site cabin.",
+  "response": {
+    "text": "{\"doc_type\": \"other\", \"counterparty\": \"Riverholt Housing Association\", \"counterparty_vat_number\": \"\", \"document_number\": \"Meeting 6\", \"document_date\": \"2026-10-14\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-4102\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Minutes of site progress meeting no. 6 for the Marsh View Estate redecoration.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Valuation 5 agreed at £13,300.00 plus VAT, to be invoiced; valuation 4 is with Riverholt finance for payment. Balcony glass at Heron Court flats 12 and 14 to be cleaned by 21 October. Next meeting 11 November 2026.\"}",
+    "data": {
+      "doc_type": "other",
+      "counterparty": "Riverholt Housing Association",
+      "counterparty_vat_number": "",
+      "document_number": "Meeting 6",
+      "document_date": "2026-10-14",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-4102",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Minutes of site progress meeting no. 6 for the Marsh View Estate redecoration.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Valuation 5 agreed at £13,300.00 plus VAT, to be invoiced; valuation 4 is with Riverholt finance for payment. Balcony glass at Heron Court flats 12 and 14 to be cleaned by 21 October. Next meeting 11 November 2026."
+    }
+  }
+}

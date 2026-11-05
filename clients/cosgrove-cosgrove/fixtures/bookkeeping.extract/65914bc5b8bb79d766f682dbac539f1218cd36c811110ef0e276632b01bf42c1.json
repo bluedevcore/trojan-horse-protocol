@@ -1,0 +1,60 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "65914bc5b8bb79d766f682dbac539f1218cd36c811110ef0e276632b01bf42c1",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-14_coalbrook_CWS-40218.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nCoalbrook Waste Services Ltd\nRecycling Centre, Furnace Road\nTelford TF4 0XX\nTel 01632 960 633 · accounts@coalbrook-waste.example\nVAT Reg No: GB 612 0385 81\nINVOICE\nInvoice number: CWS-40218\nInvoice date: 14/10/2026\nDue date: 13/11/2026\nInvoice to:\nDemo Company Ltd\nUnit 7, Example Business Park\nTelford TF3 0XX\nDescription\nQty\nUnit price\nNet\nGeneral waste 1100L bin - 4 lifts (20% VAT)\n4\n£38.50\n£154.00\nMixed recycling 1100L bin - 2 lifts (20% VAT)\n2\n£28.00\n£56.00\nSubtotal (net)\n£210.00\nVAT @ 20% on £210.00\n£42.00\nTotal due\n£262.00\nWaste transfer note WTN-8812 on file.\nPay by bank transfer to Coalbrook Waste Services Ltd: sort code 00-43-65, account number 10071224. Quote CWS-40218.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Coalbrook Waste Services Ltd\", \"counterparty_vat_number\": \"GB 612 0385 81\", \"document_number\": \"CWS-40218\", \"document_date\": \"2026-10-14\", \"due_date\": \"2026-11-13\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 210.0, \"vat_total\": 42.0, \"gross_total\": 262.0, \"vat_lines\": [{\"rate\": 20, \"net\": 210.0, \"vat\": 42.0}], \"line_items\": [{\"description\": \"General waste 1100L bin - 4 lifts\", \"quantity\": 4, \"unit_price\": 38.5, \"net\": 154.0, \"vat_rate\": 20}, {\"description\": \"Mixed recycling 1100L bin - 2 lifts\", \"quantity\": 2, \"unit_price\": 28.0, \"net\": 56.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-43-65\", \"bank_account_number\": \"10071224\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for general waste and recycling collections in October.\", \"confidence\": \"medium\", \"uncertain_fields\": [\"gross_total\"], \"notes\": \"The printed total due is £262.00.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Coalbrook Waste Services Ltd",
+      "counterparty_vat_number": "GB 612 0385 81",
+      "document_number": "CWS-40218",
+      "document_date": "2026-10-14",
+      "due_date": "2026-11-13",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 210.0,
+      "vat_total": 42.0,
+      "gross_total": 262.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 210.0,
+          "vat": 42.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "General waste 1100L bin - 4 lifts",
+          "quantity": 4,
+          "unit_price": 38.5,
+          "net": 154.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Mixed recycling 1100L bin - 2 lifts",
+          "quantity": 2,
+          "unit_price": 28.0,
+          "net": 56.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-43-65",
+      "bank_account_number": "10071224",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for general waste and recycling collections in October.",
+      "confidence": "medium",
+      "uncertain_fields": [
+        "gross_total"
+      ],
+      "notes": "The printed total due is £262.00."
+    }
+  }
+}

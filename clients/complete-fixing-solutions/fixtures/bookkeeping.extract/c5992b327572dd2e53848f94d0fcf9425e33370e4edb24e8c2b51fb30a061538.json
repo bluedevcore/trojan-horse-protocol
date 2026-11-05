@@ -1,0 +1,65 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "c5992b327572dd2e53848f94d0fcf9425e33370e4edb24e8c2b51fb30a061538",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-28_dee-valley_DVF-55203.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nDee Valley Fixings Ltd\nUnit 12, Riverside Trade Park\nChester CH4 0XX\nTel 01632 960 412 · accounts@deevalley-fixings.example\nVAT Reg No: GB 441 9027 63\nINVOICE\nInvoice number: DVF-55203\nInvoice date: 28/10/2026\nDue date: 27/11/2026\nYour order no: PO-4418\nDelivered to site / job ref: J-2619 Gresford care home extension - drylining\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nFrame fixings 10x100, box of 50\n5\n£17.35\n£86.75\nDrywall screws 3.5x32mm, box of 1000\n20\n£10.40\n£208.00\nGalvanised noggin brackets, pack of 50\n4\n£25.50\n£102.00\nTotal net\n£396.75\nVAT @ 20% on £396.75\n£79.35\nTotal due\n£476.10\nPayment terms: 30 days. BACS to Dee Valley Fixings Ltd, sort code 00-14-27, account 20031184.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Dee Valley Fixings Ltd\", \"counterparty_vat_number\": \"GB 441 9027 63\", \"document_number\": \"DVF-55203\", \"document_date\": \"2026-10-28\", \"due_date\": \"2026-11-27\", \"po_number\": \"PO-4418\", \"project_reference\": \"J-2619\", \"currency\": \"GBP\", \"net_total\": 396.75, \"vat_total\": 79.35, \"gross_total\": 476.1, \"vat_lines\": [{\"rate\": 20, \"net\": 396.75, \"vat\": 79.35}], \"line_items\": [{\"description\": \"Frame fixings 10x100, box of 50\", \"quantity\": 5, \"unit_price\": 17.35, \"net\": 86.75, \"vat_rate\": 20}, {\"description\": \"Drywall screws 3.5x32mm, box of 1000\", \"quantity\": 20, \"unit_price\": 10.4, \"net\": 208.0, \"vat_rate\": 20}, {\"description\": \"Galvanised noggin brackets, pack of 50\", \"quantity\": 4, \"unit_price\": 25.5, \"net\": 102.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-14-27\", \"bank_account_number\": \"20031184\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for frame fixings, drywall screws and noggin brackets for the Gresford care home extension.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Dee Valley Fixings Ltd",
+      "counterparty_vat_number": "GB 441 9027 63",
+      "document_number": "DVF-55203",
+      "document_date": "2026-10-28",
+      "due_date": "2026-11-27",
+      "po_number": "PO-4418",
+      "project_reference": "J-2619",
+      "currency": "GBP",
+      "net_total": 396.75,
+      "vat_total": 79.35,
+      "gross_total": 476.1,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 396.75,
+          "vat": 79.35
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Frame fixings 10x100, box of 50",
+          "quantity": 5,
+          "unit_price": 17.35,
+          "net": 86.75,
+          "vat_rate": 20
+        },
+        {
+          "description": "Drywall screws 3.5x32mm, box of 1000",
+          "quantity": 20,
+          "unit_price": 10.4,
+          "net": 208.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Galvanised noggin brackets, pack of 50",
+          "quantity": 4,
+          "unit_price": 25.5,
+          "net": 102.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-14-27",
+      "bank_account_number": "20031184",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for frame fixings, drywall screws and noggin brackets for the Gresford care home extension.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

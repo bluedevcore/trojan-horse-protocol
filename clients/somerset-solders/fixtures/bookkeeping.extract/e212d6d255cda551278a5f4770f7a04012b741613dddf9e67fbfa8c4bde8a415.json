@@ -1,0 +1,65 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "e212d6d255cda551278a5f4770f7a04012b741613dddf9e67fbfa8c4bde8a415",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-23_stanchester_STN-55102.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nStanchester Office Supplies Ltd\n8 Stanchester Way\nYeovil BA20 0XX\nTel 01632 960 416 · accounts@stanchester-office.example\nVAT Reg No: GB 814 6025 53\nINVOICE\nInvoice number: STN-55102\nInvoice date: 23/10/2026\nDue date: 22/11/2026\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nA4 copier paper 80gsm, box of 5 reams\n4\n£23.60\n20%\n£94.40\nBlack toner cartridge\n2\n£42.00\n20%\n£84.00\nDespatch labels, 2-up, box of 1,000\n3\n£14.90\n20%\n£44.70\nSubtotal (net)\n£223.10\nVAT @ 20% on £223.10\n£44.62\nTotal due\n£267.72\nTerms: 30 days net.\nPay by bank transfer to Stanchester Office Supplies Ltd: sort code 00-48-95, account number 10353630.\nPlease quote STN-55102 as the payment reference.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Stanchester Office Supplies Ltd\", \"counterparty_vat_number\": \"GB 814 6025 53\", \"document_number\": \"STN-55102\", \"document_date\": \"2026-10-23\", \"due_date\": \"2026-11-22\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 223.1, \"vat_total\": 44.62, \"gross_total\": 267.72, \"vat_lines\": [{\"rate\": 20, \"net\": 223.1, \"vat\": 44.62}], \"line_items\": [{\"description\": \"A4 copier paper 80gsm, box of 5 reams\", \"quantity\": 4, \"unit_price\": 23.6, \"net\": 94.4, \"vat_rate\": 20}, {\"description\": \"Black toner cartridge\", \"quantity\": 2, \"unit_price\": 42.0, \"net\": 84.0, \"vat_rate\": 20}, {\"description\": \"Despatch labels, 2-up, box of 1,000\", \"quantity\": 3, \"unit_price\": 14.9, \"net\": 44.7, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-48-95\", \"bank_account_number\": \"10353630\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for copier paper, toner and despatch labels.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Stanchester Office Supplies Ltd",
+      "counterparty_vat_number": "GB 814 6025 53",
+      "document_number": "STN-55102",
+      "document_date": "2026-10-23",
+      "due_date": "2026-11-22",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 223.1,
+      "vat_total": 44.62,
+      "gross_total": 267.72,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 223.1,
+          "vat": 44.62
+        }
+      ],
+      "line_items": [
+        {
+          "description": "A4 copier paper 80gsm, box of 5 reams",
+          "quantity": 4,
+          "unit_price": 23.6,
+          "net": 94.4,
+          "vat_rate": 20
+        },
+        {
+          "description": "Black toner cartridge",
+          "quantity": 2,
+          "unit_price": 42.0,
+          "net": 84.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Despatch labels, 2-up, box of 1,000",
+          "quantity": 3,
+          "unit_price": 14.9,
+          "net": 44.7,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-48-95",
+      "bank_account_number": "10353630",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for copier paper, toner and despatch labels.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

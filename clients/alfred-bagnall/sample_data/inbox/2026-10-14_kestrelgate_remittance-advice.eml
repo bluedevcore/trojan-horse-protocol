@@ -1,0 +1,21 @@
+From: Kestrelgate Payables <payables@kestrelgate.example>
+To: erith.office@demo-decorating.example
+Subject: Remittance advice - payment run 14/10/2026
+Date: Wed, 14 Oct 2026 07:15:00 +0100
+Message-ID: <d068756628734604@mail.example>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+
+Remittance advice
+
+Payer: Kestrelgate Construction Ltd
+Payee: Demo Decorating Contractors Ltd
+Payment date: 14/10/2026 by BACS
+
+Your invoice   Description                               Amount
+SI-30364       Application 3 - Wharfside Quarter painting   £11,400.00
+
+Total paid: £11,400.00
+
+This is an automated message from Kestrelgate Construction Ltd.

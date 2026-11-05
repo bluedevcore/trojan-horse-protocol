@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "d3afb65e53d5562fa531f7985ed1e9c2b6be5d401939c7a23a96d4705499ef23",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-08-17_kestrelgate_subcontract-order-KC-SO-0388_J-4126.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nKestrelgate Construction Ltd\nKestrel House, 9 Example Parade\nGravesend DA11 0XX\nCommercial Department · Tel 01632 960 381 · commercial@kestrelgate.example\nDemo Decorating Contractors Ltd (Erith branch)\nUnit 4, Example Trade Park\nErith DA8 2XX\nSubcontract order KC-SO-0388\nDate: 17 August 2026 · Your job ref: J-4126\nProject: Wharfside Quarter, Block B (46 apartments)\nScope: mist coat and two finish coats to all walls and ceilings, eggshell to kitchens and bathrooms, satinwood to\ninternal joinery, to the specification and drawings issued with the enquiry.\nSubcontract sum: £86,400.00. Monthly applications by the 25th; payment notice within 5 days of the due date; final\ndate for payment 45 days after the invoice date. Retention: none on this package.\nProgramme: start 1 September 2026, complete 27 November 2026.\nSigned for Kestrelgate Construction Ltd: Ian Royle, Senior Quantity Surveyor",
+  "response": {
+    "text": "{\"doc_type\": \"contract\", \"counterparty\": \"Kestrelgate Construction Ltd\", \"counterparty_vat_number\": \"\", \"document_number\": \"KC-SO-0388\", \"document_date\": \"2026-08-17\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-4126\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Subcontract order for the painting package at Wharfside Quarter Block B (46 apartments), subcontract sum £86,400.00, 1 September to 27 November 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Monthly applications by the 25th; final date for payment 45 days after the invoice date; no retention on this package. Signed by Ian Royle, Senior Quantity Surveyor.\"}",
+    "data": {
+      "doc_type": "contract",
+      "counterparty": "Kestrelgate Construction Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "KC-SO-0388",
+      "document_date": "2026-08-17",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-4126",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Subcontract order for the painting package at Wharfside Quarter Block B (46 apartments), subcontract sum £86,400.00, 1 September to 27 November 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Monthly applications by the 25th; final date for payment 45 days after the invoice date; no retention on this package. Signed by Ian Royle, Senior Quantity Surveyor."
+    }
+  }
+}

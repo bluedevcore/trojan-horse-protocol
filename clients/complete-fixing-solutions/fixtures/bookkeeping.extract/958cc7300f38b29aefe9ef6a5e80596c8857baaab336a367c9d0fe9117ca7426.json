@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "958cc7300f38b29aefe9ef6a5e80596c8857baaab336a367c9d0fe9117ca7426",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-30_bryn-skip_BSW-20488.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nBryn Skip & Waste Ltd\nBryn Yard, Ruabon Road\nWrexham LL14 0XX\nTel 01632 960 967 · bookings@bryn-skips.example\nVAT Reg No: GB 331 5820 80\nINVOICE\nInvoice number: BSW-20488\nInvoice date: 30/10/2026\nDue date: 29/11/2026\nYour order no: PO-4416\nDelivered to site / job ref: J-2614 Llay primary school extension - ceilings and partitions\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\n6-yard skip delivery and exchange, Llay school site\n1\n£150.00\n£150.00\nTotal net\n£150.00\nVAT @ 20% on £150.00\n£30.00\nTotal due\n£180.00\nPayment terms: 30 days. BACS to Bryn Skip & Waste Ltd, sort code 00-69-72, account 20087356.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Bryn Skip & Waste Ltd\", \"counterparty_vat_number\": \"GB 331 5820 80\", \"document_number\": \"BSW-20488\", \"document_date\": \"2026-10-30\", \"due_date\": \"2026-11-29\", \"po_number\": \"PO-4416\", \"project_reference\": \"J-2614\", \"currency\": \"GBP\", \"net_total\": 150.0, \"vat_total\": 30.0, \"gross_total\": 180.0, \"vat_lines\": [{\"rate\": 20, \"net\": 150.0, \"vat\": 30.0}], \"line_items\": [{\"description\": \"6-yard skip delivery and exchange, Llay school site\", \"quantity\": 1, \"unit_price\": 150.0, \"net\": 150.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-69-72\", \"bank_account_number\": \"20087356\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for a 6-yard skip delivery and exchange at the Llay school site.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Bryn Skip & Waste Ltd",
+      "counterparty_vat_number": "GB 331 5820 80",
+      "document_number": "BSW-20488",
+      "document_date": "2026-10-30",
+      "due_date": "2026-11-29",
+      "po_number": "PO-4416",
+      "project_reference": "J-2614",
+      "currency": "GBP",
+      "net_total": 150.0,
+      "vat_total": 30.0,
+      "gross_total": 180.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 150.0,
+          "vat": 30.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "6-yard skip delivery and exchange, Llay school site",
+          "quantity": 1,
+          "unit_price": 150.0,
+          "net": 150.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-69-72",
+      "bank_account_number": "20087356",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for a 6-yard skip delivery and exchange at the Llay school site.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

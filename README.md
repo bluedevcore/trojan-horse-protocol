@@ -1,6 +1,6 @@
-# Trojan Horse Protocol: client demo apps
+# Client demo apps
 
-Each demo is a small working web app that shows a UK small business an AI tool doing much of a job they are hiring for. It is sent as a link plus a 60-second video, instead of a CV.
+Each demo is a small working web app that shows a UK small business an AI tool doing much of a job they are hiring for. It is sent as a link plus a 60-second video, alongside a CV.
 
 - **One shared core:** a Claude client with a disk cache and mock mode, a Streamlit page shell, a step-progress widget, a summary panel, a "needs human check" list, download builders and neutral styling.
 - **One reusable engine per job type:** for example `tools/data_validation/`. It holds the logic and the Claude prompts, and contains no client names.
@@ -13,13 +13,18 @@ The rules for working in this repo are in [CLAUDE.md](CLAUDE.md). The build orde
 | Client | Tool | Main file path | Status |
 |---|---|---|---|
 | NFU Energy: Technical Data Administrator | Meter Data Checker (`data_validation`) | `clients/nfu-energy/app.py` | Built |
+| Cosgrove & Cosgrove Ltd: Accounts Assistant | QuickBooks Bookkeeping Agent (`bookkeeping`) | `clients/cosgrove-cosgrove/app.py` | Built |
+| Somerset Solders: P/T Accounts Administrator / Bookkeeper | Bookkeeping Agent (`bookkeeping`, Xero) | `clients/somerset-solders/app.py` | Built |
+| Alfred Bagnall & Sons: Branch Administrator | Debtor & Filing Agent (`bookkeeping`) | `clients/alfred-bagnall/app.py` | Built |
+| Complete Fixing Solutions: Office Administrator | Timesheet-to-Payroll Agent (`bookkeeping`, Sage) | `clients/complete-fixing-solutions/app.py` | Built |
+| Chapel Properties: Accounts Administrator | Financial Data Entry Agent (`bookkeeping`) | `clients/chapel-properties/app.py` | Built |
 
 ## Repo structure
 
 ```
 core/                 shared code: claude.py (wrapper + cache + mock mode), ui.py (page shell, progress,
                       summary, human-check list, downloads), downloads.py (Excel/CSV/Word/PDF), styling.py
-tools/<tool>/         one engine per job type, e.g. tools/data_validation/
+tools/<tool>/         one engine per job type, e.g. tools/data_validation/, tools/bookkeeping/ (see its README.md)
 clients/<slug>/       app.py, config.yaml, sample_data/, fixtures/, DEMO_SCRIPT.md, PITCH_MESSAGE.md, NEXT_STEPS.md
 briefs/<tool>/        the original per-client briefs (read-only)
 tests/                pytest suite for core/ and tools/, plus end-to-end tests per client

@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "99636ae168048f333599fe23640801b6673589aed54c3891ebaa856c3d41342b",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-14_kestrelgate_remittance-advice.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Kestrelgate Payables <payables@kestrelgate.example>\nTo: erith.office@demo-decorating.example\nDate: Wed, 14 Oct 2026 07:15:00 +0100\nSubject: Remittance advice - payment run 14/10/2026\n\nRemittance advice\n\nPayer: Kestrelgate Construction Ltd\nPayee: Demo Decorating Contractors Ltd\nPayment date: 14/10/2026 by BACS\n\nYour invoice   Description                               Amount\nSI-30364       Application 3 - Wharfside Quarter painting   £11,400.00\n\nTotal paid: £11,400.00\n\nThis is an automated message from Kestrelgate Construction Ltd.",
+  "response": {
+    "text": "{\"doc_type\": \"remittance\", \"counterparty\": \"Kestrelgate Construction Ltd\", \"counterparty_vat_number\": \"\", \"document_number\": \"\", \"document_date\": \"2026-10-14\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": 11400.0, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"paid\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Remittance advice: Kestrelgate paid invoice SI-30364 (Application 3, Wharfside Quarter painting) by BACS on 14 October 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Names the Wharfside Quarter site but quotes no job number.\"}",
+    "data": {
+      "doc_type": "remittance",
+      "counterparty": "Kestrelgate Construction Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "",
+      "document_date": "2026-10-14",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": 11400.0,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "paid",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Remittance advice: Kestrelgate paid invoice SI-30364 (Application 3, Wharfside Quarter painting) by BACS on 14 October 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Names the Wharfside Quarter site but quotes no job number."
+    }
+  }
+}
