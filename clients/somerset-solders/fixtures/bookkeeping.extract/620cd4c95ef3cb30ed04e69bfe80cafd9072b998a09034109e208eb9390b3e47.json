@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "620cd4c95ef3cb30ed04e69bfe80cafd9072b998a09034109e208eb9390b3e47",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-12_carrowdene_CM-118377.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nCarrowdene Metals Ltd\nFoundry Lane\nAvonmouth BS11 0XX\nTel 0117 496 0412 · sales.ledger@carrowdene-metals.example\nVAT Reg No: GB 482 1706 49\nINVOICE\nInvoice number: CM-118377\nInvoice date: 12/10/2026\nDue date: 11/11/2026\nYour order ref: PO-2611\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nTin ingot Sn 99.95%, per kg (delivered)\n500\n£23.20\n20%\n£11,600.00\nTin market surcharge since order date, per kg\n500\n£0.90\n20%\n£450.00\nSubtotal (net)\n£12,050.00\nVAT @ 20% on £12,050.00\n£2,410.00\nTotal due\n£14,460.00\nTerms: 30 days net.\nPay by bank transfer to Carrowdene Metals Ltd: sort code 00-14-52, account number 10230418.\nPlease quote CM-118377 as the payment reference.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Carrowdene Metals Ltd\", \"counterparty_vat_number\": \"GB 482 1706 49\", \"document_number\": \"CM-118377\", \"document_date\": \"2026-10-12\", \"due_date\": \"2026-11-11\", \"po_number\": \"PO-2611\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 12050.0, \"vat_total\": 2410.0, \"gross_total\": 14460.0, \"vat_lines\": [{\"rate\": 20, \"net\": 12050.0, \"vat\": 2410.0}], \"line_items\": [{\"description\": \"Tin ingot Sn 99.95%, per kg (delivered)\", \"quantity\": 500, \"unit_price\": 23.2, \"net\": 11600.0, \"vat_rate\": 20}, {\"description\": \"Tin market surcharge since order date, per kg\", \"quantity\": 500, \"unit_price\": 0.9, \"net\": 450.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-14-52\", \"bank_account_number\": \"10230418\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for 500 kg of tin ingot on PO-2611, plus a tin market surcharge.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Adds a £450.00 tin market surcharge for price movement since the order date.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Carrowdene Metals Ltd",
+      "counterparty_vat_number": "GB 482 1706 49",
+      "document_number": "CM-118377",
+      "document_date": "2026-10-12",
+      "due_date": "2026-11-11",
+      "po_number": "PO-2611",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 12050.0,
+      "vat_total": 2410.0,
+      "gross_total": 14460.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 12050.0,
+          "vat": 2410.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Tin ingot Sn 99.95%, per kg (delivered)",
+          "quantity": 500,
+          "unit_price": 23.2,
+          "net": 11600.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Tin market surcharge since order date, per kg",
+          "quantity": 500,
+          "unit_price": 0.9,
+          "net": 450.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-14-52",
+      "bank_account_number": "10230418",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for 500 kg of tin ingot on PO-2611, plus a tin market surcharge.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Adds a £450.00 tin market surcharge for price movement since the order date."
+    }
+  }
+}

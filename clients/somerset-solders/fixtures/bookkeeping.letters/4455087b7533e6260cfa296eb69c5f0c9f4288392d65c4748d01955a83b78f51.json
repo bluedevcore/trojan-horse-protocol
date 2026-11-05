@@ -1,0 +1,29 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "4455087b7533e6260cfa296eb69c5f0c9f4288392d65c4748d01955a83b78f51",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"supplier:Brenwick Lab Supplies Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Brenwick Lab Supplies Ltd\",\n  \"contact\": \"\",\n  \"email\": \"\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice BLS-1043 · 22 Oct 2026 · £408.00\",\n    \"issue\": \"VAT number GB 618 7402 39 fails HMRC's check-digit test, so the £68.00 VAT may not be reclaimable.\",\n    \"ask\": \"Could you confirm your VAT registration number? The one on the invoice does not pass HMRC's check.\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-08\"\n  ]\n },\n {\n  \"key\": \"supplier:Carrowdene Metals Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Carrowdene Metals Ltd\",\n  \"contact\": \"Neil Abbott\",\n  \"email\": \"sales.ledger@carrowdene-metals.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice CM-118377 · 12 Oct 2026 · £450.00\",\n    \"issue\": \"Invoiced £12,050.00 net against PO PO-2611 for £11,600.00 (over by £450.00).\",\n    \"ask\": \"Invoice CM-118377 takes PO PO-2611 £450.00 over the agreed £11,600.00. Could you explain the extra or send a corrected invoice?\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-16\"\n  ]\n },\n {\n  \"key\": \"supplier:Coldharbour Industrial Gases Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Coldharbour Industrial Gases Ltd\",\n  \"contact\": \"Lee Morrish\",\n  \"email\": \"accounts@coldharbour-gases.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice CIG-55190 · 14 Oct 2026 · £483.60\",\n    \"issue\": \"Net £365.50 + VAT £73.10 = £438.60, but the total shown is £483.60 (difference £45.00).\",\n    \"ask\": \"Could you send a corrected invoice?\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-02\"\n  ]\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"supplier:Brenwick Lab Supplies Ltd\", \"subject\": \"Invoice BLS-1043: please confirm your VAT number\", \"body\": \"Hello,\\n\\nThank you for invoice BLS-1043, dated 22 October 2026, for £408.00. The VAT registration number shown, GB 618 7402 39, does not pass HMRC's check-digit test, so we can't reclaim the £68.00 VAT until it is confirmed.\\n\\nCould you confirm your VAT registration number, please, by Friday 13 November? It may just be a typing error on the invoice.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Company Ltd\"}, {\"key\": \"supplier:Carrowdene Metals Ltd\", \"subject\": \"Invoice CM-118377: £450.00 over PO-2611\", \"body\": \"Hello Neil,\\n\\nThank you for invoice CM-118377, dated 12 October 2026. It comes to £12,050.00 net, but our purchase order PO-2611 was agreed at £11,600.00, so the invoice is £450.00 over the order value.\\n\\nCould you explain the extra charge or send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Company Ltd\"}, {\"key\": \"supplier:Coldharbour Industrial Gases Ltd\", \"subject\": \"Invoice CIG-55190: total doesn't add up\", \"body\": \"Hello Lee,\\n\\nThank you for invoice CIG-55190, dated 14 October 2026. The net amount is £365.50 and the VAT is £73.10, which comes to £438.60, but the total due is shown as £483.60, a difference of £45.00.\\n\\nCould you send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Company Ltd\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "supplier:Brenwick Lab Supplies Ltd",
+          "subject": "Invoice BLS-1043: please confirm your VAT number",
+          "body": "Hello,\n\nThank you for invoice BLS-1043, dated 22 October 2026, for £408.00. The VAT registration number shown, GB 618 7402 39, does not pass HMRC's check-digit test, so we can't reclaim the £68.00 VAT until it is confirmed.\n\nCould you confirm your VAT registration number, please, by Friday 13 November? It may just be a typing error on the invoice.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+        },
+        {
+          "key": "supplier:Carrowdene Metals Ltd",
+          "subject": "Invoice CM-118377: £450.00 over PO-2611",
+          "body": "Hello Neil,\n\nThank you for invoice CM-118377, dated 12 October 2026. It comes to £12,050.00 net, but our purchase order PO-2611 was agreed at £11,600.00, so the invoice is £450.00 over the order value.\n\nCould you explain the extra charge or send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+        },
+        {
+          "key": "supplier:Coldharbour Industrial Gases Ltd",
+          "subject": "Invoice CIG-55190: total doesn't add up",
+          "body": "Hello Lee,\n\nThank you for invoice CIG-55190, dated 14 October 2026. The net amount is £365.50 and the VAT is £73.10, which comes to £438.60, but the total due is shown as £483.60, a difference of £45.00.\n\nCould you send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+        }
+      ]
+    }
+  }
+}

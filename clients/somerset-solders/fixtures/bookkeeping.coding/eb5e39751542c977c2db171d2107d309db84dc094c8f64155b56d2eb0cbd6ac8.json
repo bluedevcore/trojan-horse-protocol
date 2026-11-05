@@ -1,0 +1,26 @@
+{
+  "task": "bookkeeping.coding",
+  "key": "eb5e39751542c977c2db171d2107d309db84dc094c8f64155b56d2eb0cbd6ac8",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Entries to code (JSON):\n\n[\n {\n  \"id\": \"D-15\",\n  \"payee\": \"Harrowden Safety Supplies Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 699.54,\n  \"document\": \"Invoice for fume extractor filters, nitrile gloves, a first aid kit refill and an office task chair.\",\n  \"items\": [\n   \"Fume extractor carbon and HEPA filter set\",\n   \"Nitrile gloves, box of 100\",\n   \"First aid kit refill, large workplace\",\n   \"Ergonomic task chair with arms\"\n  ],\n  \"notes\": \"\"\n },\n {\n  \"id\": \"D-16\",\n  \"payee\": \"Brenwick Lab Supplies Ltd\",\n  \"card_description\": \"\",\n  \"amount_gbp\": 408.0,\n  \"document\": \"Invoice from a new supplier for melting-pot crucibles, thermocouple probes and crucible tongs.\",\n  \"items\": [\n   \"Clay-graphite crucible, size 20\",\n   \"Type K thermocouple probe, 300 mm\",\n   \"Crucible tongs, 600 mm\"\n  ],\n  \"notes\": \"The invoice says it is a new account.\"\n }\n]",
+  "response": {
+    "text": "{\"codes\": [{\"id\": \"D-15\", \"account\": \"Health and safety\", \"confidence\": \"low\", \"reason\": \"Mixed invoice: the nitrile gloves and first aid kit are health and safety, the fume extractor filters could be production consumables and the task chair is office equipment, so it may need splitting.\"}, {\"id\": \"D-16\", \"account\": \"Production consumables\", \"confidence\": \"high\", \"reason\": \"Clay-graphite crucibles, thermocouple probes and crucible tongs are used up at the melting pots.\"}]}",
+    "data": {
+      "codes": [
+        {
+          "id": "D-15",
+          "account": "Health and safety",
+          "confidence": "low",
+          "reason": "Mixed invoice: the nitrile gloves and first aid kit are health and safety, the fume extractor filters could be production consumables and the task chair is office equipment, so it may need splitting."
+        },
+        {
+          "id": "D-16",
+          "account": "Production consumables",
+          "confidence": "high",
+          "reason": "Clay-graphite crucibles, thermocouple probes and crucible tongs are used up at the melting pots."
+        }
+      ]
+    }
+  }
+}

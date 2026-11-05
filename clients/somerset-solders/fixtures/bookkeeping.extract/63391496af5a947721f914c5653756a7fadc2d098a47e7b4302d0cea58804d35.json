@@ -1,0 +1,72 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "63391496af5a947721f914c5653756a7fadc2d098a47e7b4302d0cea58804d35",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-02_hollowmere_HC-7741.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Ruth Calloway <accounts@hollowmere-chem.example>\nTo: accounts@demo-company.example\nDate: Fri, 02 Oct 2026 15:20:00 +0100\nSubject: Invoice HC-7741 - your order PO-2617\n\nGood afternoon,\n\nPlease find attached invoice HC-7741 for the rosin, activator and isopropyl alcohol delivered today against your order PO-2617.\n\nKind regards,\nRuth Calloway\nAccounts, Hollowmere Chemicals Ltd\n\n--- Attachment: HC-7741.pdf ---\nHollowmere Chemicals Ltd\nHollowmere Industrial Park\nGloucester GL2 0XX\nTel 01632 960 527 · accounts@hollowmere-chem.example\nVAT Reg No: GB 510 3274 95\nINVOICE\nInvoice number: HC-7741\nInvoice date: 02/10/2026\nDue date: 01/11/2026\nYour order ref: PO-2617\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nWater-white gum rosin, 25 kg sack\n8\n£68.00\n20%\n£544.00\nAdipic acid activator, 5 kg tub\n4\n£42.50\n20%\n£170.00\nIsopropyl alcohol 99.9%, 25 litre drum\n6\n£61.00\n20%\n£366.00\nHazardous goods delivery\n1\n£45.00\n20%\n£45.00\nSubtotal (net)\n£1,125.00\nVAT @ 20% on £1,125.00\n£225.00\nTotal due\n£1,350.00\nTerms: 30 days net.\nPay by bank transfer to Hollowmere Chemicals Ltd: sort code 00-36-74, account number 10252630.\nPlease quote HC-7741 as the payment reference.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Hollowmere Chemicals Ltd\", \"counterparty_vat_number\": \"GB 510 3274 95\", \"document_number\": \"HC-7741\", \"document_date\": \"2026-10-02\", \"due_date\": \"2026-11-01\", \"po_number\": \"PO-2617\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 1125.0, \"vat_total\": 225.0, \"gross_total\": 1350.0, \"vat_lines\": [{\"rate\": 20, \"net\": 1125.0, \"vat\": 225.0}], \"line_items\": [{\"description\": \"Water-white gum rosin, 25 kg sack\", \"quantity\": 8, \"unit_price\": 68.0, \"net\": 544.0, \"vat_rate\": 20}, {\"description\": \"Adipic acid activator, 5 kg tub\", \"quantity\": 4, \"unit_price\": 42.5, \"net\": 170.0, \"vat_rate\": 20}, {\"description\": \"Isopropyl alcohol 99.9%, 25 litre drum\", \"quantity\": 6, \"unit_price\": 61.0, \"net\": 366.0, \"vat_rate\": 20}, {\"description\": \"Hazardous goods delivery\", \"quantity\": 1, \"unit_price\": 45.0, \"net\": 45.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-36-74\", \"bank_account_number\": \"10252630\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice, sent by email, for rosin, activator and isopropyl alcohol for flux, delivered against PO-2617.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Hollowmere Chemicals Ltd",
+      "counterparty_vat_number": "GB 510 3274 95",
+      "document_number": "HC-7741",
+      "document_date": "2026-10-02",
+      "due_date": "2026-11-01",
+      "po_number": "PO-2617",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 1125.0,
+      "vat_total": 225.0,
+      "gross_total": 1350.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 1125.0,
+          "vat": 225.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Water-white gum rosin, 25 kg sack",
+          "quantity": 8,
+          "unit_price": 68.0,
+          "net": 544.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Adipic acid activator, 5 kg tub",
+          "quantity": 4,
+          "unit_price": 42.5,
+          "net": 170.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Isopropyl alcohol 99.9%, 25 litre drum",
+          "quantity": 6,
+          "unit_price": 61.0,
+          "net": 366.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Hazardous goods delivery",
+          "quantity": 1,
+          "unit_price": 45.0,
+          "net": 45.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-36-74",
+      "bank_account_number": "10252630",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice, sent by email, for rosin, activator and isopropyl alcohol for flux, delivered against PO-2617.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}
