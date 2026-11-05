@@ -19,6 +19,7 @@ from core import ui
 from core.claude import ClaudeClient
 from core.estimates import format_minutes
 from tools.bookkeeping import pipeline, reports
+from tools.bookkeeping.documents import type_count
 from tools.bookkeeping.pipeline import PipelineError, RunInputs, RunResult
 
 RESULT_KEY, STEPS_KEY = "bk_result", "bk_steps"
@@ -103,7 +104,7 @@ def render_results(r: RunResult) -> None:
     ui.section("Summary", f"{r.inputs_label.capitalize()} · period {f['period']} · as at {f['as_of']} · "
                           f"finished in {r.seconds:.1f}s")
     by_type = f.get("documents_by_type", {})
-    doc_sub = " · ".join(f"{n} {t}{'s' if n != 1 else ''}" for t, n in sorted(by_type.items(), key=lambda x: -x[1])[:3])
+    doc_sub = " · ".join(type_count(t, n) for t, n in sorted(by_type.items(), key=lambda x: -x[1])[:3])
     metrics = [ui.Metric("Documents read", str(f["documents"]), doc_sub)]
     if f.get("entries"):
         metrics.append(ui.Metric(f"Purchases ready for {r.system_label.split()[0]}", f"£{f['value_ready']:,.0f}",

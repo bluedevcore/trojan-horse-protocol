@@ -380,6 +380,16 @@ def arithmetic_problems(rec: dict, *, allowed_rates=(0.0, 5.0, 20.0)) -> list[tu
     return out
 
 
+_TYPE_WORDS = {"correspondence": ("letter or email", "letters and emails"), "other": ("other document", "other documents")}
+
+
+def type_count(doc_type: str, n: int) -> str:
+    """'3 invoices', '1 credit note', '11 letters and emails' (doc_type with _ or spaces)."""
+    key = str(doc_type).replace(" ", "_")
+    one, many = _TYPE_WORDS.get(key, (key.replace("_", " "), key.replace("_", " ") + "s"))
+    return f"{n} {one if n == 1 else many}"
+
+
 def documents_frame(docs: list[dict]) -> pd.DataFrame:
     """One row per document, for display and export."""
     rows = []

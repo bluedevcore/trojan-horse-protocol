@@ -77,3 +77,11 @@ def test_defaults_are_unchanged():
     assert "Bookkeeping pack (Excel)" in labels and "Month-end report (PDF)" in labels
     assert "Ledger lines" in set(reports.summary_frame(r)["Item"])
     assert all(f.file_name.startswith("debtor-agent_2026-10_") for f in r.downloads)  # stem from the Xero export
+
+
+def test_document_type_counts_read_naturally():
+    from tools.bookkeeping.documents import type_count
+
+    assert [type_count("invoice", 15), type_count("credit_note", 1), type_count("credit note", 2)] == [
+        "15 invoices", "1 credit note", "2 credit notes"]
+    assert [type_count("correspondence", 11), type_count("other", 1)] == ["11 letters and emails", "1 other document"]

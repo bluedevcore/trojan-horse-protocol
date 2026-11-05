@@ -28,7 +28,7 @@ from tools.bookkeeping.checks import Finding, finalise, findings_frame
 from tools.bookkeeping.coding import (Chart, Rules, SupplierBook, chart_from_frame, code_from_rules, code_from_supplier,
                                       supplier_vat_checks)
 from tools.bookkeeping.documents import (DOC_SUFFIXES, IMAGE_SUFFIXES, DocText, DocumentError, arithmetic_problems,
-                                         documents_frame, normalise, read_document)
+                                         documents_frame, normalise, read_document, type_count)
 from tools.bookkeeping.exports import SYSTEM_LABELS, build_exports
 from tools.bookkeeping.filing import file_documents
 from tools.bookkeeping.matching import MatchSettings, match_card_to_documents, name_similarity, reconcile_statement
@@ -268,7 +268,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
             docs.append(normalise(data, doc, f"D-{i:02d}", src))
         by_type = Counter(d["doc_type"] for d in docs)
         progress.done(f"Extracted the details from {_plural(len(docs), 'document')}",
-                      ", ".join(f"{n} {t.replace('_', ' ')}{'s' if n != 1 else ''}" for t, n in by_type.most_common())
+                      ", ".join(type_count(t, n) for t, n in by_type.most_common())
                       + f" · {_source_phrase(Counter(c.source for c in calls))}")
         if any(c.source in ("mock", "fallback") for c in calls):
             warnings.append("Some documents were read by the pattern reader (no AI), which is less reliable: "
@@ -531,7 +531,8 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
 
     result.downloads = reports.build_downloads(result)
     built = (f"Built {_plural(len(exports), SYSTEM_LABELS.get(config.get('accounting_system', 'quickbooks'), '') + ' import file')} "
-             f"and the month-end pack" if exports else "Built the month-end pack (nothing is ready to import yet)")
+             f"and the month-end pack" if exports else "Built the month-end pack (nothing is ready to import yet)"
+             if not entries.empty else f"Built {_plural(len(result.downloads), 'output file')}")
     progress.done(built, ", ".join(f.file_name.rsplit(".", 1)[-1].upper() for f in result.downloads[len(exports):]))
     result.seconds = round(time.perf_counter() - started, 2)
     return result

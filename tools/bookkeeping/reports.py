@@ -223,12 +223,12 @@ def _pounds(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
 def pdf_report(r: "RunResult") -> bytes:
     f = r.facts
     rc = r.config.get("reports") or {}
-    top = [("Documents read", f["documents"])]
     if not _no_ledger(r):
-        top += [("Ready to import", f"£{f['value_ready']:,.2f}"), ("Held for a check", f["entries_held"])]
-    else:
-        if f.get("debtor_items"):
-            top += [("Outstanding", f"£{f['debtors_outstanding']:,.2f}"), ("Overdue", f"£{f['debtors_overdue']:,.2f}")]
+        top = [("Documents read", f["documents"]), ("Ready to import", f"£{f['value_ready']:,.2f}"),
+               ("Held for a check", f["entries_held"])]
+    else:  # five tiles at most, so they fit one row
+        top = ([("Outstanding", f"£{f['debtors_outstanding']:,.2f}"), ("Overdue", f"£{f['debtors_overdue']:,.2f}")]
+               if f.get("debtor_items") else [("Documents read", f["documents"])])
         if f.get("filing_docs"):
             top.append(("Filed", f"{f['filing_filed']} of {f['filing_docs']}"))
     blocks = [dl.heading("Summary"),
