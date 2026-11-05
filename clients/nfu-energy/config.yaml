@@ -1,0 +1,174 @@
+# Meter Data Checker — prototype demo for NFU Energy.
+# All wording, file names and validation rules for this client live here;
+# the engine in tools/data_validation/ is generic.
+
+slug: nfu-energy
+client_name: NFU Energy
+tool_name: Meter Data Checker
+role: Technical Data Administrator
+headline: "Meter Data Checker: built as a prototype for NFU Energy"
+replaces: >-
+  Replaces hours of scrolling through meter exports: it checks every reading, flags gaps, spikes and
+  inconsistencies, drafts the discrepancy notes and builds the report pack with a deadline tracker.
+badges: ["Prototype", "Synthetic sample data"]
+footer: >-
+  Independent prototype built for a job application. Not affiliated with or endorsed by NFU Energy.
+  All sample data is synthetic: the farms, meters and readings are invented.
+upload_help: >-
+  Upload one or more meter exports (CSV or Excel). Columns are matched by name, e.g. MSN / Meter Serial,
+  Read Date / Date, Register Read / Meter Reading, Daily kWh / Generation / Heat Output.
+  Optionally add a site register (CSV/XLSX with meter_serial) and a reporting calendar.
+
+# Pause after each progress step so a screen recording can follow along (seconds).
+step_delay_seconds: 0.45
+
+# The sample data runs "as at" this date so the deadline tracker is reproducible.
+# Uploaded files use today's date.
+sample_as_of: 2026-11-05
+
+sample_data:
+  readings:
+    - sample_data/electricity_import_daily_aug-oct-2026.csv
+    - sample_data/solar_pv_generation_aug-oct-2026.xlsx
+    - sample_data/biomass_heat_meters_aug-oct-2026.csv
+  reference: sample_data/site_register.csv
+  calendar: sample_data/reporting_calendar.csv
+
+dataset:
+  key: meter_serial
+  date: read_date
+  value: kwh
+  unit: kWh
+  key_label: Meter
+  value_label: kWh
+  category_column: meter_type
+  numeric: [kwh, register_read]
+  dates: [read_date]
+  required: [meter_serial, read_date, kwh]
+  aliases:
+    meter_serial: [MSN, Meter Serial, Meter Serial Number, Generation Meter Serial, Heat Meter ID, Meter ID, Serial]
+    read_date: [Read Date, Date, Reading Date, Reading Date (dd/mm/yyyy), Day]
+    register_read: [Register Read (kWh), Register Read, Meter Reading (kWh), Meter Reading, Cumulative Heat (kWh), Cumulative kWh]
+    kwh: [Daily kWh, kWh, Consumption (kWh), Consumption, Generation (kWh), Generation, Heat Output (kWh), Heat Output]
+  column_labels:
+    meter_serial: meter serial
+    read_date: read date
+    register_read: register read
+    kwh: daily kWh
+  # Reference (site register) columns shown alongside each exception
+  display_columns:
+    site_name: Site
+    meter_type: Meter type
+
+reference:
+  key: meter_serial
+  label: site register
+
+# Rules run in this order; when two rules flag the same cell, the first wins
+# and the others are listed as "also flagged".
+parse_errors:
+  id: unreadable_value
+  label: Unreadable value
+  severity: medium
+  needs_human_check: true
+  exclude_from_totals: true
+
+rules:
+  - id: unknown_meter
+    type: reference
+    label: Meter not in site register
+    column: meter_serial
+    severity: high
+    needs_human_check: true
+    exclude_from_totals: true
+    report_unused: true
+
+  - id: duplicate_reading
+    type: duplicates
+    label: Duplicate reading
+    keys: [meter_serial, read_date]
+    compare_columns: [kwh, register_read]
+    severity: high
+    needs_human_check: true
+    exclude_from_totals: true
+
+  - id: missing_reading
+    type: missing
+    label: Missing reading
+    columns: [kwh, register_read]
+    severity: medium
+    needs_human_check: false
+
+  - id: impossible_value
+    type: range
+    label: Impossible value
+    column: kwh
+    min: 0
+    max_column: max_daily_kwh
+    context_columns: [register_read, max_daily_kwh, capacity, capacity_unit]
+    severity: high
+    needs_human_check: true
+    exclude_from_totals: true
+
+  - id: register_mismatch
+    type: consistency
+    label: Register mismatch
+    cumulative_column: register_read
+    column: kwh
+    tolerance: 1.0
+    severity: medium
+    needs_human_check: true
+    exclude_from_totals: true
+
+  - id: sudden_spike
+    type: spike
+    label: Sudden spike
+    column: kwh
+    window: 14
+    factor: 3.0
+    min_abs_change: 100
+    context_columns: [register_read]
+    severity: medium
+    needs_human_check: true
+    exclude_from_totals: true
+
+  - id: zero_generation
+    type: flatline
+    label: Zero generation run
+    column: kwh
+    value: 0
+    min_run: 3
+    where:
+      meter_type: [Solar PV generation]
+    severity: high
+    needs_human_check: true
+
+  - id: missing_days
+    type: date_gap
+    label: Missing days
+    frequency_days: 1
+    min_gap_days: 1
+    high_if_days_at_least: 7
+    cumulative_column: register_read
+    severity: medium
+    needs_human_check: false
+
+# Plain-English context passed to Claude for notes and the summary.
+ai:
+  domain: >-
+    Daily meter readings for UK farm and rural business sites: electricity import meters, solar PV
+    generation meters (Feed-in Tariff) and biomass boiler heat meters (Non-Domestic RHI). Each row has a
+    cumulative register read and a daily kWh figure. The data feeds supplier bill validation, FIT
+    generation readings, RHI periodic data and monthly reports to member farms.
+  audience: a technical data administrator and their operations manager at an energy consultancy
+  notes_per_request: 6
+
+# Time-saved estimate shown on the results screen. Assumptions are displayed.
+time_estimate:
+  manual:
+    - ["check a meter-month of daily readings by eye", "meter_months", 4]
+    - ["investigate an exception and write a discrepancy note", "exceptions", 12]
+    - ["assemble the report pack and update the deadline tracker", "fixed", 90]
+  with_tool:
+    - ["review an item on the needs-human-check list", "human_checks", 5]
+    - ["check and send the generated pack", "fixed", 15]

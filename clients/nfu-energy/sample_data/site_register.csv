@@ -1,0 +1,25 @@
+meter_serial,site_id,site_name,town,postcode_district,meter_type,scheme,capacity,capacity_unit,max_daily_kwh
+E19UK08231,S01,Brookfield Farm,Shipston-on-Stour,CV36,Electricity import,—,100,kVA,2400
+G15PV03318,S01,Brookfield Farm,Shipston-on-Stour,CV36,Solar PV generation,FIT,50,kWp,400
+E18UK11407,S02,Manor Farm Partnership,Banbury,OX17,Electricity import,—,150,kVA,3600
+HM-2016-0412,S02,Manor Farm Partnership,Banbury,OX17,Biomass heat,RHI,199,kWth,4776
+E20UK02958,S03,Hollins Green Poultry,Market Drayton,TF9,Electricity import,—,120,kVA,2880
+HM-2015-0177,S03,Hollins Green Poultry,Market Drayton,TF9,Biomass heat,RHI,199,kWth,4776
+E16UK07720,S04,Westcombe Orchards,Ledbury,HR8,Electricity import,—,150,kVA,3600
+G14PV01267,S05,Thornbury Dairy,Leek,ST13,Solar PV generation,FIT,100,kWp,800
+HM-2017-0951,S06,Ashdown Glasshouses,Chichester,PO20,Biomass heat,RHI,500,kWth,12000
+E21UK00314,S07,Kingsmead Farm Shop & Café,Stratford-upon-Avon,CV37,Electricity import,—,60,kVA,1440
+E17UK05562,S08,Long Acre Potatoes,Spalding,PE12,Electricity import,—,150,kVA,3600
+E19UK03391,S09,Redhill Pig Unit,Driffield,YO25,Electricity import,—,120,kVA,2880
+G13PV00845,S10,Penrose Farm,Truro,TR4,Solar PV generation,FIT,50,kWp,400
+HM-2016-0638,S11,Upper Wyke Farm,Malton,YO17,Biomass heat,RHI,199,kWth,4776
+G15PV02790,S12,Glebe Farm Holidays,Bakewell,DE45,Solar PV generation,FIT,30,kWp,240
+E15UK09184,S13,Fenside Arable,March,PE15,Electricity import,—,100,kVA,2400
+G16PV00412,S14,Bryn Mawr Farm,Builth Wells,LD2,Solar PV generation,FIT,150,kWp,1200
+E17UP04512,S15,Oakleigh Equestrian Centre,Melton Mowbray,LE14,Electricity import,—,60,kVA,1440
+E18UK06673,S16,Hambleton Cereals Ltd,Northallerton,DL7,Electricity import,—,200,kVA,4800
+HM-2018-0203,S17,Coldharbour Mushrooms,Ashford,TN26,Biomass heat,RHI,300,kWth,7200
+G15PV04456,S18,Ellerby Free Range Eggs,Pickering,YO18,Solar PV generation,FIT,250,kWp,2000
+E20UK04419,S19,Mill Lane Dairy,Nantwich,CW5,Electricity import,—,200,kVA,4800
+E16UK10052,S20,Wolds Edge Farm,Louth,LN11,Electricity import,—,80,kVA,1920
+G14PV03021,S20,Wolds Edge Farm,Louth,LN11,Solar PV generation,FIT,40,kWp,320
