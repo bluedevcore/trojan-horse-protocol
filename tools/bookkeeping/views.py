@@ -175,7 +175,7 @@ def _tabs(r: RunResult) -> list[tuple[str, callable]]:
         "hours": ("Hours for payroll", _hours_tab, not r.hours.empty),
         "po": ("PO matching", lambda x: _table(x.po_table), not r.po_table.empty),
         "statements": ("Supplier statements", lambda x: _table(x.statements), not r.statements.empty),
-        "filing": ("Filing", lambda x: _table(x.filing, wide=["Summary", "Folder"]), not r.filing.empty),
+        "filing": ("Filing", _filing_tab, not r.filing.empty),
         "vat": ("VAT return", _vat_tab, not r.vat_return.empty),
         "emails": (f"Emails ({len(r.letters)})", _emails_tab, bool(r.letters)),
         "checklist": ("Month-end checklist", _checklist_tab, not r.checklist.empty),
@@ -210,7 +210,11 @@ STATUS_STYLE = [("Held", "background-color:#FFF4E0;color:#7A4A00"), ("Ready", "b
                 ("Matched", "background-color:#E8F6EE;color:#0F5A34"), ("Done", "background-color:#E8F6EE;color:#0F5A34"),
                 ("Receipt missing", "background-color:#FDE8E7;color:#8A1C12"),
                 ("Amount differs", "background-color:#FFF4E0;color:#7A4A00"),
-                ("Action needed", "background-color:#FFF4E0;color:#7A4A00")]
+                ("Action needed", "background-color:#FFF4E0;color:#7A4A00"),
+                ("Final notice", "background-color:#FDE8E7;color:#8A1C12"),
+                ("Second reminder", "background-color:#FFF4E0;color:#7A4A00"),
+                ("Reminder", "background-color:#FFF9EC;color:#7A4A00"),
+                ("needs a person", "background-color:#FDE8E7;color:#8A1C12")]
 
 
 def _status_css(value: str) -> str:
@@ -324,9 +328,28 @@ def _sales_tab(r: RunResult) -> None:
 
 def _debtors_tab(r: RunResult) -> None:
     st.markdown("**By customer**")
-    _table(r.debtors_summary, status=None)
+    summary = r.debtors_summary
+    _grid(summary, [("Customer", "text", 260)] + [(c, "money", 130 if c == "Total outstanding" else 110)
+                                                  for c in summary.columns if c != "Customer"], cap=20)
     st.markdown("**Open invoices**")
-    _table(reports.debtors_frame(r), status=None)
+    d = reports.debtors_frame(r)
+    _grid(d, [("Customer", "text", 215), ("Invoice", "text", 75), ("Project", "text", 62), ("Due", "date", 88),
+              ("Amount", "money", 88), ("Received (bank)", "money", 95, "Received"), ("Outstanding", "money", 92),
+              ("Days overdue", "qty", 50, "Days"), ("Chase", "text", 115), ("Notes", "text", 260),
+              ("Invoice date", "date", 88), ("Paid (ledger)", "money", 85), ("Age", "text", 90)], status="Chase", cap=30)
+    st.caption("“Received” is money on the bank statement matched to the invoice (by invoice number, or by customer "
+               "and exact amount). Days are past the due date; negative means not yet due. Disputed invoices and "
+               "credits are not chased.")
+
+
+def _filing_tab(r: RunResult) -> None:
+    _grid(r.filing, [("Doc", "text", 45), ("From / to", "text", 180), ("Type", "text", 108), ("Project", "text", 62),
+                     ("Filed by", "text", 170), ("Folder", "text", 475), ("New file name", "text", 430),
+                     ("Original file", "text", 380)], status="Filed by", cap=30)
+    st.caption("Filed by the project reference Claude read on the document (checked against the project register), a "
+               "job number in the text, or a site name from the register. Anything unclear goes to the “to file” "
+               "folder for a person. Scroll the table right for the new file names; the zip has every document "
+               "renamed in its folder.")
 
 
 def _hours_tab(r: RunResult) -> None:
