@@ -26,7 +26,7 @@ def test_landing_page_and_demo_run_end_to_end(monkeypatch):
     for text in ("Read 24 documents and 3 spreadsheets", "Found 15 exceptions", "Needs human check (12)", "Downloads",
                  "Purchases ready for Xero", "Supplier bank details changed", "Could not tell which property"):
         assert text in page, text
-    assert [t.label for t in at.tabs] == ["Coded entries (22)", "Supplier statements", "Filing", "Emails (5)",
+    assert [t.label for t in at.tabs] == ["Coded entries (22)", "Supplier statements", "Emails (5)",
                                           "Month-end checklist", "Exceptions (15)", "Documents read (24)"]
     assert len(at.checkbox) == 12
     assert any(e.label == "Totals by property" for e in at.expander)

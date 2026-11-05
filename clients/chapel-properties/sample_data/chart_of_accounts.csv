@@ -4,13 +4,13 @@ Account Code,Account Name,Account Type,Notes
 400,Repairs and maintenance,Property costs,"Reactive repairs and like-for-like replacements: plumbing, roofing, electrical, locks, drains, decorating, fencing and the materials for them"
 410,Cleaning,Property costs,Cleaning of common parts
 415,Grounds maintenance,Property costs,Gardening and grounds for blocks and houses
-420,Safety certificates and compliance,Property costs,"Gas safety (CP12), electrical (EICR), fire alarm and emergency lighting servicing, legionella"
+420,Safety certificates,Property costs,"Gas safety (CP12), electrical (EICR), fire alarm and emergency lighting servicing, legionella"
 425,"Light, heat and power",Property costs,"Landlord electricity and gas: common parts, HMOs, empty properties"
 430,Water rates,Property costs,Water and sewerage paid by the landlord
 435,Council tax,Property costs,Council tax on empty properties and HMOs
 440,Insurance,Property costs,Buildings and landlord insurance
-445,Service charges and ground rent,Property costs,Paid to freeholders and block managers on leasehold units
-450,Letting and management fees,Property costs,"Tenant find, inventories and management fees"
+445,Service charges payable,Property costs,Service charges and ground rent paid to freeholders and block managers on leasehold units
+450,Letting agent fees,Property costs,"Tenant find, inventories and management fees"
 460,Accountancy fees,Overheads,
 465,Legal and professional fees,Overheads,"Solicitors, surveyors, tenancy agreements"
 470,Office costs and software,Overheads,

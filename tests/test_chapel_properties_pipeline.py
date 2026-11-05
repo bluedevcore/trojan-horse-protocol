@@ -108,7 +108,7 @@ def test_coding_and_vat_treatment(result):
     e = result.entries.set_index("reference")
     assert e.loc["NES-448120", "vat_code"] == "R" and e.loc["NES-448120", "vat"] == 13.61  # domestic electricity, 5%
     assert e.loc["MW-55871", "vat_code"] == "Z" and e.loc["TPI-26-3381", "vat_code"] == "E"
-    assert e.loc["SC-2026-0427", "account"] == "Service charges and ground rent"
+    assert e.loc["SC-2026-0427", "account"] == "Service charges payable"
     assert e.loc["OKJ-1043", "confidence"] == "low" and e.loc["OKJ-1043", "status"] == "Held"  # repair or capital?
     assert e.loc["CD-0912", "coded_by"] == "rule"
     coded_by = result.entries.drop_duplicates("group")["coded_by"].value_counts().to_dict()

@@ -17,8 +17,8 @@ footer: >-
   or Xero. All sample data is synthetic: the company, properties, suppliers and amounts are invented.
 footer_short: "Independent prototype · synthetic data · not affiliated with Chapel Properties Ltd"
 sample_caption: >-
-  Uses an October month for an invented property company with 7 properties: 24 contractor invoices, utility
-  bills, a service charge demand, a credit note and a supplier statement, plus the supplier list, chart of
+  Uses October for an invented property company with 7 properties: 24 documents (contractor invoices, utility
+  bills, a service charge demand, a credit note and a supplier statement), plus the supplier list, chart of
   accounts and property register. No setup needed.
 upload_help: >-
   Drop in supplier invoices, credit notes and statements (PDF or .eml). You can add your own supplier list,
@@ -80,12 +80,12 @@ coding:
     - {match: "ENERGY|ELECTRICITY|GAS SUPPLY", account: "Light, heat and power", reason: "Energy supplier"}
     - {match: "WATER", account: Water rates, vat_code: Z, reason: "Water and sewerage (zero-rated)"}
     - {match: "DRAIN|PLUMB|LOCKSMITH|ROOFING|GLAZING", account: Repairs and maintenance, reason: "Repairs trade"}
-    - {match: "GAS SAFE|FIRE|EICR|LEGIONELLA", account: Safety certificates and compliance, reason: "Safety checks and certificates"}
+    - {match: "GAS SAFE|FIRE|EICR|LEGIONELLA", account: Safety certificates, reason: "Safety checks and certificates"}
     - {match: "CLEANING", account: Cleaning, reason: "Cleaning contractor"}
     - {match: "GROUNDS|GARDEN", account: Grounds maintenance, reason: "Grounds and gardening"}
     - {match: "INSURANCE", account: Insurance, vat_code: E, reason: "Insurance (exempt from VAT)"}
-    - {match: "LETTINGS|LETTING AGENT", account: Letting and management fees, reason: "Letting agent"}
-    - {match: "BLOCK MANAGEMENT|SERVICE CHARGE", account: Service charges and ground rent, vat_code: E, reason: "Service charges payable"}
+    - {match: "LETTINGS|LETTING AGENT", account: Letting agent fees, reason: "Letting agent"}
+    - {match: "BLOCK MANAGEMENT|SERVICE CHARGE", account: Service charges payable, vat_code: E, reason: "Service charges payable"}
 
 vat:
   allowed_rates: [0, 5, 20]
@@ -131,7 +131,7 @@ analysis:
   in_report: true            # add totals by property to the PDF report
 
 views:
-  tabs: [entries, statements, filing, emails, checklist, exceptions, documents]
+  tabs: [entries, statements, emails, checklist, exceptions, documents]   # filing: see the Property column and the ZIP
 
 # Plain-English context passed to Claude.
 ai:
