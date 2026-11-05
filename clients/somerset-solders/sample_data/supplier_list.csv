@@ -1,0 +1,18 @@
+Supplier,Account Ref,Default Account,Default VAT,VAT Number,Sort Code,Account Number,Terms (days),Email,Contact
+Carrowdene Metals Ltd,CARROW01,Raw materials - metals,S,GB 482 1706 49,00-14-52,10230418,30,sales.ledger@carrowdene-metals.example,Neil Abbott
+Kilnhurst Alloys Ltd,KILNHU01,Raw materials - metals,S,GB 339 0587 37,00-25-63,10241529,30,accounts@kilnhurst-alloys.example,Sara Venn
+Hollowmere Chemicals Ltd,HOLLOW01,Flux and chemicals,S,GB 510 3274 95,00-36-74,10252630,30,accounts@hollowmere-chem.example,Ruth Calloway
+Brackenford Reels & Spools Ltd,BRACKE01,Packaging and spools,S,GB 276 8431 26,00-47-85,10263741,30,orders@brackenford-reels.example,Tom Hensley
+Coldharbour Industrial Gases Ltd,COLDHA01,Industrial gases,S,GB 601 4298 69,00-58-96,10274852,30,accounts@coldharbour-gases.example,Lee Morrish
+Southvane Energy Ltd,SOUTHV01,"Light, power and heat",S,GB 742 5816 26,00-69-17,10285963,14,business@southvane-energy.example,
+Kestrelnet Communications Ltd,KESTRE01,Telephone and internet,S,GB 385 7120 39,00-71-28,10297074,14,billing@kestrelnet.example,
+Larkmoor Freight Ltd,LARKMO01,Carriage outwards,S,GB 496 2035 34,00-82-39,10308185,14,credit.control@larkmoor-freight.example,Shona Tilley
+Penhallow Assay Laboratories Ltd,PENHAL01,Laboratory testing,S,GB 259 1746 32,00-93-41,10319296,30,accounts@penhallow-assay.example,Imogen Hart
+Fernbrook Calibration Services Ltd,FERNBR01,Repairs and maintenance,S,GB 663 8203 32,00-15-62,10320307,30,service@fernbrook-cal.example,Martin Doyle
+Combe Electrical Services,COMBEE01,Repairs and maintenance,O,,00-26-73,10331418,14,gareth@combe-electrical.example,Gareth Combe
+Harrowden Safety Supplies Ltd,HARROW01,,S,GB 527 9314 30,00-37-84,10342529,30,sales@harrowden-safety.example,Kelly Burge
+Stanchester Office Supplies Ltd,STANCH01,Printing and stationery,S,GB 814 6025 53,00-48-95,10353630,30,accounts@stanchester-office.example,
+Kingsbury Forklift Hire Ltd,KINGSB01,Plant and equipment hire,S,GB 370 2649 57,00-59-06,10364741,30,hire@kingsbury-forklifts.example,
+Holloway Waste & Recycling Ltd,HOLLOW02,Waste disposal,S,GB 451 8377 34,00-61-17,10375852,30,accounts@holloway-waste.example,Dean Pocock
+Wellsbrook Manor Hotel Ltd,WELLSB01,Entertainment,S,GB 687 3051 16,00-72-28,10386963,30,events@wellsbrook-manor.example,Hannah Royle
+Rowan & Pike Chartered Accountants,ROWANP01,Accountancy fees,S,GB 293 0485 47,00-83-39,10397074,14,office@rowanpike.example,Joanna Pike

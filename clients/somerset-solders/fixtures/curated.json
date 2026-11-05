@@ -1,0 +1,941 @@
+{
+  "extract": {
+    "2026-09-28_brackenford_BRS-40877.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Brackenford Reels & Spools Ltd",
+      "counterparty_vat_number": "GB 276 8431 26",
+      "document_number": "BRS-40877",
+      "document_date": "2026-09-28",
+      "due_date": "2026-10-28",
+      "net_total": 814.5,
+      "vat_total": 162.9,
+      "gross_total": 977.4,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 814.5,
+          "vat": 162.9
+        }
+      ],
+      "line_items": [
+        {
+          "description": "500g black ABS spools, box of 200",
+          "quantity": 6,
+          "unit_price": 86.0,
+          "net": 516.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "250g black ABS spools, box of 300",
+          "quantity": 3,
+          "unit_price": 74.5,
+          "net": 223.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Printed reel labels, roll of 1,000",
+          "quantity": 4,
+          "unit_price": 18.75,
+          "net": 75.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for empty solder spools and printed reel labels, ordered on PO-2598.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "po_number": "PO-2598",
+      "bank_sort_code": "00-47-85",
+      "bank_account_number": "10263741"
+    },
+    "2026-10-01_fernbrook_FCS-2210.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Fernbrook Calibration Services Ltd",
+      "counterparty_vat_number": "GB 663 8203 32",
+      "document_number": "FCS-2210",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-31",
+      "net_total": 2160.0,
+      "vat_total": 432.0,
+      "gross_total": 2592.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 2160.0,
+          "vat": 432.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Annual service and calibration contract",
+          "quantity": 1,
+          "unit_price": 2160.0,
+          "net": 2160.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Annual service and calibration contract for the XRF analyser, melting-pot controllers and wire-drawing gauges, invoiced in advance.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Covers 01/10/2026 to 30/09/2027, invoiced annually in advance.",
+      "bank_sort_code": "00-15-62",
+      "bank_account_number": "10320307",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2027-09-30"
+    },
+    "2026-10-01_kingsbury_KFH-90214.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Kingsbury Forklift Hire Ltd",
+      "counterparty_vat_number": "GB 370 2649 57",
+      "document_number": "KFH-90214",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-31",
+      "net_total": 165.0,
+      "vat_total": 33.0,
+      "gross_total": 198.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 165.0,
+          "vat": 33.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electric forklift 1.6t, contract hire - October 2026",
+          "quantity": 1,
+          "unit_price": 165.0,
+          "net": 165.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Monthly contract hire of an electric forklift for October 2026 (hire agreement KF-2231).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-59-06",
+      "bank_account_number": "10364741",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2026-10-31"
+    },
+    "2026-10-02_hollowmere_HC-7741.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Hollowmere Chemicals Ltd",
+      "counterparty_vat_number": "GB 510 3274 95",
+      "document_number": "HC-7741",
+      "document_date": "2026-10-02",
+      "due_date": "2026-11-01",
+      "net_total": 1125.0,
+      "vat_total": 225.0,
+      "gross_total": 1350.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 1125.0,
+          "vat": 225.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Water-white gum rosin, 25 kg sack",
+          "quantity": 8,
+          "unit_price": 68.0,
+          "net": 544.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Adipic acid activator, 5 kg tub",
+          "quantity": 4,
+          "unit_price": 42.5,
+          "net": 170.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Isopropyl alcohol 99.9%, 25 litre drum",
+          "quantity": 6,
+          "unit_price": 61.0,
+          "net": 366.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Hazardous goods delivery",
+          "quantity": 1,
+          "unit_price": 45.0,
+          "net": 45.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice, sent by email, for rosin, activator and isopropyl alcohol for flux, delivered against PO-2617.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "po_number": "PO-2617",
+      "bank_sort_code": "00-36-74",
+      "bank_account_number": "10252630"
+    },
+    "2026-10-02_kestrelnet_KN-560114.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Kestrelnet Communications Ltd",
+      "counterparty_vat_number": "GB 385 7120 39",
+      "document_number": "KN-560114",
+      "document_date": "2026-10-02",
+      "due_date": "2026-10-16",
+      "net_total": 243.84,
+      "vat_total": 48.77,
+      "gross_total": 292.61,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 243.84,
+          "vat": 48.77
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Leased line 100 Mbps - October 2026",
+          "quantity": 1,
+          "unit_price": 145.0,
+          "net": 145.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Hosted phone system, per user",
+          "quantity": 8,
+          "unit_price": 11.5,
+          "net": 92.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Call charges - September 2026",
+          "quantity": 1,
+          "unit_price": 6.84,
+          "net": 6.84,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Monthly invoice for the leased line, hosted phones and September call charges.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Paid by Direct Debit on or after 16/10/2026; no action needed."
+    },
+    "2026-10-05_carrowdene_CM-118204.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Carrowdene Metals Ltd",
+      "counterparty_vat_number": "GB 482 1706 49",
+      "document_number": "CM-118204",
+      "document_date": "2026-10-05",
+      "due_date": "2026-11-04",
+      "net_total": 5195.0,
+      "vat_total": 1039.0,
+      "gross_total": 6234.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 5195.0,
+          "vat": 1039.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Fine silver grain 99.99%, per kg",
+          "quantity": 6,
+          "unit_price": 860.0,
+          "net": 5160.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Assay certificate",
+          "quantity": 1,
+          "unit_price": 35.0,
+          "net": 35.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for 6 kg of fine silver grain with an assay certificate, ordered on PO-2614.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "po_number": "PO-2614",
+      "bank_sort_code": "00-14-52",
+      "bank_account_number": "10230418"
+    },
+    "2026-10-07_larkmoor_LF-30917.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Larkmoor Freight Ltd",
+      "counterparty_vat_number": "GB 496 2035 34",
+      "document_number": "LF-30917",
+      "document_date": "2026-10-07",
+      "due_date": "2026-10-21",
+      "net_total": 1271.0,
+      "vat_total": 115.2,
+      "gross_total": 1386.2,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 576.0,
+          "vat": 115.2
+        },
+        {
+          "rate": 0,
+          "net": 695.0,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "UK pallet deliveries, 1-6 October",
+          "quantity": 12,
+          "unit_price": 48.0,
+          "net": 576.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Export consignment to Cork, Ireland, 3 Oct (2 pallets)",
+          "quantity": 1,
+          "unit_price": 310.0,
+          "net": 310.0,
+          "vat_rate": 0
+        },
+        {
+          "description": "Export consignment to Eindhoven, NL, 6 Oct (1 pallet)",
+          "quantity": 1,
+          "unit_price": 385.0,
+          "net": 385.0,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Freight invoice for UK pallet deliveries (20% VAT) and two export consignments to Ireland and the Netherlands (zero-rated).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-82-39",
+      "bank_account_number": "10308185"
+    },
+    "2026-10-09_southvane_SV-8812046.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Southvane Energy Ltd",
+      "counterparty_vat_number": "GB 742 5816 26",
+      "document_number": "SV-8812046",
+      "document_date": "2026-10-09",
+      "due_date": "2026-10-23",
+      "net_total": 5230.98,
+      "vat_total": 1046.2,
+      "gross_total": 6277.18,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 5230.98,
+          "vat": 1046.2
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Day units, kWh",
+          "quantity": 18420,
+          "unit_price": 0.2184,
+          "net": 4022.93,
+          "vat_rate": 20
+        },
+        {
+          "description": "Night units, kWh",
+          "quantity": 6150,
+          "unit_price": 0.1462,
+          "net": 899.13,
+          "vat_rate": 20
+        },
+        {
+          "description": "Standing charge, days",
+          "quantity": 30,
+          "unit_price": 2.15,
+          "net": 64.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Capacity charge, days",
+          "quantity": 30,
+          "unit_price": 1.8,
+          "net": 54.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Climate Change Levy, kWh",
+          "quantity": 24570,
+          "unit_price": 0.00775,
+          "net": 190.42,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Electricity invoice for the factory supply in September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Paid by Direct Debit on or after 23/10/2026.",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30"
+    },
+    "2026-10-12_carrowdene_CM-118377.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Carrowdene Metals Ltd",
+      "counterparty_vat_number": "GB 482 1706 49",
+      "document_number": "CM-118377",
+      "document_date": "2026-10-12",
+      "due_date": "2026-11-11",
+      "net_total": 12050.0,
+      "vat_total": 2410.0,
+      "gross_total": 14460.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 12050.0,
+          "vat": 2410.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Tin ingot Sn 99.95%, per kg (delivered)",
+          "quantity": 500,
+          "unit_price": 23.2,
+          "net": 11600.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Tin market surcharge since order date, per kg",
+          "quantity": 500,
+          "unit_price": 0.9,
+          "net": 450.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for 500 kg of tin ingot on PO-2611, plus a tin market surcharge.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Adds a £450.00 tin market surcharge for price movement since the order date.",
+      "po_number": "PO-2611",
+      "bank_sort_code": "00-14-52",
+      "bank_account_number": "10230418"
+    },
+    "2026-10-13_penhallow_PAL-6620.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Penhallow Assay Laboratories Ltd",
+      "counterparty_vat_number": "GB 259 1746 32",
+      "document_number": "PAL-6620",
+      "document_date": "2026-10-13",
+      "due_date": "2026-11-12",
+      "net_total": 404.0,
+      "vat_total": 80.8,
+      "gross_total": 484.8,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 404.0,
+          "vat": 80.8
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Alloy analysis (ICP-OES), SAC305 batch certificate",
+          "quantity": 8,
+          "unit_price": 38.0,
+          "net": 304.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "RoHS lead screening, per batch",
+          "quantity": 8,
+          "unit_price": 12.5,
+          "net": 100.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for October's alloy analysis and RoHS screening on eight SAC305 batches, sent with an email about new bank details.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The covering email comes from penhallow.accounts@mailbox.example, not the address on the invoice, says the laboratory has moved its banking and asks for this and all future invoices to be paid to the new account.",
+      "bank_sort_code": "00-99-07",
+      "bank_account_number": "99990417"
+    },
+    "2026-10-14_coldharbour_CIG-55190.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Coldharbour Industrial Gases Ltd",
+      "counterparty_vat_number": "GB 601 4298 69",
+      "document_number": "CIG-55190",
+      "document_date": "2026-10-14",
+      "due_date": "2026-11-13",
+      "net_total": 365.5,
+      "vat_total": 73.1,
+      "gross_total": 483.6,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 365.5,
+          "vat": 73.1
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Oxygen-free nitrogen, size W cylinder refill",
+          "quantity": 10,
+          "unit_price": 28.4,
+          "net": 284.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Cylinder rental - October, per cylinder",
+          "quantity": 14,
+          "unit_price": 4.25,
+          "net": 59.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Delivery charge",
+          "quantity": 1,
+          "unit_price": 22.0,
+          "net": 22.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for nitrogen cylinder refills, October cylinder rental and delivery.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The printed total due does not equal the subtotal plus VAT shown.",
+      "bank_sort_code": "00-58-96",
+      "bank_account_number": "10274852"
+    },
+    "2026-10-16_wellsbrook_WMH-20418.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Wellsbrook Manor Hotel Ltd",
+      "counterparty_vat_number": "GB 687 3051 16",
+      "document_number": "WMH-20418",
+      "document_date": "2026-10-16",
+      "due_date": "2026-11-15",
+      "net_total": 180.0,
+      "vat_total": 36.0,
+      "gross_total": 216.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 180.0,
+          "vat": 36.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Business lunch for 6 guests, 15 October 2026",
+          "quantity": 1,
+          "unit_price": 150.0,
+          "net": 150.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Private dining room hire",
+          "quantity": 1,
+          "unit_price": 30.0,
+          "net": 30.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Hotel invoice for a business lunch for six and a private dining room on 15 October.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Booking reference WM-3318 is marked as a customer visit (Vantage Board Assembly).",
+      "bank_sort_code": "00-72-28",
+      "bank_account_number": "10386963"
+    },
+    "2026-10-19_combe-electrical_0347.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Combe Electrical Services",
+      "counterparty_vat_number": "",
+      "document_number": "0347",
+      "document_date": "2026-10-19",
+      "due_date": "2026-11-02",
+      "net_total": 302.4,
+      "vat_total": 60.48,
+      "gross_total": 362.88,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 302.4,
+          "vat": 60.48
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Fault-find and repair, melting pot 2: labour (hours)",
+          "quantity": 4.5,
+          "unit_price": 48.0,
+          "net": 216.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Parts: 40A contactor, thermocouple lead, terminals",
+          "quantity": 1,
+          "unit_price": 86.4,
+          "net": 86.4,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Electrician's invoice for fault-finding and repairing melting pot 2, labour and parts.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "VAT is charged at 20% but no VAT registration number is shown. Issued by Gareth Combe, trading as Combe Electrical Services.",
+      "bank_sort_code": "00-26-73",
+      "bank_account_number": "10331418"
+    },
+    "2026-10-21_harrowden_HSS-22871.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Harrowden Safety Supplies Ltd",
+      "counterparty_vat_number": "GB 527 9314 30",
+      "document_number": "HSS-22871",
+      "document_date": "2026-10-21",
+      "due_date": "2026-11-20",
+      "net_total": 582.95,
+      "vat_total": 116.59,
+      "gross_total": 699.54,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 582.95,
+          "vat": 116.59
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Fume extractor carbon and HEPA filter set",
+          "quantity": 4,
+          "unit_price": 46.5,
+          "net": 186.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Nitrile gloves, box of 100",
+          "quantity": 10,
+          "unit_price": 6.8,
+          "net": 68.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "First aid kit refill, large workplace",
+          "quantity": 1,
+          "unit_price": 39.95,
+          "net": 39.95,
+          "vat_rate": 20
+        },
+        {
+          "description": "Ergonomic task chair with arms",
+          "quantity": 1,
+          "unit_price": 289.0,
+          "net": 289.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for fume extractor filters, nitrile gloves, a first aid kit refill and an office task chair.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-37-84",
+      "bank_account_number": "10342529"
+    },
+    "2026-10-22_brenwick_BLS-1043.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Brenwick Lab Supplies Ltd",
+      "counterparty_vat_number": "GB 618 7402 39",
+      "document_number": "BLS-1043",
+      "document_date": "2026-10-22",
+      "due_date": "2026-11-21",
+      "net_total": 340.0,
+      "vat_total": 68.0,
+      "gross_total": 408.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 340.0,
+          "vat": 68.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Clay-graphite crucible, size 20",
+          "quantity": 2,
+          "unit_price": 94.0,
+          "net": 188.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Type K thermocouple probe, 300 mm",
+          "quantity": 4,
+          "unit_price": 27.5,
+          "net": 110.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Crucible tongs, 600 mm",
+          "quantity": 1,
+          "unit_price": 42.0,
+          "net": 42.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice from a new supplier for melting-pot crucibles, thermocouple probes and crucible tongs.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The invoice says it is a new account.",
+      "bank_sort_code": "00-94-51",
+      "bank_account_number": "10408185"
+    },
+    "2026-10-23_stanchester_STN-55102.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Stanchester Office Supplies Ltd",
+      "counterparty_vat_number": "GB 814 6025 53",
+      "document_number": "STN-55102",
+      "document_date": "2026-10-23",
+      "due_date": "2026-11-22",
+      "net_total": 223.1,
+      "vat_total": 44.62,
+      "gross_total": 267.72,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 223.1,
+          "vat": 44.62
+        }
+      ],
+      "line_items": [
+        {
+          "description": "A4 copier paper 80gsm, box of 5 reams",
+          "quantity": 4,
+          "unit_price": 23.6,
+          "net": 94.4,
+          "vat_rate": 20
+        },
+        {
+          "description": "Black toner cartridge",
+          "quantity": 2,
+          "unit_price": 42.0,
+          "net": 84.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Despatch labels, 2-up, box of 1,000",
+          "quantity": 3,
+          "unit_price": 14.9,
+          "net": 44.7,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for copier paper, toner and despatch labels.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-48-95",
+      "bank_account_number": "10353630"
+    },
+    "2026-10-28_larkmoor_copy-invoice-LF-30917.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Larkmoor Freight Ltd",
+      "counterparty_vat_number": "GB 496 2035 34",
+      "document_number": "LF-30917",
+      "document_date": "2026-10-07",
+      "due_date": "2026-10-21",
+      "net_total": 1271.0,
+      "vat_total": 115.2,
+      "gross_total": 1386.2,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 576.0,
+          "vat": 115.2
+        },
+        {
+          "rate": 0,
+          "net": 695.0,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "UK pallet deliveries, 1-6 October",
+          "quantity": 12,
+          "unit_price": 48.0,
+          "net": 576.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Export consignment to Cork, Ireland, 3 Oct (2 pallets)",
+          "quantity": 1,
+          "unit_price": 310.0,
+          "net": 310.0,
+          "vat_rate": 0
+        },
+        {
+          "description": "Export consignment to Eindhoven, NL, 6 Oct (1 pallet)",
+          "quantity": 1,
+          "unit_price": 385.0,
+          "net": 385.0,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Copy of freight invoice LF-30917, sent again as a payment reminder.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The covering email says this is a copy of invoice LF-30917 (£1,386.20, due 21 October), sent because it is still unpaid.",
+      "bank_sort_code": "00-82-39",
+      "bank_account_number": "10308185"
+    },
+    "2026-10-30_holloway_HWR-7781.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Holloway Waste & Recycling Ltd",
+      "counterparty_vat_number": "GB 451 8377 34",
+      "document_number": "HWR-7781",
+      "document_date": "2026-10-30",
+      "due_date": "2026-11-29",
+      "net_total": 293.0,
+      "vat_total": 58.6,
+      "gross_total": 351.6,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 293.0,
+          "vat": 58.6
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Hazardous waste: flux residues, 205 litre drum",
+          "quantity": 2,
+          "unit_price": 96.0,
+          "net": 192.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Hazardous waste consignment note",
+          "quantity": 1,
+          "unit_price": 15.0,
+          "net": 15.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "General waste 1100L bin, per lift",
+          "quantity": 4,
+          "unit_price": 21.5,
+          "net": 86.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for collecting two drums of hazardous flux residue and four general waste bin lifts.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-61-17",
+      "bank_account_number": "10375852"
+    },
+    "2026-10-31_hollowmere_statement.pdf": {
+      "doc_type": "statement",
+      "counterparty": "Hollowmere Chemicals Ltd",
+      "counterparty_vat_number": "GB 510 3274 95",
+      "document_number": "",
+      "document_date": "2026-10-31",
+      "gross_total": 1782.0,
+      "statement_lines": [
+        {
+          "date": "2026-10-02",
+          "reference": "HC-7741",
+          "description": "Invoice",
+          "amount": 1350.0
+        },
+        {
+          "date": "2026-10-16",
+          "reference": "HC-7769",
+          "description": "Invoice",
+          "amount": 432.0
+        },
+        {
+          "date": "2026-10-20",
+          "reference": "HC-7702",
+          "description": "Payment received, thank you",
+          "amount": -1240.8
+        }
+      ],
+      "bank_sort_code": "00-36-74",
+      "bank_account_number": "10252630",
+      "payment_status": "unknown",
+      "summary": "Supplier statement for October showing two invoices, one payment and a balance due of £1,782.00.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Balance brought forward at 30/09/2026 was £1,240.80, cleared by the payment on 20/10/2026."
+    }
+  },
+  "coding": {
+    "D-14": {
+      "payee": "Harrowden Safety Supplies Ltd",
+      "account": "Health and safety",
+      "confidence": "low",
+      "reason": "Mixed invoice: the nitrile gloves and first aid kit are health and safety, the fume extractor filters could be production consumables and the task chair is office equipment, so it may need splitting."
+    },
+    "D-15": {
+      "payee": "Brenwick Lab Supplies Ltd",
+      "account": "Production consumables",
+      "confidence": "high",
+      "reason": "Clay-graphite crucibles, thermocouple probes and crucible tongs are used up at the melting pots."
+    }
+  },
+  "letters": {
+    "supplier:Brenwick Lab Supplies Ltd": {
+      "subject": "Invoice BLS-1043: please confirm your VAT number",
+      "body": "Hello,\n\nThank you for invoice BLS-1043, dated 22 October 2026, for £408.00. The VAT registration number shown, GB 618 7402 39, does not pass HMRC's check-digit test, so we can't reclaim the £68.00 VAT until it is confirmed.\n\nCould you confirm your VAT registration number, please, by Friday 13 November? It may just be a typing error on the invoice.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "supplier:Carrowdene Metals Ltd": {
+      "subject": "Invoice CM-118377: £450.00 over PO-2611",
+      "body": "Hello Neil,\n\nThank you for invoice CM-118377, dated 12 October 2026. It comes to £12,050.00 net, but our purchase order PO-2611 was agreed at £11,600.00, so the invoice is £450.00 over the order value.\n\nCould you explain the extra charge or send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "supplier:Coldharbour Industrial Gases Ltd": {
+      "subject": "Invoice CIG-55190: total doesn't add up",
+      "body": "Hello Lee,\n\nThank you for invoice CIG-55190, dated 14 October 2026. The net amount is £365.50 and the VAT is £73.10, which comes to £438.60, but the total due is shown as £483.60, a difference of £45.00.\n\nCould you send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "supplier:Combe Electrical Services": {
+      "subject": "Invoice 0347: VAT registration number",
+      "body": "Hello Gareth,\n\nThank you for invoice 0347, dated 19 October 2026, for £362.88. It charges £60.48 VAT, but it doesn't show a VAT registration number and we have no VAT number on file for you, so we can't treat it as a VAT invoice.\n\nIf you are VAT registered, could you send a copy showing your VAT number? If not, please send a corrected invoice without the VAT. A reply by Friday 13 November would help us pay you promptly.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "supplier:Hollowmere Chemicals Ltd": {
+      "subject": "Statement query: copy of invoice HC-7769, please",
+      "body": "Hello Ruth,\n\nThank you for your statement. It lists invoice HC-7769, dated 16 October 2026, for £432.00, but we have no record of receiving it.\n\nCould you send a copy of invoice HC-7769, please, by Friday 13 November, so we can process it?\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "supplier:Penhallow Assay Laboratories Ltd": {
+      "subject": "Invoice PAL-6620: change of bank details",
+      "body": "Hello Imogen,\n\nWe have received invoice PAL-6620, dated 13 October 2026, for £484.80, with new bank details. The details on the invoice (sort code 00-99-07) are different from the ones we hold for you.\n\nBefore any payment is made, we will phone you on the number we already have on file to confirm the change. We never change bank details because of an email, so please don't send bank details by reply. If you did not ask for this change, please let us know straight away.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "customer:Ashwick Heating Supplies Ltd": {
+      "subject": "Payment reminder: invoice INV-3140",
+      "body": "Hello Debbie,\n\nA quick reminder that invoice INV-3140 for £948.00 was due on 30 October 2026 and is now 6 days overdue.\n\nIf it has already been paid, thank you, and please ignore this email. If not, could you let me know when payment will be made, by Friday 13 November?\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "customer:Harbourside Plumbers' Merchants Ltd": {
+      "subject": "Second reminder: invoices INV-3091 and INV-3130",
+      "body": "Hello Colin,\n\nOur records show two amounts overdue on your account:\n\nInvoice INV-3091: £1,414.20, due on 30 September 2026, now 36 days overdue\nInvoice INV-3130: £3,102.00, due on 30 October 2026, now 6 days overdue\n\nCould you arrange payment, or let me know when it will be made, by Friday 13 November? If there is a problem with either invoice, please tell me so we can sort it out.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "customer:Kingsdown Circuits Ltd": {
+      "subject": "Purchase order number needed for sales order SO-6107",
+      "body": "Hello Rob,\n\nWe are ready to invoice sales order SO-6107 (SAC305 solder bar, 1kg) for £9,216.00. Your account needs a purchase order number on every invoice, and we don't have one for this order.\n\nCould you send us the PO number, please? We will raise the invoice as soon as we have it, so a reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    },
+    "customer:Saltmarsh Marine Electronics Ltd": {
+      "subject": "Final notice: overdue invoices INV-3051 and INV-3133",
+      "body": "Hello Gavin,\n\nThis is a final notice about the overdue invoices on your account:\n\nInvoice INV-3051: £1,846.80, due on 30 August 2026, now 67 days overdue\nInvoice INV-3133: £1,254.00, due on 30 October 2026, now 6 days overdue\n\nPlease pay these within 7 days, and no later than Friday 13 November. If we don't receive payment or hear from you by then, further orders may be put on hold until the account is up to date. If you have already paid, or have a query on either invoice, please let me know straight away.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
+    }
+  },
+  "summary": "October is processed: 19 documents were read, 13 purchase lines worth £20,842.25 are ready for Xero and 5 supplier invoices are held. Penhallow Assay Laboratories' invoice came with changed bank details, a common fraud pattern; Carrowdene Metals has invoiced £450.00 over PO-2611 and Coldharbour's total is £45.00 out. 5 of 6 sales invoices are ready, £9,791.40 is overdue and Saltmarsh Marine Electronics needs a final notice. The draft VAT return shows £219.62 to pay; 13 items need a decision and 10 emails are drafted."
+}

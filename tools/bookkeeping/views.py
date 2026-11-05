@@ -173,7 +173,7 @@ def _tabs(r: RunResult) -> list[tuple[str, callable]]:
         "sales": ("Sales invoices", _sales_tab, not r.sales.empty),
         "debtors": ("Aged debtors", _debtors_tab, not r.debtors.empty),
         "hours": ("Hours for payroll", _hours_tab, not r.hours.empty),
-        "po": ("PO matching", lambda x: _table(x.po_table), not r.po_table.empty),
+        "po": ("PO matching", _po_tab, not r.po_table.empty),
         "statements": ("Supplier statements", lambda x: _table(x.statements), not r.statements.empty),
         "filing": ("Filing", _filing_tab, not r.filing.empty),
         "vat": ("VAT return", _vat_tab, not r.vat_return.empty),
@@ -210,6 +210,7 @@ STATUS_STYLE = [("Held", "background-color:#FFF4E0;color:#7A4A00"), ("Ready", "b
                 ("Matched", "background-color:#E8F6EE;color:#0F5A34"), ("Done", "background-color:#E8F6EE;color:#0F5A34"),
                 ("Receipt missing", "background-color:#FDE8E7;color:#8A1C12"),
                 ("Amount differs", "background-color:#FFF4E0;color:#7A4A00"),
+                ("Over PO value", "background-color:#FFF4E0;color:#7A4A00"),
                 ("Action needed", "background-color:#FFF4E0;color:#7A4A00"),
                 ("Final notice", "background-color:#FDE8E7;color:#8A1C12"),
                 ("Second reminder", "background-color:#FFF4E0;color:#7A4A00"),
@@ -327,6 +328,7 @@ def _sales_tab(r: RunResult) -> None:
 
 
 def _debtors_tab(r: RunResult) -> None:
+    # fixed columns, like the other main tabs: the age buckets are money, and every column fits 1280px
     st.markdown("**By customer**")
     summary = r.debtors_summary
     _grid(summary, [("Customer", "text", 260)] + [(c, "money", 130 if c == "Total outstanding" else 110)
@@ -350,6 +352,15 @@ def _filing_tab(r: RunResult) -> None:
                "job number in the text, or a site name from the register. Anything unclear goes to the “to file” "
                "folder for a person. Scroll the table right for the new file names; the zip has every document "
                "renamed in its folder.")
+
+
+def _po_tab(r: RunResult) -> None:
+    _grid(r.po_table, [("Supplier", "text", 215), ("Invoice", "text", 95), ("Invoice date", "date", 95, "Date"),
+                       ("Matched PO", "text", 85, "PO"), ("Invoice net", "money", 95), ("PO net", "money", 95),
+                       ("Invoiced to date", "money", 110), ("Difference", "money", 90), ("Status", "text", 125)],
+          status="Status")
+    st.caption("Supplier invoices matched to the purchase order log by PO number (or supplier and amount), net of VAT. "
+               "POs with no invoice yet are listed as awaiting invoice.")
 
 
 def _hours_tab(r: RunResult) -> None:

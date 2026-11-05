@@ -1,0 +1,56 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "20e7c5affc2ec82a52c10854dad7195226040b88826de66984351de07406cdb7",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-31_hollowmere_statement.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nHollowmere Chemicals Ltd\nHollowmere Industrial Park\nGloucester GL2 0XX\nTel 01632 960 527 · accounts@hollowmere-chem.example\nVAT Reg No: GB 510 3274 95\nSTATEMENT OF ACCOUNT\nStatement date: 31/10/2026\nCustomer account: DEMO01\nAccount holder:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nBalance brought forward at 30/09/2026: £1,240.80\nDate\nReference\nDetails\nAmount\n02/10/2026\nHC-7741\nInvoice\n£1,350.00\n16/10/2026\nHC-7769\nInvoice\n£432.00\n20/10/2026\nHC-7702\nPayment received, thank you\n-£1,240.80\nBalance due\n£1,782.00\nInvoices are due 30 days from the invoice date. Please tell us within 14 days of any query.\nBank: sort code 00-36-74, account number 10252630. Please quote your account number.",
+  "response": {
+    "text": "{\"doc_type\": \"statement\", \"counterparty\": \"Hollowmere Chemicals Ltd\", \"counterparty_vat_number\": \"GB 510 3274 95\", \"document_number\": \"\", \"document_date\": \"2026-10-31\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": 1782.0, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"00-36-74\", \"bank_account_number\": \"10252630\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [{\"date\": \"2026-10-02\", \"reference\": \"HC-7741\", \"description\": \"Invoice\", \"amount\": 1350.0}, {\"date\": \"2026-10-16\", \"reference\": \"HC-7769\", \"description\": \"Invoice\", \"amount\": 432.0}, {\"date\": \"2026-10-20\", \"reference\": \"HC-7702\", \"description\": \"Payment received, thank you\", \"amount\": -1240.8}], \"summary\": \"Supplier statement for October showing two invoices, one payment and a balance due of £1,782.00.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Balance brought forward at 30/09/2026 was £1,240.80, cleared by the payment on 20/10/2026.\"}",
+    "data": {
+      "doc_type": "statement",
+      "counterparty": "Hollowmere Chemicals Ltd",
+      "counterparty_vat_number": "GB 510 3274 95",
+      "document_number": "",
+      "document_date": "2026-10-31",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": 1782.0,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "00-36-74",
+      "bank_account_number": "10252630",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [
+        {
+          "date": "2026-10-02",
+          "reference": "HC-7741",
+          "description": "Invoice",
+          "amount": 1350.0
+        },
+        {
+          "date": "2026-10-16",
+          "reference": "HC-7769",
+          "description": "Invoice",
+          "amount": 432.0
+        },
+        {
+          "date": "2026-10-20",
+          "reference": "HC-7702",
+          "description": "Payment received, thank you",
+          "amount": -1240.8
+        }
+      ],
+      "summary": "Supplier statement for October showing two invoices, one payment and a balance due of £1,782.00.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Balance brought forward at 30/09/2026 was £1,240.80, cleared by the payment on 20/10/2026."
+    }
+  }
+}

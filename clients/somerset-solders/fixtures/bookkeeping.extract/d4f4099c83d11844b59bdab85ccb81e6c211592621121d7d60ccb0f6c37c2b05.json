@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "d4f4099c83d11844b59bdab85ccb81e6c211592621121d7d60ccb0f6c37c2b05",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-01_kingsbury_KFH-90214.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nKingsbury Forklift Hire Ltd\nKingsbury Yard\nWellington TA21 0XX\nTel 01632 960 538 · hire@kingsbury-forklifts.example\nVAT Reg No: GB 370 2649 57\nINVOICE\nInvoice number: KFH-90214\nInvoice date: 01/10/2026\nDue date: 31/10/2026\nCustomer account: DEMO01\nInvoice to:\nDemo Company Ltd\nUnit 4, Example Trading Estate\nBridgwater TA6 0XX\nDescription\nQty\nUnit price\nVAT\nNet\nElectric forklift 1.6t, contract hire - October 2026\n1\n£165.00\n20%\n£165.00\nSubtotal (net)\n£165.00\nVAT @ 20% on £165.00\n£33.00\nTotal due\n£198.00\nHire agreement KF-2231. Monthly in advance.\nPay by bank transfer to Kingsbury Forklift Hire Ltd: sort code 00-59-06, account number 10364741.\nPlease quote KFH-90214 as the payment reference.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Kingsbury Forklift Hire Ltd\", \"counterparty_vat_number\": \"GB 370 2649 57\", \"document_number\": \"KFH-90214\", \"document_date\": \"2026-10-01\", \"due_date\": \"2026-10-31\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 165.0, \"vat_total\": 33.0, \"gross_total\": 198.0, \"vat_lines\": [{\"rate\": 20, \"net\": 165.0, \"vat\": 33.0}], \"line_items\": [{\"description\": \"Electric forklift 1.6t, contract hire - October 2026\", \"quantity\": 1, \"unit_price\": 165.0, \"net\": 165.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-59-06\", \"bank_account_number\": \"10364741\", \"service_period_start\": \"2026-10-01\", \"service_period_end\": \"2026-10-31\", \"statement_lines\": [], \"summary\": \"Monthly contract hire of an electric forklift for October 2026 (hire agreement KF-2231).\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Kingsbury Forklift Hire Ltd",
+      "counterparty_vat_number": "GB 370 2649 57",
+      "document_number": "KFH-90214",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-31",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 165.0,
+      "vat_total": 33.0,
+      "gross_total": 198.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 165.0,
+          "vat": 33.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electric forklift 1.6t, contract hire - October 2026",
+          "quantity": 1,
+          "unit_price": 165.0,
+          "net": 165.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-59-06",
+      "bank_account_number": "10364741",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2026-10-31",
+      "statement_lines": [],
+      "summary": "Monthly contract hire of an electric forklift for October 2026 (hire agreement KF-2231).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}
