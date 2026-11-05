@@ -511,38 +511,6 @@
       "bank_sort_code": "00-58-96",
       "bank_account_number": "10274852"
     },
-    "2026-10-16_brackenford_CN-0912.pdf": {
-      "doc_type": "credit_note",
-      "counterparty": "Brackenford Reels & Spools Ltd",
-      "counterparty_vat_number": "GB 276 8431 26",
-      "document_number": "CN-0912",
-      "document_date": "2026-10-16",
-      "due_date": "",
-      "net_total": 86.0,
-      "vat_total": 17.2,
-      "gross_total": 103.2,
-      "vat_lines": [
-        {
-          "rate": 20,
-          "net": 86.0,
-          "vat": 17.2
-        }
-      ],
-      "line_items": [
-        {
-          "description": "500g black ABS spools, box of 200 (cracked in transit)",
-          "quantity": 1,
-          "unit_price": 86.0,
-          "net": 86.0,
-          "vat_rate": 20
-        }
-      ],
-      "payment_status": "unknown",
-      "summary": "Credit note for one box of 500g spools that arrived cracked.",
-      "confidence": "high",
-      "uncertain_fields": [],
-      "notes": "Credit against invoice BRS-40877; to be deducted from the next payment."
-    },
     "2026-10-16_wellsbrook_WMH-20418.pdf": {
       "doc_type": "invoice",
       "counterparty": "Wellsbrook Manor Hotel Ltd",
@@ -914,13 +882,13 @@
     }
   },
   "coding": {
-    "D-15": {
+    "D-14": {
       "payee": "Harrowden Safety Supplies Ltd",
       "account": "Health and safety",
       "confidence": "low",
       "reason": "Mixed invoice: the nitrile gloves and first aid kit are health and safety, the fume extractor filters could be production consumables and the task chair is office equipment, so it may need splitting."
     },
-    "D-16": {
+    "D-15": {
       "payee": "Brenwick Lab Supplies Ltd",
       "account": "Production consumables",
       "confidence": "high",
@@ -969,5 +937,5 @@
       "body": "Hello Gavin,\n\nThis is a final notice about the overdue invoices on your account:\n\nInvoice INV-3051: £1,846.80, due on 30 August 2026, now 67 days overdue\nInvoice INV-3133: £1,254.00, due on 30 October 2026, now 6 days overdue\n\nPlease pay these within 7 days, and no later than Friday 13 November. If we don't receive payment or hear from you by then, further orders may be put on hold until the account is up to date. If you have already paid, or have a query on either invoice, please let me know straight away.\n\nKind regards,\nAccounts Administrator\nDemo Company Ltd"
     }
   },
-  "summary": "October is processed: 20 documents were read, 14 purchase lines worth £20,945.45 are ready for Xero and 5 supplier invoices are held. Penhallow Assay Laboratories' invoice came with changed bank details, a common fraud pattern; Carrowdene Metals has invoiced £450.00 over PO-2611 and Coldharbour's total is £45.00 out. 5 of 6 sales invoices are ready, £9,791.40 is overdue and Saltmarsh Marine Electronics needs a final notice. The draft VAT return shows £236.82 to pay; 13 items need a decision and 10 emails are drafted."
+  "summary": "October is processed: 19 documents were read, 13 purchase lines worth £20,842.25 are ready for Xero and 5 supplier invoices are held. Penhallow Assay Laboratories' invoice came with changed bank details, a common fraud pattern; Carrowdene Metals has invoiced £450.00 over PO-2611 and Coldharbour's total is £45.00 out. 5 of 6 sales invoices are ready, £9,791.40 is overdue and Saltmarsh Marine Electronics needs a final notice. The draft VAT return shows £219.62 to pay; 13 items need a decision and 10 emails are drafted."
 }

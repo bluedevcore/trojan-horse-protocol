@@ -17,8 +17,8 @@ footer: >-
   or Xero. All sample data is synthetic: the company, suppliers, customers and amounts are invented.
 footer_short: "Independent prototype · synthetic data · not affiliated with Somerset Solders Ltd"
 sample_caption: >-
-  Uses an October month end for an invented solder manufacturer: 20 supplier invoices, emails and a supplier
-  statement, plus the despatches to invoice, open sales invoices, the bank statement and the purchase order log.
+  Uses an October month end for an invented solder manufacturer: 19 supplier invoices, emails and a statement,
+  plus the despatches to invoice, open sales invoices from Xero, the bank statement and the purchase order log.
   No setup needed.
 upload_help: >-
   Drop in supplier invoices, credit notes and statements (PDF or .eml), plus any of: a list of despatches to

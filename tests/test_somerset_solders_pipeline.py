@@ -80,7 +80,7 @@ def test_every_claude_call_is_served_from_fixtures(result):
     """If this fails, prompts/config/data changed: run
     python -m tools.bookkeeping.refresh_fixtures clients/somerset-solders"""
     assert {c.source for c in result.test_calls} == {"fixture"}
-    assert result.ai_sources == {"fixture": 20 + 1 + 4 + 1}  # documents, coding, email batches, summary
+    assert result.ai_sources == {"fixture": 19 + 1 + 4 + 1}  # documents, coding, email batches, summary
     assert "Penhallow" in result.summary and "Pre-recorded" in result.summary_source
     assert {d["extracted_by"] for d in result.documents} == {"AI (pre-recorded)"}
     assert all(l["source"] == "fixture" for l in result.letters)
@@ -88,7 +88,7 @@ def test_every_claude_call_is_served_from_fixtures(result):
 
 def test_documents_are_read(result):
     types = result.facts["documents_by_type"]
-    assert result.facts["documents"] == 20 and types == {"invoice": 18, "credit note": 1, "statement": 1}
+    assert result.facts["documents"] == 19 and types == {"invoice": 18, "statement": 1}
 
 
 def test_coding_and_vat_treatment(result):
@@ -102,10 +102,8 @@ def test_coding_and_vat_treatment(result):
     assert brenwick["account"].tolist() == ["Production consumables"] and brenwick["coded_by"].tolist() == ["Claude"]
     harrowden = by_payee.get_group("Harrowden Safety Supplies Ltd")
     assert harrowden["confidence"].tolist() == ["low"]
-    credit = e[e["kind"] == "supplier_credit"]
-    assert credit["reference"].tolist() == ["CN-0912"] and credit["net"].tolist() == [86.00]
     coded_by = e.drop_duplicates("group")["coded_by"].value_counts().to_dict()
-    assert coded_by == {"supplier list": 16, "Claude": 2}
+    assert coded_by == {"supplier list": 15, "Claude": 2}
 
 
 def test_purchase_totals_cross_check(result):
@@ -117,14 +115,13 @@ def test_purchase_totals_cross_check(result):
     assert len(bills) == 17 and round(bills.sum(), 2) == round(sum(invoices), 2)
     assert e[e["counterparty"] == "Coldharbour Industrial Gases Ltd"]["gross"].sum() == 438.60
     assert set(e[e["status"] == "Held"]["reference"]) == HELD_BILLS
-    # the Xero bills file holds exactly the ready bills, with the credit note as negative lines
+    # the Xero bills file holds exactly the ready bills
     xero = {x.key: x.frame for x in result.exports}["xero_bills"]
     ready = e[e["status"] == "Ready"]
-    signed = ready["gross"].where(ready["kind"] == "bill", -ready["gross"])
-    assert round((xero["*UnitAmount"] + xero["TaxAmount"]).sum(), 2) == round(signed.sum(), 2) == 20739.05
+    assert round((xero["*UnitAmount"] + xero["TaxAmount"]).sum(), 2) == round(ready["gross"].sum(), 2) == 20842.25
     assert not set(xero["*InvoiceNumber"]) & HELD_BILLS
     assert set(xero["*AccountCode"]) <= set(result.entries["account_code"])  # chart codes, not names
-    assert result.facts["value_ready"] == round(ready["gross"].sum(), 2) == 20945.45
+    assert result.facts["value_ready"] == round(ready["gross"].sum(), 2) == 20842.25
 
 
 def test_sales_invoices(result):
@@ -156,9 +153,9 @@ def test_vat_return_workings(result):
     assert box[1] == round(s[s["status"] == "Ready"]["vat"].sum(), 2) == 3378.60
     october = e[(e["status"] == "Ready") & (e["date"] >= "2026-10-01")]  # BRS-40877 is dated in September
     reclaim = october[october["vat_code"] == "S"]
-    assert box[4] == round((reclaim["vat"] * reclaim["kind"].map({"bill": 1, "supplier_credit": -1})).sum(), 2) == 3141.78
-    assert box[5] == round(box[3] - box[4], 2) == 236.82
-    assert box[6] == 28949 and box[7] == 16403  # whole pounds; the hotel lunch (no VAT) is outside box 7
+    assert box[4] == round(reclaim["vat"].sum(), 2) == 3158.98
+    assert box[5] == round(box[3] - box[4], 2) == 219.62
+    assert box[6] == 28949 and box[7] == 16489  # whole pounds; the hotel lunch (no VAT) is outside box 7
 
 
 def test_purchase_orders_and_statement(result):
@@ -186,13 +183,13 @@ def test_emails_and_month_end_checklist(result):
     detail = dict(zip(result.checklist["Item"], result.checklist["Detail"]))
     assert status["Duplicate invoices removed"] == "Done"
     assert status["Supplier bank detail changes verified"] == "Action needed"
-    assert detail["VAT return workings prepared"] == "Box 5 £236.82 (draft for review)"
+    assert detail["VAT return workings prepared"] == "Box 5 £219.62 (draft for review)"
     assert list(status.values()).count("To do") == 4
 
 
 def test_progress_steps_tell_the_story(result):
     labels = [s.label for s in result.test_steps]
-    assert labels[0] == "Read 20 documents and 7 spreadsheets"
+    assert labels[0] == "Read 19 documents and 7 spreadsheets"
     assert "Raised 6 sales invoices worth £41,543.60" in labels
     assert "Aged 14 open invoices: £15,003.40 outstanding" in labels
     assert any(l.startswith("Found 17 exceptions") for l in labels)
@@ -211,7 +208,7 @@ def test_every_output_file_is_valid(result):
     assert {"Summary", "Month-end checklist", "Exceptions", "Coded entries", "Sales invoices", "Aged debtors",
             "Debtors by customer", "PO matching", "Supplier statements", "VAT return workings", "Documents read",
             "Emails drafted"} <= set(wb.sheetnames)
-    assert wb["Exceptions"].max_row == 18 and wb["Coded entries"].max_row == 20
+    assert wb["Exceptions"].max_row == 18 and wb["Coded entries"].max_row == 19
     assert files["month-end-report.pdf"].data.startswith(b"%PDF")
     assert "word/document.xml" in zipfile.ZipFile(io.BytesIO(files["drafted-emails.docx"].data)).namelist()
 

@@ -8,12 +8,12 @@ Re-run to regenerate (the output is byte-for-byte reproducible):
 
     python clients/somerset-solders/sample_data/generate.py
 
-October 2026 month end. Inbox: 20 documents (17 supplier invoices as PDF or
-email, one of them a second copy, a credit note, a copy invoice, and a
-supplier statement); despatches to invoice for October (6 customers, 10
-lines); open sales invoices exported from Xero (14 invoices from July to
-September); the October bank statement (9 customer receipts); the purchase
-order log (6 POs); and the supplier list, customer list and chart of accounts.
+October 2026 month end. Inbox: 19 documents (17 supplier invoices as PDF or
+email, a second copy of one of them sent as a reminder, and a supplier
+statement); despatches to invoice for October (6 customers, 10 lines); open
+sales invoices exported from Xero (14 invoices from July to September); the
+October bank statement (9 customer receipts); the purchase order log (6 POs);
+and the supplier list, customer list and chart of accounts.
 
 Deliberate problems planted for the agent to find (17 exceptions):
   1  Penhallow Assay Laboratories  invoice email says "we have moved our banking": bank details differ from the supplier list
@@ -275,16 +275,12 @@ def _bank(key: str) -> tuple[str, str]:
 def supplier_documents() -> dict[str, bytes]:
     docs: dict[str, bytes] = {}
 
-    # Brackenford: dated in September (prior period), on PO-2598; a credit note follows in October
+    # Brackenford: dated in September (prior period), on PO-2598
     docs["2026-09-28_brackenford_BRS-40877.pdf"] = invoice_pdf(
         S["brackenford"], number="BRS-40877", date="28/09/2026", due="28/10/2026", po="PO-2598",
         items=[("500g black ABS spools, box of 200", 6, 86.00, 20), ("250g black ABS spools, box of 300", 3, 74.50, 20),
                ("Printed reel labels, roll of 1,000", 4, 18.75, 20)],
         bank=_bank("brackenford"), terms="Terms: 30 days net. Goods remain our property until paid for.")
-    docs["2026-10-16_brackenford_CN-0912.pdf"] = invoice_pdf(
-        S["brackenford"], title="CREDIT NOTE", number="CN-0912", date="16/10/2026", due=None,
-        items=[("500g black ABS spools, box of 200 (cracked in transit)", 1, 86.00, 20)],
-        extra=["Credit against invoice BRS-40877. Please deduct it from your next payment."])
 
     # Fernbrook: annual contract paid up front (prepayment)
     docs["2026-10-01_fernbrook_FCS-2210.pdf"] = invoice_pdf(

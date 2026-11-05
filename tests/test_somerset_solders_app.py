@@ -23,12 +23,12 @@ def test_landing_page_and_demo_run_end_to_end(monkeypatch):
     assert time.perf_counter() - started < 60
     assert not at.exception and not at.error
     page = " ".join(m.value for m in at.markdown)
-    for text in ("Read 20 documents and 7 spreadsheets", "Found 17 exceptions", "Needs human check (13)", "Downloads",
+    for text in ("Read 19 documents and 7 spreadsheets", "Found 17 exceptions", "Needs human check (13)", "Downloads",
                  "Purchases ready for Xero", "Overdue", "Supplier bank details changed", "Invoice exceeds the PO"):
         assert text in page, text
-    assert [t.label for t in at.tabs] == ["Coded entries (19)", "VAT return", "Sales invoices", "Aged debtors",
+    assert [t.label for t in at.tabs] == ["Coded entries (18)", "VAT return", "Sales invoices", "Aged debtors",
                                           "PO matching", "Supplier statements", "Emails (10)", "Month-end checklist",
-                                          "Exceptions (17)", "Documents read (20)"]
+                                          "Exceptions (17)", "Documents read (19)"]
     assert len(at.checkbox) == 13
 
     # Ticking a review box re-runs the script; results must survive the rerun

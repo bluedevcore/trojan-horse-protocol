@@ -2,7 +2,7 @@
 
 When the app runs without `ANTHROPIC_API_KEY` (or with `DEMO_MOCK=1`), `core.claude.ClaudeClient` makes no
 network calls. For the sample data it replays the JSON files in the `bookkeeping.*` folders, one per Claude
-request, keyed by a hash of the exact request (task + system prompt + prompt + schema): 20 document readings,
+request, keyed by a hash of the exact request (task + system prompt + prompt + schema): 19 document readings,
 1 coding batch, 4 email batches and the summary.
 
 The responses are written by hand in `curated.json`, using only the facts in each request, to show what the
