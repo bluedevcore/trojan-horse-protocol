@@ -27,8 +27,12 @@ def _safe(text: str, limit: int = 40) -> str:
 
 
 def file_documents(docs: list[dict], texts: dict[str, str], projects: pd.DataFrame, *,
-                   ref_pattern: str | None = None, unfiled_folder: str = "_To file") -> tuple[pd.DataFrame, list[Finding]]:
-    """Returns (filing index, findings for documents that could not be placed)."""
+                   ref_pattern: str | None = None, unfiled_folder: str = "_To file",
+                   noun: str = "project") -> tuple[pd.DataFrame, list[Finding]]:
+    """Returns (filing index, findings for documents that could not be placed).
+
+    ``noun`` is the client's word for a project (config ``filing.noun``, e.g.
+    "property"); it is used in the finding text and the index column names."""
     findings: list[Finding] = []
     proj = projects.copy() if projects is not None else pd.DataFrame(columns=["project_ref", "project_name"])
     for col in ("client", "site", "keywords"):
@@ -63,14 +67,14 @@ def file_documents(docs: list[dict], texts: dict[str, str], projects: pd.DataFra
             folder = f"{unfiled_folder}"
             findings.append(Finding("unfiled_document", subject=d.get("counterparty") or d["file"], reference=d["file"],
                                     date=date, source=d["file"], doc_ids=[d["doc_id"]],
-                                    finding=f"No project reference, site or keyword in “{d['file']}” matches the project register"
+                                    finding=f"No {noun} reference, site or keyword in “{d['file']}” matches the {noun} register"
                                             + (f" (the document mentions “{d['project_reference']}”)." if d.get("project_reference") else ".")))
         else:
             folder = f"{_safe(chosen['project_ref'], 20)} {chosen.get('project_name', '')}".strip() + f"/{category}"
         rows.append({"Doc": d["doc_id"], "Original file": d["file"], "Type": d["doc_type"].replace("_", " ").capitalize(),
                      "From / to": d.get("counterparty", ""), "Date": date,
-                     "Project": chosen["project_ref"] if chosen is not None else "",
-                     "Project name": chosen.get("project_name", "") if chosen is not None else "",
+                     noun.capitalize(): chosen["project_ref"] if chosen is not None else "",
+                     f"{noun.capitalize()} name": chosen.get("project_name", "") if chosen is not None else "",
                      "Filed by": how or "needs a person", "Folder": folder, "New file name": stem + suffix,
                      "Summary": d.get("summary", "")})
     return pd.DataFrame(rows), findings

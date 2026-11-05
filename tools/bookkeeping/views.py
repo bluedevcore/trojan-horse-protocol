@@ -260,20 +260,27 @@ def _entries_tab(r: RunResult) -> None:
         e = e[e["status"] == "Held"]
     e["Type"] = e["kind"].map(reports.KIND_LABELS).fillna(e["kind"])
     e["Status"] = [f"Held · {h}" if s == "Held" and h else s for s, h in zip(e["status"], e["hold_reason"])]
-    _grid(e, [("Type", "text", 100), ("date", "date", 90, "Date"), ("counterparty", "text", 190, "Supplier / payee"),
-              ("account", "text", 175, "Account"), ("net", "money", 80, "Net"), ("vat", "money", 70, "VAT"),
-              ("vat_code", "text", 45, "Code"), ("gross", "money", 82, "Gross"), ("Status", "text", 100),
-              ("coded_by", "text", 95, "Coded by")], status="Status")
+    analysis = r.config.get("analysis") or {}
+    label = analysis.get("tracking_label", "Tracking")
+    by_line = bool(analysis.get("entries_column"))  # optional: the property / project on every line
+    spec = [("Type", "text", 100), ("date", "date", 90, "Date"),
+            ("counterparty", "text", 170 if by_line else 190, "Supplier / payee")]
+    spec += [("tracking", "text", 125, label)] if by_line else []
+    spec += [("account", "text", 175, "Account"), ("net", "money", 80, "Net"), ("vat", "money", 70, "VAT"),
+             ("vat_code", "text", 45, "Code"), ("gross", "money", 82, "Gross"), ("Status", "text", 100)]
+    spec += [] if by_line else [("coded_by", "text", 95, "Coded by")]
+    _grid(e, spec, status="Status")
+    coded_by = (f"Each line carries its {label.lower()}; how each account was chosen (supplier list, keyword rule or "
+                "Claude) is in the Excel pack." if by_line else
+                "“Coded by” shows whether the account came from the supplier list, a keyword rule or a Claude suggestion.")
     st.caption("One line per VAT rate. Code: S standard 20%, R reduced 5%, Z zero rated, E exempt, O no VAT, RC reverse "
-               "charge. “Coded by” shows whether the account came from the supplier list, a keyword rule or a Claude "
-               "suggestion. References, descriptions and reasons are in the Excel pack.")
+               f"charge. {coded_by} References, descriptions and reasons are in the Excel pack.")
     totals = reports.account_totals(r)
     if not totals.empty:
         with st.expander("Totals by account"):
             _grid(totals, [("Account", "text", 280), ("Lines", "qty", 70), ("Net", "money", 120), ("VAT", "money", 110),
                            ("Gross", "money", 120), ("Held (gross)", "money", 120)], cap=25)
     tracking = reports.tracking_totals(r)
-    label = (r.config.get("analysis") or {}).get("tracking_label", "Tracking")
     if not tracking.empty:
         with st.expander(f"Totals by {label.lower()}"):
             _grid(tracking, [(label, "text", 200), ("Account", "text", 260), ("Lines", "qty", 70), ("Net", "money", 120),
