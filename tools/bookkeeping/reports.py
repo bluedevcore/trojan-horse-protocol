@@ -98,6 +98,38 @@ def debtors_frame(r: "RunResult") -> pd.DataFrame:
     return d[[c for c in cols if c in d]].rename(columns=cols)
 
 
+HOURS_COLUMNS = ["Employee", "Employee ID", "Week commencing", "Days worked", "Basic hours", "Overtime hours",
+                 "Weekend hours", "Total hours", "Hourly rate", "Overtime multiplier", "Gross pay (est.)", "Status",
+                 "Held because"]
+
+
+def hours_frame(r: "RunResult") -> pd.DataFrame:
+    h = r.hours
+    if h is None or h.empty:
+        return pd.DataFrame()
+    return h[[c for c in HOURS_COLUMNS if c in h]]
+
+
+def timesheet_lines_frame(r: "RunResult") -> pd.DataFrame:
+    t = getattr(r, "timesheet_lines", None)
+    if t is None or t.empty:
+        return pd.DataFrame()
+    cols = {"employee_id": "Employee ID", "employee": "Employee", "date": "Date", "job": "Job", "job_status": "Job status",
+            "start": "Start", "finish": "Finish", "break_minutes": "Break (mins)", "hours": "Hours entered",
+            "calculated_hours": "Hours (from times)", "paid_hours": "Hours counted", "approved_by": "Signed off by",
+            "duplicate": "Duplicate (not counted)"}
+    out = t[[c for c in cols if c in t]].rename(columns=cols)
+    if "Duplicate (not counted)" in out:
+        out["Duplicate (not counted)"] = out["Duplicate (not counted)"].map({True: "Yes", False: ""})
+    return out
+
+
+def hours_job_frame(r: "RunResult") -> pd.DataFrame:
+    from tools.bookkeeping.payroll import hours_by_job
+
+    return hours_by_job(getattr(r, "timesheet_lines", None))
+
+
 def letters_frame(r: "RunResult") -> pd.DataFrame:
     return pd.DataFrame([{"To": l["to"], "Type": l["recipient_type"].replace("_", " "), "Contact": l.get("contact", ""),
                           "Email": l.get("email", ""), "Subject": l["subject"], "Body": l["body"],
@@ -124,6 +156,9 @@ def summary_frame(r: "RunResult") -> pd.DataFrame:
         rows.append(("Sales invoices", f"{f['sales_ready']} of {f['sales_invoices']} ready, £{f['sales_value']:,.2f}"))
     if f.get("debtor_items"):
         rows.append(("Debtors outstanding", f"£{f['debtors_outstanding']:,.2f} (£{f['debtors_overdue']:,.2f} overdue)"))
+    if f.get("timesheet_rows") and "hours_total" in f:
+        rows.append(("Hours for payroll", f"{f['hours_ready']:,.2f} of {f['hours_total']:,.2f} hours ready; "
+                                          f"{len(f.get('hours_held', []))} employee-week(s) held"))
     rows += [("Exceptions", f["exceptions"]), ("Need a human check", f["needs_human_check"]), ("Emails drafted", f["emails"]),
              ("Manager summary", r.summary), ("Summary source", r.summary_source),
              ("Estimated time saved", f"{r.time_estimate.saved_label} (assumptions below)")]
@@ -153,7 +188,9 @@ def sheets(r: "RunResult") -> dict[str, pd.DataFrame]:
         "Sales invoices": sales_frame(r),
         "Aged debtors": debtors_frame(r),
         "Debtors by customer": r.debtors_summary,
-        "Hours for payroll": r.hours,
+        "Hours for payroll": hours_frame(r),
+        "Hours by job": hours_job_frame(r),
+        "Timesheet lines": timesheet_lines_frame(r),
         "PO matching": r.po_table,
         "Supplier statements": r.statements,
         "Filing index": r.filing,
@@ -214,6 +251,12 @@ def pdf_report(r: "RunResult") -> bytes:
         blocks += [dl.heading("All exceptions"),
                    dl.table(_pounds(exc[["ID", "Severity", "Area", "Check", "Who", "Reference", "Amount", "Finding"]], ["Amount"]),
                             widths=[5, 6, 7, 12, 12, 10, 7, 40])]
+    hours = hours_frame(r)
+    if not hours.empty:
+        h = hours[[c for c in ["Employee", "Week commencing", "Basic hours", "Overtime hours", "Weekend hours", "Total hours",
+                               "Gross pay (est.)", "Status", "Held because"] if c in hours]].copy()
+        h["Week commencing"] = pd.to_datetime(h["Week commencing"]).dt.strftime("%d %b %Y")
+        blocks += [dl.heading("Hours for payroll"), dl.table(_pounds(h, ["Gross pay (est.)"]))]
     totals = account_totals(r)
     if not totals.empty:
         blocks += [dl.heading("Coded entries by account"),

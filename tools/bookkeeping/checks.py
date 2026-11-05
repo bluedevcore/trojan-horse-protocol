@@ -123,6 +123,12 @@ CHECKS: dict[str, dict] = {
                            hold=False, action="Check which figure is right."),
     "missing_timesheet": dict(label="No timesheet", area="Timesheets", severity="Medium", human=True, hold=False,
                               action="Chase the missing timesheet before the payroll cut-off."),
+    "overlapping_shifts": dict(label="Overlapping timesheet lines", area="Timesheets", severity="Medium", human=True,
+                               hold=True, action="Check the times with the supervisor; the overlap must not be paid twice."),
+    "unknown_job": dict(label="Job not on the job list", area="Timesheets", severity="Medium", human=True, hold=False,
+                        action="Find the right job number so the labour cost goes to the right job."),
+    "closed_job": dict(label="Hours on a closed job", area="Timesheets", severity="Medium", human=True, hold=False,
+                       action="Check whether the job was reopened (e.g. snagging) or the hours belong to another job."),
     # purchase orders
     "invoice_without_po": dict(label="Invoice without a PO", area="Orders", severity="Medium", human=True, hold=True,
                                letter="supplier", action="Find the PO or get the spend approved before posting."),

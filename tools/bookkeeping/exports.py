@@ -13,6 +13,8 @@ Config keys (all optional):
         tracking_as_class: false                   QuickBooks: put the tracking value (property/project) in Class
         tracking_name: Property                    Xero: tracking category name for the tracking value
         card_bank_nominal: "1240"                  (Sage nominal for the card)
+        tracking_as_project: false                 Sage: put the tracking value (job/project) in Project Refn,
+                                                   not Department Code (Sage departments are numbers)
         journal_number: PAYROLL-OCT-26
         tax_codes: {S: "20.0% S", ...}             override the VAT code mapping
 """
@@ -173,11 +175,13 @@ def sage_transactions(entries, settings, journal=None, sales=None, **_):
         if r["status"] != "Ready" or r["kind"] not in _SAGE_TYPES:
             continue
         acct = settings.get("card_bank_nominal", "1240") if r["kind"] == "card_expense" else r.get("supplier_ref") or r["counterparty"][:8].upper()
+        project = settings.get("tracking_as_project")
         rows.append({"Type": _SAGE_TYPES[r["kind"]], "Account Reference": acct, "Nominal A/C Ref": r.get("account_code") or r["account"],
-                     "Department Code": r.get("tracking", ""), "Date": _d(r["date"]), "Reference": r["reference"],
+                     "Department Code": "" if project else r.get("tracking", ""), "Date": _d(r["date"]), "Reference": r["reference"],
                      "Details": r["description"][:60], "Net Amount": _amount(r["net"]),
                      "Tax Code": _tax("sage50", settings, r["vat_code"]), "Tax Amount": _amount(r["vat"]),
-                     "Exchange Rate": "", "Extra Reference": r.get("memo", ""), "User Name": "", "Project Refn": ""})
+                     "Exchange Rate": "", "Extra Reference": r.get("memo", ""), "User Name": "",
+                     "Project Refn": r.get("tracking", "") if project else ""})
     if sales is not None and not sales.empty:
         for r in sales[sales["status"] == "Ready"].to_dict("records"):
             rows.append({"Type": "SI", "Account Reference": r.get("customer_ref") or r["customer"][:8].upper(),
@@ -202,6 +206,10 @@ def payroll_hours_csv(entries, settings, hours=None, **_):
     if hours is None or hours.empty:
         return pd.DataFrame()
     out = hours.copy()
+    if "Status" in out:  # held weeks (unsigned, overlapping, unknown employee...) wait for a human check
+        out = out[out["Status"] == "Ready"]
+        if out.empty:
+            return pd.DataFrame()
     out["Week Commencing"] = out["Week commencing"].map(_d)
     return out[["Employee ID", "Employee", "Week Commencing", "Basic hours", "Overtime hours", "Weekend hours",
                 "Total hours", "Hourly rate", "Gross pay (est.)"]]

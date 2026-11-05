@@ -19,7 +19,7 @@ summary**. Everything else (arithmetic, VAT, matching, totals, ageing, hours, jo
 | 6 | Payroll report check and balanced payroll journal (difference to Suspense) | `payroll.py` | `payroll_journal` | `payroll` |
 | 7 | Sales invoices from completed work (numbering, terms, VAT, PO rules) | `sales.py` | `sales_invoices` | `sales_to_invoice` (+ `customers`) |
 | 8 | Aged debtors: allocate receipts, buckets, disputes, chase tiers | `sales.py` | `debtors` | `open_invoices` (+ `bank_statement`, `customers`) |
-| 9 | Timesheets: hours per employee per week, overtime, weekend, approvals | `payroll.py` | `timesheets` | `timesheets` (+ `employees`) |
+| 9 | Timesheets: hours per employee per week, overtime, weekend, approvals, overlapping lines, hours on closed or unknown jobs; held weeks stay out of the payroll hours file | `payroll.py` | `timesheets` | `timesheets` (+ `employees`, `projects` as the job list) |
 | 10 | Supplier invoices against purchase orders | `orders.py` | `purchase_orders` | `purchase_orders` |
 | 11 | Supplier statements against invoices received | `matching.py` | `statements` | statement documents |
 | 12 | File documents into project folders (+ zip) | `filing.py` | `filing` (off by default) | `projects` |
@@ -55,7 +55,7 @@ to a role from their headings; a missing reference list (`suppliers`, `customers
 | `timesheets` | employee, date | start, finish, break_minutes, hours, job, approved_by |
 | `employees` | employee | employee_id, hourly_rate, contracted_hours, overtime_multiplier, department |
 | `purchase_orders` | po_number, supplier, net_amount | date, description, job, status |
-| `projects` | project_ref, project_name | client, site, keywords (`;`-separated) |
+| `projects` | project_ref, project_name | client, site, keywords (`;`-separated), status (a job list: `Closed`/`Complete` jobs take no more hours) |
 
 Add aliases without code: `tables: {card_statement: {aliases: {amount: ["Spend (£)"]}}}`.
 
@@ -71,7 +71,8 @@ company: {name: Demo Company Ltd}   # the invented business whose books these ar
 accounting_system: quickbooks       # quickbooks | xero | sage50: picks the default exports and tax codes
 exports: [quickbooks_bills, ...]    # optional: list from exports.EXPORTS (default: all for the system)
 export_settings: {card_payment_account, card_bank_nominal, journal_number, tax_codes: {S: ...},
-                  sales_account_code, sales_nominal, tracking_as_class, tracking_name}
+                  sales_account_code, sales_nominal, tracking_as_class, tracking_name,
+                  tracking_as_project}     # Sage: job/project ref in Project Refn instead of Department Code
 sample_data:
   documents: ["sample_data/inbox/*"]          # globs or file paths
   tables: {card_statement: sample_data/x.csv, suppliers: ..., chart_of_accounts: ...}   # role: path (or list)
@@ -93,12 +94,14 @@ payroll: {by_department: true, journal_reference: PAYROLL-OCT-2026, accounts: {w
 sales: {invoice_prefix: "INV-", first_invoice_number: 1001, default_terms_days: 30, default_vat_code: S, group_by: job}
 debtors: {buckets: [0, 30, 60, 90], tiers: [{from: 1, tier: Reminder, tone: "friendly"}, ...], default_terms_days: 30}
 timesheets: {overtime_after_weekly_hours: 40, overtime_multiplier: 1.5, weekend_multiplier: 1.5,
-             max_daily_hours: 12, require_approval: true, expected_days: true}
+             max_daily_hours: 12, require_approval: true, expected_days: true,
+             closed_job_statuses: [closed, complete, ...]}   # job checks run when a projects (job) list is loaded
 purchase_orders: {tolerance_pct: 2, tolerance_abs: 5, require_po: true}
 filing: {reference_pattern: "P-\\d{4}", unfiled_folder: "_To file"}
 contacts:
   cardholders: [{card: "4417", name: Alex Morgan, email: ...}]
   payroll_bureau: {name, contact, email}
+  site_manager: {name, contact, email}   # any other single recipient: route checks to it with checks.<id>.letter
 month_end: {checklist: [{id: purchase_invoices}, {label: "Manual step", manual: true}, ...]}   # ids in month_end.py
 analysis: {tracking_label: Property}   # entries carry the document's project/property ref (or the cardholder)
 views: {tabs: [entries, card, payroll, sales, debtors, hours, po, statements, filing, vat, emails, checklist,
@@ -114,7 +117,9 @@ time_estimate:                      # counts: documents invoices receipts card_t
 Every check id, its default severity, whether it needs a human check, whether it holds the entries out of the
 import files, and who gets an email about it are in `CHECKS` in `checks.py`. Findings with the same recipient
 share one drafted email. Recipient types: `supplier` (supplier list email/contact), `cardholder`
-(`contacts.cardholders`), `customer` (customer list), `payroll_bureau` (`contacts.payroll_bureau`).
+(`contacts.cardholders`), `customer` (customer list), `payroll_bureau` (`contacts.payroll_bureau`), or any other
+key under `contacts` holding `{name, contact, email}` (e.g. timesheet queries to a site manager:
+`checks: {missing_approval: {letter: site_manager}}`).
 
 ## Claude tasks and mock-mode fixtures
 

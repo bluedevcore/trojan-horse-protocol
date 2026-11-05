@@ -150,6 +150,7 @@ TABLE_SPECS: dict[str, TableSpec] = {s.role: s for s in [
         "client": ["Client", "Customer"],
         "site": ["Site", "Site Address", "Address", "Location"],
         "keywords": ["Keywords", "Also Known As", "Aliases"],
+        "status": ["Status", "Job Status", "Project Status"],
     }),
     _spec("purchase_ledger", "purchase ledger", ["supplier", "reference", "amount"], {
         "supplier": ["Supplier", "Supplier Name", "Name"],

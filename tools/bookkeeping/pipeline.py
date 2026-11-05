@@ -33,7 +33,7 @@ from tools.bookkeeping.exports import SYSTEM_LABELS, build_exports
 from tools.bookkeeping.filing import file_documents
 from tools.bookkeeping.matching import MatchSettings, match_card_to_documents, name_similarity, reconcile_statement
 from tools.bookkeeping.orders import match_invoices_to_pos
-from tools.bookkeeping.payroll import check_payroll, payroll_journal, timesheet_hours
+from tools.bookkeeping.payroll import check_payroll, hold_hours, payroll_journal, timesheet_hours
 from tools.bookkeeping.sales import aged_debtors, chase_groups, raise_invoices
 from tools.bookkeeping.tables import DataFileError, TABLE_SPECS, detect_role, load_table, norm_name, table_spec
 from tools.bookkeeping.vat import code_for_rate, format_vat_number, normalise_code, vat_return
@@ -112,6 +112,7 @@ class RunResult:
     warnings: list[str] = field(default_factory=list)
     ai_sources: dict = field(default_factory=dict)
     seconds: float = 0.0
+    timesheet_lines: pd.DataFrame = field(default_factory=pd.DataFrame)  # checked lines behind ``hours``
 
     @property
     def period_label(self) -> str:
@@ -381,10 +382,13 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     hours, ts_rows = pd.DataFrame(), pd.DataFrame()
     if "timesheets" in tables and _module_on(config, "timesheets"):
         progress.start(f"Checking {_plural(len(tables['timesheets']), 'timesheet line')}…")
-        ts_rows, hours, tf = timesheet_hours(tables["timesheets"], tables.get("employees"), config.get("timesheets"))
+        ts_rows, hours, tf = timesheet_hours(tables["timesheets"], tables.get("employees"), config.get("timesheets"),
+                                             jobs=tables.get("projects"))
         findings += tf
-        progress.done(f"Summarised hours for {_plural(hours['Employee'].nunique() if not hours.empty else 0, 'employee')}",
-                      f"{hours['Overtime hours'].sum():g} overtime hours" if not hours.empty else "")
+        (progress.warn if tf else progress.done)(
+            f"Summarised hours for {_plural(hours['Employee'].nunique() if not hours.empty else 0, 'employee')}",
+            "; ".join(x for x in [f"{hours['Overtime hours'].sum():g} overtime hours" if not hours.empty else "",
+                                  _plural(len(tf), 'timesheet issue') if tf else ""] if x))
 
     # 10. Purchase orders ------------------------------------------------------------------
     po_table = pd.DataFrame()
@@ -437,6 +441,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     # 13. Exceptions, holds -------------------------------------------------------------------
     findings = finalise(findings, config)
     entries = _apply_holds(entries, findings)
+    hours = hold_hours(hours, findings)
     if not sales.empty:
         for f in findings:
             for key in f.entry_keys:
@@ -465,6 +470,8 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     letter_requests = _letter_requests(findings, chase, book, tables, config) if _module_on(config, "letters") else []
     facts = _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_totals, payroll_diff, sales, debtors,
                    ts_rows, po_table, stmt_docs, filing, vat_box, findings, letter_requests, p_start, p_end, inputs)
+    if not hours.empty:
+        facts.update(_hours_facts(hours))
     by_check: dict[str, list[str]] = {}
     for f in findings:
         by_check.setdefault(f.check_id, []).append(f.id)
@@ -525,6 +532,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
         exceptions=exceptions, letters=letters, checklist=checklist, exports=exports, summary=summary,
         summary_source=summary_source, facts=facts, human_checks=human, time_estimate=est, files_read=files_read,
         originals=originals, warnings=warnings, ai_sources=dict(Counter(c.source for c in calls)),
+        timesheet_lines=ts_rows,
     )
     from tools.bookkeeping import reports
 
@@ -863,6 +871,10 @@ def _letter_requests(findings, chase, book, tables, config) -> list[dict]:
             rec = contacts.get("payroll_bureau") or {}
             name = rec.get("name", "Payroll bureau")
             info = {"contact": rec.get("contact", ""), "email": rec.get("email", "")}
+        elif isinstance(contacts.get(rtype), dict):  # any other single recipient named in contacts (e.g. a site manager)
+            rec = contacts[rtype]
+            name = rec.get("name", rtype.replace("_", " ").capitalize())
+            info = {"contact": rec.get("contact", ""), "email": rec.get("email", "")}
         key = f"{rtype}:{name}"
         g = groups.setdefault(key, {"key": key, "recipient_type": rtype, "to": name, **info, "tone": "", "points": [],
                                     "exceptions": []})
@@ -960,6 +972,23 @@ def _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_tota
     return facts
 
 
+def _hours_facts(hours: pd.DataFrame) -> dict:
+    """Payroll-hours figures for the summary, checklist and time estimate."""
+    ready = hours[hours["Status"] == "Ready"] if "Status" in hours else hours
+    held = hours[hours["Status"] == "Held"] if "Status" in hours else hours.iloc[0:0]
+    weeks = sorted(pd.to_datetime(hours["Week commencing"]).dropna().unique())
+    return {
+        "hours_weeks": [f"{pd.Timestamp(w):%d %b %Y}" for w in weeks],
+        "hours_total": round(float(hours["Total hours"].sum()), 2),
+        "hours_ready": round(float(ready["Total hours"].sum()), 2),
+        "hours_overtime": round(float(hours["Overtime hours"].sum()), 2),
+        "hours_weekend": round(float(hours["Weekend hours"].sum()), 2),
+        "hours_employees_ready": int(ready["Employee"].nunique()),
+        "hours_held": [f"{r['Employee']} ({r['Held because']})" for r in held.to_dict("records")],
+        "gross_pay_ready_est": round(float(pd.to_numeric(ready["Gross pay (est.)"], errors="coerce").sum()), 2),
+    }
+
+
 def _time_saved(config, facts, n_exc, n_checks, n_letters) -> TimeEstimate:
     cfg = config.get("time_estimate") or {}
     by_type = facts.get("documents_by_type", {})
@@ -968,6 +997,7 @@ def _time_saved(config, facts, n_exc, n_checks, n_letters) -> TimeEstimate:
               "entries": facts.get("entries", 0), "exceptions": n_exc, "human_checks": n_checks, "emails": n_letters,
               "employees": facts.get("payroll_employees", 0), "sales_invoices": facts.get("sales_invoices", 0),
               "debtor_items": facts.get("debtor_items", 0), "timesheet_rows": facts.get("timesheet_rows", 0),
+              "timesheet_employees": facts.get("timesheet_employees", 0), "po_lines": facts.get("po_lines", 0),
               "fixed": 1}
 
     def expand(rows):
