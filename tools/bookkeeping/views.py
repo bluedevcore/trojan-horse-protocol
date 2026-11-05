@@ -272,11 +272,12 @@ def _entries_tab(r: RunResult) -> None:
              ("vat_code", "text", 45, "Code"), ("gross", "money", 82, "Gross"), ("Status", "text", 100)]
     spec += [] if by_line else [("coded_by", "text", 95, "Coded by")]
     _grid(e, spec, status="Status")
-    coded_by = (f"Each line carries its {label.lower()}; how each account was chosen (supplier list, keyword rule or "
-                "Claude) is in the Excel pack." if by_line else
-                "“Coded by” shows whether the account came from the supplier list, a keyword rule or a Claude suggestion.")
+    more = (f"Each line carries its {label.lower()}. References, descriptions and how each account was chosen (supplier "
+            "list, keyword rule or Claude) are in the Excel pack." if by_line else
+            "“Coded by” shows whether the account came from the supplier list, a keyword rule or a Claude suggestion. "
+            "References, descriptions and reasons are in the Excel pack.")
     st.caption("One line per VAT rate. Code: S standard 20%, R reduced 5%, Z zero rated, E exempt, O no VAT, RC reverse "
-               f"charge. {coded_by} References, descriptions and reasons are in the Excel pack.")
+               f"charge. {more}")
     totals = reports.account_totals(r)
     if not totals.empty:
         with st.expander("Totals by account"):
