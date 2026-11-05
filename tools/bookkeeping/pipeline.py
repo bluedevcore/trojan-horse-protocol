@@ -72,6 +72,7 @@ class RunInputs:
     label: str = "uploaded files"
     period: tuple[pd.Timestamp, pd.Timestamp] | None = None
     notes: list[str] = field(default_factory=list)  # routing messages for uploads
+    fallback_roles: list[str] = field(default_factory=list)  # reference lists taken from the demo, not uploaded
 
 
 @dataclass
@@ -179,7 +180,7 @@ def upload_inputs(files: list[FileInput], config: dict, client_dir: Path | None 
                 paths = sample_tables[role] if isinstance(sample_tables[role], list) else [sample_tables[role]]
                 try:
                     inputs.tables[role] = [(Path(p).name, (Path(client_dir) / p).read_bytes()) for p in paths]
-                    inputs.notes.append(f"No {TABLE_SPECS[role].label} uploaded: using the demo's sample {TABLE_SPECS[role].label}.")
+                    inputs.fallback_roles.append(role)
                 except OSError:
                     pass
     return inputs
@@ -234,10 +235,14 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
                 warnings.append(str(exc))
         if frames:
             tables[role] = pd.concat(frames, ignore_index=True)
-    if not texts and not tables:
+    if not texts and not (set(tables) - set(inputs.fallback_roles)):
         progress.fail("Could not read any of the files")
         problems = [f.finding for f in findings] + warnings
         raise PipelineError("None of the files could be read:\n\n" + "\n".join(f"- {p}" for p in problems))
+    if inputs.fallback_roles:
+        labels = [TABLE_SPECS[r].label for r in inputs.fallback_roles]
+        listed = labels[0] if len(labels) == 1 else ", ".join(labels[:-1]) + " or " + labels[-1]
+        warnings.append(f"No {listed} uploaded: using the demo's sample {'one' if len(labels) == 1 else 'ones'}.")
     table_bits = ", ".join(f"{TABLE_SPECS[r].label} ({len(df)} rows)" for r, df in tables.items())
     unread = len([f for f in findings if f.check_id == "unreadable_document"])
     (progress.warn if unread or warnings else progress.done)(
@@ -524,8 +529,9 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     from tools.bookkeeping import reports
 
     result.downloads = reports.build_downloads(result)
-    progress.done(f"Built {_plural(len(exports), SYSTEM_LABELS.get(config.get('accounting_system', 'quickbooks'), '') + ' import file')} "
-                  f"and the month-end pack", ", ".join(f.file_name.rsplit(".", 1)[-1].upper() for f in result.downloads[len(exports):]))
+    built = (f"Built {_plural(len(exports), SYSTEM_LABELS.get(config.get('accounting_system', 'quickbooks'), '') + ' import file')} "
+             f"and the month-end pack" if exports else "Built the month-end pack (nothing is ready to import yet)")
+    progress.done(built, ", ".join(f.file_name.rsplit(".", 1)[-1].upper() for f in result.downloads[len(exports):]))
     result.seconds = round(time.perf_counter() - started, 2)
     return result
 
@@ -591,7 +597,7 @@ def _document_checks(docs: list[dict], book: SupplierBook, config: dict, p_start
                                     finding=f"{label} covers {start:%d %b %Y} to {end:%d %b %Y} ({months} months). "
                                             f"About £{per_month:,.2f} a month should be released from prepayments."))
         if d["currency"] != "GBP":
-            findings.append(Finding("foreign_currency", **common,
+            findings.append(Finding("foreign_currency", **{**common, "amount": None},
                                     finding=f"{label} is in {d['currency']} ({d['currency']} {d['gross_total'] or 0:,.2f}) from an overseas "
                                             f"supplier, so no UK VAT is charged and reverse-charge VAT may apply."))
     return duplicates

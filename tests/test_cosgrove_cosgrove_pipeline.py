@@ -210,9 +210,17 @@ def test_uploads_are_routed_and_run_with_templates(config):
     assert set(inputs.tables) == {"card_statement", "suppliers", "customers", "chart_of_accounts"}  # lists from the demo
     assert any("notes.csv" in n for n in inputs.notes)
     res = pipeline.run(inputs, config, ClaudeClient(mock=True))
+    assert any("using the demo's sample ones" in w for w in res.warnings)
     assert set(res.ai_sources) <= {"mock"} and res.downloads
     assert any(f.check_id == "unreadable_document" for f in res.findings)  # the photo
     assert any(c.id == "AI" for c in res.human_checks)  # template text is flagged for review
+
+
+def test_upload_with_nothing_readable_is_a_friendly_error(config):
+    inputs = pipeline.upload_inputs([("empty.pdf", b""), ("notes.csv", b"Colour,Size\nred,big\n")], config, CLIENT)
+    assert inputs.fallback_roles and len(inputs.notes) == 1  # the skipped spreadsheet
+    with pytest.raises(PipelineError, match="None of the files could be read"):
+        pipeline.run(inputs, config, ClaudeClient(mock=True))
 
 
 def test_missing_sample_folder_is_a_friendly_error(config, tmp_path):

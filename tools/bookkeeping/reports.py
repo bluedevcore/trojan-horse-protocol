@@ -186,6 +186,15 @@ def build_downloads(r: "RunResult") -> list[DownloadFile]:
     return files
 
 
+def _pounds(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
+    """Money as text with pence for PDF/Word tables (the generic formatter rounds floats to 1 dp)."""
+    out = df.copy()
+    for c in cols:
+        if c in out:
+            out[c] = out[c].map(lambda v: "" if v is None or pd.isna(v) else f"{'−' if v < 0 else ''}£{abs(v):,.2f}")
+    return out
+
+
 def pdf_report(r: "RunResult") -> bytes:
     f = r.facts
     blocks = [dl.heading("Summary"),
@@ -203,17 +212,21 @@ def pdf_report(r: "RunResult") -> bytes:
                        dl.table(human[["ID", "Severity", "Check", "Who", "Reference", "Finding", "Suggested action"]],
                                 widths=[5, 6, 12, 12, 10, 32, 24])]
         blocks += [dl.heading("All exceptions"),
-                   dl.table(exc[["ID", "Severity", "Area", "Check", "Who", "Reference", "Amount", "Finding"]],
+                   dl.table(_pounds(exc[["ID", "Severity", "Area", "Check", "Who", "Reference", "Amount", "Finding"]], ["Amount"]),
                             widths=[5, 6, 7, 12, 12, 10, 7, 40])]
     totals = account_totals(r)
     if not totals.empty:
-        blocks += [dl.heading("Coded entries by account"), dl.table(totals)]
+        blocks += [dl.heading("Coded entries by account"),
+                   dl.table(_pounds(totals, ["Net", "VAT", "Gross", "Held (gross)"]))]
     if not r.journal.empty:
-        blocks += [dl.heading("Payroll journal"), dl.table(journal_frame(r), widths=[8, 12, 18, 8, 8, 30, 10])]
+        blocks += [dl.heading("Payroll journal"), dl.table(_pounds(journal_frame(r), ["Debit", "Credit"]),
+                                                            widths=[8, 12, 18, 8, 8, 30, 10])]
     if not r.vat_return.empty:
-        blocks += [dl.heading("VAT return workings (draft)"), dl.table(r.vat_return, widths=[4, 30, 10, 40])]
+        blocks += [dl.heading("VAT return workings (draft)"),
+                   dl.table(_pounds(r.vat_return, ["Amount (£)"]), widths=[4, 30, 10, 40])]
     if not r.debtors_summary.empty:
-        blocks += [dl.heading("Debtors by customer"), dl.table(r.debtors_summary)]
+        money = [c for c in r.debtors_summary.columns if c != "Customer"]
+        blocks += [dl.heading("Debtors by customer"), dl.table(_pounds(r.debtors_summary, money))]
     blocks += [dl.heading("Method"), dl.bullets([
         "Claude read each document and returned its fields; code then checked the arithmetic, VAT rates, VAT numbers, "
         "bank details, duplicates and dates.",

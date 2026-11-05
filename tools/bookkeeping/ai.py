@@ -283,14 +283,20 @@ def draft_letters(client: ClaudeClient, requests: list[dict], config: dict, *, b
 # ------------------------------------------------------------------ summary
 
 
+def _n(count: int, word: str, plural: str = "") -> str:
+    return f"{count} {word if count == 1 else (plural or word + 's')}"
+
+
 def template_summary(facts: dict) -> str:
-    parts = [f"{facts.get('documents', 0)} documents were read and {facts.get('entries_ready', 0)} entries "
-             f"(£{facts.get('value_ready', 0):,.2f}) are ready to import."]
+    docs, ready = facts.get("documents", 0), facts.get("entries_ready", 0)
+    parts = [f"{_n(docs, 'document')} {'was' if docs == 1 else 'were'} read and {_n(ready, 'entry', 'entries')} "
+             f"(£{facts.get('value_ready', 0):,.2f}) {'is' if ready == 1 else 'are'} ready to import."]
     if facts.get("high_severity"):
         top = facts["high_severity"][:2]
         parts.append("Main problems: " + "; ".join(f"{h['check']} ({h['who']})" for h in top) + ".")
-    parts.append(f"{facts.get('exceptions', 0)} exceptions were found; {facts.get('needs_human_check', 0)} need a "
-                 f"decision and {facts.get('emails', 0)} emails are drafted for checking before month end.")
+    exc, checks, emails = facts.get("exceptions", 0), facts.get("needs_human_check", 0), facts.get("emails", 0)
+    parts.append(f"{_n(exc, 'exception')} {'was' if exc == 1 else 'were'} found; {checks} need{'s' if checks == 1 else ''} a "
+                 f"decision and {_n(emails, 'email')} {'is' if emails == 1 else 'are'} drafted for checking before month end.")
     return " ".join(parts)
 
 
