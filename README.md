@@ -1,6 +1,6 @@
-# Trojan Horse Protocol: client demo apps
+# Client demo apps
 
-Each demo is a small working web app that shows a UK small business an AI tool doing much of a job they are hiring for. It is sent as a link plus a 60-second video, instead of a CV.
+Each demo is a small working web app that shows a UK small business an AI tool doing much of a job they are hiring for. It is sent as a link plus a 60-second video, alongside a CV.
 
 - **One shared core:** a Claude client with a disk cache and mock mode, a Streamlit page shell, a step-progress widget, a summary panel, a "needs human check" list, download builders and neutral styling.
 - **One reusable engine per job type:** for example `tools/data_validation/`. It holds the logic and the Claude prompts, and contains no client names.
