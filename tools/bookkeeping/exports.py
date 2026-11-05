@@ -10,6 +10,8 @@ Config keys (all optional):
     exports: [list of export keys]            default: every export for the system
     export_settings:
         card_payment_account: Company credit card  (QuickBooks / Xero name)
+        tracking_as_class: false                   QuickBooks: put the tracking value (property/project) in Class
+        tracking_name: Property                    Xero: tracking category name for the tracking value
         card_bank_nominal: "1240"                  (Sage nominal for the card)
         journal_number: PAYROLL-OCT-26
         tax_codes: {S: "20.0% S", ...}             override the VAT code mapping
@@ -89,7 +91,8 @@ def qb_expenses(entries, settings, **_):
         "Payment Account": settings.get("card_payment_account", "Company credit card"), "Payment Method": "Credit card",
         "Memo": r.get("memo", ""), "Account": r["account"], "Line Description": r["description"],
         "Line Amount": _amount(r["net"]), "Line Tax Code": _tax("quickbooks", settings, r["vat_code"]),
-        "Line Tax Amount": _amount(r["vat"]), "Class": r.get("tracking", "")} for r in e.to_dict("records")])
+        "Line Tax Amount": _amount(r["vat"]),
+        "Class": r.get("tracking", "") if settings.get("tracking_as_class") else ""} for r in e.to_dict("records")])
 
 
 def qb_journal(entries, settings, journal=None, **_):

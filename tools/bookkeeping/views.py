@@ -272,6 +272,12 @@ def _entries_tab(r: RunResult) -> None:
         with st.expander("Totals by account"):
             _grid(totals, [("Account", "text", 280), ("Lines", "qty", 70), ("Net", "money", 120), ("VAT", "money", 110),
                            ("Gross", "money", 120), ("Held (gross)", "money", 120)], cap=25)
+    tracking = reports.tracking_totals(r)
+    label = (r.config.get("analysis") or {}).get("tracking_label", "Tracking")
+    if not tracking.empty:
+        with st.expander(f"Totals by {label.lower()}"):
+            _grid(tracking, [(label, "text", 200), ("Account", "text", 260), ("Lines", "qty", 70), ("Net", "money", 120),
+                             ("VAT", "money", 110), ("Gross", "money", 120)], cap=25)
 
 
 def _card_tab(r: RunResult) -> None:

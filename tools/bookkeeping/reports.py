@@ -46,6 +46,17 @@ def account_totals(r: "RunResult") -> pd.DataFrame:
     return t.sort_values("Gross", ascending=False).round(2).reset_index(drop=True)
 
 
+def tracking_totals(r: "RunResult") -> pd.DataFrame:
+    """Totals per tracking value (property, project or cardholder), for analysis by site."""
+    e = r.entries
+    if e is None or e.empty or not (e["tracking"].astype(str).str.strip() != "").any():
+        return pd.DataFrame()
+    label = (r.config.get("analysis") or {}).get("tracking_label", "Tracking")
+    t = e[e["tracking"].astype(str).str.strip() != ""].groupby(["tracking", "account"]).agg(
+        Lines=("entry", "count"), Net=("net", "sum"), VAT=("vat", "sum"), Gross=("gross", "sum")).reset_index()
+    return t.rename(columns={"tracking": label, "account": "Account"}).round(2)
+
+
 def journal_frame(r: "RunResult") -> pd.DataFrame:
     j = r.journal
     if j is None or j.empty:
@@ -135,6 +146,7 @@ def sheets(r: "RunResult") -> dict[str, pd.DataFrame]:
         "Needs human check": exc[exc["Needs human check"] == "Yes"] if not exc.empty else exc,
         "Coded entries": entries_frame(r),
         "Totals by account": account_totals(r),
+        "Totals by " + str((r.config.get("analysis") or {}).get("tracking_label", "tracking")).lower(): tracking_totals(r),
         "Card matching": r.card,
         "Payroll journal": journal_frame(r),
         "Payroll check": payroll_frame(r),

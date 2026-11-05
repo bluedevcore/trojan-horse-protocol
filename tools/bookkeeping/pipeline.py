@@ -253,7 +253,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     docs: list[dict] = []
     if texts and _module_on(config, "documents"):
         progress.start(f"Reading {_plural(len(texts), 'document')} with {source_word}…")
-        projects = tables["projects"].to_dict("records") if "projects" in tables and _module_on(config, "filing") else None
+        projects = tables["projects"].to_dict("records") if "projects" in tables else None
         extracted = ai.extract_documents(client, texts, config, projects=projects,
                                          on_done=lambda d, t: progress.update(f"Reading documents with {source_word}… ({d}/{t})"))
         for i, (doc, (data, result)) in enumerate(zip(texts, extracted), 1):
@@ -752,7 +752,7 @@ def _build_entries(purchase_docs, duplicates, txns, matches, no_receipt_needed, 
                 "terms_days": supplier.get("terms_days") if supplier.get("terms_days") not in ("", None) else None,
                 "account": code.account, "account_code": chart.code(code.account), "coded_by": code.coded_by,
                 "confidence": code.confidence, "coding_reason": code.reason,
-                "tracking": (t or {}).get("cardholder", "") if t else "", "memo": "",
+                "tracking": (t or {}).get("cardholder", "") if t else (d or {}).get("project_reference", ""), "memo": "",
                 "source": (d or {}).get("file", "") or (t or {}).get("_source", ""), "status": "Ready", "hold_reason": ""}
         if base["date"] is None or pd.isna(base["date"]):
             base["date"] = p_end

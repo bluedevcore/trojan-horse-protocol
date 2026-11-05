@@ -124,6 +124,9 @@ month_end:
     - {label: "Review aged payables and plan the supplier payment run", manual: true}
     - {label: "Send the month-end summary to the finance manager", manual: true}
 
+analysis:
+  tracking_label: Cardholder   # card spend is tracked by cardholder in the pack
+
 views:
   tabs: [entries, card, payroll, sales, emails, checklist, exceptions, documents]
 
