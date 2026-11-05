@@ -433,7 +433,8 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
                                     noun=fcfg.get("noun", "project"))
         findings += ff
         (progress.warn if ff else progress.done)(f"Filed {len(docs) - len(ff)} of {_plural(len(docs), 'document')}",
-                                                 f"{len(ff)} need a person to choose the folder" if ff else "")
+                                                 f"{len(ff)} need{'s' if len(ff) == 1 else ''} a person to choose the folder"
+                                                 if ff else "")
 
     # 13. Exceptions, holds -------------------------------------------------------------------
     findings = finalise(findings, config)
