@@ -38,10 +38,24 @@ def entries_frame(r: "RunResult") -> pd.DataFrame:
     return out
 
 
+CREDIT_KINDS = ("supplier_credit", "sales_credit")
+
+
+def signed(e: pd.DataFrame) -> pd.DataFrame:
+    """Entries with credit notes negative: amounts are stored positive and the kind carries the sign
+    (as the exports and the VAT return already treat them)."""
+    out = e.copy()
+    sign = out["kind"].isin(CREDIT_KINDS).map({True: -1.0, False: 1.0})
+    for col in ("net", "vat", "gross"):
+        out[col] = out[col] * sign
+    return out
+
+
 def account_totals(r: "RunResult") -> pd.DataFrame:
     e = r.entries
     if e is None or e.empty:
         return pd.DataFrame()
+    e = signed(e)
     t = e.groupby("account").agg(Lines=("entry", "count"), Net=("net", "sum"), VAT=("vat", "sum"),
                                  Gross=("gross", "sum")).reset_index().rename(columns={"account": "Account"})
     held = e[e["status"] == "Held"].groupby("account")["gross"].sum()
@@ -55,6 +69,7 @@ def tracking_totals(r: "RunResult") -> pd.DataFrame:
     if e is None or e.empty or not (e["tracking"].astype(str).str.strip() != "").any():
         return pd.DataFrame()
     label = (r.config.get("analysis") or {}).get("tracking_label", "Tracking")
+    e = signed(e)
     t = e[e["tracking"].astype(str).str.strip() != ""].groupby(["tracking", "account"]).agg(
         Lines=("entry", "count"), Net=("net", "sum"), VAT=("vat", "sum"), Gross=("gross", "sum")).reset_index()
     return t.rename(columns={"tracking": label, "account": "Account"}).round(2)

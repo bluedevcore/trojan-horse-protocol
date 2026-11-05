@@ -1,6 +1,7 @@
 """Optional config keys for property (or project) analysis, on tiny in-memory inputs in mock mode:
 analysis.entries_column, analysis.in_report, filing.noun and a table label override.
-Without these keys the engine behaves as before (checked at the end)."""
+Without these keys the engine behaves as before (checked at the end). Also: credit notes reduce the
+totals by account and by property."""
 
 import io
 
@@ -84,6 +85,20 @@ def test_property_wording_column_and_report(property_extract):
     assert "Totals by property" in text and "Mill Lane" in text
     xero = {x.key: x.frame for x in r.exports}["xero_bills"]
     assert "Mill Lane" in set(xero["TrackingOption1"])
+
+
+def test_credit_notes_reduce_the_totals(property_extract):
+    credit = _pdf(["Acme Repairs Ltd", f"VAT Reg No: {VAT}", "CREDIT NOTE", "Credit note number: CN-9", "Date: 07/10/2026",
+                   "Site: 4 Mill Lane", "Subtotal £30.00", "VAT @ 20% £6.00", "Total £36.00"])
+    inputs = RunInputs(documents=[("repair.pdf", REPAIR), ("credit.pdf", credit)],
+                       tables={"chart_of_accounts": [("chart.csv", CHART)], "suppliers": [("suppliers.csv", SUPPLIERS)],
+                               "projects": [("register.csv", REGISTER)]},
+                       period=(pd.Timestamp("2026-10-01"), pd.Timestamp("2026-10-31")))
+    r = pipeline.run(inputs, PROPERTY_CONFIG, ClaudeClient(mock=True))
+    assert sorted(r.entries["kind"]) == ["bill", "supplier_credit"] and (r.entries["gross"] > 0).all()  # stored positive
+    by_account = reports.account_totals(r).set_index("Account")
+    assert by_account.loc["Repairs and maintenance", ["Net", "VAT", "Gross"]].tolist() == [70.0, 14.0, 84.0]
+    assert reports.tracking_totals(r)["Gross"].tolist() == [84.0]  # £120 bill less £36 credit, both at Mill Lane
 
 
 def test_defaults_are_unchanged_without_the_keys(property_extract):
