@@ -1,10 +1,16 @@
 """Output files for a bookkeeping run: the accounting-system import CSVs, an
 Excel bookkeeping pack, a PDF month-end report, the drafted emails as an
 editable Word file, the exceptions CSV and (with filing on) a zip of the
-documents in their project folders."""
+documents in their project folders.
+
+Optional config ``reports:`` renames the pack and the report for clients whose
+job is not bookkeeping (e.g. credit control and filing): ``pack_label``,
+``pack_file``, ``pack_help``, ``report_label``, ``report_file``, ``report_help``,
+``report_title``, ``emails_help`` and ``method`` (the report's method bullets)."""
 
 from __future__ import annotations
 
+import re
 from typing import TYPE_CHECKING
 
 import pandas as pd
@@ -113,9 +119,12 @@ def _source_label(source: str | None) -> str:
 def summary_frame(r: "RunResult") -> pd.DataFrame:
     f = r.facts
     rows = [("Report", f"{r.config.get('tool_name', 'Bookkeeping')} — month-end pack"), ("Period", f["period"]),
-            ("Prepared as at", f["as_of"]), ("Input", r.inputs_label), ("Documents read", f["documents"]),
-            ("Ledger lines", f["entries"]), ("Ready to import", f"{f['entries_ready']} lines, £{f['value_ready']:,.2f}"),
-            ("Held for a check", f"{f['entries_held']} lines, £{f['value_held']:,.2f}")]
+            ("Prepared as at", f["as_of"]), ("Input", r.inputs_label), ("Documents read", f["documents"])]
+    if not _no_ledger(r):
+        rows += [("Ledger lines", f["entries"]), ("Ready to import", f"{f['entries_ready']} lines, £{f['value_ready']:,.2f}"),
+                 ("Held for a check", f"{f['entries_held']} lines, £{f['value_held']:,.2f}")]
+    if f.get("filing_docs"):
+        rows.append(("Documents filed", f"{f['filing_filed']} of {f['filing_docs']} ({f['filing_to_file']} left to file)"))
     if f.get("card_txns"):
         rows.append(("Card transactions matched", f"{f['card_matched']} of {f['card_txns']}"))
     if f.get("payroll_employees"):
@@ -129,6 +138,12 @@ def summary_frame(r: "RunResult") -> pd.DataFrame:
              ("Estimated time saved", f"{r.time_estimate.saved_label} (assumptions below)")]
     rows += [("Assumption", a) for a in r.time_estimate.assumptions]
     return pd.DataFrame(rows, columns=["Item", "Value"])
+
+
+def _no_ledger(r: "RunResult") -> bool:
+    """A debtors / filing run with no ledger lines: leave out the empty import figures."""
+    f = r.facts
+    return not f["entries"] and bool(f.get("debtor_items") or f.get("filing_docs"))
 
 
 def public(df: pd.DataFrame) -> pd.DataFrame:
@@ -164,18 +179,28 @@ def sheets(r: "RunResult") -> dict[str, pd.DataFrame]:
     return {k: public(v) for k, v in out.items() if v is not None and (not v.empty or k in ("Exceptions",))}
 
 
+def _file_stem(r: "RunResult") -> str:
+    if r.exports:
+        return r.exports[0].file_name.rsplit("_", 1)[0] + "_"
+    tool = re.sub(r"[^a-z0-9]+", "-", str(r.config.get("tool_name") or "bookkeeping").lower()).strip("-")
+    return f"{tool}_{r.period_end:%Y-%m}_"
+
+
 def build_downloads(r: "RunResult") -> list[DownloadFile]:
-    stem = r.exports[0].file_name.rsplit("_", 1)[0] + "_" if r.exports else "bookkeeping_"
+    stem = _file_stem(r)
+    rc = r.config.get("reports") or {}
     files = [DownloadFile(x.label, dl.csv_bytes(x.frame), x.file_name, x.help) for x in r.exports]
     xlsx = dl.excel_bytes(sheets(r), wrap_columns=["Finding", "Suggested action", "Body", "Description", "Why this account",
                                                    "Summary", "Detail", "Value", "How it is worked out"])
-    files.append(DownloadFile("Bookkeeping pack (Excel)", xlsx, f"{stem}bookkeeping-pack.xlsx",
-                              "Every table from this run: entries, matching, exceptions, checklist and more"))
-    files.append(DownloadFile("Month-end report (PDF)", pdf_report(r), f"{stem}month-end-report.pdf",
-                              "Manager summary, checklist, human checks and exceptions, ready to circulate"))
+    files.append(DownloadFile(rc.get("pack_label", "Bookkeeping pack (Excel)"), xlsx,
+                              f"{stem}{rc.get('pack_file', 'bookkeeping-pack')}.xlsx",
+                              rc.get("pack_help", "Every table from this run: entries, matching, exceptions, checklist and more")))
+    files.append(DownloadFile(rc.get("report_label", "Month-end report (PDF)"), pdf_report(r),
+                              f"{stem}{rc.get('report_file', 'month-end-report')}.pdf",
+                              rc.get("report_help", "Manager summary, checklist, human checks and exceptions, ready to circulate")))
     if r.letters:
         files.append(DownloadFile("Drafted emails (Word)", letters_docx(r), f"{stem}drafted-emails.docx",
-                                  "Supplier queries, receipt requests and other emails, editable"))
+                                  rc.get("emails_help", "Supplier queries, receipt requests and other emails, editable")))
     files.append(DownloadFile("Exceptions list (CSV)", dl.csv_bytes(r.exceptions), f"{stem}exceptions.csv",
                               "All exceptions, for another system or a tracker"))
     if r.filing is not None and not r.filing.empty:
@@ -197,10 +222,17 @@ def _pounds(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
 
 def pdf_report(r: "RunResult") -> bytes:
     f = r.facts
+    rc = r.config.get("reports") or {}
+    top = [("Documents read", f["documents"])]
+    if not _no_ledger(r):
+        top += [("Ready to import", f"£{f['value_ready']:,.2f}"), ("Held for a check", f["entries_held"])]
+    else:
+        if f.get("debtor_items"):
+            top += [("Outstanding", f"£{f['debtors_outstanding']:,.2f}"), ("Overdue", f"£{f['debtors_overdue']:,.2f}")]
+        if f.get("filing_docs"):
+            top.append(("Filed", f"{f['filing_filed']} of {f['filing_docs']}"))
     blocks = [dl.heading("Summary"),
-              dl.metrics([("Documents read", f["documents"]), ("Ready to import", f"£{f['value_ready']:,.2f}"),
-                          ("Held for a check", f["entries_held"]), ("Exceptions", f["exceptions"]),
-                          ("Need a human check", f["needs_human_check"])]),
+              dl.metrics(top + [("Exceptions", f["exceptions"]), ("Need a human check", f["needs_human_check"])]),
               dl.para(r.summary), dl.note(r.summary_source)]
     if not r.checklist.empty:
         blocks += [dl.heading("Month-end checklist"), dl.table(r.checklist, widths=[22, 10, 48, 14])]
@@ -227,7 +259,7 @@ def pdf_report(r: "RunResult") -> bytes:
     if not r.debtors_summary.empty:
         money = [c for c in r.debtors_summary.columns if c != "Customer"]
         blocks += [dl.heading("Debtors by customer"), dl.table(_pounds(r.debtors_summary, money))]
-    blocks += [dl.heading("Method"), dl.bullets([
+    blocks += [dl.heading("Method"), dl.bullets(rc.get("method") or [
         "Claude read each document and returned its fields; code then checked the arithmetic, VAT rates, VAT numbers, "
         "bank details, duplicates and dates.",
         "Matching, totals, the payroll journal and every figure in this report were calculated in code. Claude only "
@@ -237,8 +269,8 @@ def pdf_report(r: "RunResult") -> bytes:
     cfg = r.config
     subtitle = f"Period {f['period']} · prepared {f['as_of']} · {r.inputs_label}" + (
         f" · {cfg.get('client_name')} prototype" if cfg.get("client_name") else "")
-    return dl.pdf_bytes(f"{cfg.get('tool_name', 'Bookkeeping')} — month-end report", blocks, subtitle=subtitle,
-                        footer=cfg.get("footer_short") or "Prototype — synthetic data")
+    return dl.pdf_bytes(rc.get("report_title") or f"{cfg.get('tool_name', 'Bookkeeping')} — month-end report", blocks,
+                        subtitle=subtitle, footer=cfg.get("footer_short") or "Prototype — synthetic data")
 
 
 def letters_docx(r: "RunResult") -> bytes:

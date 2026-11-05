@@ -117,6 +117,10 @@ def render_results(r: RunResult) -> None:
                                  tone="alert"))
     elif f.get("timesheet_rows"):
         metrics.append(ui.Metric("Timesheet lines", str(f["timesheet_rows"]), f"{f['timesheet_employees']} employees"))
+    if f.get("filing_docs") and not f.get("entries"):
+        to_file = f["filing_to_file"]
+        metrics.append(ui.Metric("Filed to project folders", f"{f['filing_filed']} of {f['filing_docs']}",
+                                 f"{to_file} left to file by hand" if to_file else "all filed", tone="alert" if to_file else "good"))
     n_high = int(f["by_severity"].get("High", 0))
     metrics += [
         ui.Metric("Exceptions", str(f["exceptions"]), f"{n_high} high severity", tone="alert" if n_high else ""),
@@ -151,7 +155,8 @@ def render_results(r: RunResult) -> None:
         with tab:
             render(r)
 
-    ui.section("Downloads", f"Every output from this run. Import files are for {r.system_label}; held entries are left out.")
+    ui.section("Downloads", f"Every output from this run. Import files are for {r.system_label}; held entries are left out."
+               if r.exports else "Every output from this run. Nothing is posted or sent automatically.")
     ui.download_buttons(r.downloads)
     with st.expander("How the time-saved estimate is worked out"):
         for line in r.time_estimate.assumptions:
