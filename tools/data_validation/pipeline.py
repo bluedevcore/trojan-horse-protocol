@@ -117,7 +117,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
                                                  numeric=spec.numeric, dates=spec.dates)
     if data.empty:
         progress.fail("Could not read any of the files")
-        raise PipelineError("None of the files could be read.\n\n" + "\n".join(f"• {e}" for e in file_errors))
+        raise PipelineError("None of the files could be read:\n\n" + "\n".join(f"- {e}" for e in file_errors))
     files_read = sorted(data["_source"].unique().tolist())
     n_keys = data[spec.key].nunique()
     detail = f"{len(data):,} readings from {n_keys} {noun}s"
@@ -213,8 +213,10 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
     sources = {}
     for c in calls:
         sources[c.source] = sources.get(c.source, 0) + 1
-        if c.warning and c.warning not in warnings:
-            warnings.append(c.warning)
+    ai_warnings = [c.warning for c in calls if c.warning]
+    if ai_warnings:  # one message, not one per batch
+        more = f" ({len(ai_warnings)} of {len(calls)} AI requests affected; template text used.)" if len(ai_warnings) > 1 else ""
+        warnings.append(ai_warnings[0] + more)
     ai_ok = all(c.from_ai for c in calls)
     timing = max((c.seconds for c in calls), default=0)
     (progress.done if ai_ok else progress.warn)(

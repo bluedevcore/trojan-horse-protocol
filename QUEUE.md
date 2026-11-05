@@ -2,7 +2,7 @@
 
 | # | Client | Role | Tool | Closes | Status |
 |---|---|---|---|---|---|
-| 1 | NFU Energy | Technical Data Administrator | data_validation | 15 Nov | |
+| 1 | NFU Energy | Technical Data Administrator | data_validation | 15 Nov | built |
 | 2 | Cosgrove & Cosgrove | Accounts Assistant | bookkeeping | 11 Nov | |
 | 3 | Somerset Solders | P/T Accounts Admin / Bookkeeper | bookkeeping | 11 Nov | |
 | 4 | Evolution Money | Compliance Administrator | compliance | 11 Nov | |
