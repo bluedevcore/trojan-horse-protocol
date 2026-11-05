@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "003b1f8db92a27cbcca257b836db0262f30c601be1337ac3db5a800d6a5a51a4",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-14_bryn-skip_BSW-20417.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nBryn Skip & Waste Ltd\nBryn Yard, Ruabon Road\nWrexham LL14 0XX\nTel 01632 960 967 · bookings@bryn-skips.example\nVAT Reg No: GB 331 5820 80\nINVOICE\nInvoice number: BSW-20417\nInvoice date: 14/10/2026\nDue date: 13/11/2026\nDelivered to site / job ref: J-2601 Wrexham Gateway student flats - drylining\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\n8-yard skip exchange, Gateway Road site (mixed construction waste)\n2\n£120.00\n£240.00\nTotal net\n£240.00\nVAT @ 20% on £240.00\n£48.00\nTotal due\n£288.00\nPayment terms: 30 days. BACS to Bryn Skip & Waste Ltd, sort code 00-69-72, account 20087356.\nWaste transfer notes WTN-40871 and WTN-40902 available on request.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Bryn Skip & Waste Ltd\", \"counterparty_vat_number\": \"GB 331 5820 80\", \"document_number\": \"BSW-20417\", \"document_date\": \"2026-10-14\", \"due_date\": \"2026-11-13\", \"po_number\": \"\", \"project_reference\": \"J-2601\", \"currency\": \"GBP\", \"net_total\": 240.0, \"vat_total\": 48.0, \"gross_total\": 288.0, \"vat_lines\": [{\"rate\": 20, \"net\": 240.0, \"vat\": 48.0}], \"line_items\": [{\"description\": \"8-yard skip exchange, Gateway Road site (mixed construction waste)\", \"quantity\": 2, \"unit_price\": 120.0, \"net\": 240.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-69-72\", \"bank_account_number\": \"20087356\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for two 8-yard skip exchanges at the Wrexham Gateway site.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"No purchase order number is shown on the invoice.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Bryn Skip & Waste Ltd",
+      "counterparty_vat_number": "GB 331 5820 80",
+      "document_number": "BSW-20417",
+      "document_date": "2026-10-14",
+      "due_date": "2026-11-13",
+      "po_number": "",
+      "project_reference": "J-2601",
+      "currency": "GBP",
+      "net_total": 240.0,
+      "vat_total": 48.0,
+      "gross_total": 288.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 240.0,
+          "vat": 48.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "8-yard skip exchange, Gateway Road site (mixed construction waste)",
+          "quantity": 2,
+          "unit_price": 120.0,
+          "net": 240.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-69-72",
+      "bank_account_number": "20087356",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for two 8-yard skip exchanges at the Wrexham Gateway site.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "No purchase order number is shown on the invoice."
+    }
+  }
+}

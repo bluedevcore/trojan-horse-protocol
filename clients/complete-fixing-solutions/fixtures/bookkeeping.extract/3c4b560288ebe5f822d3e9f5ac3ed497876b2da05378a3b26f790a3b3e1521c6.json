@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "3c4b560288ebe5f822d3e9f5ac3ed497876b2da05378a3b26f790a3b3e1521c6",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-12_pandy-timber_PTS-6588.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nPandy Timber & Sheet Ltd\nPandy Sawmill, Glyn Road\nLlangollen LL20 0XX\nTel 01632 960 856 · office@pandy-timber.example\nVAT Reg No: GB 279 4408 23\nINVOICE\nInvoice number: PTS-6588\nInvoice date: 12/10/2026\nDue date: 11/11/2026\nYour order no: PO-4409\nDelivered to site / job ref: J-2619 Gresford care home extension - drylining\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nCLS timber 38x63mm x 2.4m\n150\n£2.45\n£367.50\nWBP plywood 18mm 2440x1220\n10\n£24.50\n£245.00\nTotal net\n£612.50\nVAT @ 20% on £612.50\n£122.50\nTotal due\n£735.00\nPayment terms: 30 days. BACS to Pandy Timber & Sheet Ltd, sort code 00-58-61, account 20073142.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Pandy Timber & Sheet Ltd\", \"counterparty_vat_number\": \"GB 279 4408 23\", \"document_number\": \"PTS-6588\", \"document_date\": \"2026-10-12\", \"due_date\": \"2026-11-11\", \"po_number\": \"PO-4409\", \"project_reference\": \"J-2619\", \"currency\": \"GBP\", \"net_total\": 612.5, \"vat_total\": 122.5, \"gross_total\": 735.0, \"vat_lines\": [{\"rate\": 20, \"net\": 612.5, \"vat\": 122.5}], \"line_items\": [{\"description\": \"CLS timber 38x63mm x 2.4m\", \"quantity\": 150, \"unit_price\": 2.45, \"net\": 367.5, \"vat_rate\": 20}, {\"description\": \"WBP plywood 18mm 2440x1220\", \"quantity\": 10, \"unit_price\": 24.5, \"net\": 245.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-58-61\", \"bank_account_number\": \"20073142\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for CLS timber and 18mm plywood for the Gresford care home extension.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Pandy Timber & Sheet Ltd",
+      "counterparty_vat_number": "GB 279 4408 23",
+      "document_number": "PTS-6588",
+      "document_date": "2026-10-12",
+      "due_date": "2026-11-11",
+      "po_number": "PO-4409",
+      "project_reference": "J-2619",
+      "currency": "GBP",
+      "net_total": 612.5,
+      "vat_total": 122.5,
+      "gross_total": 735.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 612.5,
+          "vat": 122.5
+        }
+      ],
+      "line_items": [
+        {
+          "description": "CLS timber 38x63mm x 2.4m",
+          "quantity": 150,
+          "unit_price": 2.45,
+          "net": 367.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "WBP plywood 18mm 2440x1220",
+          "quantity": 10,
+          "unit_price": 24.5,
+          "net": 245.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-58-61",
+      "bank_account_number": "20073142",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for CLS timber and 18mm plywood for the Gresford care home extension.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

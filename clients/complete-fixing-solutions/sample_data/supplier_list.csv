@@ -1,0 +1,10 @@
+Supplier,Account Ref,Default Nominal,Default VAT,VAT Number,Sort Code,Account Number,Terms (days),Email,Contact
+Dee Valley Fixings Ltd,DEEVAL01,Fixings and sundries,S,GB 441 9027 63,00-14-27,20031184,30,accounts@deevalley-fixings.example,Nia Bowen
+Clwyd Board & Stud Ltd,CLWYDB01,Boards and studwork,S,GB 387 0561 32,00-25-38,20044617,30,sales.ledger@clwyd-board.example,Gareth Lewis
+Alyn Access & Plant Hire Ltd,ALYNAC01,Plant and access hire,S,GB 516 0294 68,00-36-49,20052290,30,hire.accounts@alyn-access.example,Sara Jenkins
+Border Ceiling Systems Ltd,BORDER01,Ceilings and grid,S,GB 602 7713 62,00-47-50,20068835,30,credit.control@border-ceilings.example,Phil Tranter
+Pandy Timber & Sheet Ltd,PANDYT01,Timber and sheet materials,S,GB 279 4408 23,00-58-61,20073142,30,office@pandy-timber.example,Elin Morgan
+Bryn Skip & Waste Ltd,BRYNSK01,Waste disposal and skips,S,GB 331 5820 80,00-69-72,20087356,30,bookings@bryn-skips.example,
+Cestrian Tool Hire Ltd,CESTRI01,Plant and access hire,S,GB 460 2139 79,00-70-83,20091478,30,accounts@cestrian-toolhire.example,Mark Doran
+Pennant Fuel Cards Ltd,PENNAN01,Motor fuel,S,GB 558 3317 27,00-81-94,20105524,14,cards@pennant-fuel.example,
+Maelor Telecom Ltd,MAELOR01,Telephone and internet,S,GB 614 4029 71,00-92-05,20116693,14,billing@maelor-telecom.example,

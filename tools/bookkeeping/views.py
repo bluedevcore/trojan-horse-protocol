@@ -116,6 +116,11 @@ def render_results(r: RunResult) -> None:
     elif f.get("debtor_items"):
         metrics.append(ui.Metric("Overdue", f"£{f['debtors_overdue']:,.0f}", f"of £{f['debtors_outstanding']:,.0f} outstanding",
                                  tone="alert"))
+    elif f.get("timesheet_rows") and "hours_total" in f:
+        held = len(f.get("hours_held", []))
+        metrics.append(ui.Metric("Hours ready for payroll", f"{f['hours_ready']:,.1f}",
+                                 f"of {f['hours_total']:,.1f} h · {held} employee{'s' if held != 1 else ''} held",
+                                 tone="alert" if held else "good"))
     elif f.get("timesheet_rows"):
         metrics.append(ui.Metric("Timesheet lines", str(f["timesheet_rows"]), f"{f['timesheet_employees']} employees"))
     if f.get("filing_docs") and not f.get("entries"):
@@ -207,6 +212,8 @@ def _qty(v) -> str:
 
 FORMATTERS = {"money": _money, "date": _date, "text": _text, "qty": _qty}
 STATUS_STYLE = [("Held", "background-color:#FFF4E0;color:#7A4A00"), ("Ready", "background-color:#E8F6EE;color:#0F5A34"),
+                ("Over PO", "background-color:#FDE8E7;color:#8A1C12"), ("PO not found", "background-color:#FFF4E0;color:#7A4A00"),
+                ("No PO", "background-color:#FFF4E0;color:#7A4A00"), ("Supplier differs", "background-color:#FFF4E0;color:#7A4A00"),
                 ("Matched", "background-color:#E8F6EE;color:#0F5A34"), ("Done", "background-color:#E8F6EE;color:#0F5A34"),
                 ("Receipt missing", "background-color:#FDE8E7;color:#8A1C12"),
                 ("Amount differs", "background-color:#FFF4E0;color:#7A4A00"),
@@ -367,17 +374,47 @@ def _filing_tab(r: RunResult) -> None:
                "renamed in its folder.")
 
 
-def _po_tab(r: RunResult) -> None:
-    _grid(r.po_table, [("Supplier", "text", 215), ("Invoice", "text", 95), ("Invoice date", "date", 95, "Date"),
-                       ("Matched PO", "text", 85, "PO"), ("Invoice net", "money", 95), ("PO net", "money", 95),
-                       ("Invoiced to date", "money", 110), ("Difference", "money", 90), ("Status", "text", 125)],
-          status="Status")
-    st.caption("Supplier invoices matched to the purchase order log by PO number (or supplier and amount), net of VAT. "
-               "POs with no invoice yet are listed as awaiting invoice.")
-
-
 def _hours_tab(r: RunResult) -> None:
-    _table(r.hours, status=None)
+    h = r.hours.copy()
+    if "Status" not in h:
+        _table(h, status=None)
+        return
+    h["Status"] = [f"Held · {b}" if s == "Held" and b else s for s, b in zip(h["Status"], h["Held because"])]
+    _grid(h, [("Employee", "text", 160), ("Employee ID", "text", 70, "ID"), ("Week commencing", "date", 95, "Week of"),
+              ("Days worked", "qty", 50, "Days"), ("Basic hours", "qty", 65, "Basic"), ("Overtime hours", "qty", 75, "Overtime"),
+              ("Weekend hours", "qty", 75, "Weekend"), ("Total hours", "qty", 60, "Total"), ("Hourly rate", "money", 70, "Rate"),
+              ("Gross pay (est.)", "money", 95, "Gross (est.)"), ("Status", "text", 150)], status="Status", cap=25)
+    st.caption("Hours worked out from start and finish times less breaks; duplicate lines are counted once. Overtime is "
+               "weekday hours over each person's contracted hours; weekend hours are shown separately. Held weeks are "
+               "left out of the payroll hours file until the exception is cleared. Gross pay is an estimate for checking only.")
+    jobs = reports.hours_job_frame(r)
+    if not jobs.empty:
+        with st.expander("Hours by job"):
+            spec = [("Job", "text", 120)] + ([("Job status", "text", 140)] if "Job status" in jobs else []) + [
+                ("Lines", "qty", 70), ("Employees", "qty", 90), ("Hours", "qty", 90)]
+            _grid(jobs, spec, cap=20)
+    lines = reports.timesheet_lines_frame(r)
+    if not lines.empty:
+        with st.expander(f"Timesheet lines checked ({len(lines)})"):
+            _grid(lines, [("Employee", "text", 150), ("Date", "date", 90), ("Job", "text", 75), ("Job status", "text", 110),
+                          ("Start", "text", 55), ("Finish", "text", 55), ("Break (mins)", "qty", 55, "Break"),
+                          ("Hours entered", "qty", 70, "Entered"), ("Hours counted", "qty", 70, "Counted"),
+                          ("Signed off by", "text", 110), ("Duplicate (not counted)", "text", 80, "Duplicate")], cap=20)
+
+
+def _po_tab(r: RunResult) -> None:
+    po = r.po_table.copy()
+    # one PO column: the PO matched, or else the number the invoice quoted (e.g. one that isn't on the list)
+    po["PO"] = [m if _text(m) else _text(q) for m, q in zip(po["Matched PO"], po["PO on invoice"])]
+    po["Matched by"] = po["Matched by"].replace({"supplier and amount": "supplier + amount"})
+    _grid(po, [("Supplier", "text", 195), ("Invoice", "text", 90), ("Invoice date", "date", 85, "Date"),
+               ("PO", "text", 75), ("Matched by", "text", 120), ("Invoice net", "money", 85, "Invoice net"),
+               ("PO net", "money", 85), ("Invoiced to date", "money", 85, "Invoiced"),
+               ("Difference", "money", 85, "Difference"), ("Status", "text", 120)], status="Status", cap=25)
+    st.caption("Matched on the PO number quoted, or on supplier and amount when no PO is quoted. “Invoiced” is the "
+               "running total against the PO and “Difference” is that total less the PO value (negative: not fully "
+               "invoiced yet). An invoice that takes a PO over its value, beyond the tolerance, is held. POs with no "
+               "invoice yet are listed as awaiting invoice; the Excel pack also shows the PO number each invoice quoted.")
 
 
 def _statements_tab(r: RunResult) -> None:

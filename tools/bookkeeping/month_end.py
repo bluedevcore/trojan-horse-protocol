@@ -139,9 +139,11 @@ def _timesheets(f, b):
     if not f.get("timesheet_rows"):
         return None
     ids = _ids(b, "unknown_employee", "excess_hours", "missing_approval", "duplicate_timesheet", "hours_mismatch",
-               "missing_timesheet")
+               "missing_timesheet", "overlapping_shifts", "unknown_job", "closed_job")
+    held = len(f.get("hours_held", []))
     return ("Timesheets checked and approved", ACTION if ids else DONE,
-            f"{f['timesheet_rows']} timesheet lines for {f.get('timesheet_employees', 0)} employees", ids)
+            f"{f['timesheet_rows']} timesheet lines for {f.get('timesheet_employees', 0)} employees"
+            + (f"; {held} employee-week{'s' if held != 1 else ''} held from the payroll file" if held else ""), ids)
 
 
 def _po(f, b):

@@ -1,0 +1,162 @@
+# Timesheet-to-Payroll Agent — prototype demo for Complete Fixing Solutions.
+# All wording, file names, rules and accounts for this client live here;
+# the engine in tools/bookkeeping/ is generic (see tools/bookkeeping/README.md).
+
+slug: complete-fixing-solutions
+client_name: Complete Fixing Solutions
+tool_name: Timesheet-to-Payroll Agent
+role: Office Administrator
+headline: "Timesheet-to-Payroll Agent: built as a prototype for Complete Fixing Solutions"
+replaces: >-
+  Replaces Monday-to-Wednesday timesheet checking and invoice matching: it turns the week's timesheets into checked
+  payroll hours, matches supplier invoices to purchase orders, and prepares the Sage 50 import and the queries.
+badges: ["Prototype", "Synthetic sample data", "Sage 50 CSV import"]
+footer: >-
+  Independent prototype built for a job application. Not affiliated with or endorsed by Complete Fixing Solutions
+  or Sage. All sample data is synthetic: the company, operatives, jobs, suppliers and amounts are invented.
+footer_short: "Independent prototype · synthetic data · not affiliated with Complete Fixing Solutions"
+sample_caption: >-
+  Uses an invented drylining and ceilings firm near Wrexham: 95 timesheet lines for the week of 26 October,
+  18 supplier invoices and emails, the purchase order list, and the employee, job and supplier lists. No setup needed.
+upload_help: >-
+  Drop in a timesheet export (CSV/Excel with Employee, Date, Start, Finish, Break, Job and Signed Off By), supplier
+  invoices (PDF or .eml) and a purchase order list (PO Number, Supplier, Net Amount). Missing reference lists
+  (employees, jobs, suppliers, nominal codes) fall back to the demo's sample ones. Use synthetic or anonymised files
+  only: this is a public demo.
+
+# Pause after each progress step so a screen recording can follow along (seconds).
+step_delay_seconds: 0.4
+
+# The sample runs "as at" this date: October's supplier invoices, and the timesheets for the
+# week commencing 26 October, processed in the first week of November.
+sample_as_of: 2026-11-05
+period: {start: 2026-10-01, end: 2026-10-31}
+
+company:
+  name: Demo Fixings Ltd
+accounting_system: sage50
+exports: [sage50_transactions, payroll_hours]
+export_settings:
+  tracking_as_project: true   # the job number goes in Sage's Project Refn, not the (numeric) department
+
+sample_data:
+  documents: ["sample_data/inbox/*"]
+  tables:
+    timesheets: sample_data/weekly_timesheets_wc-26-oct-2026.xlsx
+    employees: sample_data/employee_list.csv
+    projects: sample_data/job_list.csv
+    purchase_orders: sample_data/purchase_orders_oct-2026.csv
+    suppliers: sample_data/supplier_list.csv
+    chart_of_accounts: sample_data/chart_of_accounts.csv
+
+tables:
+  projects: {label: job list}   # the projects table is this firm's job list (with a Status column)
+
+# Which parts of the engine run (each also needs its input files).
+modules:
+  documents: true
+  card_matching: false
+  coding: true
+  payroll_journal: false
+  sales_invoices: false
+  debtors: false
+  timesheets: true
+  purchase_orders: true
+  statements: true
+  filing: false
+  vat_return: false
+  letters: true
+  month_end: true
+
+coding:
+  fallback_account: Suspense
+  account_types: [Expense, Cost of sales, Suspense]   # accounts Claude may choose from
+  items_per_request: 12
+  # Keyword rules run before Claude (regex on the supplier name).
+  rules:
+    - {match: "SKIP|WASTE", account: Waste disposal and skips, vat_code: S, reason: "Skip hire and waste"}
+    - {match: "TOOL HIRE|PLANT HIRE|ACCESS", account: Plant and access hire, vat_code: S, reason: "Hire of plant or access equipment"}
+
+vat:
+  allowed_rates: [0, 5, 20]
+  blocked_accounts: []
+
+timesheets:
+  overtime_after_weekly_hours: 40   # or each operative's contracted hours on the employee list
+  overtime_multiplier: 1.5
+  weekend_multiplier: 1.5
+  max_daily_hours: 12               # company limit for one day on site
+  require_approval: true            # every line signed off by a supervisor
+  expected_days: true               # everyone on the employee list should have a timesheet
+
+purchase_orders:
+  tolerance_pct: 2
+  tolerance_abs: 5
+  require_po: true
+
+# Who gets the drafted emails about timesheets (suppliers come from the supplier list).
+contacts:
+  contracts_manager: {name: Contracts manager, contact: Dylan Hughes, email: dylan.hughes@demo-fixings.example}
+
+checks:
+  missing_approval: {label: "Timesheet not signed off", letter: contracts_manager,
+                     action: "Get the supervisor's signature before the payroll cut-off; the week is held until then."}
+  excess_hours: {label: "Over the daily hours limit", letter: contracts_manager,
+                 action: "Confirm the hours with the supervisor before they are paid."}
+  hours_mismatch: {letter: contracts_manager,
+                   action: "Check the paper timesheet; the hours from the start and finish times are used until then."}
+  overlapping_shifts: {letter: contracts_manager}
+  closed_job: {letter: contracts_manager}
+  unknown_job: {letter: contracts_manager}
+  unknown_employee: {label: "Not on the employee list", letter: contracts_manager,
+                     action: "If this is a new starter, complete the starter paperwork (starter checklist, right to work, bank details) and set them up in Sage Payroll before paying; otherwise check the name."}
+  missing_timesheet: {needs_human_check: false, letter: contracts_manager,
+                      action: "Chase the timesheet before the Wednesday payroll cut-off (email drafted)."}
+  duplicate_timesheet: {needs_human_check: false, hold: false,
+                        action: "Counted once. No action unless it really was a second shift."}
+
+month_end:
+  checklist:
+    - {id: timesheets_approved, label: "Timesheets checked and signed off"}
+    - {id: po_matched}
+    - {id: purchase_invoices}
+    - {id: duplicates}
+    - {id: bank_details}
+    - {id: vat_checks}
+    - {id: supplier_queries}
+    - {id: coding_review}
+    - {label: "Import the payroll hours into Sage 50 Payroll and run the weekly pay", manual: true}
+    - {label: "Import the supplier invoices into Sage 50 Accounts and check the audit trail", manual: true}
+    - {label: "File the signed paper timesheets in the personnel files", manual: true}
+    - {label: "Chase POs still awaiting an invoice and close any that are complete", manual: true}
+
+analysis:
+  tracking_label: Job   # supplier costs are analysed by the job on the invoice
+
+views:
+  tabs: [hours, po, entries, emails, checklist, exceptions, documents]
+
+# Plain-English context passed to Claude.
+ai:
+  domain: >-
+    A drylining, partitions and suspended-ceilings subcontractor near Wrexham (about 25 staff) working for main
+    contractors on sites across North Wales and Cheshire. Site operatives are paid weekly from timesheets signed off
+    by site supervisors. Materials (plasterboard, studwork, ceiling grid, fixings, timber) and plant and access hire
+    are bought on purchase orders against job numbers. The books are kept in Sage 50.
+  signature: "Office Administrator\nDemo Fixings Ltd"
+  reply_by: "by Monday 9 November"
+  letters_per_request: 3
+
+# Time-saved estimate shown on the results screen. Assumptions are displayed.
+time_estimate:
+  manual:
+    - ["check a timesheet line against the paper sheet and key the hours", "timesheet_rows", 1.5]
+    - ["work out basic, overtime and weekend hours for an operative", "timesheet_employees", 4]
+    - ["match a supplier invoice to its PO and key it into Sage", "invoices", 6]
+    - ["investigate an exception", "exceptions", 8]
+    - ["write a query email", "emails", 6]
+    - ["prepare the payroll hours and the Sage import", "fixed", 20]
+  with_tool:
+    - ["review an item on the needs-human-check list", "human_checks", 4]
+    - ["check and send a drafted email", "emails", 2]
+    - ["check and import the Sage file and the payroll hours", "fixed", 15]

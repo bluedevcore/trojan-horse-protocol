@@ -1,0 +1,72 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "58da620f9eb74da03ac07640f8adc3690716a365832262c553628bdfca4ec389",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-21_dee-valley_DVF-55187.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Dee Valley Fixings Accounts <accounts@deevalley-fixings-uk.example>\nTo: accounts@demo-fixings.example\nDate: Wed, 21 Oct 2026 17:58:00 +0100\nSubject: Invoice DVF-55187 - updated bank details\n\nHello,\n\nPlease find attached invoice DVF-55187 for the fixings delivered to Chester Business Quarter.\n\nPlease note we have moved our business banking. Kindly update your records and pay this and all future invoices to the new account shown on the attached invoice.\n\nKind regards,\nAccounts Department\nDee Valley Fixings Ltd\n\n--- Attachment: DVF-55187.pdf ---\nDee Valley Fixings Ltd\nUnit 12, Riverside Trade Park\nChester CH4 0XX\nTel 01632 960 412 · accounts@deevalley-fixings.example\nVAT Reg No: GB 441 9027 63\nINVOICE\nInvoice number: DVF-55187\nInvoice date: 21/10/2026\nDue date: 20/11/2026\nYour order no: PO-4415\nDelivered to site / job ref: J-2607 Chester Business Quarter - office fit-out, floors 2-3\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nConcrete screw anchors 7.5x80, box of 100\n8\n£22.60\n£180.80\nWafer head screws 4.2x13 (stud to track), box of 1000\n10\n£13.90\n£139.00\nAcoustic intumescent sealant 310ml\n36\n£7.25\n£261.00\nPlasterboard adhesive, 25kg bag\n12\n£13.50\n£162.00\nTotal net\n£742.80\nVAT @ 20% on £742.80\n£148.56\nTotal due\n£891.36\nPayment terms: 30 days. BACS to Dee Valley Fixings Ltd, sort code 00-98-76, account 98761234.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Dee Valley Fixings Ltd\", \"counterparty_vat_number\": \"GB 441 9027 63\", \"document_number\": \"DVF-55187\", \"document_date\": \"2026-10-21\", \"due_date\": \"2026-11-20\", \"po_number\": \"PO-4415\", \"project_reference\": \"J-2607\", \"currency\": \"GBP\", \"net_total\": 742.8, \"vat_total\": 148.56, \"gross_total\": 891.36, \"vat_lines\": [{\"rate\": 20, \"net\": 742.8, \"vat\": 148.56}], \"line_items\": [{\"description\": \"Concrete screw anchors 7.5x80, box of 100\", \"quantity\": 8, \"unit_price\": 22.6, \"net\": 180.8, \"vat_rate\": 20}, {\"description\": \"Wafer head screws 4.2x13 (stud to track), box of 1000\", \"quantity\": 10, \"unit_price\": 13.9, \"net\": 139.0, \"vat_rate\": 20}, {\"description\": \"Acoustic intumescent sealant 310ml\", \"quantity\": 36, \"unit_price\": 7.25, \"net\": 261.0, \"vat_rate\": 20}, {\"description\": \"Plasterboard adhesive, 25kg bag\", \"quantity\": 12, \"unit_price\": 13.5, \"net\": 162.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-98-76\", \"bank_account_number\": \"98761234\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for anchors, wafer head screws, intumescent sealant and adhesive for Chester Business Quarter, sent with an email about new bank details.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"The covering email comes from accounts@deevalley-fixings-uk.example, not the supplier's usual deevalley-fixings.example address, and asks for this and all future invoices to be paid to the new account on the attached invoice.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Dee Valley Fixings Ltd",
+      "counterparty_vat_number": "GB 441 9027 63",
+      "document_number": "DVF-55187",
+      "document_date": "2026-10-21",
+      "due_date": "2026-11-20",
+      "po_number": "PO-4415",
+      "project_reference": "J-2607",
+      "currency": "GBP",
+      "net_total": 742.8,
+      "vat_total": 148.56,
+      "gross_total": 891.36,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 742.8,
+          "vat": 148.56
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Concrete screw anchors 7.5x80, box of 100",
+          "quantity": 8,
+          "unit_price": 22.6,
+          "net": 180.8,
+          "vat_rate": 20
+        },
+        {
+          "description": "Wafer head screws 4.2x13 (stud to track), box of 1000",
+          "quantity": 10,
+          "unit_price": 13.9,
+          "net": 139.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Acoustic intumescent sealant 310ml",
+          "quantity": 36,
+          "unit_price": 7.25,
+          "net": 261.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Plasterboard adhesive, 25kg bag",
+          "quantity": 12,
+          "unit_price": 13.5,
+          "net": 162.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-98-76",
+      "bank_account_number": "98761234",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for anchors, wafer head screws, intumescent sealant and adhesive for Chester Business Quarter, sent with an email about new bank details.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The covering email comes from accounts@deevalley-fixings-uk.example, not the supplier's usual deevalley-fixings.example address, and asks for this and all future invoices to be paid to the new account on the attached invoice."
+    }
+  }
+}

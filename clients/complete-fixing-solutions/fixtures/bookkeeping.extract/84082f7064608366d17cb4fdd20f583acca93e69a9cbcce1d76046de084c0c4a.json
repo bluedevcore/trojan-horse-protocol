@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "84082f7064608366d17cb4fdd20f583acca93e69a9cbcce1d76046de084c0c4a",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-22_cestrian_CTH-09126.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nCestrian Tool Hire Ltd\n45 Sealand Road\nChester CH1 0XX\nTel 01632 960 078 · accounts@cestrian-toolhire.example\nVAT Reg No: GB 460 2139 79\nINVOICE\nInvoice number: CTH-09126\nInvoice date: 23/10/2026\nDue date: 22/11/2026\nYour order no: PO-4412\nDelivered to site / job ref: J-2610 Mold community hospital - ward refurbishment\nInvoice to:\nDemo Fixings Ltd\nUnit 4, Example Industrial Estate\nWrexham LL13 0XX\nDescription\nQty\nUnit price\nNet\nMini tower scaffold 2.5m - 1 week hire 19/10/2026 to 23/10/2026\n1\n£150.00\n£150.00\nDelivery\n1\n£30.00\n£30.00\nTotal net\n£180.00\nVAT @ 20% on £180.00\n£36.00\nTotal due\n£216.00\nPayment terms: 30 days. BACS to Cestrian Tool Hire Ltd, sort code 00-70-83, account 20091478.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Cestrian Tool Hire Ltd\", \"counterparty_vat_number\": \"GB 460 2139 79\", \"document_number\": \"CTH-09126\", \"document_date\": \"2026-10-23\", \"due_date\": \"2026-11-22\", \"po_number\": \"PO-4412\", \"project_reference\": \"J-2610\", \"currency\": \"GBP\", \"net_total\": 180.0, \"vat_total\": 36.0, \"gross_total\": 216.0, \"vat_lines\": [{\"rate\": 20, \"net\": 180.0, \"vat\": 36.0}], \"line_items\": [{\"description\": \"Mini tower scaffold 2.5m - 1 week hire 19/10/2026 to 23/10/2026\", \"quantity\": 1, \"unit_price\": 150.0, \"net\": 150.0, \"vat_rate\": 20}, {\"description\": \"Delivery\", \"quantity\": 1, \"unit_price\": 30.0, \"net\": 30.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-70-83\", \"bank_account_number\": \"20091478\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for one week's hire of a 2.5m mini tower scaffold at the Mold hospital job, with delivery.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Cestrian Tool Hire Ltd",
+      "counterparty_vat_number": "GB 460 2139 79",
+      "document_number": "CTH-09126",
+      "document_date": "2026-10-23",
+      "due_date": "2026-11-22",
+      "po_number": "PO-4412",
+      "project_reference": "J-2610",
+      "currency": "GBP",
+      "net_total": 180.0,
+      "vat_total": 36.0,
+      "gross_total": 216.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 180.0,
+          "vat": 36.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Mini tower scaffold 2.5m - 1 week hire 19/10/2026 to 23/10/2026",
+          "quantity": 1,
+          "unit_price": 150.0,
+          "net": 150.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Delivery",
+          "quantity": 1,
+          "unit_price": 30.0,
+          "net": 30.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-70-83",
+      "bank_account_number": "20091478",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for one week's hire of a 2.5m mini tower scaffold at the Mold hospital job, with delivery.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}
