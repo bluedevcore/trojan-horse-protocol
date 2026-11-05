@@ -1,0 +1,154 @@
+# QuickBooks Bookkeeping Agent — prototype demo for Cosgrove & Cosgrove Ltd.
+# All wording, file names, rules and accounts for this client live here;
+# the engine in tools/bookkeeping/ is generic (see tools/bookkeeping/README.md).
+
+slug: cosgrove-cosgrove
+client_name: Cosgrove & Cosgrove Ltd
+tool_name: QuickBooks Bookkeeping Agent
+role: Accounts Assistant
+headline: "QuickBooks Bookkeeping Agent: built as a prototype for Cosgrove & Cosgrove Ltd"
+replaces: >-
+  Replaces a day of month-end keying: it reads supplier invoices, receipts and the card statement, codes every
+  entry, checks VAT and bank details, builds the payroll journal and sales invoices, and drafts the queries.
+badges: ["Prototype", "Synthetic sample data", "QuickBooks Online CSV import"]
+footer: >-
+  Independent prototype built for a job application. Not affiliated with or endorsed by Cosgrove & Cosgrove Ltd
+  or Intuit. All sample data is synthetic: the company, suppliers, staff and amounts are invented.
+footer_short: "Independent prototype · synthetic data · not affiliated with Cosgrove & Cosgrove Ltd"
+sample_caption: >-
+  Uses an October month end for an invented company: 28 invoices, receipts and emails, a credit card
+  statement, a payroll report and a list of jobs to invoice. No setup needed.
+upload_help: >-
+  Drop in supplier invoices and receipts (PDF or .eml), plus any of: a credit card statement (CSV/Excel with
+  Date, Description, Amount and Card), a payroll summary, a list of work to invoice. Missing reference lists
+  (chart of accounts, supplier and customer lists) fall back to the demo's sample ones. Use synthetic or
+  anonymised files only: this is a public demo.
+
+# Pause after each progress step so a screen recording can follow along (seconds).
+step_delay_seconds: 0.4
+
+# The sample runs "as at" this date for a fixed October month end, so results are reproducible.
+sample_as_of: 2026-11-05
+period: {start: 2026-10-01, end: 2026-10-31}
+
+company:
+  name: Demo Company Ltd
+accounting_system: quickbooks
+
+sample_data:
+  documents: ["sample_data/inbox/*"]
+  tables:
+    card_statement: sample_data/company_card_statement_oct-2026.csv
+    payroll: sample_data/payroll_summary_oct-2026.csv
+    sales_to_invoice: sample_data/work_to_invoice_oct-2026.xlsx
+    suppliers: sample_data/supplier_list.csv
+    customers: sample_data/customer_list.csv
+    chart_of_accounts: sample_data/chart_of_accounts.csv
+
+# Which parts of the engine run (each also needs its input files).
+modules:
+  documents: true
+  card_matching: true
+  coding: true
+  payroll_journal: true
+  sales_invoices: true
+  debtors: false
+  timesheets: false
+  purchase_orders: false
+  statements: true
+  filing: false
+  vat_return: false
+  letters: true
+  month_end: true
+
+export_settings:
+  card_payment_account: Company credit card
+  journal_number: PAYROLL-OCT-2026
+
+coding:
+  fallback_account: Suspense
+  account_types: [Expense, Cost of sales, Suspense]   # accounts Claude may choose from
+  items_per_request: 12
+  # Keyword rules run before Claude (regex on the payee / card description).
+  rules:
+    - {match: "TRACKFARE|RAIL", account: Travel and accommodation, vat_code: Z, reason: "Rail fares (zero-rated)"}
+    - {match: "HOTEL|LODGE", account: Travel and accommodation, vat_code: S, reason: "Hotel stay"}
+    - {match: "SERVICE STN|SERVICE STATION|FUEL", account: Motor expenses, vat_code: S, reason: "Fuel"}
+    - {match: "PARCEL POINT|POST OFFICE|POSTAGE", account: Postage and delivery, vat_code: E, reason: "Postage (exempt from VAT)"}
+    - {match: "CAR PARK|PARKING", account: Motor expenses, vat_code: O, receipt_needed: false, reason: "Parking; no VAT reclaimed without a receipt"}
+    - {match: "NON-STERLING|TRANSACTION FEE|CARD FEE|INTEREST", account: Bank charges, vat_code: E, receipt_needed: false, reason: "Card fee (exempt)"}
+
+vat:
+  allowed_rates: [0, 5, 20]
+  blocked_accounts: [Entertainment]   # input VAT not reclaimable
+
+matching:
+  date_window_days: 7
+  near_abs: 10.0
+  near_pct: 0.15
+
+card:
+  missing_receipt_min_amount: 0
+
+payroll:
+  by_department: true
+  journal_reference: PAYROLL-OCT-2026
+
+sales:
+  invoice_prefix: "INV-"
+  first_invoice_number: 4821
+  default_terms_days: 30
+  group_by: job
+
+contacts:
+  cardholders:
+    - {card: "4417", name: Alex Morgan, email: alex.morgan@demo-company.example}
+    - {card: "8802", name: Ravi Shah, email: ravi.shah@demo-company.example}
+  payroll_bureau: {name: Kettlewell Payroll & Accounts Ltd, contact: Priya Nair, email: payroll@kettlewell-pa.example}
+
+month_end:
+  checklist:
+    - {id: purchase_invoices}
+    - {id: duplicates}
+    - {id: bank_details}
+    - {id: vat_checks}
+    - {id: supplier_queries}
+    - {id: card_matched}
+    - {id: missing_receipts}
+    - {id: coding_review}
+    - {id: prepayments_accruals}
+    - {id: payroll_journal}
+    - {id: sales_invoices}
+    - {label: "Import the files into QuickBooks Online and reconcile the bank and card accounts", manual: true}
+    - {label: "Post the prepayment release and any accruals journals", manual: true}
+    - {label: "Review aged payables and plan the supplier payment run", manual: true}
+    - {label: "Send the month-end summary to the finance manager", manual: true}
+
+views:
+  tabs: [entries, card, payroll, sales, emails, checklist, exceptions, documents]
+
+# Plain-English context passed to Claude.
+ai:
+  domain: >-
+    A small Telford company (about 15 staff) with a finance team that keeps its books in QuickBooks Online.
+    Typical purchases: office supplies, IT support, telecoms, electricity, van fuel, cleaning, waste, insurance,
+    printing, packaging and tools; two company credit cards for travel and small purchases; a monthly payroll
+    run by an external bureau.
+  signature: "Accounts Assistant\nDemo Company Ltd"
+  reply_by: "by Friday 13 November"
+  letters_per_request: 3
+
+# Time-saved estimate shown on the results screen. Assumptions are displayed.
+time_estimate:
+  manual:
+    - ["key and code a supplier invoice or credit note", "invoices", 5]
+    - ["find, match and code a card payment and its receipt", "card_txns", 4]
+    - ["investigate an exception", "exceptions", 8]
+    - ["write a query or chase email", "emails", 6]
+    - ["check the payroll report and prepare the payroll journal", "fixed", 30]
+    - ["raise a sales invoice", "sales_invoices", 5]
+    - ["work through the month-end checklist", "fixed", 20]
+  with_tool:
+    - ["review an item on the needs-human-check list", "human_checks", 4]
+    - ["check and send a drafted email", "emails", 2]
+    - ["check and import the QuickBooks files", "fixed", 15]

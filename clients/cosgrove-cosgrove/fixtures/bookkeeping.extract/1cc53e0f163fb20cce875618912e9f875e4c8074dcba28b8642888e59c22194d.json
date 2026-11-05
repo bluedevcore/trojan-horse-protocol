@@ -1,0 +1,65 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "1cc53e0f163fb20cce875618912e9f875e4c8074dcba28b8642888e59c22194d",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-16_greenway_corner-shop.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nGREENWAY CORNER SHOP\nGreenway, Telford\n16/10/2026 08:47\nSemi-skimmed milk 4 pints   £2.45\nTea bags 240                £4.20\nDigestive biscuits x 2      £3.20\nTOTAL                       £9.85\nVAT: all items zero rated\nCard ****8802",
+  "response": {
+    "text": "{\"doc_type\": \"receipt\", \"counterparty\": \"Greenway Corner Shop\", \"counterparty_vat_number\": \"\", \"document_number\": \"\", \"document_date\": \"2026-10-16\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 9.85, \"vat_total\": 0.0, \"gross_total\": 9.85, \"vat_lines\": [{\"rate\": 0, \"net\": 9.85, \"vat\": 0.0}], \"line_items\": [{\"description\": \"Semi-skimmed milk 4 pints\", \"quantity\": 1, \"unit_price\": 2.45, \"net\": 2.45, \"vat_rate\": 0}, {\"description\": \"Tea bags 240\", \"quantity\": 1, \"unit_price\": 4.2, \"net\": 4.2, \"vat_rate\": 0}, {\"description\": \"Digestive biscuits x 2\", \"quantity\": 2, \"unit_price\": 1.6, \"net\": 3.2, \"vat_rate\": 0}], \"payment_status\": \"paid\", \"card_last4\": \"8802\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Corner shop receipt for milk, tea bags and biscuits.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"All items zero-rated.\"}",
+    "data": {
+      "doc_type": "receipt",
+      "counterparty": "Greenway Corner Shop",
+      "counterparty_vat_number": "",
+      "document_number": "",
+      "document_date": "2026-10-16",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 9.85,
+      "vat_total": 0.0,
+      "gross_total": 9.85,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 9.85,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Semi-skimmed milk 4 pints",
+          "quantity": 1,
+          "unit_price": 2.45,
+          "net": 2.45,
+          "vat_rate": 0
+        },
+        {
+          "description": "Tea bags 240",
+          "quantity": 1,
+          "unit_price": 4.2,
+          "net": 4.2,
+          "vat_rate": 0
+        },
+        {
+          "description": "Digestive biscuits x 2",
+          "quantity": 2,
+          "unit_price": 1.6,
+          "net": 3.2,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "8802",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Corner shop receipt for milk, tea bags and biscuits.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "All items zero-rated."
+    }
+  }
+}

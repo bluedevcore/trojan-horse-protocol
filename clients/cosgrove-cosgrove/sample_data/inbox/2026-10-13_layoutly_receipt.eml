@@ -1,0 +1,19 @@
+From: Layoutly <billing@layoutly.example>
+To: accounts@demo-company.example
+Subject: Your Layoutly receipt #LY-2026-554120
+Date: Tue, 13 Oct 2026 03:20:00 +0100
+Message-ID: <1271474833a89932@mail.example>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Receipt #LY-2026-554120
+Date: October 13, 2026
+
+Layoutly Pro, monthly plan (1 seat)   USD 14.99
+Tax   USD 0.00
+Total paid   USD 14.99
+Charged to card ending 8802
+
+Layoutly Inc., 500 Market Street, San Francisco, CA, USA. Prices exclude any =
+local taxes; business customers outside the US account for VAT themselves.

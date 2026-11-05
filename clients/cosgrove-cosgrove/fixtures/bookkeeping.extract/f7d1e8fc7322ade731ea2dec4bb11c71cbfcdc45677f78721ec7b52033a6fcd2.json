@@ -1,0 +1,65 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "f7d1e8fc7322ade731ea2dec4bb11c71cbfcdc45677f78721ec7b52033a6fcd2",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-14_fixtrade_order.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Fixtrade Direct <orders@fixtrade.example>\nTo: accounts@demo-company.example\nDate: Wed, 14 Oct 2026 10:33:00 +0100\nSubject: Order FD-447210 - VAT receipt\n\nOrder FD-447210 - VAT receipt\nOrder date: 14/10/2026\n\n1 x Mitre saw blade 254mm 60T   £34.99\n2 x Masonry drill bits set   £27.98\n1 x Heavy-duty extension reel 25m   £26.97\n\nTotal (inc VAT)   £89.94\nNet £74.95, VAT £14.99\nPaid by card ending 4417 - collected in store\nFixtrade Direct Ltd, VAT Reg GB 665 0274 37",
+  "response": {
+    "text": "{\"doc_type\": \"receipt\", \"counterparty\": \"Fixtrade Direct\", \"counterparty_vat_number\": \"GB 665 0274 37\", \"document_number\": \"FD-447210\", \"document_date\": \"2026-10-14\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 74.95, \"vat_total\": 14.99, \"gross_total\": 89.94, \"vat_lines\": [{\"rate\": 20, \"net\": 74.95, \"vat\": 14.99}], \"line_items\": [{\"description\": \"Mitre saw blade 254mm 60T\", \"quantity\": 1, \"unit_price\": 34.99, \"net\": 34.99, \"vat_rate\": 20}, {\"description\": \"Masonry drill bits set\", \"quantity\": 2, \"unit_price\": 13.99, \"net\": 27.98, \"vat_rate\": 20}, {\"description\": \"Heavy-duty extension reel 25m\", \"quantity\": 1, \"unit_price\": 26.97, \"net\": 26.97, \"vat_rate\": 20}], \"payment_status\": \"paid\", \"card_last4\": \"4417\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"VAT receipt for a saw blade, masonry drill bits and an extension reel, collected in store.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Seller: Fixtrade Direct Ltd.\"}",
+    "data": {
+      "doc_type": "receipt",
+      "counterparty": "Fixtrade Direct",
+      "counterparty_vat_number": "GB 665 0274 37",
+      "document_number": "FD-447210",
+      "document_date": "2026-10-14",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 74.95,
+      "vat_total": 14.99,
+      "gross_total": 89.94,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 74.95,
+          "vat": 14.99
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Mitre saw blade 254mm 60T",
+          "quantity": 1,
+          "unit_price": 34.99,
+          "net": 34.99,
+          "vat_rate": 20
+        },
+        {
+          "description": "Masonry drill bits set",
+          "quantity": 2,
+          "unit_price": 13.99,
+          "net": 27.98,
+          "vat_rate": 20
+        },
+        {
+          "description": "Heavy-duty extension reel 25m",
+          "quantity": 1,
+          "unit_price": 26.97,
+          "net": 26.97,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "VAT receipt for a saw blade, masonry drill bits and an extension reel, collected in store.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Seller: Fixtrade Direct Ltd."
+    }
+  }
+}

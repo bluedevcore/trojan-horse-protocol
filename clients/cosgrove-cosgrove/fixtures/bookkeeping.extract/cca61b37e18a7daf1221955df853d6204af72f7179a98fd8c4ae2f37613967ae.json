@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "cca61b37e18a7daf1221955df853d6204af72f7179a98fd8c4ae2f37613967ae",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-17_severnvale_CN-1187.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nSevernvale Office Supplies Ltd\n4 Mill Street\nShrewsbury SY1 0XX\nTel 01632 960 118 · accounts@severnvale-office.example\nVAT Reg No: GB 312 4570 90\nCREDIT NOTE\nCredit Note number: CN-1187\nDocument date: 17/10/2026\nInvoice to:\nDemo Company Ltd\nUnit 7, Example Business Park\nTelford TF3 0XX\nDescription\nQty\nUnit price\nNet\nReturned: black toner cartridge (damaged in transit) (20% VAT)\n1\n£38.50\n£38.50\nSubtotal (net)\n£38.50\nVAT @ 20% on £38.50\n£7.70\nTotal due\n£46.20\nCredit against invoice SOS-20877. This amount will be deducted from your account.",
+  "response": {
+    "text": "{\"doc_type\": \"credit_note\", \"counterparty\": \"Severnvale Office Supplies Ltd\", \"counterparty_vat_number\": \"GB 312 4570 90\", \"document_number\": \"CN-1187\", \"document_date\": \"2026-10-17\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 38.5, \"vat_total\": 7.7, \"gross_total\": 46.2, \"vat_lines\": [{\"rate\": 20, \"net\": 38.5, \"vat\": 7.7}], \"line_items\": [{\"description\": \"Returned: black toner cartridge (damaged in transit)\", \"quantity\": 1, \"unit_price\": 38.5, \"net\": 38.5, \"vat_rate\": 20}], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Credit note for a toner cartridge returned damaged.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Credit against invoice SOS-20877, to be deducted from the account.\"}",
+    "data": {
+      "doc_type": "credit_note",
+      "counterparty": "Severnvale Office Supplies Ltd",
+      "counterparty_vat_number": "GB 312 4570 90",
+      "document_number": "CN-1187",
+      "document_date": "2026-10-17",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 38.5,
+      "vat_total": 7.7,
+      "gross_total": 46.2,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 38.5,
+          "vat": 7.7
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Returned: black toner cartridge (damaged in transit)",
+          "quantity": 1,
+          "unit_price": 38.5,
+          "net": 38.5,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Credit note for a toner cartridge returned damaged.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Credit against invoice SOS-20877, to be deducted from the account."
+    }
+  }
+}

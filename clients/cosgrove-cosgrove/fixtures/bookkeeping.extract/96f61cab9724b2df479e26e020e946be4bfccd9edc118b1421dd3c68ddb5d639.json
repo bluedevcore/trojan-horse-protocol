@@ -1,0 +1,72 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "96f61cab9724b2df479e26e020e946be4bfccd9edc118b1421dd3c68ddb5d639",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-07_ember-and-oak_receipt.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nEMBER & OAK CAFÉ\nHigh Street, Telford\nVAT No GB 712 0443 85\n07/10/2026 13:22  Table 6\n2 x Soup & sandwich     £22.80\n2 x Flat white          £8.20\n1 x Brownie             £4.75\n1 x Sparkling water     £2.65\nNet £32.00  VAT £6.40\nTOTAL                   £38.40\nCard ****4417  (tip added at terminal)\nOrder 2214\nHandwritten on receipt: client lunch - Brightwater Facilities, contract review. AM",
+  "response": {
+    "text": "{\"doc_type\": \"receipt\", \"counterparty\": \"Ember & Oak Café\", \"counterparty_vat_number\": \"GB 712 0443 85\", \"document_number\": \"2214\", \"document_date\": \"2026-10-07\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 32.0, \"vat_total\": 6.4, \"gross_total\": 38.4, \"vat_lines\": [{\"rate\": 20, \"net\": 32.0, \"vat\": 6.4}], \"line_items\": [{\"description\": \"2 x Soup & sandwich\", \"quantity\": 2, \"unit_price\": 11.4, \"net\": 22.8, \"vat_rate\": 20}, {\"description\": \"2 x Flat white\", \"quantity\": 2, \"unit_price\": 4.1, \"net\": 8.2, \"vat_rate\": 20}, {\"description\": \"1 x Brownie\", \"quantity\": 1, \"unit_price\": 4.75, \"net\": 4.75, \"vat_rate\": 20}, {\"description\": \"1 x Sparkling water\", \"quantity\": 1, \"unit_price\": 2.65, \"net\": 2.65, \"vat_rate\": 20}], \"payment_status\": \"paid\", \"card_last4\": \"4417\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Café receipt for lunch for two.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Handwritten on the receipt: 'client lunch - Brightwater Facilities, contract review. AM'. The receipt says a tip was added at the terminal; the tip is not included in this total.\"}",
+    "data": {
+      "doc_type": "receipt",
+      "counterparty": "Ember & Oak Café",
+      "counterparty_vat_number": "GB 712 0443 85",
+      "document_number": "2214",
+      "document_date": "2026-10-07",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 32.0,
+      "vat_total": 6.4,
+      "gross_total": 38.4,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 32.0,
+          "vat": 6.4
+        }
+      ],
+      "line_items": [
+        {
+          "description": "2 x Soup & sandwich",
+          "quantity": 2,
+          "unit_price": 11.4,
+          "net": 22.8,
+          "vat_rate": 20
+        },
+        {
+          "description": "2 x Flat white",
+          "quantity": 2,
+          "unit_price": 4.1,
+          "net": 8.2,
+          "vat_rate": 20
+        },
+        {
+          "description": "1 x Brownie",
+          "quantity": 1,
+          "unit_price": 4.75,
+          "net": 4.75,
+          "vat_rate": 20
+        },
+        {
+          "description": "1 x Sparkling water",
+          "quantity": 1,
+          "unit_price": 2.65,
+          "net": 2.65,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "4417",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Café receipt for lunch for two.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Handwritten on the receipt: 'client lunch - Brightwater Facilities, contract review. AM'. The receipt says a tip was added at the terminal; the tip is not included in this total."
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "770fa30797f47af7406a9b2831e0322ce7b58f04acfad18ee096097cca3e8736",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-09-26_stirling-lane_SLP-10442.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nStirling Lane Packaging Ltd\nStirling Lane\nBridgnorth WV16 0XX\nTel 01632 960 078 · sales@stirlinglane-packaging.example\nVAT Reg No: GB 330 7761 66\nINVOICE\nInvoice number: SLP-10442\nInvoice date: 26/09/2026\nDue date: 26/10/2026\nYour order ref: PO-0912\nInvoice to:\nDemo Company Ltd\nUnit 7, Example Business Park\nTelford TF3 0XX\nDescription\nQty\nUnit price\nNet\nDouble-wall cartons 457x305x305mm, bundle of 25 (20% VAT)\n20\n£38.00\n£760.00\nBubble wrap 750mm x 100m (20% VAT)\n8\n£35.00\n£280.00\nPacking tape, case of 36 rolls (20% VAT)\n4\n£50.00\n£200.00\nSubtotal (net)\n£1,240.00\nVAT @ 20% on £1,240.00\n£248.00\nTotal due\n£1,488.00\nPay by bank transfer to Stirling Lane Packaging Ltd: sort code 00-13-57, account number 10116623. Quote SLP-10442.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Stirling Lane Packaging Ltd\", \"counterparty_vat_number\": \"GB 330 7761 66\", \"document_number\": \"SLP-10442\", \"document_date\": \"2026-09-26\", \"due_date\": \"2026-10-26\", \"po_number\": \"PO-0912\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 1240.0, \"vat_total\": 248.0, \"gross_total\": 1488.0, \"vat_lines\": [{\"rate\": 20, \"net\": 1240.0, \"vat\": 248.0}], \"line_items\": [{\"description\": \"Double-wall cartons 457x305x305mm, bundle of 25\", \"quantity\": 20, \"unit_price\": 38.0, \"net\": 760.0, \"vat_rate\": 20}, {\"description\": \"Bubble wrap 750mm x 100m\", \"quantity\": 8, \"unit_price\": 35.0, \"net\": 280.0, \"vat_rate\": 20}, {\"description\": \"Packing tape, case of 36 rolls\", \"quantity\": 4, \"unit_price\": 50.0, \"net\": 200.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-13-57\", \"bank_account_number\": \"10116623\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for packaging materials: cartons, bubble wrap and tape.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Stirling Lane Packaging Ltd",
+      "counterparty_vat_number": "GB 330 7761 66",
+      "document_number": "SLP-10442",
+      "document_date": "2026-09-26",
+      "due_date": "2026-10-26",
+      "po_number": "PO-0912",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 1240.0,
+      "vat_total": 248.0,
+      "gross_total": 1488.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 1240.0,
+          "vat": 248.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Double-wall cartons 457x305x305mm, bundle of 25",
+          "quantity": 20,
+          "unit_price": 38.0,
+          "net": 760.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Bubble wrap 750mm x 100m",
+          "quantity": 8,
+          "unit_price": 35.0,
+          "net": 280.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Packing tape, case of 36 rolls",
+          "quantity": 4,
+          "unit_price": 50.0,
+          "net": 200.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-13-57",
+      "bank_account_number": "10116623",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for packaging materials: cartons, bubble wrap and tape.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "d9e9ab2e00f6692065770afc3a151f8e93202abfabf05d80652981ea7b63e3ed",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-22_forgeway_trade-counter.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nFORGEWAY TRADE COUNTER\nForgeway, Telford\nVAT No GB 552 8830 26\n22/10/2026 16:05\nWall plugs brown x 100      £5.99\nWood screws 4x40 x 200      £11.98\nSilicone sealant clear x 3  £17.97\nDust sheets x 2             £12.00\nNet £39.95  VAT £7.99\nTOTAL                       £47.94\nVISA DEBIT ****1234\nReceipt FT-55418",
+  "response": {
+    "text": "{\"doc_type\": \"receipt\", \"counterparty\": \"Forgeway Trade Counter\", \"counterparty_vat_number\": \"GB 552 8830 26\", \"document_number\": \"FT-55418\", \"document_date\": \"2026-10-22\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 39.95, \"vat_total\": 7.99, \"gross_total\": 47.94, \"vat_lines\": [{\"rate\": 20, \"net\": 39.95, \"vat\": 7.99}], \"line_items\": [{\"description\": \"Wall plugs brown x 100\", \"quantity\": 1, \"unit_price\": 5.99, \"net\": 5.99, \"vat_rate\": 20}, {\"description\": \"Wood screws 4x40 x 200\", \"quantity\": 1, \"unit_price\": 11.98, \"net\": 11.98, \"vat_rate\": 20}, {\"description\": \"Silicone sealant clear x 3\", \"quantity\": 3, \"unit_price\": 5.99, \"net\": 17.97, \"vat_rate\": 20}, {\"description\": \"Dust sheets x 2\", \"quantity\": 2, \"unit_price\": 6.0, \"net\": 12.0, \"vat_rate\": 20}], \"payment_status\": \"paid\", \"card_last4\": \"1234\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Trade counter receipt for wall plugs, screws, sealant and dust sheets.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Paid with a Visa debit card ending 1234.\"}",
+    "data": {
+      "doc_type": "receipt",
+      "counterparty": "Forgeway Trade Counter",
+      "counterparty_vat_number": "GB 552 8830 26",
+      "document_number": "FT-55418",
+      "document_date": "2026-10-22",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 39.95,
+      "vat_total": 7.99,
+      "gross_total": 47.94,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 39.95,
+          "vat": 7.99
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Wall plugs brown x 100",
+          "quantity": 1,
+          "unit_price": 5.99,
+          "net": 5.99,
+          "vat_rate": 20
+        },
+        {
+          "description": "Wood screws 4x40 x 200",
+          "quantity": 1,
+          "unit_price": 11.98,
+          "net": 11.98,
+          "vat_rate": 20
+        },
+        {
+          "description": "Silicone sealant clear x 3",
+          "quantity": 3,
+          "unit_price": 5.99,
+          "net": 17.97,
+          "vat_rate": 20
+        },
+        {
+          "description": "Dust sheets x 2",
+          "quantity": 2,
+          "unit_price": 6.0,
+          "net": 12.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "paid",
+      "card_last4": "1234",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Trade counter receipt for wall plugs, screws, sealant and dust sheets.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Paid with a Visa debit card ending 1234."
+    }
+  }
+}

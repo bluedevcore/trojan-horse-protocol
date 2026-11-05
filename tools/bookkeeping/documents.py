@@ -364,7 +364,9 @@ def arithmetic_problems(rec: dict, *, allowed_rates=(0.0, 5.0, 20.0)) -> list[tu
         out.append(("arithmetic", f"The VAT analysis adds up to £{sum(l['net'] for l in lines):,.2f} net, "
                                   f"but the net total shown is £{net:,.2f}."))
     item_nets = [i["net"] for i in rec.get("line_items") or [] if i.get("net") is not None]
-    if item_nets and net is not None and len(item_nets) == len(rec["line_items"]) and abs(sum(item_nets) - net) > 0.02:
+    complete_items = item_nets and len(item_nets) == len(rec["line_items"])
+    if complete_items and net is not None and min(abs(sum(item_nets) - x) for x in (net, gross if gross is not None else net)) > 0.02:
+        # till receipts often list VAT-inclusive prices, so items may add up to the net or the gross
         out.append(("arithmetic", f"The line items add up to £{sum(item_nets):,.2f}, but the net total is £{net:,.2f}."))
     for line in lines:
         expected = round(line["net"] * line["rate"] / 100, 2)

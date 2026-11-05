@@ -1,0 +1,20 @@
+From: Kingfisher Lodge Hotel <stay@kingfisher-lodge.example>
+To: accounts@demo-company.example
+Subject: Your invoice for booking KL-55120
+Date: Tue, 06 Oct 2026 11:02:00 +0100
+Message-ID: <3d4ff36fc7d203d0@mail.example>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+
+Dear Mr Shah,
+
+Thank you for staying with us on 5 October 2026.
+
+Invoice KL-55120
+Room only, 1 night (Standard double)   £80.00
+VAT @ 20%   £16.00
+Total   £96.00
+Paid in full by card ending 8802 on 06/10/2026.
+
+Kingfisher Lodge Hotel, Birmingham B1 0XX · VAT Reg GB 501 3377 86

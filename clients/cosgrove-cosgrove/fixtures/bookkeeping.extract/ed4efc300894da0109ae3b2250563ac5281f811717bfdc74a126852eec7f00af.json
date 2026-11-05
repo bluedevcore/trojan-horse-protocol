@@ -1,0 +1,72 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "ed4efc300894da0109ae3b2250563ac5281f811717bfdc74a126852eec7f00af",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-09_midshire_MPD-5531872.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nMidshire Power Direct Ltd\nPO Box 9XX\nStafford ST16 0XX\nTel 01632 960 402 · business@midshire-power.example\nVAT Reg No: GB 553 9120 46\nINVOICE\nInvoice number: MPD-5531872\nInvoice date: 09/10/2026\nDue date: 23/10/2026\nInvoice to:\nDemo Company Ltd\nUnit 7, Example Business Park\nTelford TF3 0XX\nDescription\nQty\nUnit price\nNet\nElectricity 01/09/2026-30/09/2026: day units 3,412 kWh @ 15.62p (20% VAT)\n3412\n£0.16\n£532.95\nNight units 640 kWh @ 9.84p (20% VAT)\n640\n£0.10\n£62.98\nStanding charge 30 days @ 54.74p (20% VAT)\n30\n£0.55\n£16.42\nClimate Change Levy 4,052 kWh @ 0.775p (20% VAT)\n4052\n£0.01\n£31.40\nSubtotal (net)\n£643.75\nVAT @ 20% on £643.75\n£128.75\nTotal due\n£772.50\nSupply address: Unit 7, Example Business Park.\nPay by bank transfer to Midshire Power Direct Ltd: sort code 00-77-88, account number 10045630. Quote MPD-5531872.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Midshire Power Direct Ltd\", \"counterparty_vat_number\": \"GB 553 9120 46\", \"document_number\": \"MPD-5531872\", \"document_date\": \"2026-10-09\", \"due_date\": \"2026-10-23\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 643.75, \"vat_total\": 128.75, \"gross_total\": 772.5, \"vat_lines\": [{\"rate\": 20, \"net\": 643.75, \"vat\": 128.75}], \"line_items\": [{\"description\": \"Electricity 01/09/2026-30/09/2026: day units 3,412 kWh @ 15.62p\", \"quantity\": 3412, \"unit_price\": 0.1562, \"net\": 532.95, \"vat_rate\": 20}, {\"description\": \"Night units 640 kWh @ 9.84p\", \"quantity\": 640, \"unit_price\": 0.0984, \"net\": 62.98, \"vat_rate\": 20}, {\"description\": \"Standing charge 30 days @ 54.74p\", \"quantity\": 30, \"unit_price\": 0.5474, \"net\": 16.42, \"vat_rate\": 20}, {\"description\": \"Climate Change Levy 4,052 kWh @ 0.775p\", \"quantity\": 4052, \"unit_price\": 0.00775, \"net\": 31.4, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-77-88\", \"bank_account_number\": \"10045630\", \"service_period_start\": \"2026-09-01\", \"service_period_end\": \"2026-09-30\", \"statement_lines\": [], \"summary\": \"Electricity bill for September 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Midshire Power Direct Ltd",
+      "counterparty_vat_number": "GB 553 9120 46",
+      "document_number": "MPD-5531872",
+      "document_date": "2026-10-09",
+      "due_date": "2026-10-23",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 643.75,
+      "vat_total": 128.75,
+      "gross_total": 772.5,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 643.75,
+          "vat": 128.75
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electricity 01/09/2026-30/09/2026: day units 3,412 kWh @ 15.62p",
+          "quantity": 3412,
+          "unit_price": 0.1562,
+          "net": 532.95,
+          "vat_rate": 20
+        },
+        {
+          "description": "Night units 640 kWh @ 9.84p",
+          "quantity": 640,
+          "unit_price": 0.0984,
+          "net": 62.98,
+          "vat_rate": 20
+        },
+        {
+          "description": "Standing charge 30 days @ 54.74p",
+          "quantity": 30,
+          "unit_price": 0.5474,
+          "net": 16.42,
+          "vat_rate": 20
+        },
+        {
+          "description": "Climate Change Levy 4,052 kWh @ 0.775p",
+          "quantity": 4052,
+          "unit_price": 0.00775,
+          "net": 31.4,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-77-88",
+      "bank_account_number": "10045630",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30",
+      "statement_lines": [],
+      "summary": "Electricity bill for September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

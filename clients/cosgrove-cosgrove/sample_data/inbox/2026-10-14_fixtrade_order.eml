@@ -1,0 +1,20 @@
+From: Fixtrade Direct <orders@fixtrade.example>
+To: accounts@demo-company.example
+Subject: Order FD-447210 - VAT receipt
+Date: Wed, 14 Oct 2026 10:33:00 +0100
+Message-ID: <7ec66e5e825fd0a4@mail.example>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+
+Order FD-447210 - VAT receipt
+Order date: 14/10/2026
+
+1 x Mitre saw blade 254mm 60T   £34.99
+2 x Masonry drill bits set   £27.98
+1 x Heavy-duty extension reel 25m   £26.97
+
+Total (inc VAT)   £89.94
+Net £74.95, VAT £14.99
+Paid by card ending 4417 - collected in store
+Fixtrade Direct Ltd, VAT Reg GB 665 0274 37

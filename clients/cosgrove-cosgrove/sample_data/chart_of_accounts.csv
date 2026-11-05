@@ -1,0 +1,31 @@
+Account Code,Account Name,Account Type,Notes
+4000,Sales,Income,
+5000,Purchases,Cost of sales,Packaging and materials used for customer work
+6000,Wages and salaries,Payroll,
+6010,Employer's NI,Payroll,
+6020,Employer pension contributions,Payroll,
+6110,"Light, power and heating",Expense,Electricity and gas
+6120,Cleaning,Expense,Office cleaning
+6130,Waste disposal,Expense,
+6140,Repairs and maintenance,Expense,"Building repairs and small DIY materials (screws, sealant, fixings)"
+6150,Insurance,Expense,
+6200,Telephone and internet,Expense,
+6210,Computer and IT costs,Expense,"IT support, web hosting, cables and small IT accessories"
+6220,Software subscriptions,Expense,Online software and apps
+6230,Office supplies,Expense,"Stationery, toner, small office items"
+6240,Postage and delivery,Expense,
+6300,Motor expenses,Expense,"Fuel, parking, van repairs and tyres"
+6310,Travel and accommodation,Expense,Rail fares and hotels
+6320,Staff welfare,Expense,"Tea, coffee, milk and small items for staff"
+6330,Entertainment,Expense,Client hospitality (VAT not reclaimable)
+6400,Advertising and marketing,Expense,"Printing, signage, business cards, stock images"
+6410,Tools and equipment,Expense,Small tools and equipment under £500
+6500,Accountancy fees,Expense,Accountancy and payroll bureau fees
+6510,Legal and professional fees,Expense,
+6600,Bank charges,Expense,Card and bank fees
+1100,Prepayments,Current asset,
+2100,PAYE and NI payable,Current liability,
+2110,Pension payable,Current liability,
+2120,Net wages payable,Current liability,
+2130,Other payroll deductions payable,Current liability,
+9999,Suspense,Suspense,Use only when the right account is genuinely unclear

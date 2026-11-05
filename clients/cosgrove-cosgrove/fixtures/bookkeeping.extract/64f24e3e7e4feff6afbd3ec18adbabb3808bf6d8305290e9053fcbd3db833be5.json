@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "64f24e3e7e4feff6afbd3ec18adbabb3808bf6d8305290e9053fcbd3db833be5",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-02_marchmont_MIB-66120.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nMarchmont Insurance Brokers Ltd\n2 Castle Gate\nLudlow SY8 0XX\nTel 01632 960 856 · renewals@marchmont-insurance.example\nINVOICE\nInvoice number: MIB-66120\nInvoice date: 02/10/2026\nDue date: 01/11/2026\nInvoice to:\nDemo Company Ltd\nUnit 7, Example Business Park\nTelford TF3 0XX\nDescription\nQty\nUnit price\nNet\nCommercial combined policy renewal, cover 01/10/2026 to 30/09/2027 - premium (0% VAT)\n1\n£1,648.39\n£1,648.39\nInsurance Premium Tax at 12% (0% VAT)\n1\n£197.81\n£197.81\nSubtotal (net)\n£1,846.20\nVAT @ 0% on £1,846.20\n£0.00\nTotal due\n£1,846.20\nInsurance premiums are exempt from VAT. Policy CC-4471-2026.\nPay by bank transfer to Marchmont Insurance Brokers Ltd: sort code 00-87-09, account number 10094471. Quote MIB-66120.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Marchmont Insurance Brokers Ltd\", \"counterparty_vat_number\": \"\", \"document_number\": \"MIB-66120\", \"document_date\": \"2026-10-02\", \"due_date\": \"2026-11-01\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 1846.2, \"vat_total\": 0.0, \"gross_total\": 1846.2, \"vat_lines\": [{\"rate\": 0, \"net\": 1846.2, \"vat\": 0.0}], \"line_items\": [{\"description\": \"Commercial combined policy renewal, cover 01/10/2026 to 30/09/2027 - premium\", \"quantity\": 1, \"unit_price\": 1648.39, \"net\": 1648.39, \"vat_rate\": 0}, {\"description\": \"Insurance Premium Tax at 12%\", \"quantity\": 1, \"unit_price\": 197.81, \"net\": 197.81, \"vat_rate\": 0}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-87-09\", \"bank_account_number\": \"10094471\", \"service_period_start\": \"2026-10-01\", \"service_period_end\": \"2027-09-30\", \"statement_lines\": [], \"summary\": \"Annual commercial combined insurance renewal covering October 2026 to September 2027.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Total includes Insurance Premium Tax of £197.81. Insurance is exempt from VAT. Policy CC-4471-2026.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Marchmont Insurance Brokers Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "MIB-66120",
+      "document_date": "2026-10-02",
+      "due_date": "2026-11-01",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 1846.2,
+      "vat_total": 0.0,
+      "gross_total": 1846.2,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 1846.2,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Commercial combined policy renewal, cover 01/10/2026 to 30/09/2027 - premium",
+          "quantity": 1,
+          "unit_price": 1648.39,
+          "net": 1648.39,
+          "vat_rate": 0
+        },
+        {
+          "description": "Insurance Premium Tax at 12%",
+          "quantity": 1,
+          "unit_price": 197.81,
+          "net": 197.81,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-87-09",
+      "bank_account_number": "10094471",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2027-09-30",
+      "statement_lines": [],
+      "summary": "Annual commercial combined insurance renewal covering October 2026 to September 2027.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Total includes Insurance Premium Tax of £197.81. Insurance is exempt from VAT. Policy CC-4471-2026."
+    }
+  }
+}

@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 import pandas as pd
 
 from tools.bookkeeping.matching import name_similarity
-from tools.bookkeeping.vat import check_gb_vat_number, normalise_code
+from tools.bookkeeping.vat import check_gb_vat_number, format_vat_number, normalise_code
 
 
 @dataclass
@@ -137,11 +137,11 @@ def supplier_vat_checks(doc: dict, supplier: dict | None) -> list[tuple[str, str
             out.append(("vat_without_number", f"£{doc['vat_total']:,.2f} VAT is charged but no VAT registration number "
                                               f"is shown{extra}, so it is not a valid VAT invoice."))
         elif valid is False:
-            out.append(("vat_number_invalid", f"VAT number {number} fails HMRC's check-digit test, so the £"
+            out.append(("vat_number_invalid", f"VAT number {format_vat_number(number)} fails HMRC's check-digit test, so the £"
                                               f"{doc['vat_total']:,.2f} VAT may not be reclaimable."))
     if supplier and number and supplier.get("vat_number"):
         if re.sub(r"\W", "", supplier["vat_number"]).upper() != number.upper() and valid is not False:
-            out.append(("vat_number_mismatch", f"VAT number on the invoice ({number}) differs from the supplier list "
+            out.append(("vat_number_mismatch", f"VAT number on the invoice ({format_vat_number(number)}) differs from the supplier list "
                                                f"({supplier['vat_number']})."))
     if supplier and (doc.get("bank_sort_code") or doc.get("bank_account_number")):
         file_sc = re.sub(r"\D", "", str(supplier.get("sort_code", "")))
