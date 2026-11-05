@@ -14,6 +14,10 @@ The rules for working in this repo are in [CLAUDE.md](CLAUDE.md). The build orde
 |---|---|---|---|
 | NFU Energy: Technical Data Administrator | Meter Data Checker (`data_validation`) | `clients/nfu-energy/app.py` | Built |
 | Cosgrove & Cosgrove Ltd: Accounts Assistant | QuickBooks Bookkeeping Agent (`bookkeeping`) | `clients/cosgrove-cosgrove/app.py` | Built |
+| Somerset Solders: P/T Accounts Administrator / Bookkeeper | Bookkeeping Agent (`bookkeeping`, Xero) | `clients/somerset-solders/app.py` | Built |
+| Alfred Bagnall & Sons: Branch Administrator | Debtor & Filing Agent (`bookkeeping`) | `clients/alfred-bagnall/app.py` | Built |
+| Complete Fixing Solutions: Office Administrator | Timesheet-to-Payroll Agent (`bookkeeping`, Sage) | `clients/complete-fixing-solutions/app.py` | Built |
+| Chapel Properties: Accounts Administrator | Financial Data Entry Agent (`bookkeeping`) | `clients/chapel-properties/app.py` | Built |
 
 ## Repo structure
 
