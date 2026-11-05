@@ -908,6 +908,8 @@ def _point_ref(f: Finding) -> str:
 
 def _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_totals, payroll_diff, sales, debtors, ts_rows,
            po_table, stmt_docs, filing, vat_box, findings, letters, p_start, p_end, inputs) -> dict:
+    from tools.bookkeeping import reports  # local import: reports imports this module
+
     ready = entries[entries["status"] == "Ready"] if not entries.empty else entries
     held = entries[entries["status"] == "Held"] if not entries.empty else entries
     purchase_groups = entries[entries["kind"].isin(["bill", "supplier_credit"])] if not entries.empty else entries
@@ -921,8 +923,9 @@ def _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_tota
         "entries": len(entries),
         "entries_ready": len(ready),
         "entries_held": len(held),
-        "value_ready": round(float(ready["gross"].sum()), 2) if not ready.empty else 0.0,
-        "value_held": round(float(held["gross"].sum()), 2) if not held.empty else 0.0,
+        # credit notes reduce the value (amounts are stored positive; the kind carries the sign)
+        "value_ready": round(float(reports.signed(ready)["gross"].sum()), 2) if not ready.empty else 0.0,
+        "value_held": round(float(reports.signed(held)["gross"].sum()), 2) if not held.empty else 0.0,
         "purchase_docs": purchase_groups["group"].nunique() if not purchase_groups.empty else 0,
         "purchase_ready": purchase_groups[purchase_groups["status"] == "Ready"]["group"].nunique() if not purchase_groups.empty else 0,
         "purchase_held": purchase_groups[purchase_groups["status"] == "Held"]["group"].nunique() if not purchase_groups.empty else 0,

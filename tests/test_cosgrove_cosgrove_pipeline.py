@@ -123,7 +123,10 @@ def test_totals_cross_check(result):
     ready = e[(e["kind"] == "bill") & (e["status"] == "Ready")]
     assert round((qb["Line Amount"] + qb["Line Tax Amount"]).sum(), 2) == round(ready["gross"].sum(), 2)
     assert not set(qb["Bill No"]) & {"BIT-2026-1043", "CWS-40218", "118", "NTS-5521"}  # held
-    assert result.facts["value_ready"] == round(e[e["status"] == "Ready"]["gross"].sum(), 2) == 6772.28
+    ready = e[e["status"] == "Ready"]
+    credits = ready["kind"] == "supplier_credit"
+    # credit notes are stored positive and subtracted
+    assert result.facts["value_ready"] == round(ready.loc[~credits, "gross"].sum() - ready.loc[credits, "gross"].sum(), 2) == 6679.88
 
 
 def test_payroll_journal_and_sales_invoices(result):
