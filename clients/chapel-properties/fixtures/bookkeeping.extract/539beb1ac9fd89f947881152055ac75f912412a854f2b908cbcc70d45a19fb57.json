@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "539beb1ac9fd89f947881152055ac75f912412a854f2b908cbcc70d45a19fb57",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-01_tallis-penn_TPI-26-3381.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nTallis & Penn Insurance Brokers Ltd\n2 Corn Exchange Passage\nBury St Edmunds IP33 0XX\nTel 01632 960 972 · renewals@tallispenn.example\nINVOICE\nInvoice number: TPI-26-3381\nInvoice date: 01/10/2026\nDue date: 31/10/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nDescription\nQty\nUnit price\nNet\nProperty owners' portfolio policy (7 properties), cover 01/10/2026 to 30/09/2027\n1\n£4,210.71\n£4,210.71\nInsurance Premium Tax at 12%\n1\n£505.29\n£505.29\nSubtotal (net)\n£4,716.00\nVAT\n£0.00\nTotal due\n£4,716.00\nInsurance premiums are exempt from VAT. Policy POP-2210-2026, renewal for the year.\nPay by bank transfer: sort code 00-93-06, account number 20129306. Quote TPI-26-3381.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Tallis & Penn Insurance Brokers Ltd\", \"counterparty_vat_number\": \"\", \"document_number\": \"TPI-26-3381\", \"document_date\": \"2026-10-01\", \"due_date\": \"2026-10-31\", \"po_number\": \"\", \"project_reference\": \"Head office\", \"currency\": \"GBP\", \"net_total\": 4716.0, \"vat_total\": 0.0, \"gross_total\": 4716.0, \"vat_lines\": [{\"rate\": 0, \"net\": 4716.0, \"vat\": 0.0}], \"line_items\": [{\"description\": \"Property owners' portfolio policy (7 properties), cover 01/10/2026 to 30/09/2027\", \"quantity\": 1, \"unit_price\": 4210.71, \"net\": 4210.71, \"vat_rate\": 0}, {\"description\": \"Insurance Premium Tax at 12%\", \"quantity\": 1, \"unit_price\": 505.29, \"net\": 505.29, \"vat_rate\": 0}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-93-06\", \"bank_account_number\": \"20129306\", \"service_period_start\": \"2026-10-01\", \"service_period_end\": \"2027-09-30\", \"statement_lines\": [], \"summary\": \"Annual renewal of the property owners' portfolio insurance covering 7 properties, October 2026 to September 2027.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Total includes Insurance Premium Tax of £505.29. Insurance premiums are exempt from VAT. Policy POP-2210-2026.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Tallis & Penn Insurance Brokers Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "TPI-26-3381",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-31",
+      "po_number": "",
+      "project_reference": "Head office",
+      "currency": "GBP",
+      "net_total": 4716.0,
+      "vat_total": 0.0,
+      "gross_total": 4716.0,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 4716.0,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Property owners' portfolio policy (7 properties), cover 01/10/2026 to 30/09/2027",
+          "quantity": 1,
+          "unit_price": 4210.71,
+          "net": 4210.71,
+          "vat_rate": 0
+        },
+        {
+          "description": "Insurance Premium Tax at 12%",
+          "quantity": 1,
+          "unit_price": 505.29,
+          "net": 505.29,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-93-06",
+      "bank_account_number": "20129306",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2027-09-30",
+      "statement_lines": [],
+      "summary": "Annual renewal of the property owners' portfolio insurance covering 7 properties, October 2026 to September 2027.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Total includes Insurance Premium Tax of £505.29. Insurance premiums are exempt from VAT. Policy POP-2210-2026."
+    }
+  }
+}

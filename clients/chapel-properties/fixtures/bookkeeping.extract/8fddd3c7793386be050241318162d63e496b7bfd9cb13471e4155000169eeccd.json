@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "8fddd3c7793386be050241318162d63e496b7bfd9cb13471e4155000169eeccd",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-01_harbourline_SC-2026-0427.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nHarbourline Block Management Ltd\n4 Quay Street\nWoodbridge IP12 0XX\nTel 01632 960 083 · service.charges@harbourline-bm.example\nSERVICE CHARGE DEMAND\nDemand number: SC-2026-0427\nDemand date: 01/10/2026\nDue date: 31/10/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nProperty: Flat 3, Quayside Court, Woodbridge\nDescription\nQty\nUnit price\nNet\nHalf-yearly service charge in advance, 01/10/2026 to 31/03/2027\n1\n£960.00\n£960.00\nReserve fund contribution, 01/10/2026 to 31/03/2027\n1\n£180.00\n£180.00\nSubtotal (net)\n£1,140.00\nVAT\n£0.00\nTotal due\n£1,140.00\nService charges are not subject to VAT. Payable in advance under the lease.\nPay by bank transfer: sort code 00-15-26, account number 20131526. Quote SC-2026-0427.\nIssued on behalf of Quayside Court (Woodbridge) Management Company Ltd.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Harbourline Block Management Ltd\", \"counterparty_vat_number\": \"\", \"document_number\": \"SC-2026-0427\", \"document_date\": \"2026-10-01\", \"due_date\": \"2026-10-31\", \"po_number\": \"\", \"project_reference\": \"3 Quayside Court\", \"currency\": \"GBP\", \"net_total\": 1140.0, \"vat_total\": 0.0, \"gross_total\": 1140.0, \"vat_lines\": [{\"rate\": 0, \"net\": 1140.0, \"vat\": 0.0}], \"line_items\": [{\"description\": \"Half-yearly service charge in advance, 01/10/2026 to 31/03/2027\", \"quantity\": 1, \"unit_price\": 960.0, \"net\": 960.0, \"vat_rate\": 0}, {\"description\": \"Reserve fund contribution, 01/10/2026 to 31/03/2027\", \"quantity\": 1, \"unit_price\": 180.0, \"net\": 180.0, \"vat_rate\": 0}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-15-26\", \"bank_account_number\": \"20131526\", \"service_period_start\": \"2026-10-01\", \"service_period_end\": \"2027-03-31\", \"statement_lines\": [], \"summary\": \"Half-yearly service charge and reserve fund demand for Flat 3, Quayside Court, payable in advance for October 2026 to March 2027.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"A service charge demand under the lease rather than a VAT invoice; it states service charges are not subject to VAT. Issued on behalf of Quayside Court (Woodbridge) Management Company Ltd.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Harbourline Block Management Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "SC-2026-0427",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-31",
+      "po_number": "",
+      "project_reference": "3 Quayside Court",
+      "currency": "GBP",
+      "net_total": 1140.0,
+      "vat_total": 0.0,
+      "gross_total": 1140.0,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 1140.0,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Half-yearly service charge in advance, 01/10/2026 to 31/03/2027",
+          "quantity": 1,
+          "unit_price": 960.0,
+          "net": 960.0,
+          "vat_rate": 0
+        },
+        {
+          "description": "Reserve fund contribution, 01/10/2026 to 31/03/2027",
+          "quantity": 1,
+          "unit_price": 180.0,
+          "net": 180.0,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-15-26",
+      "bank_account_number": "20131526",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2027-03-31",
+      "statement_lines": [],
+      "summary": "Half-yearly service charge and reserve fund demand for Flat 3, Quayside Court, payable in advance for October 2026 to March 2027.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "A service charge demand under the lease rather than a VAT invoice; it states service charges are not subject to VAT. Issued on behalf of Quayside Court (Woodbridge) Management Company Ltd."
+    }
+  }
+}

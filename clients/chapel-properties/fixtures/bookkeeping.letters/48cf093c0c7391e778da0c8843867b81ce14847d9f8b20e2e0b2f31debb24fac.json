@@ -1,0 +1,24 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "48cf093c0c7391e778da0c8843867b81ce14847d9f8b20e2e0b2f31debb24fac",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"supplier:Sallowfield Roofing Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Sallowfield Roofing Ltd\",\n  \"contact\": \"Mark Ellery\",\n  \"email\": \"accounts@sallowfield-roofing.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice SR-1186 · 09 Oct 2026 · £1,461.00\",\n    \"issue\": \"Net £1,180.00 + VAT £236.00 = £1,416.00, but the total shown is £1,461.00 (difference £45.00).\",\n    \"ask\": \"Could you send a corrected invoice?\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-02\"\n  ]\n },\n {\n  \"key\": \"supplier:Willowmere Grounds Maintenance Ltd\",\n  \"recipient_type\": \"supplier\",\n  \"to\": \"Willowmere Grounds Maintenance Ltd\",\n  \"contact\": \"Tom Avery\",\n  \"email\": \"tom@willowmere-grounds.example\",\n  \"tone\": \"\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice WGM-2210 · 02 Oct 2026 · £264.00\",\n    \"issue\": \"Bank details on the document (sort code 00-98-76, account ••••7601) differ from the supplier list (sort code 00-47-51, account ••••4751). This is a common invoice-fraud pattern.\",\n    \"ask\": \"We received new bank details with Invoice WGM-2210 from Willowmere Grounds Maintenance Ltd. We will phone you on the number we already hold to confirm the change before any payment is made. We never change bank details from an email.\"\n   }\n  ],\n  \"exceptions\": [\n   \"EX-01\"\n  ]\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"supplier:Sallowfield Roofing Ltd\", \"subject\": \"Invoice SR-1186: total does not add up\", \"body\": \"Hello Mark,\\n\\nThank you for invoice SR-1186 dated 9 October 2026. The net amount of £1,180.00 plus VAT of £236.00 comes to £1,416.00, but the total shown is £1,461.00, a difference of £45.00.\\n\\nCould you send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Properties Ltd\"}, {\"key\": \"supplier:Willowmere Grounds Maintenance Ltd\", \"subject\": \"Invoice WGM-2210: change of bank details\", \"body\": \"Hello Tom,\\n\\nWe have received invoice WGM-2210, dated 2 October 2026 for £264.00, with bank details (sort code 00-98-76) that are different from the ones we hold for you.\\n\\nBefore any payment is made, we will phone you on the number we already hold to confirm the change. We never change bank details because of an email, so please don't send bank details by reply. If you have not changed banks, please let us know as soon as possible, and in any case by Friday 13 November.\\n\\nKind regards,\\nAccounts Administrator\\nDemo Properties Ltd\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "supplier:Sallowfield Roofing Ltd",
+          "subject": "Invoice SR-1186: total does not add up",
+          "body": "Hello Mark,\n\nThank you for invoice SR-1186 dated 9 October 2026. The net amount of £1,180.00 plus VAT of £236.00 comes to £1,416.00, but the total shown is £1,461.00, a difference of £45.00.\n\nCould you send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Properties Ltd"
+        },
+        {
+          "key": "supplier:Willowmere Grounds Maintenance Ltd",
+          "subject": "Invoice WGM-2210: change of bank details",
+          "body": "Hello Tom,\n\nWe have received invoice WGM-2210, dated 2 October 2026 for £264.00, with bank details (sort code 00-98-76) that are different from the ones we hold for you.\n\nBefore any payment is made, we will phone you on the number we already hold to confirm the change. We never change bank details because of an email, so please don't send bank details by reply. If you have not changed banks, please let us know as soon as possible, and in any case by Friday 13 November.\n\nKind regards,\nAccounts Administrator\nDemo Properties Ltd"
+        }
+      ]
+    }
+  }
+}

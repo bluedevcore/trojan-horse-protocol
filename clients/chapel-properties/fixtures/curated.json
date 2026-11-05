@@ -1,0 +1,1079 @@
+{
+  "extract": {
+    "2026-09-29_brightcote_BES-4471.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Brightcote Electrical Services Ltd",
+      "counterparty_vat_number": "GB 336 0912 70",
+      "document_number": "BES-4471",
+      "document_date": "2026-09-29",
+      "due_date": "2026-10-29",
+      "project_reference": "Granary Court",
+      "net_total": 240.0,
+      "vat_total": 48.0,
+      "gross_total": 288.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 240.0,
+          "vat": 48.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Replace failed emergency light fittings, communal stairwell",
+          "quantity": 2,
+          "unit_price": 86.0,
+          "net": 172.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Labour, testing and certificate",
+          "quantity": 1,
+          "unit_price": 68.0,
+          "net": 68.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for replacing two failed emergency light fittings in the communal stairwell at Granary Court.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-25-38",
+      "bank_account_number": "20052538"
+    },
+    "2026-10-01_harbourline_SC-2026-0427.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Harbourline Block Management Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "SC-2026-0427",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-31",
+      "project_reference": "3 Quayside Court",
+      "net_total": 1140.0,
+      "vat_total": 0.0,
+      "gross_total": 1140.0,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 1140.0,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Half-yearly service charge in advance, 01/10/2026 to 31/03/2027",
+          "quantity": 1,
+          "unit_price": 960.0,
+          "net": 960.0,
+          "vat_rate": 0
+        },
+        {
+          "description": "Reserve fund contribution, 01/10/2026 to 31/03/2027",
+          "quantity": 1,
+          "unit_price": 180.0,
+          "net": 180.0,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Half-yearly service charge and reserve fund demand for Flat 3, Quayside Court, payable in advance for October 2026 to March 2027.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "A service charge demand under the lease rather than a VAT invoice; it states service charges are not subject to VAT. Issued on behalf of Quayside Court (Woodbridge) Management Company Ltd.",
+      "bank_sort_code": "00-15-26",
+      "bank_account_number": "20131526",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2027-03-31"
+    },
+    "2026-10-01_tallis-penn_TPI-26-3381.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Tallis & Penn Insurance Brokers Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "TPI-26-3381",
+      "document_date": "2026-10-01",
+      "due_date": "2026-10-31",
+      "project_reference": "Head office",
+      "net_total": 4716.0,
+      "vat_total": 0.0,
+      "gross_total": 4716.0,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 4716.0,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Property owners' portfolio policy (7 properties), cover 01/10/2026 to 30/09/2027",
+          "quantity": 1,
+          "unit_price": 4210.71,
+          "net": 4210.71,
+          "vat_rate": 0
+        },
+        {
+          "description": "Insurance Premium Tax at 12%",
+          "quantity": 1,
+          "unit_price": 505.29,
+          "net": 505.29,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Annual renewal of the property owners' portfolio insurance covering 7 properties, October 2026 to September 2027.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Total includes Insurance Premium Tax of £505.29. Insurance premiums are exempt from VAT. Policy POP-2210-2026.",
+      "bank_sort_code": "00-93-06",
+      "bank_account_number": "20129306",
+      "service_period_start": "2026-10-01",
+      "service_period_end": "2027-09-30"
+    },
+    "2026-10-02_willowmere_WGM-2210.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Willowmere Grounds Maintenance Ltd",
+      "counterparty_vat_number": "GB 663 1290 46",
+      "document_number": "WGM-2210",
+      "document_date": "2026-10-02",
+      "due_date": "2026-10-16",
+      "project_reference": "Granary Court",
+      "net_total": 220.0,
+      "vat_total": 44.0,
+      "gross_total": 264.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 220.0,
+          "vat": 44.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Communal gardens: grass cutting, hedge trimming and leaf clearance, October",
+          "quantity": 1,
+          "unit_price": 220.0,
+          "net": 220.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "October grounds maintenance invoice for the communal gardens at Granary Court, sent with an email announcing new bank details.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The covering email comes from willowmere.accounts@mailbox.example, not the address on the invoice (tom@willowmere-grounds.example). It says the supplier has moved to a new bank and asks for this and all future payments to go to the account on the attached invoice.",
+      "bank_sort_code": "00-98-76",
+      "bank_account_number": "99987601"
+    },
+    "2026-10-03_marlowe-finch_MF-7731.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Marlowe & Finch Plumbing & Heating Ltd",
+      "counterparty_vat_number": "GB 412 7705 70",
+      "document_number": "MF-7731",
+      "document_date": "2026-10-03",
+      "due_date": "2026-11-02",
+      "project_reference": "14 Lantern Row",
+      "net_total": 285.0,
+      "vat_total": 57.0,
+      "gross_total": 342.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 285.0,
+          "vat": 57.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Boiler breakdown call-out and labour (hours)",
+          "quantity": 2.5,
+          "unit_price": 58.0,
+          "net": 145.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Diverter valve cartridge, supplied and fitted",
+          "quantity": 1,
+          "unit_price": 140.0,
+          "net": 140.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for a boiler breakdown repair at 14 Lantern Row, including a replacement diverter valve.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-14-27",
+      "bank_account_number": "20041127"
+    },
+    "2026-10-05_northlight_NES-448120.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Northlight Energy Supply Ltd",
+      "counterparty_vat_number": "GB 391 5546 32",
+      "document_number": "NES-448120",
+      "document_date": "2026-10-05",
+      "due_date": "2026-10-19",
+      "project_reference": "14 Lantern Row",
+      "net_total": 272.23,
+      "vat_total": 13.61,
+      "gross_total": 285.84,
+      "vat_lines": [
+        {
+          "rate": 5,
+          "net": 272.23,
+          "vat": 13.61
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electricity 01/09/2026-30/09/2026: 1,046 kWh @ 24.50p",
+          "quantity": 1046,
+          "unit_price": 0.245,
+          "net": 256.27,
+          "vat_rate": 5
+        },
+        {
+          "description": "Standing charge 30 days @ 53.20p",
+          "quantity": 30,
+          "unit_price": 0.532,
+          "net": 15.96,
+          "vat_rate": 5
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "September electricity bill for the domestic supply at 14 Lantern Row, with VAT at the 5% domestic rate.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Collected by Direct Debit on or after 19 October 2026; no payment needs to be made.",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30"
+    },
+    "2026-10-06_northlight_NES-448377.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Northlight Energy Supply Ltd",
+      "counterparty_vat_number": "GB 391 5546 32",
+      "document_number": "NES-448377",
+      "document_date": "2026-10-06",
+      "due_date": "2026-10-20",
+      "project_reference": "Granary Court",
+      "net_total": 129.14,
+      "vat_total": 25.83,
+      "gross_total": 154.97,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 129.14,
+          "vat": 25.83
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electricity 01/09/2026-30/09/2026: 412 kWh @ 26.10p",
+          "quantity": 412,
+          "unit_price": 0.261,
+          "net": 107.53,
+          "vat_rate": 20
+        },
+        {
+          "description": "Standing charge 30 days @ 61.40p",
+          "quantity": 30,
+          "unit_price": 0.614,
+          "net": 18.42,
+          "vat_rate": 20
+        },
+        {
+          "description": "Climate Change Levy 412 kWh @ 0.775p",
+          "quantity": 412,
+          "unit_price": 0.00775,
+          "net": 3.19,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "September electricity bill for the Granary Court landlord supply (communal lighting and door entry).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Collected by Direct Debit on or after 20 October 2026; no payment needs to be made.",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30"
+    },
+    "2026-10-07_emberguard_EFS-2026-301.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Emberguard Fire & Gas Safety Ltd",
+      "counterparty_vat_number": "GB 557 4319 24",
+      "document_number": "EFS-2026-301",
+      "document_date": "2026-10-07",
+      "due_date": "2026-11-06",
+      "project_reference": "31 Heron Walk",
+      "net_total": 78.0,
+      "vat_total": 15.6,
+      "gross_total": 93.6,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 78.0,
+          "vat": 15.6
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Annual landlord gas safety check and certificate (CP12)",
+          "quantity": 1,
+          "unit_price": 78.0,
+          "net": 78.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for the annual landlord gas safety check and certificate (CP12) at 31 Heron Walk.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-26-37",
+      "bank_account_number": "20142637"
+    },
+    "2026-10-08_meadowbrook_MW-55871.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Meadowbrook Water Ltd",
+      "counterparty_vat_number": "GB 604 7728 37",
+      "document_number": "MW-55871",
+      "document_date": "2026-10-08",
+      "due_date": "2026-11-05",
+      "project_reference": "14 Lantern Row",
+      "net_total": 151.08,
+      "vat_total": 0.0,
+      "gross_total": 151.08,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 151.08,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Water supply 01/07/2026-30/09/2026: 38 m3 @ £1.92",
+          "quantity": 38,
+          "unit_price": 1.92,
+          "net": 72.96,
+          "vat_rate": 0
+        },
+        {
+          "description": "Wastewater 01/07/2026-30/09/2026: 36 m3 @ £2.17",
+          "quantity": 36,
+          "unit_price": 2.17,
+          "net": 78.12,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Water and wastewater charges for 14 Lantern Row for July to September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The bill states water and sewerage charges are zero-rated for VAT.",
+      "bank_sort_code": "00-82-95",
+      "bank_account_number": "20118295",
+      "service_period_start": "2026-07-01",
+      "service_period_end": "2026-09-30"
+    },
+    "2026-10-09_sallowfield_SR-1186.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Sallowfield Roofing Ltd",
+      "counterparty_vat_number": "GB 520 8874 39",
+      "document_number": "SR-1186",
+      "document_date": "2026-10-09",
+      "due_date": "2026-11-08",
+      "project_reference": "8 Seagate Parade",
+      "net_total": 1180.0,
+      "vat_total": 236.0,
+      "gross_total": 1461.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 1180.0,
+          "vat": 236.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Replace slipped and broken roof tiles, rear pitch",
+          "quantity": 1,
+          "unit_price": 540.0,
+          "net": 540.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Re-dress lead flashing at chimney",
+          "quantity": 1,
+          "unit_price": 320.0,
+          "net": 320.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Scaffold tower hire and erection, 1 week",
+          "quantity": 1,
+          "unit_price": 320.0,
+          "net": 320.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for roof repairs at 8 Seagate Parade, Felixstowe: replacement tiles, lead flashing and a scaffold tower.",
+      "confidence": "medium",
+      "uncertain_fields": [
+        "gross_total"
+      ],
+      "notes": "The printed total due (£1,461.00) is not the printed subtotal plus VAT; the values are copied as printed.",
+      "bank_sort_code": "00-36-49",
+      "bank_account_number": "20063649"
+    },
+    "2026-10-12_spireview_SCS-3092.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Spireview Cleaning Services Ltd",
+      "counterparty_vat_number": "GB 275 9031 43",
+      "document_number": "SCS-3092",
+      "document_date": "2026-10-12",
+      "due_date": "2026-11-11",
+      "project_reference": "Granary Court",
+      "net_total": 168.0,
+      "vat_total": 33.6,
+      "gross_total": 201.6,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 168.0,
+          "vat": 33.6
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Communal area cleaning, October (weekly visits)",
+          "quantity": 4,
+          "unit_price": 42.0,
+          "net": 168.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "October communal area cleaning at Granary Court (four weekly visits).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-58-62",
+      "bank_account_number": "20085862"
+    },
+    "2026-10-13_corndell_CBS-55102.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Corndell Building Supplies Ltd",
+      "counterparty_vat_number": "GB 448 2157 43",
+      "document_number": "CBS-55102",
+      "document_date": "2026-10-13",
+      "due_date": "2026-11-12",
+      "project_reference": "22 Thistle Close",
+      "net_total": 205.0,
+      "vat_total": 41.0,
+      "gross_total": 246.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 205.0,
+          "vat": 41.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Trade emulsion, white, 10L",
+          "quantity": 4,
+          "unit_price": 28.5,
+          "net": 114.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Satinwood, white, 2.5L",
+          "quantity": 2,
+          "unit_price": 24.0,
+          "net": 48.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Multi-purpose filler, 5kg",
+          "quantity": 2,
+          "unit_price": 9.5,
+          "net": 19.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Decorating sundries (rollers, trays, tape)",
+          "quantity": 1,
+          "unit_price": 24.0,
+          "net": 24.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Decorating materials (paint, filler and sundries) delivered to 22 Thistle Close.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Account DEMO01.",
+      "bank_sort_code": "00-69-73",
+      "bank_account_number": "20096973"
+    },
+    "2026-10-14_turnwell_TLS-6120.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Turnwell Locks & Security Ltd",
+      "counterparty_vat_number": "GB 387 0462 34",
+      "document_number": "TLS-6120",
+      "document_date": "2026-10-14",
+      "due_date": "2026-11-13",
+      "project_reference": "",
+      "net_total": 95.0,
+      "vat_total": 19.0,
+      "gross_total": 114.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 95.0,
+          "vat": 19.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Supply and fit euro cylinder lock, front door",
+          "quantity": 1,
+          "unit_price": 65.0,
+          "net": 65.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Keys cut",
+          "quantity": 3,
+          "unit_price": 5.0,
+          "net": 15.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Call-out",
+          "quantity": 1,
+          "unit_price": 15.0,
+          "net": 15.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for a lock change at a tenant changeover: new euro cylinder on the front door and 3 keys.",
+      "confidence": "medium",
+      "uncertain_fields": [
+        "project_reference"
+      ],
+      "notes": "The job address says only \"Flat 2\" without naming the building, so the property cannot be identified. Ordered by phone; job ref TLS-J-8812.",
+      "bank_sort_code": "00-59-61",
+      "bank_account_number": "20175961"
+    },
+    "2026-10-15_clearflow_CD-0912.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Clearflow Drainage Ltd",
+      "counterparty_vat_number": "GB 295 8417 15",
+      "document_number": "CD-0912",
+      "document_date": "2026-10-15",
+      "due_date": "2026-10-29",
+      "project_reference": "14 Lantern Row",
+      "net_total": 165.0,
+      "vat_total": 33.0,
+      "gross_total": 198.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 165.0,
+          "vat": 33.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Emergency call-out: clear blocked foul drain (rodding and jetting)",
+          "quantity": 1,
+          "unit_price": 165.0,
+          "net": 165.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for an emergency call-out to clear a blocked foul drain at 14 Lantern Row.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The invoice thanks us as a new customer.",
+      "bank_sort_code": "00-72-83",
+      "bank_account_number": "20197283"
+    },
+    "2026-10-16_corndell_CBS-55187.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Corndell Building Supplies Ltd",
+      "counterparty_vat_number": "GB 448 2157 43",
+      "document_number": "CBS-55187",
+      "document_date": "2026-10-16",
+      "due_date": "2026-11-15",
+      "project_reference": "31 Heron Walk",
+      "net_total": 312.5,
+      "vat_total": 62.5,
+      "gross_total": 375.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 312.5,
+          "vat": 62.5
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Closeboard fence panel 1.8m x 1.8m",
+          "quantity": 6,
+          "unit_price": 39.5,
+          "net": 237.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Concrete fence post 2.4m",
+          "quantity": 3,
+          "unit_price": 18.5,
+          "net": 55.5,
+          "vat_rate": 20
+        },
+        {
+          "description": "Postcrete 20kg",
+          "quantity": 4,
+          "unit_price": 5.0,
+          "net": 20.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Fencing materials (6 closeboard panels, 3 concrete posts and postcrete) delivered to 31 Heron Walk.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Account DEMO01.",
+      "bank_sort_code": "00-69-73",
+      "bank_account_number": "20096973"
+    },
+    "2026-10-19_g-lowe_0412.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "G Lowe Property Maintenance",
+      "counterparty_vat_number": "",
+      "document_number": "0412",
+      "document_date": "2026-10-19",
+      "due_date": "2026-11-02",
+      "project_reference": "22 Thistle Close",
+      "net_total": 340.0,
+      "vat_total": 68.0,
+      "gross_total": 408.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 340.0,
+          "vat": 68.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Patch and make good plaster (2 rooms), rehang 2 doors, reseal bath: labour (days)",
+          "quantity": 2,
+          "unit_price": 150.0,
+          "net": 300.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Materials",
+          "quantity": 1,
+          "unit_price": 40.0,
+          "net": 40.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for preparing the empty property at 22 Thistle Close: plaster repairs, rehanging doors and resealing the bath.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "VAT at 20% is charged but no VAT registration number is shown. Issued by Gary Lowe, trading as G Lowe Property Maintenance.",
+      "bank_sort_code": "00-48-59",
+      "bank_account_number": "20164859"
+    },
+    "2026-10-20_corndell_CN-2291.pdf": {
+      "doc_type": "credit_note",
+      "counterparty": "Corndell Building Supplies Ltd",
+      "counterparty_vat_number": "GB 448 2157 43",
+      "document_number": "CN-2291",
+      "document_date": "2026-10-20",
+      "due_date": "",
+      "project_reference": "31 Heron Walk",
+      "net_total": 79.0,
+      "vat_total": 15.8,
+      "gross_total": 94.8,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 79.0,
+          "vat": 15.8
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Returned: closeboard fence panel 1.8m x 1.8m (surplus, from invoice CBS-55187)",
+          "quantity": 2,
+          "unit_price": 39.5,
+          "net": 79.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unknown",
+      "summary": "Credit note for two surplus fence panels returned from 31 Heron Walk (from invoice CBS-55187).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "To be deducted from the account balance (account DEMO01)."
+    },
+    "2026-10-21_oakmere_OKJ-1043.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Oakmere Kitchens & Joinery Ltd",
+      "counterparty_vat_number": "GB 610 2984 61",
+      "document_number": "OKJ-1043",
+      "document_date": "2026-10-21",
+      "due_date": "2026-11-04",
+      "project_reference": "31 Heron Walk",
+      "net_total": 4850.0,
+      "vat_total": 970.0,
+      "gross_total": 5820.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 4850.0,
+          "vat": 970.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Kitchen units (8 base and wall units), doors and handles",
+          "quantity": 1,
+          "unit_price": 2640.0,
+          "net": 2640.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Laminate worktops and upstands",
+          "quantity": 1,
+          "unit_price": 560.0,
+          "net": 560.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Strip out old kitchen, fit new kitchen, connect sink and hob",
+          "quantity": 1,
+          "unit_price": 1450.0,
+          "net": 1450.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Waste removal",
+          "quantity": 1,
+          "unit_price": 200.0,
+          "net": 200.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for replacing the kitchen at 31 Heron Walk: units, worktops, fitting and waste removal.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The invoice says the layout is as existing, with an integrated dishwasher added.",
+      "bank_sort_code": "00-83-94",
+      "bank_account_number": "20208394"
+    },
+    "2026-10-22_saltmarsh_SL-2207.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Saltmarsh Lettings Ltd",
+      "counterparty_vat_number": "GB 479 3385 95",
+      "document_number": "SL-2207",
+      "document_date": "2026-10-22",
+      "due_date": "2026-11-05",
+      "project_reference": "22 Thistle Close",
+      "net_total": 770.0,
+      "vat_total": 154.0,
+      "gross_total": 924.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 770.0,
+          "vat": 154.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Tenant find fee",
+          "quantity": 1,
+          "unit_price": 650.0,
+          "net": 650.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Inventory and check-in report",
+          "quantity": 1,
+          "unit_price": 120.0,
+          "net": 120.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Tenant find fee and inventory for the new tenancy at 22 Thistle Close starting 1 November 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-61-72",
+      "bank_account_number": "20186172"
+    },
+    "2026-10-24_marlowe-finch_copy-invoice.eml": {
+      "doc_type": "invoice",
+      "counterparty": "Marlowe & Finch Plumbing & Heating Ltd",
+      "counterparty_vat_number": "GB 412 7705 70",
+      "document_number": "MF-7731",
+      "document_date": "2026-10-03",
+      "due_date": "2026-11-02",
+      "project_reference": "14 Lantern Row",
+      "net_total": 285.0,
+      "vat_total": 57.0,
+      "gross_total": 342.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 285.0,
+          "vat": 57.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Boiler breakdown call-out and labour (hours)",
+          "quantity": 2.5,
+          "unit_price": 58.0,
+          "net": 145.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Diverter valve cartridge, supplied and fitted",
+          "quantity": 1,
+          "unit_price": 140.0,
+          "net": 140.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "A second copy of invoice MF-7731 for the boiler repair at 14 Lantern Row, sent with a payment reminder.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The email says the attachment is a copy of invoice MF-7731, sent in case the original went astray.",
+      "bank_sort_code": "00-14-27",
+      "bank_account_number": "20041127"
+    },
+    "2026-10-27_marlowe-finch_MF-7790.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Marlowe & Finch Plumbing & Heating Ltd",
+      "counterparty_vat_number": "GB 412 7705 70",
+      "document_number": "MF-7790",
+      "document_date": "2026-10-27",
+      "due_date": "2026-11-26",
+      "project_reference": "Brickfield Yard",
+      "net_total": 84.5,
+      "vat_total": 16.9,
+      "gross_total": 101.4,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 84.5,
+          "vat": 16.9
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Repair leaking WC cistern: labour (hours)",
+          "quantity": 1,
+          "unit_price": 58.0,
+          "net": 58.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Cistern fill valve",
+          "quantity": 1,
+          "unit_price": 26.5,
+          "net": 26.5,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for repairing a leaking WC cistern in Unit 2, Brickfield Yard.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-14-27",
+      "bank_account_number": "20041127"
+    },
+    "2026-10-30_pellow-grant_PG-5120.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Pellow & Grant Accountants Ltd",
+      "counterparty_vat_number": "GB 221 6843 78",
+      "document_number": "PG-5120",
+      "document_date": "2026-10-30",
+      "due_date": "2026-11-13",
+      "project_reference": "Head office",
+      "net_total": 375.0,
+      "vat_total": 75.0,
+      "gross_total": 450.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 375.0,
+          "vat": 75.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Bookkeeping review and VAT return preparation, quarter to 30 September 2026",
+          "quantity": 1,
+          "unit_price": 375.0,
+          "net": 375.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Accountancy invoice for the bookkeeping review and VAT return for the quarter to 30 September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "",
+      "bank_sort_code": "00-37-48",
+      "bank_account_number": "20153748"
+    },
+    "2026-11-02_emberguard_EFS-2026-318.pdf": {
+      "doc_type": "invoice",
+      "counterparty": "Emberguard Fire & Gas Safety Ltd",
+      "counterparty_vat_number": "GB 557 4319 24",
+      "document_number": "EFS-2026-318",
+      "document_date": "2026-11-02",
+      "due_date": "2026-12-02",
+      "project_reference": "Granary Court",
+      "net_total": 185.0,
+      "vat_total": 37.0,
+      "gross_total": 222.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 185.0,
+          "vat": 37.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Six-monthly fire alarm and emergency lighting service, carried out 28/10/2026",
+          "quantity": 1,
+          "unit_price": 185.0,
+          "net": 185.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "summary": "Invoice for the six-monthly fire alarm and emergency lighting service at Granary Court.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Dated 2 November 2026 for work carried out on 28 October 2026.",
+      "bank_sort_code": "00-26-37",
+      "bank_account_number": "20142637"
+    },
+    "2026-10-31_corndell_statement.pdf": {
+      "doc_type": "statement",
+      "counterparty": "Corndell Building Supplies Ltd",
+      "counterparty_vat_number": "GB 448 2157 43",
+      "document_number": "",
+      "document_date": "2026-10-31",
+      "due_date": "",
+      "project_reference": "",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": 963.0,
+      "payment_status": "unpaid",
+      "bank_sort_code": "00-69-73",
+      "bank_account_number": "20096973",
+      "statement_lines": [
+        {
+          "date": "2026-09-28",
+          "reference": "CBS-54960",
+          "description": "Invoice",
+          "amount": 418.8
+        },
+        {
+          "date": "2026-10-13",
+          "reference": "CBS-55102",
+          "description": "Invoice",
+          "amount": 264.0
+        },
+        {
+          "date": "2026-10-16",
+          "reference": "CBS-55187",
+          "description": "Invoice",
+          "amount": 375.0
+        },
+        {
+          "date": "2026-10-20",
+          "reference": "CN-2291",
+          "description": "Credit note",
+          "amount": -94.8
+        }
+      ],
+      "summary": "Corndell Building Supplies' statement of open items on account DEMO01 at 31 October 2026, balance due £963.00.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Open items only. The statement says invoice CBS-54960 is overdue and asks for £418.80 by return."
+    }
+  },
+  "coding": {
+    "D-12": {
+      "payee": "Corndell Building Supplies Ltd",
+      "account": "Repairs and maintenance",
+      "confidence": "high",
+      "reason": "Paint, filler and decorating sundries delivered to 22 Thistle Close are materials for redecorating a let property."
+    },
+    "D-15": {
+      "payee": "Corndell Building Supplies Ltd",
+      "account": "Repairs and maintenance",
+      "confidence": "high",
+      "reason": "Closeboard fence panels, concrete posts and postcrete delivered to 31 Heron Walk are fencing repair materials."
+    },
+    "D-17": {
+      "payee": "Corndell Building Supplies Ltd",
+      "account": "Repairs and maintenance",
+      "confidence": "high",
+      "reason": "Credit for two surplus fence panels returned from invoice CBS-55187, so it reverses part of that repairs cost."
+    },
+    "D-18": {
+      "payee": "Oakmere Kitchens & Joinery Ltd",
+      "account": "Repairs and maintenance",
+      "confidence": "low",
+      "reason": "Replacing the kitchen at 31 Heron Walk with the layout as existing points to a like-for-like repair, but the added integrated dishwasher is an improvement, so part may be Property improvements (capital); a person should decide."
+    }
+  },
+  "letters": {
+    "supplier:Clearflow Drainage Ltd": {
+      "subject": "Invoice CD-0912: please confirm your VAT registration number",
+      "body": "Hello,\n\nThank you for invoice CD-0912 dated 15 October 2026 for £198.00. The VAT registration number on it, GB 295 8417 15, does not pass HMRC's check-digit test, so the £33.00 VAT may not be reclaimable until the number is confirmed.\n\nCould you confirm your VAT registration number, please? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Properties Ltd"
+    },
+    "supplier:Corndell Building Supplies Ltd": {
+      "subject": "Statement queries: CBS-54960 and CBS-55102",
+      "body": "Hello Karen,\n\nThank you for your statement. We have two queries before we can agree the balance.\n\nInvoice CBS-54960, dated 28 September 2026 for £418.80, is on the statement, but we have not received it. Could you send us a copy? Invoice CBS-55102, dated 13 October 2026, shows as £264.00 on the statement, but the invoice we received is for £246.00. Could you confirm which amount is correct?\n\nA reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Properties Ltd"
+    },
+    "supplier:G Lowe Property Maintenance": {
+      "subject": "Invoice 0412: VAT registration number needed",
+      "body": "Hello Gary,\n\nThank you for invoice 0412 dated 19 October 2026 for £408.00. It charges £68.00 VAT but does not show a VAT registration number, and we do not have one on file for you, so it is not a valid VAT invoice.\n\nCould you send a VAT invoice showing your VAT registration number or, if you are not VAT registered, a corrected invoice without VAT? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Properties Ltd"
+    },
+    "supplier:Sallowfield Roofing Ltd": {
+      "subject": "Invoice SR-1186: total does not add up",
+      "body": "Hello Mark,\n\nThank you for invoice SR-1186 dated 9 October 2026. The net amount of £1,180.00 plus VAT of £236.00 comes to £1,416.00, but the total shown is £1,461.00, a difference of £45.00.\n\nCould you send a corrected invoice, please? A reply by Friday 13 November would be appreciated.\n\nKind regards,\nAccounts Administrator\nDemo Properties Ltd"
+    },
+    "supplier:Willowmere Grounds Maintenance Ltd": {
+      "subject": "Invoice WGM-2210: change of bank details",
+      "body": "Hello Tom,\n\nWe have received invoice WGM-2210, dated 2 October 2026 for £264.00, with bank details (sort code 00-98-76) that are different from the ones we hold for you.\n\nBefore any payment is made, we will phone you on the number we already hold to confirm the change. We never change bank details because of an email, so please don't send bank details by reply. If you have not changed banks, please let us know as soon as possible, and in any case by Friday 13 November.\n\nKind regards,\nAccounts Administrator\nDemo Properties Ltd"
+    }
+  },
+  "summary": "October is processed: 24 documents were read and 15 of 22 supplier invoices and credit notes are ready to import, with 7 held for a check. Willowmere Grounds Maintenance's invoice came with changed bank details, a common invoice-fraud pattern. Sallowfield Roofing's total is £45.00 more than net plus VAT, and Clearflow Drainage's VAT number fails HMRC's check. 12 items need a decision and 5 supplier emails are drafted; the supplier statement, prepayments and filing by property also need attention before month end."
+}

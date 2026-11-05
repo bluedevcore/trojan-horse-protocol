@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "007b923065392df35796ee1f315753ab7d7f4f34ea847872881cffde0cfce301",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-20_corndell_CN-2291.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nCorndell Building Supplies Ltd\nCorndell Trade Park, Hadleigh Road\nIpswich IP2 0XX\nTel 01632 960 649 · credit.control@corndell-supplies.example\nVAT Reg No: GB 448 2157 43\nCREDIT NOTE\nCredit note number: CN-2291\nCredit note date: 20/10/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nCollected from: 31 Heron Walk, Ipswich\nDescription\nQty\nUnit price\nNet\nReturned: closeboard fence panel 1.8m x 1.8m (surplus, from invoice CBS-55187)\n2\n£39.50\n£79.00\nSubtotal (net)\n£79.00\nVAT @ 20%\n£15.80\nTotal credit\n£94.80\nAccount: DEMO01. Terms: 30 days.\nThis credit will be deducted from your account balance.",
+  "response": {
+    "text": "{\"doc_type\": \"credit_note\", \"counterparty\": \"Corndell Building Supplies Ltd\", \"counterparty_vat_number\": \"GB 448 2157 43\", \"document_number\": \"CN-2291\", \"document_date\": \"2026-10-20\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"31 Heron Walk\", \"currency\": \"GBP\", \"net_total\": 79.0, \"vat_total\": 15.8, \"gross_total\": 94.8, \"vat_lines\": [{\"rate\": 20, \"net\": 79.0, \"vat\": 15.8}], \"line_items\": [{\"description\": \"Returned: closeboard fence panel 1.8m x 1.8m (surplus, from invoice CBS-55187)\", \"quantity\": 2, \"unit_price\": 39.5, \"net\": 79.0, \"vat_rate\": 20}], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Credit note for two surplus fence panels returned from 31 Heron Walk (from invoice CBS-55187).\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"To be deducted from the account balance (account DEMO01).\"}",
+    "data": {
+      "doc_type": "credit_note",
+      "counterparty": "Corndell Building Supplies Ltd",
+      "counterparty_vat_number": "GB 448 2157 43",
+      "document_number": "CN-2291",
+      "document_date": "2026-10-20",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "31 Heron Walk",
+      "currency": "GBP",
+      "net_total": 79.0,
+      "vat_total": 15.8,
+      "gross_total": 94.8,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 79.0,
+          "vat": 15.8
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Returned: closeboard fence panel 1.8m x 1.8m (surplus, from invoice CBS-55187)",
+          "quantity": 2,
+          "unit_price": 39.5,
+          "net": 79.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Credit note for two surplus fence panels returned from 31 Heron Walk (from invoice CBS-55187).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "To be deducted from the account balance (account DEMO01)."
+    }
+  }
+}

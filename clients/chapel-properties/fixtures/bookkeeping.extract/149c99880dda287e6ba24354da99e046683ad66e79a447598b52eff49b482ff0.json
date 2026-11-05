@@ -1,0 +1,67 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "149c99880dda287e6ba24354da99e046683ad66e79a447598b52eff49b482ff0",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-14_turnwell_TLS-6120.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nTurnwell Locks & Security Ltd\n42 Wharf Street\nIpswich IP4 0XX\nTel 01632 960 327 · jobs@turnwell-locks.example\nVAT Reg No: GB 387 0462 34\nINVOICE\nInvoice number: TLS-6120\nInvoice date: 14/10/2026\nDue date: 13/11/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nJob address: Flat 2 (tenant changeover). Ordered by phone.\nDescription\nQty\nUnit price\nNet\nSupply and fit euro cylinder lock, front door\n1\n£65.00\n£65.00\nKeys cut\n3\n£5.00\n£15.00\nCall-out\n1\n£15.00\n£15.00\nSubtotal (net)\n£95.00\nVAT @ 20%\n£19.00\nTotal due\n£114.00\nJob ref TLS-J-8812. Terms: 30 days.\nPay by bank transfer: sort code 00-59-61, account number 20175961. Quote TLS-6120.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Turnwell Locks & Security Ltd\", \"counterparty_vat_number\": \"GB 387 0462 34\", \"document_number\": \"TLS-6120\", \"document_date\": \"2026-10-14\", \"due_date\": \"2026-11-13\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": 95.0, \"vat_total\": 19.0, \"gross_total\": 114.0, \"vat_lines\": [{\"rate\": 20, \"net\": 95.0, \"vat\": 19.0}], \"line_items\": [{\"description\": \"Supply and fit euro cylinder lock, front door\", \"quantity\": 1, \"unit_price\": 65.0, \"net\": 65.0, \"vat_rate\": 20}, {\"description\": \"Keys cut\", \"quantity\": 3, \"unit_price\": 5.0, \"net\": 15.0, \"vat_rate\": 20}, {\"description\": \"Call-out\", \"quantity\": 1, \"unit_price\": 15.0, \"net\": 15.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-59-61\", \"bank_account_number\": \"20175961\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for a lock change at a tenant changeover: new euro cylinder on the front door and 3 keys.\", \"confidence\": \"medium\", \"uncertain_fields\": [\"project_reference\"], \"notes\": \"The job address says only \\\"Flat 2\\\" without naming the building, so the property cannot be identified. Ordered by phone; job ref TLS-J-8812.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Turnwell Locks & Security Ltd",
+      "counterparty_vat_number": "GB 387 0462 34",
+      "document_number": "TLS-6120",
+      "document_date": "2026-10-14",
+      "due_date": "2026-11-13",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": 95.0,
+      "vat_total": 19.0,
+      "gross_total": 114.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 95.0,
+          "vat": 19.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Supply and fit euro cylinder lock, front door",
+          "quantity": 1,
+          "unit_price": 65.0,
+          "net": 65.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Keys cut",
+          "quantity": 3,
+          "unit_price": 5.0,
+          "net": 15.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Call-out",
+          "quantity": 1,
+          "unit_price": 15.0,
+          "net": 15.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-59-61",
+      "bank_account_number": "20175961",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for a lock change at a tenant changeover: new euro cylinder on the front door and 3 keys.",
+      "confidence": "medium",
+      "uncertain_fields": [
+        "project_reference"
+      ],
+      "notes": "The job address says only \"Flat 2\" without naming the building, so the property cannot be identified. Ordered by phone; job ref TLS-J-8812."
+    }
+  }
+}

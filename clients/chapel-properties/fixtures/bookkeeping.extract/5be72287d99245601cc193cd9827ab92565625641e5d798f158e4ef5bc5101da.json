@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "5be72287d99245601cc193cd9827ab92565625641e5d798f158e4ef5bc5101da",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-30_pellow-grant_PG-5120.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nPellow & Grant Accountants Ltd\nFirst Floor, 31 Museum Street\nIpswich IP1 0XX\nTel 01632 960 205 · office@pellowgrant.example\nVAT Reg No: GB 221 6843 78\nINVOICE\nInvoice number: PG-5120\nInvoice date: 30/10/2026\nDue date: 13/11/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nDescription\nQty\nUnit price\nNet\nBookkeeping review and VAT return preparation, quarter to 30 September 2026\n1\n£375.00\n£375.00\nSubtotal (net)\n£375.00\nVAT @ 20%\n£75.00\nTotal due\n£450.00\nTerms: 14 days.\nPay by bank transfer: sort code 00-37-48, account number 20153748. Quote PG-5120.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Pellow & Grant Accountants Ltd\", \"counterparty_vat_number\": \"GB 221 6843 78\", \"document_number\": \"PG-5120\", \"document_date\": \"2026-10-30\", \"due_date\": \"2026-11-13\", \"po_number\": \"\", \"project_reference\": \"Head office\", \"currency\": \"GBP\", \"net_total\": 375.0, \"vat_total\": 75.0, \"gross_total\": 450.0, \"vat_lines\": [{\"rate\": 20, \"net\": 375.0, \"vat\": 75.0}], \"line_items\": [{\"description\": \"Bookkeeping review and VAT return preparation, quarter to 30 September 2026\", \"quantity\": 1, \"unit_price\": 375.0, \"net\": 375.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-37-48\", \"bank_account_number\": \"20153748\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Accountancy invoice for the bookkeeping review and VAT return for the quarter to 30 September 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Pellow & Grant Accountants Ltd",
+      "counterparty_vat_number": "GB 221 6843 78",
+      "document_number": "PG-5120",
+      "document_date": "2026-10-30",
+      "due_date": "2026-11-13",
+      "po_number": "",
+      "project_reference": "Head office",
+      "currency": "GBP",
+      "net_total": 375.0,
+      "vat_total": 75.0,
+      "gross_total": 450.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 375.0,
+          "vat": 75.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Bookkeeping review and VAT return preparation, quarter to 30 September 2026",
+          "quantity": 1,
+          "unit_price": 375.0,
+          "net": 375.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-37-48",
+      "bank_account_number": "20153748",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Accountancy invoice for the bookkeeping review and VAT return for the quarter to 30 September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

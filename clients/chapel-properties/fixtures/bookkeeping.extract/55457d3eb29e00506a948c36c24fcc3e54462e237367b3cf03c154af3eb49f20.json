@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "55457d3eb29e00506a948c36c24fcc3e54462e237367b3cf03c154af3eb49f20",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-11-02_emberguard_EFS-2026-318.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nEmberguard Fire & Gas Safety Ltd\nUnit 9, Ransome Court\nIpswich IP3 0XX\nTel 01632 960 194 · admin@emberguard-safety.example\nVAT Reg No: GB 557 4319 24\nINVOICE\nInvoice number: EFS-2026-318\nInvoice date: 02/11/2026\nDue date: 02/12/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSite: Granary Court, 2 Granary Lane, Ipswich\nDescription\nQty\nUnit price\nNet\nSix-monthly fire alarm and emergency lighting service, carried out 28/10/2026\n1\n£185.00\n£185.00\nSubtotal (net)\n£185.00\nVAT @ 20%\n£37.00\nTotal due\n£222.00\nTerms: 30 days.\nPay by bank transfer: sort code 00-26-37, account number 20142637. Quote EFS-2026-318.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Emberguard Fire & Gas Safety Ltd\", \"counterparty_vat_number\": \"GB 557 4319 24\", \"document_number\": \"EFS-2026-318\", \"document_date\": \"2026-11-02\", \"due_date\": \"2026-12-02\", \"po_number\": \"\", \"project_reference\": \"Granary Court\", \"currency\": \"GBP\", \"net_total\": 185.0, \"vat_total\": 37.0, \"gross_total\": 222.0, \"vat_lines\": [{\"rate\": 20, \"net\": 185.0, \"vat\": 37.0}], \"line_items\": [{\"description\": \"Six-monthly fire alarm and emergency lighting service, carried out 28/10/2026\", \"quantity\": 1, \"unit_price\": 185.0, \"net\": 185.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-26-37\", \"bank_account_number\": \"20142637\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for the six-monthly fire alarm and emergency lighting service at Granary Court.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Dated 2 November 2026 for work carried out on 28 October 2026.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Emberguard Fire & Gas Safety Ltd",
+      "counterparty_vat_number": "GB 557 4319 24",
+      "document_number": "EFS-2026-318",
+      "document_date": "2026-11-02",
+      "due_date": "2026-12-02",
+      "po_number": "",
+      "project_reference": "Granary Court",
+      "currency": "GBP",
+      "net_total": 185.0,
+      "vat_total": 37.0,
+      "gross_total": 222.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 185.0,
+          "vat": 37.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Six-monthly fire alarm and emergency lighting service, carried out 28/10/2026",
+          "quantity": 1,
+          "unit_price": 185.0,
+          "net": 185.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-26-37",
+      "bank_account_number": "20142637",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for the six-monthly fire alarm and emergency lighting service at Granary Court.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Dated 2 November 2026 for work carried out on 28 October 2026."
+    }
+  }
+}
