@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "0d0cc23a70b862e14023cafa1ed9aae2bad45c02c167e2c9937f7600afa3d999",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-05_northlight_NES-448120.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nNorthlight Energy Supply Ltd\nPO Box 4XX\nNorwich NR1 0XX\nTel 01632 960 750 · business@northlight-energy.example\nVAT Reg No: GB 391 5546 32\nINVOICE\nInvoice number: NES-448120\nInvoice date: 05/10/2026\nDue date: 19/10/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSupply address: 14 Lantern Row, Ipswich (domestic supply)\nDescription\nQty\nUnit price\nNet\nElectricity 01/09/2026-30/09/2026: 1,046 kWh @ 24.50p\n1046\n£0.24\n£256.27\nStanding charge 30 days @ 53.20p\n30\n£0.53\n£15.96\nSubtotal (net)\n£272.23\nVAT @ 5%\n£13.61\nTotal due\n£285.84\nVAT at 5% (domestic). Paid by Direct Debit on or after 19/10/2026. No action needed.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Northlight Energy Supply Ltd\", \"counterparty_vat_number\": \"GB 391 5546 32\", \"document_number\": \"NES-448120\", \"document_date\": \"2026-10-05\", \"due_date\": \"2026-10-19\", \"po_number\": \"\", \"project_reference\": \"14 Lantern Row\", \"currency\": \"GBP\", \"net_total\": 272.23, \"vat_total\": 13.61, \"gross_total\": 285.84, \"vat_lines\": [{\"rate\": 5, \"net\": 272.23, \"vat\": 13.61}], \"line_items\": [{\"description\": \"Electricity 01/09/2026-30/09/2026: 1,046 kWh @ 24.50p\", \"quantity\": 1046, \"unit_price\": 0.245, \"net\": 256.27, \"vat_rate\": 5}, {\"description\": \"Standing charge 30 days @ 53.20p\", \"quantity\": 30, \"unit_price\": 0.532, \"net\": 15.96, \"vat_rate\": 5}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"2026-09-01\", \"service_period_end\": \"2026-09-30\", \"statement_lines\": [], \"summary\": \"September electricity bill for the domestic supply at 14 Lantern Row, with VAT at the 5% domestic rate.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Collected by Direct Debit on or after 19 October 2026; no payment needs to be made.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Northlight Energy Supply Ltd",
+      "counterparty_vat_number": "GB 391 5546 32",
+      "document_number": "NES-448120",
+      "document_date": "2026-10-05",
+      "due_date": "2026-10-19",
+      "po_number": "",
+      "project_reference": "14 Lantern Row",
+      "currency": "GBP",
+      "net_total": 272.23,
+      "vat_total": 13.61,
+      "gross_total": 285.84,
+      "vat_lines": [
+        {
+          "rate": 5,
+          "net": 272.23,
+          "vat": 13.61
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Electricity 01/09/2026-30/09/2026: 1,046 kWh @ 24.50p",
+          "quantity": 1046,
+          "unit_price": 0.245,
+          "net": 256.27,
+          "vat_rate": 5
+        },
+        {
+          "description": "Standing charge 30 days @ 53.20p",
+          "quantity": 30,
+          "unit_price": 0.532,
+          "net": 15.96,
+          "vat_rate": 5
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "2026-09-01",
+      "service_period_end": "2026-09-30",
+      "statement_lines": [],
+      "summary": "September electricity bill for the domestic supply at 14 Lantern Row, with VAT at the 5% domestic rate.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Collected by Direct Debit on or after 19 October 2026; no payment needs to be made."
+    }
+  }
+}

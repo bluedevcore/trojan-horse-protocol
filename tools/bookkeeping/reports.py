@@ -38,6 +38,22 @@ def entries_frame(r: "RunResult") -> pd.DataFrame:
         "Status": e["status"], "Held by": e["hold_reason"], "Coded by": e["coded_by"],
         "Why this account": e["coding_reason"], "Doc": e["doc_id"], "Card txn": e["txn_id"], "Source": e["source"],
     })
+    analysis = r.config.get("analysis") or {}
+    if analysis.get("entries_column"):  # optional: the property / project on every line
+        out.insert(out.columns.get_loc("Supplier / payee") + 1, analysis.get("tracking_label", "Tracking"), e["tracking"])
+    return out
+
+
+CREDIT_KINDS = ("supplier_credit", "sales_credit")
+
+
+def signed(e: pd.DataFrame) -> pd.DataFrame:
+    """Entries with credit notes negative: amounts are stored positive and the kind carries the sign
+    (as the exports and the VAT return already treat them)."""
+    out = e.copy()
+    sign = out["kind"].isin(CREDIT_KINDS).map({True: -1.0, False: 1.0})
+    for col in ("net", "vat", "gross"):
+        out[col] = out[col] * sign
     return out
 
 
@@ -45,6 +61,7 @@ def account_totals(r: "RunResult") -> pd.DataFrame:
     e = r.entries
     if e is None or e.empty:
         return pd.DataFrame()
+    e = signed(e)
     t = e.groupby("account").agg(Lines=("entry", "count"), Net=("net", "sum"), VAT=("vat", "sum"),
                                  Gross=("gross", "sum")).reset_index().rename(columns={"account": "Account"})
     held = e[e["status"] == "Held"].groupby("account")["gross"].sum()
@@ -58,6 +75,7 @@ def tracking_totals(r: "RunResult") -> pd.DataFrame:
     if e is None or e.empty or not (e["tracking"].astype(str).str.strip() != "").any():
         return pd.DataFrame()
     label = (r.config.get("analysis") or {}).get("tracking_label", "Tracking")
+    e = signed(e)
     t = e[e["tracking"].astype(str).str.strip() != ""].groupby(["tracking", "account"]).agg(
         Lines=("entry", "count"), Net=("net", "sum"), VAT=("vat", "sum"), Gross=("gross", "sum")).reset_index()
     return t.rename(columns={"tracking": label, "account": "Account"}).round(2)
@@ -250,6 +268,11 @@ def pdf_report(r: "RunResult") -> bytes:
     if not totals.empty:
         blocks += [dl.heading("Coded entries by account"),
                    dl.table(_pounds(totals, ["Net", "VAT", "Gross", "Held (gross)"]))]
+    analysis = r.config.get("analysis") or {}
+    tracking = tracking_totals(r) if analysis.get("in_report") else pd.DataFrame()
+    if not tracking.empty:  # optional: analysis by property / project
+        blocks += [dl.heading(f"Totals by {str(analysis.get('tracking_label', 'tracking')).lower()}"),
+                   dl.table(_pounds(tracking, ["Net", "VAT", "Gross"]))]
     if not r.journal.empty:
         blocks += [dl.heading("Payroll journal"), dl.table(_pounds(journal_frame(r), ["Debit", "Credit"]),
                                                             widths=[8, 12, 18, 8, 8, 30, 10])]

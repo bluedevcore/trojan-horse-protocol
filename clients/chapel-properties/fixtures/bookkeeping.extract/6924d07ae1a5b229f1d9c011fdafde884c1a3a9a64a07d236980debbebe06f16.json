@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "6924d07ae1a5b229f1d9c011fdafde884c1a3a9a64a07d236980debbebe06f16",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-08_meadowbrook_MW-55871.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nMeadowbrook Water Ltd\nMeadowbrook House\nColchester CO1 0XX\nTel 01632 960 861 · billing@meadowbrook-water.example\nVAT Reg No: GB 604 7728 37\nINVOICE\nInvoice number: MW-55871\nInvoice date: 08/10/2026\nDue date: 05/11/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSupply address: 14 Lantern Row, Ipswich\nDescription\nQty\nUnit price\nNet\nWater supply 01/07/2026-30/09/2026: 38 m3 @ £1.92\n38\n£1.92\n£72.96\nWastewater 01/07/2026-30/09/2026: 36 m3 @ £2.17\n36\n£2.17\n£78.12\nSubtotal (net)\n£151.08\nVAT\n£0.00\nTotal due\n£151.08\nWater and sewerage charges are zero-rated for VAT.\nPay by bank transfer: sort code 00-82-95, account number 20118295. Quote MW-55871.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Meadowbrook Water Ltd\", \"counterparty_vat_number\": \"GB 604 7728 37\", \"document_number\": \"MW-55871\", \"document_date\": \"2026-10-08\", \"due_date\": \"2026-11-05\", \"po_number\": \"\", \"project_reference\": \"14 Lantern Row\", \"currency\": \"GBP\", \"net_total\": 151.08, \"vat_total\": 0.0, \"gross_total\": 151.08, \"vat_lines\": [{\"rate\": 0, \"net\": 151.08, \"vat\": 0.0}], \"line_items\": [{\"description\": \"Water supply 01/07/2026-30/09/2026: 38 m3 @ £1.92\", \"quantity\": 38, \"unit_price\": 1.92, \"net\": 72.96, \"vat_rate\": 0}, {\"description\": \"Wastewater 01/07/2026-30/09/2026: 36 m3 @ £2.17\", \"quantity\": 36, \"unit_price\": 2.17, \"net\": 78.12, \"vat_rate\": 0}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-82-95\", \"bank_account_number\": \"20118295\", \"service_period_start\": \"2026-07-01\", \"service_period_end\": \"2026-09-30\", \"statement_lines\": [], \"summary\": \"Water and wastewater charges for 14 Lantern Row for July to September 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"The bill states water and sewerage charges are zero-rated for VAT.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Meadowbrook Water Ltd",
+      "counterparty_vat_number": "GB 604 7728 37",
+      "document_number": "MW-55871",
+      "document_date": "2026-10-08",
+      "due_date": "2026-11-05",
+      "po_number": "",
+      "project_reference": "14 Lantern Row",
+      "currency": "GBP",
+      "net_total": 151.08,
+      "vat_total": 0.0,
+      "gross_total": 151.08,
+      "vat_lines": [
+        {
+          "rate": 0,
+          "net": 151.08,
+          "vat": 0.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Water supply 01/07/2026-30/09/2026: 38 m3 @ £1.92",
+          "quantity": 38,
+          "unit_price": 1.92,
+          "net": 72.96,
+          "vat_rate": 0
+        },
+        {
+          "description": "Wastewater 01/07/2026-30/09/2026: 36 m3 @ £2.17",
+          "quantity": 36,
+          "unit_price": 2.17,
+          "net": 78.12,
+          "vat_rate": 0
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-82-95",
+      "bank_account_number": "20118295",
+      "service_period_start": "2026-07-01",
+      "service_period_end": "2026-09-30",
+      "statement_lines": [],
+      "summary": "Water and wastewater charges for 14 Lantern Row for July to September 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The bill states water and sewerage charges are zero-rated for VAT."
+    }
+  }
+}

@@ -240,10 +240,10 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
         problems = [f.finding for f in findings] + warnings
         raise PipelineError("None of the files could be read:\n\n" + "\n".join(f"- {p}" for p in problems))
     if inputs.fallback_roles:
-        labels = [TABLE_SPECS[r].label for r in inputs.fallback_roles]
+        labels = [table_spec(r, config).label for r in inputs.fallback_roles]
         listed = labels[0] if len(labels) == 1 else ", ".join(labels[:-1]) + " or " + labels[-1]
         warnings.append(f"No {listed} uploaded: using the demo's sample {'one' if len(labels) == 1 else 'ones'}.")
-    table_bits = ", ".join(f"{TABLE_SPECS[r].label} ({len(df)} rows)" for r, df in tables.items())
+    table_bits = ", ".join(f"{table_spec(r, config).label} ({len(df)} rows)" for r, df in tables.items())
     unread = len([f for f in findings if f.check_id == "unreadable_document"])
     (progress.warn if unread or warnings else progress.done)(
         f"Read {_plural(len(texts), 'document')} and {_plural(len(tables), 'spreadsheet')}",
@@ -430,10 +430,12 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
         fcfg = config.get("filing") or {}
         filing, ff = file_documents(docs, {d["doc_id"]: t.text for d, t in zip(docs, texts)},
                                     tables.get("projects"), ref_pattern=fcfg.get("reference_pattern"),
-                                    unfiled_folder=fcfg.get("unfiled_folder", "_To file"))
+                                    unfiled_folder=fcfg.get("unfiled_folder", "_To file"),
+                                    noun=fcfg.get("noun", "project"))
         findings += ff
         (progress.warn if ff else progress.done)(f"Filed {len(docs) - len(ff)} of {_plural(len(docs), 'document')}",
-                                                 f"{len(ff)} need a person to choose the folder" if ff else "")
+                                                 f"{len(ff)} need{'s' if len(ff) == 1 else ''} a person to choose the folder"
+                                                 if ff else "")
 
     # 13. Exceptions, holds -------------------------------------------------------------------
     findings = finalise(findings, config)
@@ -957,7 +959,8 @@ def _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_tota
     if stmt_docs:
         facts["statements"] = len(stmt_docs)
     if not filing.empty:
-        unfiled = int((filing["Project"].astype(str) == "").sum())
+        ref_col = str((config.get("filing") or {}).get("noun", "project")).capitalize()  # "Project", "Property"...
+        unfiled = int((filing[ref_col].astype(str) == "").sum()) if ref_col in filing else 0
         facts.update({"filing_docs": len(filing), "filing_filed": len(filing) - unfiled, "filing_to_file": unfiled})
     if not vat_box.empty:
         facts["vat_return"] = True

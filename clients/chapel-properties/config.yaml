@@ -1,0 +1,163 @@
+# Financial Data Entry Agent — prototype demo for Chapel Properties Ltd.
+# All wording, file names, rules and accounts for this client live here;
+# the engine in tools/bookkeeping/ is generic (see tools/bookkeeping/README.md).
+
+slug: chapel-properties
+client_name: Chapel Properties Ltd
+tool_name: Financial Data Entry Agent
+role: Accounts Administrator
+headline: "Financial Data Entry Agent: built as a prototype for Chapel Properties Ltd"
+replaces: >-
+  Replaces hours of purchase-ledger keying: it reads contractor invoices, utility bills, service charge demands
+  and supplier statements, puts every line into a spreadsheet by property and nominal account, checks the maths,
+  VAT and bank details, reconciles the statements and drafts the supplier queries.
+badges: ["Prototype", "Synthetic sample data", "Excel analysis by property", "Xero bill import (CSV)"]
+footer: >-
+  Independent prototype built for a job application. Not affiliated with or endorsed by Chapel Properties Ltd
+  or Xero. All sample data is synthetic: the company, properties, suppliers and amounts are invented.
+footer_short: "Independent prototype · synthetic data · not affiliated with Chapel Properties Ltd"
+sample_caption: >-
+  Uses October for an invented property company with 7 properties: 24 documents (contractor invoices, utility
+  bills, a service charge demand, a credit note and a supplier statement), plus the supplier list, chart of
+  accounts and property register. No setup needed.
+upload_help: >-
+  Drop in supplier invoices, credit notes and statements (PDF or .eml). You can add your own supplier list,
+  chart of accounts or property register (CSV/Excel); any you leave out fall back to the demo's sample ones.
+  Use synthetic or anonymised files only: this is a public demo.
+
+# Pause after each progress step so a screen recording can follow along (seconds).
+step_delay_seconds: 0.4
+
+# The sample runs "as at" this date for a fixed October period, so results are reproducible.
+sample_as_of: 2026-11-05
+period: {start: 2026-10-01, end: 2026-10-31}
+
+company:
+  name: Demo Properties Ltd
+# The advert does not name the accounting package. Xero tracking categories suit per-property analysis;
+# "sage50" or "quickbooks" here switches the import files (see tools/bookkeeping/exports.py).
+accounting_system: xero
+export_settings:
+  tracking_name: Property
+
+sample_data:
+  documents: ["sample_data/inbox/*"]
+  tables:
+    suppliers: sample_data/supplier_list.csv
+    chart_of_accounts: sample_data/chart_of_accounts.csv
+    projects: sample_data/property_register.csv
+
+# The property register uses property wording for the engine's "projects" list.
+tables:
+  projects:
+    label: property register
+    aliases:
+      project_ref: ["Property Ref", "Property"]
+      project_name: ["Property Name", "Property Description"]
+
+# Which parts of the engine run (each also needs its input files).
+modules:
+  documents: true
+  card_matching: false
+  coding: true
+  payroll_journal: false
+  sales_invoices: false
+  debtors: false
+  timesheets: false
+  purchase_orders: false
+  statements: true
+  filing: true          # sorts documents into property folders and flags any it cannot place
+  vat_return: false
+  letters: true
+  month_end: true
+
+coding:
+  fallback_account: Suspense
+  account_types: [Property costs, Overheads, Fixed asset, Suspense]   # accounts Claude may choose from
+  items_per_request: 12
+  # Keyword rules run after the supplier list and before Claude (regex on the supplier name).
+  rules:
+    - {match: "ENERGY|ELECTRICITY|GAS SUPPLY", account: "Light, heat and power", reason: "Energy supplier"}
+    - {match: "WATER", account: Water rates, vat_code: Z, reason: "Water and sewerage (zero-rated)"}
+    - {match: "DRAIN|PLUMB|LOCKSMITH|ROOFING|GLAZING", account: Repairs and maintenance, reason: "Repairs trade"}
+    - {match: "GAS SAFE|FIRE|EICR|LEGIONELLA", account: Safety certificates, reason: "Safety checks and certificates"}
+    - {match: "CLEANING", account: Cleaning, reason: "Cleaning contractor"}
+    - {match: "GROUNDS|GARDEN", account: Grounds maintenance, reason: "Grounds and gardening"}
+    - {match: "INSURANCE", account: Insurance, vat_code: E, reason: "Insurance (exempt from VAT)"}
+    - {match: "LETTINGS|LETTING AGENT", account: Letting agent fees, reason: "Letting agent"}
+    - {match: "BLOCK MANAGEMENT|SERVICE CHARGE", account: Service charges payable, vat_code: E, reason: "Service charges payable"}
+
+vat:
+  allowed_rates: [0, 5, 20]
+  blocked_accounts: []
+
+checks_settings:
+  prepayment_min_amount: 500
+
+# Client-specific wording and handling of the engine's checks (see tools/bookkeeping/checks.py).
+checks:
+  unfiled_document:
+    label: "Could not tell which property"
+    severity: Medium
+    hold: true
+    action: "Find out which property the work was for (ask the supplier if needed) and set the property before posting."
+  low_confidence_coding:
+    hold: true
+    action: "Choose the right account (for property work: repair or capital improvement) before posting."
+
+filing:
+  noun: property
+  unfiled_folder: "_To file"
+
+month_end:
+  checklist:
+    - {id: purchase_invoices}
+    - {id: duplicates}
+    - {id: bank_details}
+    - {id: vat_checks}
+    - {id: supplier_queries}
+    - {id: coding_review}
+    - {id: prepayments_accruals}
+    - {id: statements_reconciled}
+    - {id: documents_filed, label: "Documents filed by property"}
+    - {label: "Import the bills into Xero and check the property tracking on each line", manual: true}
+    - {label: "Post the prepayment journals (insurance, service charge) and accrue October work invoiced in November", manual: true}
+    - {label: "Agree the supplier statement differences before the payment run", manual: true}
+    - {label: "Send the property cost report to the directors", manual: true}
+
+analysis:
+  tracking_label: Property   # every line carries the property it relates to
+  entries_column: true       # show the property on each coded line (screen and Excel)
+  in_report: true            # add totals by property to the PDF report
+
+views:
+  tabs: [entries, statements, emails, checklist, exceptions, documents]   # filing: see the Property column and the ZIP
+
+# Plain-English context passed to Claude.
+ai:
+  domain: >-
+    A small Suffolk property company with seven let properties around Ipswich, Felixstowe, Woodbridge and Kesgrave
+    (a block of flats, an HMO, houses, a shop with a flat and three commercial units), plus head-office costs.
+    Typical purchases: contractor repairs (plumbing, roofing, electrical, locks, drains), building materials,
+    cleaning and gardening of common parts, landlord safety certificates, landlord electricity and water,
+    insurance, service charges on a leasehold flat, letting agent fees and accountancy. Every purchase should be
+    analysed to the property it relates to. The company is VAT registered (its commercial units are opted to tax);
+    VAT is recorded as charged on each invoice and any partial exemption restriction is worked out separately.
+  signature: "Accounts Administrator\nDemo Properties Ltd"
+  reply_by: "by Friday 13 November"
+  letters_per_request: 3
+
+# Time-saved estimate shown on the results screen. Assumptions are displayed.
+time_estimate:
+  manual:
+    - ["key an invoice or credit note into the purchase ledger, with its property and nominal code", "invoices", 6]
+    - ["file a document into its property folder", "documents", 1]
+    - ["investigate an exception", "exceptions", 8]
+    - ["write a supplier query email", "emails", 6]
+    - ["tick a supplier statement against the invoices received", "fixed", 20]
+    - ["build the monthly cost analysis by property in Excel", "fixed", 30]
+    - ["work through the month-end checklist", "fixed", 15]
+  with_tool:
+    - ["review an item on the needs-human-check list", "human_checks", 4]
+    - ["check and send a drafted email", "emails", 2]
+    - ["check the spreadsheet and import the Xero file", "fixed", 15]

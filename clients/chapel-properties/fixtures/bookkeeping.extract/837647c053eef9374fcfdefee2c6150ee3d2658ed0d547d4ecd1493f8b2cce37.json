@@ -1,0 +1,51 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "837647c053eef9374fcfdefee2c6150ee3d2658ed0d547d4ecd1493f8b2cce37",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-12_spireview_SCS-3092.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nSpireview Cleaning Services Ltd\n9 Chantry Mews\nIpswich IP2 0XX\nTel 01632 960 533 · hello@spireview-cleaning.example\nVAT Reg No: GB 275 9031 43\nINVOICE\nInvoice number: SCS-3092\nInvoice date: 12/10/2026\nDue date: 11/11/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSite: Granary Court, 2 Granary Lane, Ipswich\nDescription\nQty\nUnit price\nNet\nCommunal area cleaning, October (weekly visits)\n4\n£42.00\n£168.00\nSubtotal (net)\n£168.00\nVAT @ 20%\n£33.60\nTotal due\n£201.60\nTerms: 30 days.\nPay by bank transfer: sort code 00-58-62, account number 20085862. Quote SCS-3092.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Spireview Cleaning Services Ltd\", \"counterparty_vat_number\": \"GB 275 9031 43\", \"document_number\": \"SCS-3092\", \"document_date\": \"2026-10-12\", \"due_date\": \"2026-11-11\", \"po_number\": \"\", \"project_reference\": \"Granary Court\", \"currency\": \"GBP\", \"net_total\": 168.0, \"vat_total\": 33.6, \"gross_total\": 201.6, \"vat_lines\": [{\"rate\": 20, \"net\": 168.0, \"vat\": 33.6}], \"line_items\": [{\"description\": \"Communal area cleaning, October (weekly visits)\", \"quantity\": 4, \"unit_price\": 42.0, \"net\": 168.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-58-62\", \"bank_account_number\": \"20085862\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"October communal area cleaning at Granary Court (four weekly visits).\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Spireview Cleaning Services Ltd",
+      "counterparty_vat_number": "GB 275 9031 43",
+      "document_number": "SCS-3092",
+      "document_date": "2026-10-12",
+      "due_date": "2026-11-11",
+      "po_number": "",
+      "project_reference": "Granary Court",
+      "currency": "GBP",
+      "net_total": 168.0,
+      "vat_total": 33.6,
+      "gross_total": 201.6,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 168.0,
+          "vat": 33.6
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Communal area cleaning, October (weekly visits)",
+          "quantity": 4,
+          "unit_price": 42.0,
+          "net": 168.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-58-62",
+      "bank_account_number": "20085862",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "October communal area cleaning at Granary Court (four weekly visits).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

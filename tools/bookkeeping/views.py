@@ -174,7 +174,7 @@ def _tabs(r: RunResult) -> list[tuple[str, callable]]:
         "debtors": ("Aged debtors", _debtors_tab, not r.debtors.empty),
         "hours": ("Hours for payroll", _hours_tab, not r.hours.empty),
         "po": ("PO matching", _po_tab, not r.po_table.empty),
-        "statements": ("Supplier statements", lambda x: _table(x.statements), not r.statements.empty),
+        "statements": ("Supplier statements", _statements_tab, not r.statements.empty),
         "filing": ("Filing", _filing_tab, not r.filing.empty),
         "vat": ("VAT return", _vat_tab, not r.vat_return.empty),
         "emails": (f"Emails ({len(r.letters)})", _emails_tab, bool(r.letters)),
@@ -212,6 +212,8 @@ STATUS_STYLE = [("Held", "background-color:#FFF4E0;color:#7A4A00"), ("Ready", "b
                 ("Amount differs", "background-color:#FFF4E0;color:#7A4A00"),
                 ("Over PO value", "background-color:#FFF4E0;color:#7A4A00"),
                 ("Action needed", "background-color:#FFF4E0;color:#7A4A00"),
+                ("Agrees", "background-color:#E8F6EE;color:#0F5A34"),
+                ("Not in our records", "background-color:#FDE8E7;color:#8A1C12"),
                 ("Final notice", "background-color:#FDE8E7;color:#8A1C12"),
                 ("Second reminder", "background-color:#FFF4E0;color:#7A4A00"),
                 ("Reminder", "background-color:#FFF9EC;color:#7A4A00"),
@@ -271,20 +273,28 @@ def _entries_tab(r: RunResult) -> None:
         e = e[e["status"] == "Held"]
     e["Type"] = e["kind"].map(reports.KIND_LABELS).fillna(e["kind"])
     e["Status"] = [f"Held · {h}" if s == "Held" and h else s for s, h in zip(e["status"], e["hold_reason"])]
-    _grid(e, [("Type", "text", 100), ("date", "date", 90, "Date"), ("counterparty", "text", 190, "Supplier / payee"),
-              ("account", "text", 175, "Account"), ("net", "money", 80, "Net"), ("vat", "money", 70, "VAT"),
-              ("vat_code", "text", 45, "Code"), ("gross", "money", 82, "Gross"), ("Status", "text", 100),
-              ("coded_by", "text", 95, "Coded by")], status="Status")
+    analysis = r.config.get("analysis") or {}
+    label = analysis.get("tracking_label", "Tracking")
+    by_line = bool(analysis.get("entries_column"))  # optional: the property / project on every line
+    spec = [("Type", "text", 92 if by_line else 100), ("date", "date", 90, "Date"),
+            ("counterparty", "text", 188 if by_line else 190, "Supplier / payee")]
+    spec += [("tracking", "text", 120, label)] if by_line else []
+    spec += [("account", "text", 160 if by_line else 175, "Account"), ("net", "money", 80, "Net"), ("vat", "money", 70, "VAT"),
+             ("vat_code", "text", 45, "Code"), ("gross", "money", 82, "Gross"), ("Status", "text", 100)]
+    spec += [] if by_line else [("coded_by", "text", 95, "Coded by")]
+    _grid(e, spec, status="Status")
+    more = (f"Each line carries its {label.lower()}. References, descriptions and how each account was chosen (supplier "
+            "list, keyword rule or Claude) are in the Excel pack." if by_line else
+            "“Coded by” shows whether the account came from the supplier list, a keyword rule or a Claude suggestion. "
+            "References, descriptions and reasons are in the Excel pack.")
     st.caption("One line per VAT rate. Code: S standard 20%, R reduced 5%, Z zero rated, E exempt, O no VAT, RC reverse "
-               "charge. “Coded by” shows whether the account came from the supplier list, a keyword rule or a Claude "
-               "suggestion. References, descriptions and reasons are in the Excel pack.")
+               f"charge. {more}")
     totals = reports.account_totals(r)
     if not totals.empty:
         with st.expander("Totals by account"):
             _grid(totals, [("Account", "text", 280), ("Lines", "qty", 70), ("Net", "money", 120), ("VAT", "money", 110),
                            ("Gross", "money", 120), ("Held (gross)", "money", 120)], cap=25)
     tracking = reports.tracking_totals(r)
-    label = (r.config.get("analysis") or {}).get("tracking_label", "Tracking")
     if not tracking.empty:
         with st.expander(f"Totals by {label.lower()}"):
             _grid(tracking, [(label, "text", 200), ("Account", "text", 260), ("Lines", "qty", 70), ("Net", "money", 120),
@@ -345,11 +355,14 @@ def _debtors_tab(r: RunResult) -> None:
 
 
 def _filing_tab(r: RunResult) -> None:
-    _grid(r.filing, [("Doc", "text", 45), ("From / to", "text", 180), ("Type", "text", 108), ("Project", "text", 62),
+    noun = str((r.config.get("filing") or {}).get("noun", "project"))
+    ref = noun.capitalize()  # filing frame column is named after the client's word for a project
+    name_col = [(f"{ref} name", "text", 170)] if noun != "project" else []
+    _grid(r.filing, [("Doc", "text", 45), ("From / to", "text", 180), ("Type", "text", 108), (ref, "text", 62), *name_col,
                      ("Filed by", "text", 170), ("Folder", "text", 475), ("New file name", "text", 430),
                      ("Original file", "text", 380)], status="Filed by", cap=30)
-    st.caption("Filed by the project reference Claude read on the document (checked against the project register), a "
-               "job number in the text, or a site name from the register. Anything unclear goes to the “to file” "
+    st.caption(f"Filed by the {noun} reference Claude read on the document (checked against the {noun} register), a "
+               "reference in the text, or a site name from the register. Anything unclear goes to the “to file” "
                "folder for a person. Scroll the table right for the new file names; the zip has every document "
                "renamed in its folder.")
 
@@ -365,6 +378,15 @@ def _po_tab(r: RunResult) -> None:
 
 def _hours_tab(r: RunResult) -> None:
     _table(r.hours, status=None)
+
+
+def _statements_tab(r: RunResult) -> None:
+    _grid(r.statements, [("Supplier", "text", 230), ("Statement ref", "text", 120, "Reference"),
+                         ("Statement date", "date", 100, "Date"), ("Statement amount", "money", 130, "On statement"),
+                         ("Our document", "text", 115, "Our document"), ("Our amount", "money", 115, "Our records"),
+                         ("Status", "text", 190)], status="Status")
+    st.caption("Each line on a supplier statement is matched to the invoices and credit notes received, by reference. "
+               "Missing invoices and differing amounts are raised as exceptions and queried in one email per supplier.")
 
 
 def _vat_tab(r: RunResult) -> None:

@@ -1,0 +1,58 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "8f05b3adf904f6951c696b4e509de381c8597a2464161bd81cf8b52521487f0e",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-22_saltmarsh_SL-2207.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nSaltmarsh Lettings Ltd\n11 Thoroughfare\nWoodbridge IP12 0XX\nTel 01632 960 438 · landlords@saltmarsh-lettings.example\nVAT Reg No: GB 479 3385 95\nINVOICE\nInvoice number: SL-2207\nInvoice date: 22/10/2026\nDue date: 05/11/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nProperty: 22 Thistle Close, Kesgrave (new tenancy from 01/11/2026)\nDescription\nQty\nUnit price\nNet\nTenant find fee\n1\n£650.00\n£650.00\nInventory and check-in report\n1\n£120.00\n£120.00\nSubtotal (net)\n£770.00\nVAT @ 20%\n£154.00\nTotal due\n£924.00\nTerms: 14 days.\nPay by bank transfer: sort code 00-61-72, account number 20186172. Quote SL-2207.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Saltmarsh Lettings Ltd\", \"counterparty_vat_number\": \"GB 479 3385 95\", \"document_number\": \"SL-2207\", \"document_date\": \"2026-10-22\", \"due_date\": \"2026-11-05\", \"po_number\": \"\", \"project_reference\": \"22 Thistle Close\", \"currency\": \"GBP\", \"net_total\": 770.0, \"vat_total\": 154.0, \"gross_total\": 924.0, \"vat_lines\": [{\"rate\": 20, \"net\": 770.0, \"vat\": 154.0}], \"line_items\": [{\"description\": \"Tenant find fee\", \"quantity\": 1, \"unit_price\": 650.0, \"net\": 650.0, \"vat_rate\": 20}, {\"description\": \"Inventory and check-in report\", \"quantity\": 1, \"unit_price\": 120.0, \"net\": 120.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-61-72\", \"bank_account_number\": \"20186172\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Tenant find fee and inventory for the new tenancy at 22 Thistle Close starting 1 November 2026.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Saltmarsh Lettings Ltd",
+      "counterparty_vat_number": "GB 479 3385 95",
+      "document_number": "SL-2207",
+      "document_date": "2026-10-22",
+      "due_date": "2026-11-05",
+      "po_number": "",
+      "project_reference": "22 Thistle Close",
+      "currency": "GBP",
+      "net_total": 770.0,
+      "vat_total": 154.0,
+      "gross_total": 924.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 770.0,
+          "vat": 154.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Tenant find fee",
+          "quantity": 1,
+          "unit_price": 650.0,
+          "net": 650.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Inventory and check-in report",
+          "quantity": 1,
+          "unit_price": 120.0,
+          "net": 120.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-61-72",
+      "bank_account_number": "20186172",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Tenant find fee and inventory for the new tenancy at 22 Thistle Close starting 1 November 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": ""
+    }
+  }
+}

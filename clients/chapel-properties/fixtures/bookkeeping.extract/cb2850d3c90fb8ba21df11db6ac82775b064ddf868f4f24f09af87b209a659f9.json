@@ -1,0 +1,72 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "cb2850d3c90fb8ba21df11db6ac82775b064ddf868f4f24f09af87b209a659f9",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-21_oakmere_OKJ-1043.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nOakmere Kitchens & Joinery Ltd\nOakmere Works, Mill Road\nStowmarket IP14 0XX\nTel 01632 960 549 · sales@oakmere-kitchens.example\nVAT Reg No: GB 610 2984 61\nINVOICE\nInvoice number: OKJ-1043\nInvoice date: 21/10/2026\nDue date: 04/11/2026\nInvoice to:\nDemo Properties Ltd\nOffice 2, Example House, 10 Sample Street\nIpswich IP1 0XX\nSite: 31 Heron Walk, Ipswich - kitchen replacement\nDescription\nQty\nUnit price\nNet\nKitchen units (8 base and wall units), doors and handles\n1\n£2,640.00\n£2,640.00\nLaminate worktops and upstands\n1\n£560.00\n£560.00\nStrip out old kitchen, fit new kitchen, connect sink and hob\n1\n£1,450.00\n£1,450.00\nWaste removal\n1\n£200.00\n£200.00\nSubtotal (net)\n£4,850.00\nVAT @ 20%\n£970.00\nTotal due\n£5,820.00\nLayout as existing, with an integrated dishwasher added. Payment within 14 days.\nPay by bank transfer: sort code 00-83-94, account number 20208394. Quote OKJ-1043.",
+  "response": {
+    "text": "{\"doc_type\": \"invoice\", \"counterparty\": \"Oakmere Kitchens & Joinery Ltd\", \"counterparty_vat_number\": \"GB 610 2984 61\", \"document_number\": \"OKJ-1043\", \"document_date\": \"2026-10-21\", \"due_date\": \"2026-11-04\", \"po_number\": \"\", \"project_reference\": \"31 Heron Walk\", \"currency\": \"GBP\", \"net_total\": 4850.0, \"vat_total\": 970.0, \"gross_total\": 5820.0, \"vat_lines\": [{\"rate\": 20, \"net\": 4850.0, \"vat\": 970.0}], \"line_items\": [{\"description\": \"Kitchen units (8 base and wall units), doors and handles\", \"quantity\": 1, \"unit_price\": 2640.0, \"net\": 2640.0, \"vat_rate\": 20}, {\"description\": \"Laminate worktops and upstands\", \"quantity\": 1, \"unit_price\": 560.0, \"net\": 560.0, \"vat_rate\": 20}, {\"description\": \"Strip out old kitchen, fit new kitchen, connect sink and hob\", \"quantity\": 1, \"unit_price\": 1450.0, \"net\": 1450.0, \"vat_rate\": 20}, {\"description\": \"Waste removal\", \"quantity\": 1, \"unit_price\": 200.0, \"net\": 200.0, \"vat_rate\": 20}], \"payment_status\": \"unpaid\", \"card_last4\": \"\", \"bank_sort_code\": \"00-83-94\", \"bank_account_number\": \"20208394\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Invoice for replacing the kitchen at 31 Heron Walk: units, worktops, fitting and waste removal.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"The invoice says the layout is as existing, with an integrated dishwasher added.\"}",
+    "data": {
+      "doc_type": "invoice",
+      "counterparty": "Oakmere Kitchens & Joinery Ltd",
+      "counterparty_vat_number": "GB 610 2984 61",
+      "document_number": "OKJ-1043",
+      "document_date": "2026-10-21",
+      "due_date": "2026-11-04",
+      "po_number": "",
+      "project_reference": "31 Heron Walk",
+      "currency": "GBP",
+      "net_total": 4850.0,
+      "vat_total": 970.0,
+      "gross_total": 5820.0,
+      "vat_lines": [
+        {
+          "rate": 20,
+          "net": 4850.0,
+          "vat": 970.0
+        }
+      ],
+      "line_items": [
+        {
+          "description": "Kitchen units (8 base and wall units), doors and handles",
+          "quantity": 1,
+          "unit_price": 2640.0,
+          "net": 2640.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Laminate worktops and upstands",
+          "quantity": 1,
+          "unit_price": 560.0,
+          "net": 560.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Strip out old kitchen, fit new kitchen, connect sink and hob",
+          "quantity": 1,
+          "unit_price": 1450.0,
+          "net": 1450.0,
+          "vat_rate": 20
+        },
+        {
+          "description": "Waste removal",
+          "quantity": 1,
+          "unit_price": 200.0,
+          "net": 200.0,
+          "vat_rate": 20
+        }
+      ],
+      "payment_status": "unpaid",
+      "card_last4": "",
+      "bank_sort_code": "00-83-94",
+      "bank_account_number": "20208394",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Invoice for replacing the kitchen at 31 Heron Walk: units, worktops, fitting and waste removal.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "The invoice says the layout is as existing, with an integrated dishwasher added."
+    }
+  }
+}

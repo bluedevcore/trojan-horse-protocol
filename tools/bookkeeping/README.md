@@ -57,7 +57,8 @@ to a role from their headings; a missing reference list (`suppliers`, `customers
 | `purchase_orders` | po_number, supplier, net_amount | date, description, job, status |
 | `projects` | project_ref, project_name | client, site, keywords (`;`-separated) |
 
-Add aliases without code: `tables: {card_statement: {aliases: {amount: ["Spend (£)"]}}}`.
+Add aliases without code: `tables: {card_statement: {aliases: {amount: ["Spend (£)"]}}}`. A `label` there
+(e.g. `tables: {projects: {label: property register}}`) renames the table in the progress list and notices.
 
 ## Config keys (`clients/<slug>/config.yaml`)
 
@@ -96,12 +97,14 @@ debtors: {buckets: [0, 30, 60, 90], tiers: [{from: 1, tier: Reminder, tone: "fri
 timesheets: {overtime_after_weekly_hours: 40, overtime_multiplier: 1.5, weekend_multiplier: 1.5,
              max_daily_hours: 12, require_approval: true, expected_days: true}
 purchase_orders: {tolerance_pct: 2, tolerance_abs: 5, require_po: true}
-filing: {reference_pattern: "P-\\d{4}", unfiled_folder: "_To file"}
+filing: {reference_pattern: "P-\\d{4}", unfiled_folder: "_To file", noun: property}   # noun: wording (default project)
 contacts:
   cardholders: [{card: "4417", name: Alex Morgan, email: ...}]
   payroll_bureau: {name, contact, email}
 month_end: {checklist: [{id: purchase_invoices}, {label: "Manual step", manual: true}, ...]}   # ids in month_end.py
 analysis: {tracking_label: Property}   # entries carry the document's project/property ref (or the cardholder)
+          # optional: entries_column: true (the ref on every coded line, screen and Excel; replaces "Coded by" on
+          # screen), in_report: true (totals by tracking value in the PDF report)
 views: {tabs: [entries, card, payroll, sales, debtors, hours, po, statements, filing, vat, emails, checklist,
                exceptions, documents]}
 reports: {pack_label, pack_file, pack_help, report_label, report_file, report_help, report_title, emails_help,
