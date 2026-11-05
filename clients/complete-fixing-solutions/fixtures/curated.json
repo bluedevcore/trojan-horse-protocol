@@ -71,9 +71,9 @@
       "bank_sort_code": "00-14-27",
       "bank_account_number": "20031184"
     },
-    "2026-10-05_clwyd-board_CBS-30871.pdf": {
+    "2026-10-05_clwyd_CBS-30871.pdf": {
       "doc_type": "invoice",
-      "counterparty": "Clwyd Board & Stud Supplies Ltd",
+      "counterparty": "Clwyd Board & Stud Ltd",
       "counterparty_vat_number": "GB 387 0561 32",
       "document_number": "CBS-30871",
       "document_date": "2026-10-05",
@@ -128,9 +128,9 @@
       "bank_sort_code": "00-25-38",
       "bank_account_number": "20044617"
     },
-    "2026-10-06_clwyd-board_CBS-30871-email.eml": {
+    "2026-10-06_clwyd_CBS-30871-email.eml": {
       "doc_type": "invoice",
-      "counterparty": "Clwyd Board & Stud Supplies Ltd",
+      "counterparty": "Clwyd Board & Stud Ltd",
       "counterparty_vat_number": "GB 387 0561 32",
       "document_number": "CBS-30871",
       "document_date": "2026-10-05",
@@ -228,7 +228,7 @@
       "bank_sort_code": "00-36-49",
       "bank_account_number": "20052290"
     },
-    "2026-10-09_border-ceilings_BCS-11794.pdf": {
+    "2026-10-09_border_BCS-11794.pdf": {
       "doc_type": "invoice",
       "counterparty": "Border Ceiling Systems Ltd",
       "counterparty_vat_number": "GB 602 7713 62",
@@ -462,7 +462,7 @@
       "bank_sort_code": "00-98-76",
       "bank_account_number": "98761234"
     },
-    "2026-10-22_border-ceilings_BCS-11820.pdf": {
+    "2026-10-22_border_BCS-11820.pdf": {
       "doc_type": "invoice",
       "counterparty": "Border Ceiling Systems Ltd",
       "counterparty_vat_number": "GB 602 7713 62",
@@ -512,7 +512,7 @@
       "bank_sort_code": "00-47-50",
       "bank_account_number": "20068835"
     },
-    "2026-10-22_cestrian-tool-hire_CTH-09126.pdf": {
+    "2026-10-22_cestrian_CTH-09126.pdf": {
       "doc_type": "invoice",
       "counterparty": "Cestrian Tool Hire Ltd",
       "counterparty_vat_number": "GB 460 2139 79",
@@ -555,9 +555,9 @@
       "bank_sort_code": "00-70-83",
       "bank_account_number": "20091478"
     },
-    "2026-10-23_clwyd-board_CBS-30922.pdf": {
+    "2026-10-23_clwyd_CBS-30922.pdf": {
       "doc_type": "invoice",
-      "counterparty": "Clwyd Board & Stud Supplies Ltd",
+      "counterparty": "Clwyd Board & Stud Ltd",
       "counterparty_vat_number": "GB 387 0561 32",
       "document_number": "CBS-30922",
       "document_date": "2026-10-23",
@@ -655,9 +655,9 @@
       "bank_sort_code": "00-58-61",
       "bank_account_number": "20073142"
     },
-    "2026-10-27_ridgeway-workwear_RSW-2208.eml": {
+    "2026-10-27_ridgeway_RSW-2208.eml": {
       "doc_type": "invoice",
-      "counterparty": "Ridgeway Safety & Workwear Ltd",
+      "counterparty": "Ridgeway Workwear Ltd",
       "counterparty_vat_number": "GB 703 8826 30",
       "document_number": "RSW-2208",
       "document_date": "2026-10-27",
@@ -762,7 +762,7 @@
       "bank_sort_code": "00-14-27",
       "bank_account_number": "20031184"
     },
-    "2026-10-29_border-ceilings_BCS-11846.pdf": {
+    "2026-10-29_border_BCS-11846.pdf": {
       "doc_type": "invoice",
       "counterparty": "Border Ceiling Systems Ltd",
       "counterparty_vat_number": "GB 602 7713 62",
@@ -901,7 +901,7 @@
   },
   "coding": {
     "D-14": {
-      "payee": "Ridgeway Safety & Workwear Ltd",
+      "payee": "Ridgeway Workwear Ltd",
       "account": "Protective clothing and PPE",
       "confidence": "high",
       "reason": "Hi-vis vests, cut-resistant gloves, S3 safety boots and safety glasses are protective clothing for site staff."
@@ -916,7 +916,7 @@
       "subject": "Invoice BCS-11820: purchase order PO-4471 not recognised",
       "body": "Hello Phil,\n\nWe have received invoice BCS-11820 dated 22 October 2026 for £1,814.40. It quotes purchase order PO-4471, but we can't find that number on our purchase order list.\n\nCould you check the order number and let us know the correct one, or send a corrected invoice, by Monday 9 November?\n\nKind regards,\nOffice Administrator\nDemo Fixings Ltd"
     },
-    "supplier:Clwyd Board & Stud Supplies Ltd": {
+    "supplier:Clwyd Board & Stud Ltd": {
       "subject": "Invoice CBS-30922: £190.00 over purchase order PO-4404",
       "body": "Hello Gareth,\n\nThank you for invoice CBS-30922 dated 23 October 2026. With this invoice, the total invoiced against our purchase order PO-4404 comes to £6,440.00 net, which is £190.00 more than the £6,250.00 agreed.\n\nCould you explain the extra £190.00, or send a corrected invoice? A reply by Monday 9 November would be appreciated.\n\nKind regards,\nOffice Administrator\nDemo Fixings Ltd"
     },
@@ -928,7 +928,7 @@
       "subject": "Invoice PTS-6604: total does not add up",
       "body": "Hello Elin,\n\nThank you for invoice PTS-6604 dated 26 October 2026. The net of £948.00 plus VAT of £189.60 comes to £1,137.60, but the total shown is £1,152.60, a difference of £15.00.\n\nCould you send a corrected invoice, please? A reply by Monday 9 November would be appreciated.\n\nKind regards,\nOffice Administrator\nDemo Fixings Ltd"
     },
-    "supplier:Ridgeway Safety & Workwear Ltd": {
+    "supplier:Ridgeway Workwear Ltd": {
       "subject": "Invoice RSW-2208: purchase order number needed",
       "body": "Hello,\n\nThank you for invoice RSW-2208 dated 27 October 2026 for £667.20. It doesn't quote a purchase order number, and we can't match it to one of our orders by supplier and amount.\n\nCould you let us know which order it is for by Monday 9 November?\n\nKind regards,\nOffice Administrator\nDemo Fixings Ltd"
     },

@@ -108,8 +108,8 @@ checks:
   overlapping_shifts: {letter: contracts_manager}
   closed_job: {letter: contracts_manager}
   unknown_job: {letter: contracts_manager}
-  unknown_employee: {label: "Not on the employee list (new starter?)", letter: contracts_manager,
-                     action: "Complete the new starter paperwork (starter checklist, right to work, bank details) and set them up in Sage Payroll before paying."}
+  unknown_employee: {label: "Not on the employee list", letter: contracts_manager,
+                     action: "If this is a new starter, complete the starter paperwork (starter checklist, right to work, bank details) and set them up in Sage Payroll before paying; otherwise check the name."}
   missing_timesheet: {needs_human_check: false, letter: contracts_manager,
                       action: "Chase the timesheet before the Wednesday payroll cut-off (email drafted)."}
   duplicate_timesheet: {needs_human_check: false, hold: false,

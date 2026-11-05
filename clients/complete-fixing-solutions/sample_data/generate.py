@@ -40,8 +40,8 @@ Deliberate problems planted for the agent to find (18 exceptions):
  14  Cestrian Tool Hire   CTH-09126 quotes PO-4412, which was raised with Alyn Access & Plant Hire
  15  Dee Valley Fixings   DVF-55187 emailed from a look-alike address with "new bank details"
  16  Pandy Timber & Sheet PTS-6604 total printed £1,152.60, but £948.00 + £189.60 VAT = £1,137.60
- 17  Ridgeway Safety & Workwear  new supplier, not on the supplier list ...
- 18  Ridgeway Safety & Workwear  ... and the invoice has no purchase order
+ 17  Ridgeway Workwear    new supplier, not on the supplier list ...
+ 18  Ridgeway Workwear    ... and the invoice has no purchase order
 Also included on purpose (no exception): an invoice with no PO number that
 matches PO-4410 on supplier and amount, a credit note, a Saturday shift that
 is signed off, and five POs still awaiting an invoice.
@@ -83,7 +83,7 @@ S = {
     "deevalley": dict(name="Dee Valley Fixings Ltd", ref="DEEVAL01", account="Fixings and sundries", code="S",
                       vat=vat("4419027"), sort="00-14-27", acct="20031184", terms=30, email="accounts@deevalley-fixings.example",
                       contact="Nia Bowen", phone="01632 960 412", address=["Unit 12, Riverside Trade Park", "Chester CH4 0XX"]),
-    "clwyd": dict(name="Clwyd Board & Stud Supplies Ltd", ref="CLWYDB01", account="Boards and studwork", code="S",
+    "clwyd": dict(name="Clwyd Board & Stud Ltd", ref="CLWYDB01", account="Boards and studwork", code="S",
                   vat=vat("3870561"), sort="00-25-38", acct="20044617", terms=30, email="sales.ledger@clwyd-board.example",
                   contact="Gareth Lewis", phone="01632 960 523", address=["Station Yard, Mold Road", "Mold CH7 0XX"]),
     "alyn": dict(name="Alyn Access & Plant Hire Ltd", ref="ALYNAC01", account="Plant and access hire", code="S",
@@ -108,7 +108,7 @@ S = {
                    vat=vat("6144029"), sort="00-92-05", acct="20116693", terms=14, email="billing@maelor-telecom.example",
                    contact="", phone="01632 960 290", address=["2 Bank Street", "Overton LL13 0XX"]),
 }
-RIDGEWAY = dict(name="Ridgeway Safety & Workwear Ltd", vat=vat("7038826"), sort="00-13-24", acct="20120071",
+RIDGEWAY = dict(name="Ridgeway Workwear Ltd", vat=vat("7038826"), sort="00-13-24", acct="20120071",
                 email="orders@ridgeway-workwear.example", contact="Dan Shaw", phone="01632 960 301",
                 address=["Unit 8, Ridgeway Court", "Warrington WA2 0XX"])
 DEE_VALLEY_NEW_BANK = ("00-98-76", "98761234")  # the "new" details in the look-alike email
@@ -254,15 +254,15 @@ def documents() -> dict[str, bytes]:
                                                            items=DVF_55120, po="PO-4402", job="J-2601")
     cbs = invoice_pdf(cb, number="CBS-30871", date="05/10/2026", due="04/11/2026", items=CBS_30871, po="PO-4404",
                       job="J-2601", notes=["Delivery 1 of 2 against your order. Delivery note DN-77120."])
-    d["2026-10-05_clwyd-board_CBS-30871.pdf"] = cbs
-    d["2026-10-06_clwyd-board_CBS-30871-email.eml"] = eml(
+    d["2026-10-05_clwyd_CBS-30871.pdf"] = cbs
+    d["2026-10-06_clwyd_CBS-30871-email.eml"] = eml(
         sender=f"{cb['contact']} <{cb['email']}>", subject="Invoice CBS-30871 - Demo Fixings Ltd", date="2026-10-06 08:42",
         body=f"Good morning,\n\nPlease find attached invoice CBS-30871 for the first delivery to Wrexham Gateway (your "
              f"order PO-4404). The original has also gone in the post.\n\nThanks,\n{cb['contact']}\nSales Ledger, {cb['name']}",
         attachment=("CBS-30871.pdf", cbs))
     d["2026-10-09_alyn-access_AAP-7702.pdf"] = invoice_pdf(al, number="AAP-7702", date="09/10/2026", due="08/11/2026",
                                                            items=AAP_7702, po="PO-4403", job="J-2607")
-    d["2026-10-09_border-ceilings_BCS-11794.pdf"] = invoice_pdf(bo, number="BCS-11794", date="09/10/2026", due="08/11/2026",
+    d["2026-10-09_border_BCS-11794.pdf"] = invoice_pdf(bo, number="BCS-11794", date="09/10/2026", due="08/11/2026",
                                                                 items=BCS_11794, po="PO-4405", job="J-2614")
     d["2026-10-12_pandy-timber_PTS-6588.pdf"] = invoice_pdf(pa, number="PTS-6588", date="12/10/2026", due="11/11/2026",
                                                             items=PTS_6588, po="PO-4409", job="J-2619")
@@ -273,7 +273,7 @@ def documents() -> dict[str, bytes]:
     d["2026-10-16_dee-valley_DVF-CN-0931.pdf"] = invoice_pdf(
         dv, number="DVF-CN-0931", date="16/10/2026", due=None, items=DVF_CN_0931, job="J-2601", title="CREDIT NOTE",
         notes=["Credit against invoice DVF-55120: goods returned unused. This credit will be taken off your next payment."])
-    d["2026-10-22_border-ceilings_BCS-11820.pdf"] = invoice_pdf(bo, number="BCS-11820", date="22/10/2026", due="21/11/2026",
+    d["2026-10-22_border_BCS-11820.pdf"] = invoice_pdf(bo, number="BCS-11820", date="22/10/2026", due="21/11/2026",
                                                                 items=BCS_11820, po="PO-4471", job="J-2614",
                                                                 notes=["Phase 2 delivery, Llay school."])
     dvf = invoice_pdf(dv, number="DVF-55187", date="21/10/2026", due="20/11/2026", items=DVF_55187, po="PO-4415",
@@ -285,9 +285,9 @@ def documents() -> dict[str, bytes]:
              "Please note we have moved our business banking. Kindly update your records and pay this and all future "
              "invoices to the new account shown on the attached invoice.\n\nKind regards,\nAccounts Department\n"
              "Dee Valley Fixings Ltd", attachment=("DVF-55187.pdf", dvf))
-    d["2026-10-22_cestrian-tool-hire_CTH-09126.pdf"] = invoice_pdf(ce, number="CTH-09126", date="23/10/2026", due="22/11/2026",
+    d["2026-10-22_cestrian_CTH-09126.pdf"] = invoice_pdf(ce, number="CTH-09126", date="23/10/2026", due="22/11/2026",
                                                                    items=CTH_09126, po="PO-4412", job="J-2610")
-    d["2026-10-23_clwyd-board_CBS-30922.pdf"] = invoice_pdf(cb, number="CBS-30922", date="23/10/2026", due="22/11/2026",
+    d["2026-10-23_clwyd_CBS-30922.pdf"] = invoice_pdf(cb, number="CBS-30922", date="23/10/2026", due="22/11/2026",
                                                             items=CBS_30922, po="PO-4404", job="J-2601",
                                                             notes=["Delivery 2 of 2 against your order. Delivery note DN-77388."])
     d["2026-10-26_pandy-timber_PTS-6604.pdf"] = invoice_pdf(pa, number="PTS-6604", date="26/10/2026", due="25/11/2026",
@@ -295,14 +295,14 @@ def documents() -> dict[str, bytes]:
     rw = dict(RIDGEWAY)
     rsw = invoice_pdf(rw, number="RSW-2208", date="27/10/2026", due="26/11/2026", items=RSW_2208,
                       notes=["Delivered to: Demo Fixings Ltd yard, Example Industrial Estate."])
-    d["2026-10-27_ridgeway-workwear_RSW-2208.eml"] = eml(
+    d["2026-10-27_ridgeway_RSW-2208.eml"] = eml(
         sender=f"{rw['contact']} <{rw['email']}>", subject="Your order and invoice RSW-2208", date="2026-10-27 11:20",
         body="Hi,\n\nThanks for your telephone order on 23 October and welcome to Ridgeway. The PPE was delivered to your "
              "yard this morning and our invoice RSW-2208 is attached. We'll set up your account on 30-day terms.\n\n"
              f"Best wishes,\n{rw['contact']}\n{rw['name']}", attachment=("RSW-2208.pdf", rsw))
     d["2026-10-28_dee-valley_DVF-55203.pdf"] = invoice_pdf(dv, number="DVF-55203", date="28/10/2026", due="27/11/2026",
                                                            items=DVF_55203, po="PO-4418", job="J-2619")
-    d["2026-10-29_border-ceilings_BCS-11846.pdf"] = invoice_pdf(bo, number="BCS-11846", date="29/10/2026", due="28/11/2026",
+    d["2026-10-29_border_BCS-11846.pdf"] = invoice_pdf(bo, number="BCS-11846", date="29/10/2026", due="28/11/2026",
                                                                 items=BCS_11846, po="PO-4411", job="J-2607")
     d["2026-10-30_alyn-access_AAP-7731.pdf"] = invoice_pdf(al, number="AAP-7731", date="30/10/2026", due="29/11/2026",
                                                            items=AAP_7731, po="PO-4406", job="J-2601")

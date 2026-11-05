@@ -359,15 +359,18 @@ def _hours_tab(r: RunResult) -> None:
 
 
 def _po_tab(r: RunResult) -> None:
-    _grid(r.po_table, [("Supplier", "text", 200), ("Invoice", "text", 105), ("Invoice date", "date", 90, "Date"),
-                       ("PO on invoice", "text", 90, "PO quoted"), ("Matched PO", "text", 80, "PO"),
-                       ("Matched by", "text", 120), ("Invoice net", "money", 85, "Invoice net"), ("PO net", "money", 85),
-                       ("Invoiced to date", "money", 95, "Invoiced"), ("Difference", "money", 85, "Difference"),
-                       ("Status", "text", 125)], status="Status", cap=25)
+    po = r.po_table.copy()
+    # one PO column: the PO matched, or else the number the invoice quoted (e.g. one that isn't on the list)
+    po["PO"] = [m if _text(m) else _text(q) for m, q in zip(po["Matched PO"], po["PO on invoice"])]
+    po["Matched by"] = po["Matched by"].replace({"supplier and amount": "supplier + amount"})
+    _grid(po, [("Supplier", "text", 195), ("Invoice", "text", 90), ("Invoice date", "date", 85, "Date"),
+               ("PO", "text", 75), ("Matched by", "text", 120), ("Invoice net", "money", 85, "Invoice net"),
+               ("PO net", "money", 85), ("Invoiced to date", "money", 85, "Invoiced"),
+               ("Difference", "money", 85, "Difference"), ("Status", "text", 120)], status="Status", cap=25)
     st.caption("Matched on the PO number quoted, or on supplier and amount when no PO is quoted. “Invoiced” is the "
                "running total against the PO and “Difference” is that total less the PO value (negative: not fully "
                "invoiced yet). An invoice that takes a PO over its value, beyond the tolerance, is held. POs with no "
-               "invoice yet are listed as awaiting invoice.")
+               "invoice yet are listed as awaiting invoice; the Excel pack also shows the PO number each invoice quoted.")
 
 
 def _vat_tab(r: RunResult) -> None:

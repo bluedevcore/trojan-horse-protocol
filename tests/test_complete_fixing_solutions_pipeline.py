@@ -21,9 +21,9 @@ CLIENT = Path(__file__).resolve().parent.parent / "clients" / "complete-fixing-s
 EXPECTED = {
     ("Supplier bank details changed", "Dee Valley Fixings Ltd"),
     ("Totals don't add up", "Pandy Timber & Sheet Ltd"),
-    ("Duplicate invoice", "Clwyd Board & Stud Supplies Ltd"),
-    ("New supplier", "Ridgeway Safety & Workwear Ltd"),
-    ("Not on the employee list (new starter?)", "Rhys Talbot"),
+    ("Duplicate invoice", "Clwyd Board & Stud Ltd"),
+    ("New supplier", "Ridgeway Workwear Ltd"),
+    ("Not on the employee list", "Rhys Talbot"),
     ("Timesheet not signed off", "Kieran Molloy"),
     ("Overlapping timesheet lines", "Callum Rees"),
     ("Duplicate timesheet entry", "Siân Edwards"),
@@ -32,11 +32,11 @@ EXPECTED = {
     ("Hours on a closed job", "Liam Carney"),
     ("Job not on the job list", "Huw Jarman"),
     ("No timesheet", "Patryk Zielinski"),
-    ("Invoice exceeds the PO", "Clwyd Board & Stud Supplies Ltd"),
+    ("Invoice exceeds the PO", "Clwyd Board & Stud Ltd"),
     ("Invoice exceeds the PO", "Alyn Access & Plant Hire Ltd"),
     ("PO number not recognised", "Border Ceiling Systems Ltd"),
     ("PO raised with a different supplier", "Cestrian Tool Hire Ltd"),
-    ("Invoice without a PO", "Ridgeway Safety & Workwear Ltd"),
+    ("Invoice without a PO", "Ridgeway Workwear Ltd"),
 }
 HELD_REFS = {"DVF-55187", "PTS-6604", "CBS-30922", "AAP-7731", "BCS-11820", "CTH-09126", "RSW-2208"}
 
@@ -124,7 +124,7 @@ def test_purchase_orders(result):
 def test_totals_cross_check(result):
     e = result.entries
     assert e.drop_duplicates("group")["coded_by"].value_counts().to_dict() == {"supplier list": 16, "Claude": 1}
-    assert e.set_index("counterparty").loc["Ridgeway Safety & Workwear Ltd", "account"] == "Protective clothing and PPE"
+    assert e.set_index("counterparty").loc["Ridgeway Workwear Ltd", "account"] == "Protective clothing and PPE"
     # bills: one per unique invoice, at net + VAT (not Pandy's mis-added printed total)
     bills = e[e["kind"] == "bill"].groupby("doc_id")["gross"].sum()
     invoices = [1423.68, 4752.00, 462.00, 2657.52, 735.00, 288.00, 891.36, 1814.40, 216.00, 2976.00, 1137.60, 667.20,
@@ -153,8 +153,8 @@ def test_payroll_hours_file_leaves_held_weeks_out(result):
 def test_emails_and_checklist(result):
     keys = [l["key"] for l in result.letters]
     assert keys == ["supplier:Alyn Access & Plant Hire Ltd", "supplier:Border Ceiling Systems Ltd",
-                    "supplier:Clwyd Board & Stud Supplies Ltd", "supplier:Dee Valley Fixings Ltd",
-                    "supplier:Pandy Timber & Sheet Ltd", "supplier:Ridgeway Safety & Workwear Ltd",
+                    "supplier:Clwyd Board & Stud Ltd", "supplier:Dee Valley Fixings Ltd",
+                    "supplier:Pandy Timber & Sheet Ltd", "supplier:Ridgeway Workwear Ltd",
                     "contracts_manager:Contracts manager"]
     bank = result.letters[3]["body"]
     assert "phone" in bank and "never change bank details" in bank.lower()
