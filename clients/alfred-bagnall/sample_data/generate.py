@@ -22,7 +22,7 @@ at 5 November 2026:
                                    advices and correspondence (PDF and .eml), plus one photo
 
 Debtors: what the agent should work out
-  - 5 invoices are cleared by money on the bank statement: by invoice number
+  - 6 invoices are cleared by money on the bank statement: by invoice number
     (Kestrelgate SI-30364, Riverholt SI-30341, Saltings SI-30377 + SI-30392 in one
     payment), by customer name + exact amount with no reference (Larkhollow
     SI-30361), and by a reference written without its hyphen (Grayling & Fosse
