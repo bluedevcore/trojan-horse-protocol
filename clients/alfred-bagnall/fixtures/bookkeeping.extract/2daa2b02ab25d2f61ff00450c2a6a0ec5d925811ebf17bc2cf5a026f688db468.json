@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "2daa2b02ab25d2f61ff00450c2a6a0ec5d925811ebf17bc2cf5a026f688db468",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-08-24_oakmere_minor-works-agreement_J-4144.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nDemo Decorating Contractors Ltd\nUnit 4, Example Trade Park\nErith DA8 2XX\nErith branch · Tel 020 7946 0410 · erith.office@demo-decorating.example\nMinor works agreement\nJob: J-4144 · Date: 24 August 2026\nEmployer: Oakmere Medical Centre, Crayford · Contractor: Demo Decorating Contractors Ltd\nWorks: redecoration of the waiting room, reception and consulting rooms 1 to 5, out of surgery hours (after 6.30pm\nand Saturdays).\nContract sum: £7,450.00 excluding VAT. Payment within 30 days of invoice. Defects period: 6 months.\nSigned for the employer: Linda Hayes, Practice Manager\nSigned for the contractor: Paul Denning, Branch Manager",
+  "response": {
+    "text": "{\"doc_type\": \"contract\", \"counterparty\": \"Oakmere Medical Centre\", \"counterparty_vat_number\": \"\", \"document_number\": \"\", \"document_date\": \"2026-08-24\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-4144\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Minor works agreement to redecorate the waiting room, reception and consulting rooms 1 to 5 out of surgery hours, contract sum £7,450.00 excluding VAT.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Payment within 30 days of invoice; 6-month defects period. Signed by Linda Hayes (Practice Manager) and Paul Denning (Branch Manager).\"}",
+    "data": {
+      "doc_type": "contract",
+      "counterparty": "Oakmere Medical Centre",
+      "counterparty_vat_number": "",
+      "document_number": "",
+      "document_date": "2026-08-24",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-4144",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Minor works agreement to redecorate the waiting room, reception and consulting rooms 1 to 5 out of surgery hours, contract sum £7,450.00 excluding VAT.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Payment within 30 days of invoice; 6-month defects period. Signed by Linda Hayes (Practice Manager) and Paul Denning (Branch Manager)."
+    }
+  }
+}

@@ -48,6 +48,7 @@ sample_data:
 # Which parts of the engine run (each also needs its input files).
 modules:
   documents: true        # read each document (for filing)
+  purchases: false       # no purchase ledger here: a supplier invoice is filed, not checked or coded
   card_matching: false
   coding: false
   payroll_journal: false
@@ -93,10 +94,13 @@ month_end:
   checklist:
     - {id: debtors_chased}
     - {id: documents_filed}
-    - {label: "Post the matched receipts to the sales ledger spreadsheet", manual: true}
-    - {label: "Branch manager approves the final notice before it is sent", manual: true}
-    - {label: "Send the chase emails and diary a follow-up for each one", manual: true}
-    - {label: "Send the aged debtor report to the branch manager", manual: true}
+    - {label: "Post the matched receipts to the sales ledger spreadsheet", manual: true,
+       detail: "Branch administrator: see the “Received (bank)” column in the Aged debtors tab"}
+    - {label: "Branch manager approves the final notice before it is sent", manual: true, detail: "Branch manager"}
+    - {label: "Send the chase emails and diary a follow-up for each one", manual: true,
+       detail: "Branch administrator, after the checks above"}
+    - {label: "Send the aged debtor report to the branch manager", manual: true,
+       detail: "Branch administrator: the PDF report or the Excel pack"}
 
 views:
   tabs: [debtors, emails, filing, checklist, exceptions, documents]

@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "418450757f166e9c98df8a56e1577a7ee0a180379dc073dc5692f072eb5cc056",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-09-11_quarrendon_fire-doors-letter.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nQuarrendon Court RMC Ltd\nc/o Flat 12, Quarrendon Court\nWelling DA16 0XX\nResidents' management company · Directors: B. Ellwood (chair), S. Moyo\nDemo Decorating Contractors Ltd (Erith branch)\nUnit 4, Example Trade Park\nErith DA8 2XX\n11 September 2026\nExternal decoration and fire door upgrade, Quarrendon Court\nDear Sirs,\nThank you for completing the external decoration last week. The directors are pleased with the work.\nWe would like to go ahead with the fire door upgrades for flats 1 to 6 as quoted, at £1,150.00 plus VAT. Please\ncontact me on 07700 900 318 to arrange access with the residents.\nAs we are a small volunteer-run company, please send invoices and statements by post to the address above. We\ndo not have an office email address.\nYours faithfully,\nBrian Ellwood, Chair",
+  "response": {
+    "text": "{\"doc_type\": \"correspondence\", \"counterparty\": \"Quarrendon Court RMC Ltd\", \"counterparty_vat_number\": \"\", \"document_number\": \"\", \"document_date\": \"2026-09-11\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Letter from the chair of Quarrendon Court RMC thanking us for the external decoration and instructing the fire door upgrades for flats 1 to 6 at £1,150.00 plus VAT.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Mentions Quarrendon Court but no job number. Asks for invoices and statements to be sent by post, as the company has no office email address. Contact Brian Ellwood on 07700 900 318 to arrange access.\"}",
+    "data": {
+      "doc_type": "correspondence",
+      "counterparty": "Quarrendon Court RMC Ltd",
+      "counterparty_vat_number": "",
+      "document_number": "",
+      "document_date": "2026-09-11",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Letter from the chair of Quarrendon Court RMC thanking us for the external decoration and instructing the fire door upgrades for flats 1 to 6 at £1,150.00 plus VAT.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Mentions Quarrendon Court but no job number. Asks for invoices and statements to be sent by post, as the company has no office email address. Contact Brian Ellwood on 07700 900 318 to arrange access."
+    }
+  }
+}

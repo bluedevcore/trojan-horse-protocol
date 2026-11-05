@@ -1,0 +1,19 @@
+{
+  "task": "bookkeeping.letters",
+  "key": "a059f5c3f186d075e9e552110be919d4e959fcd7f96d1b97db6264a3a52fb500",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "Emails to draft (JSON):\n\n[\n {\n  \"key\": \"customer:Riverholt Housing Association\",\n  \"recipient_type\": \"customer\",\n  \"to\": \"Riverholt Housing Association\",\n  \"contact\": \"Natalie Okafor\",\n  \"email\": \"accounts.payable@riverholt-ha.example\",\n  \"tone\": \"firm but polite second reminder: ask for a payment date this week\",\n  \"points\": [\n   {\n    \"ref\": \"Invoice SI-30372\",\n    \"issue\": \"£4,350.00 was due on 01 Oct 2026 and is 35 days overdue.\",\n    \"ask\": \"\"\n   },\n   {\n    \"ref\": \"Invoice SI-30395\",\n    \"issue\": \"£2,874.00 was due on 24 Oct 2026 and is 12 days overdue.\",\n    \"ask\": \"\"\n   },\n   {\n    \"ref\": \"Invoice SI-30401\",\n    \"issue\": \"£15,960.00 was due on 31 Oct 2026 and is 5 days overdue.\",\n    \"ask\": \"\"\n   }\n  ],\n  \"exceptions\": [],\n  \"tone_label\": \"Second reminder\"\n }\n]",
+  "response": {
+    "text": "{\"letters\": [{\"key\": \"customer:Riverholt Housing Association\", \"subject\": \"Second reminder: invoices SI-30372, SI-30395 and SI-30401\", \"body\": \"Hello Natalie,\\n\\nOur records show three invoices now overdue:\\nSI-30372: £4,350.00, due 1 October 2026, 35 days overdue\\nSI-30395: £2,874.00, due 24 October 2026, 12 days overdue\\nSI-30401: £15,960.00, due 31 October 2026, 5 days overdue\\n\\nCould you confirm this week the date these will be paid? If anything is holding them up, please let me know so we can resolve it. I'd be grateful for a reply by Thursday 12 November.\\n\\nKind regards,\\nBranch Administrator\\nDemo Decorating Contractors Ltd, Erith branch\"}]}",
+    "data": {
+      "letters": [
+        {
+          "key": "customer:Riverholt Housing Association",
+          "subject": "Second reminder: invoices SI-30372, SI-30395 and SI-30401",
+          "body": "Hello Natalie,\n\nOur records show three invoices now overdue:\nSI-30372: £4,350.00, due 1 October 2026, 35 days overdue\nSI-30395: £2,874.00, due 24 October 2026, 12 days overdue\nSI-30401: £15,960.00, due 31 October 2026, 5 days overdue\n\nCould you confirm this week the date these will be paid? If anything is holding them up, please let me know so we can resolve it. I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+        }
+      ]
+    }
+  }
+}

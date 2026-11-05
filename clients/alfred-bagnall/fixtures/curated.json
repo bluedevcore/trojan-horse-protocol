@@ -1,0 +1,391 @@
+{
+  "extract": {
+    "2026-08-03_riverholt_letter-of-acceptance_J-4102.pdf": {
+      "doc_type": "contract",
+      "counterparty": "Riverholt Housing Association",
+      "document_number": "RHA/AM/2026/014",
+      "document_date": "2026-08-03",
+      "project_reference": "J-4102",
+      "summary": "Letter of acceptance for the Marsh View Estate external redecoration (Heron, Plover and Avocet Court) at £148,600.00 excluding VAT, on site 17 August to 18 December 2026.",
+      "notes": "Retention 3%, half released at completion. Monthly valuations go to the contract administrator, Graham Lister, by the last working day of the month; payment 30 days from a valid invoice. Riverholt asks for a signed copy to be returned.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-08-17_kestrelgate_subcontract-order-KC-SO-0388_J-4126.pdf": {
+      "doc_type": "contract",
+      "counterparty": "Kestrelgate Construction Ltd",
+      "document_number": "KC-SO-0388",
+      "document_date": "2026-08-17",
+      "project_reference": "J-4126",
+      "summary": "Subcontract order for the painting package at Wharfside Quarter Block B (46 apartments), subcontract sum £86,400.00, 1 September to 27 November 2026.",
+      "notes": "Monthly applications by the 25th; final date for payment 45 days after the invoice date; no retention on this package. Signed by Ian Royle, Senior Quantity Surveyor.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-08-24_oakmere_minor-works-agreement_J-4144.pdf": {
+      "doc_type": "contract",
+      "counterparty": "Oakmere Medical Centre",
+      "document_number": "",
+      "document_date": "2026-08-24",
+      "project_reference": "J-4144",
+      "summary": "Minor works agreement to redecorate the waiting room, reception and consulting rooms 1 to 5 out of surgery hours, contract sum £7,450.00 excluding VAT.",
+      "notes": "Payment within 30 days of invoice; 6-month defects period. Signed by Linda Hayes (Practice Manager) and Paul Denning (Branch Manager).",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-08-28_lessmoor_handover-certificate_J-4115.pdf": {
+      "doc_type": "other",
+      "counterparty": "Lessmoor Academy Trust",
+      "document_number": "",
+      "document_date": "2026-08-28",
+      "project_reference": "J-4115",
+      "summary": "Handover certificate for the Lessmoor Primary School summer works, handed over on 28 August 2026 subject to a 14-item snagging list.",
+      "notes": "Snagging to be completed within 21 days of handover, outside school hours. Signed by Dean Foley and R. Thorne.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-09-01_corvel_purchase-order-CV-PO-11873_J-4138.pdf": {
+      "doc_type": "purchase_order",
+      "counterparty": "Corvel Logistics Ltd",
+      "document_number": "CV-PO-11873",
+      "document_date": "2026-09-01",
+      "project_reference": "J-4138",
+      "summary": "Customer purchase order for repainting racking steelwork (bays 1-8) and re-lining the warehouse floor, £10,400.00 excluding VAT.",
+      "notes": "Invoices must quote CV-PO-11873. Payment terms 30 days from invoice. Quotes supplier ref J-4138 / Q-2189.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown",
+      "po_number": "CV-PO-11873",
+      "net_total": 10400.0,
+      "line_items": [
+        {
+          "description": "Prepare and repaint racking steelwork, bays 1-4",
+          "quantity": 1,
+          "unit_price": null,
+          "net": 3600.0,
+          "vat_rate": null
+        },
+        {
+          "description": "Prepare and repaint racking steelwork, bays 5-8",
+          "quantity": 1,
+          "unit_price": null,
+          "net": 3300.0,
+          "vat_rate": null
+        },
+        {
+          "description": "Re-line warehouse floor walkways and loading bays",
+          "quantity": 1,
+          "unit_price": null,
+          "net": 3500.0,
+          "vat_rate": null
+        }
+      ]
+    },
+    "2026-09-02_saltings_rams-approval_J-4130.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Saltings Lodge",
+      "document_number": "",
+      "document_date": "2026-09-02",
+      "project_reference": "J-4130",
+      "summary": "Saltings Lodge approves the risk assessment and method statement for redecorating residents' rooms, with two conditions.",
+      "notes": "Conditions: low-odour, water-based paints in occupied areas; no more than two rooms out of use at a time; work between 9.30am and 4pm. Report to reception on arrival.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-09-07_larkhollow_signed-quotation-Q-2207_J-4134.pdf": {
+      "doc_type": "contract",
+      "counterparty": "Larkhollow Hotels Ltd",
+      "document_number": "Q-2207",
+      "document_date": "2026-09-07",
+      "project_reference": "J-4134",
+      "summary": "Quotation Q-2207 for redecorating bedrooms on floors 2 and 3 and the corridors at the Larkhollow Hotel, £13,001.67 excluding VAT, accepted by the General Manager.",
+      "notes": "Deposit of £2,700.00 plus VAT on acceptance; each floor invoiced on completion; corridors and the deposit settled in the final account; 30 days. Accepted by Tom Whitlock on 07/09/2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown",
+      "net_total": 13001.67,
+      "line_items": [
+        {
+          "description": "Bedroom redecoration, floor 2",
+          "quantity": 18,
+          "unit_price": null,
+          "net": 6300.0,
+          "vat_rate": null
+        },
+        {
+          "description": "Bedroom redecoration, floor 3",
+          "quantity": 16,
+          "unit_price": null,
+          "net": 5741.67,
+          "vat_rate": null
+        },
+        {
+          "description": "Corridors, floors 2 and 3",
+          "quantity": 2,
+          "unit_price": null,
+          "net": 960.0,
+          "vat_rate": null
+        }
+      ]
+    },
+    "2026-09-11_quarrendon_fire-doors-letter.pdf": {
+      "doc_type": "correspondence",
+      "counterparty": "Quarrendon Court RMC Ltd",
+      "document_number": "",
+      "document_date": "2026-09-11",
+      "project_reference": "",
+      "summary": "Letter from the chair of Quarrendon Court RMC thanking us for the external decoration and instructing the fire door upgrades for flats 1 to 6 at £1,150.00 plus VAT.",
+      "notes": "Mentions Quarrendon Court but no job number. Asks for invoices and statements to be sent by post, as the company has no office email address. Contact Brian Ellwood on 07700 900 318 to arrange access.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-09-24_kestrelgate_programme-update_J-4126.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Kestrelgate Construction Ltd",
+      "document_number": "",
+      "document_date": "2026-09-24",
+      "project_reference": "J-4126",
+      "summary": "Kestrelgate sends programme revision C: the start on floors 4 to 6 at Wharfside Quarter moves to 19 October; Block B handover stays 27 November.",
+      "notes": "Asks us to confirm two extra decorators from 19 October to hold the finish date.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-09-28_lessmoor_snagging-query.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Lessmoor Academy Trust",
+      "document_number": "",
+      "document_date": "2026-09-28",
+      "project_reference": "J-4115",
+      "summary": "Lessmoor Academy Trust is holding invoice SI-30388 (£9,744.00) until the snagging list from the 28 August handover is finished.",
+      "notes": "9 of 14 snagging items are still outstanding. Invoice SI-30389 (£1,512.00, hall ceiling) is accepted and will go in the next payment run. Return visits must be after 3.30pm or at the weekend.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-02_grayling-fosse_works-instruction_J-4150.eml": {
+      "doc_type": "purchase_order",
+      "counterparty": "Grayling & Fosse Lettings Ltd",
+      "document_number": "GF-2290",
+      "document_date": "2026-10-02",
+      "project_reference": "J-4150",
+      "summary": "Works instruction GF-2290 for the void redecoration at Flat 5, 8 Example Mews, £950.00 plus VAT, to finish by 14 October.",
+      "notes": "Quote GF-2290 on the invoice. Keys at the Bromley office; new tenant moves in on 16 October.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown",
+      "po_number": "GF-2290",
+      "net_total": 950.0
+    },
+    "2026-10-06_riverholt_variation-VI-07_J-4102.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Riverholt Housing Association",
+      "document_number": "VI-07",
+      "document_date": "2026-10-06",
+      "project_reference": "J-4102",
+      "summary": "Variation instruction VI-07 on the Marsh View contract: replace and paint 14 fascia boards at Plover Court and an extra coat to the Heron Court bin store walls.",
+      "notes": "Price needed by 16 October. Do not start the fascia work until the price is agreed.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-12_ambleford_payment-update_J-4121.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Ambleford Property Management Ltd",
+      "document_number": "",
+      "document_date": "2026-10-12",
+      "project_reference": "J-4121",
+      "summary": "Ambleford says payment for the Kingsridge House communal redecoration is delayed while it collects service charge from leaseholders.",
+      "notes": "Hopes to pay by the end of November but gives no firm date.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-14_kestrelgate_remittance-advice.eml": {
+      "doc_type": "remittance",
+      "counterparty": "Kestrelgate Construction Ltd",
+      "document_number": "",
+      "document_date": "2026-10-14",
+      "project_reference": "",
+      "summary": "Remittance advice: Kestrelgate paid invoice SI-30364 (Application 3, Wharfside Quarter painting) by BACS on 14 October 2026.",
+      "notes": "Names the Wharfside Quarter site but quotes no job number.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "paid",
+      "gross_total": 11400.0
+    },
+    "2026-10-14_marsh-view_site-meeting-minutes-06.pdf": {
+      "doc_type": "other",
+      "counterparty": "Riverholt Housing Association",
+      "document_number": "Meeting 6",
+      "document_date": "2026-10-14",
+      "project_reference": "J-4102",
+      "summary": "Minutes of site progress meeting no. 6 for the Marsh View Estate redecoration.",
+      "notes": "Valuation 5 agreed at £13,300.00 plus VAT, to be invoiced; valuation 4 is with Riverholt finance for payment. Balcony glass at Heron Court flats 12 and 14 to be cleaned by 21 October. Next meeting 11 November 2026.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-15_larkhollow_room-access.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Larkhollow Hotels Ltd",
+      "document_number": "",
+      "document_date": "2026-10-15",
+      "project_reference": "",
+      "summary": "The Larkhollow Hotel's general manager asks for floor 3 rooms 301 to 308 to be finished by 22 October, as the floor is fully booked 23 to 25 October.",
+      "notes": "About the Larkhollow Hotel works but quotes no job number. Remaining rooms to start on 26 October.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-19_riverholt_works-order-WO-55817_J-4147.pdf": {
+      "doc_type": "purchase_order",
+      "counterparty": "Riverholt Housing Association",
+      "document_number": "WO-55817",
+      "document_date": "2026-10-19",
+      "project_reference": "J-4147",
+      "summary": "Works order WO-55817 to redecorate the void property at 7 Example Gardens, Plumstead, £1,765.00 excluding VAT, within 10 working days.",
+      "notes": "Quote WO-55817 and the job number on the invoice. Keys from the Woolwich office.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown",
+      "po_number": "WO-55817",
+      "net_total": 1765.0,
+      "line_items": [
+        {
+          "description": "Mist coat and two coats emulsion, all rooms",
+          "quantity": 1,
+          "unit_price": null,
+          "net": 1180.0,
+          "vat_rate": null
+        },
+        {
+          "description": "Gloss all internal joinery",
+          "quantity": 1,
+          "unit_price": null,
+          "net": 420.0,
+          "vat_rate": null
+        },
+        {
+          "description": "Remove graffiti and stain-block hallway",
+          "quantity": 1,
+          "unit_price": null,
+          "net": 165.0,
+          "vat_rate": null
+        }
+      ]
+    },
+    "2026-10-20_oakmere_duplicate-charge.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Oakmere Medical Centre",
+      "document_number": "",
+      "document_date": "2026-10-20",
+      "project_reference": "J-4144",
+      "summary": "Oakmere Medical Centre points out that consulting room 3 was charged twice on invoice SI-30359, which it has already paid.",
+      "notes": "Two charges of £450.00 plus VAT for consulting room 3 (lines 4 and 6). A credit note was promised by phone. Asks whether it will be refunded, as no more work is booked.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-21_brightline_delivery-note-DN-60417.pdf": {
+      "doc_type": "other",
+      "counterparty": "Brightline Trade Paints Ltd",
+      "document_number": "DN-60417",
+      "document_date": "2026-10-21",
+      "project_reference": "",
+      "summary": "Delivery note for paint and dust sheets delivered on 21 October 2026, signed for by D. Foley.",
+      "notes": "The customer order ref is J-4211, which is not on the project list (J-4121, Kingsridge House, is similar). Invoice to follow.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown",
+      "po_number": "J-4211"
+    },
+    "2026-10-21_saltings_remittance-7781.eml": {
+      "doc_type": "remittance",
+      "counterparty": "Saltings Care Group Ltd",
+      "document_number": "7781",
+      "document_date": "2026-10-21",
+      "project_reference": "",
+      "summary": "Remittance 7781: Saltings Care Group paid invoices SI-30377 (£4,680.00) and SI-30392 (£3,150.00) for the Saltings Lodge redecoration by BACS on 21 October 2026.",
+      "notes": "Names Saltings Lodge but quotes no job number.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "paid",
+      "gross_total": 7830.0
+    },
+    "2026-10-23_corvel_statement-request.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Corvel Logistics Ltd",
+      "document_number": "",
+      "document_date": "2026-10-23",
+      "project_reference": "",
+      "summary": "Corvel Logistics asks for a statement of account for its month-end reconciliation.",
+      "notes": "Also asks whether we would offer 60-day terms on future work. No job number quoted.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-26_pelham-rise_quote-request.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Pelham Rise Management Ltd",
+      "document_number": "",
+      "document_date": "2026-10-26",
+      "project_reference": "",
+      "summary": "New enquiry: Pelham Rise Management asks for a visit and a quote to redecorate two communal stairwells and the entrance lobby at Pelham Rise, Erith.",
+      "notes": "Not one of the projects on the list: a new enquiry. Weekday mornings are best for a visit; a fire risk assessment is available.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    },
+    "2026-10-27_riverholt_new-invoicing-address.eml": {
+      "doc_type": "correspondence",
+      "counterparty": "Riverholt Housing Association",
+      "document_number": "",
+      "document_date": "2026-10-27",
+      "project_reference": "",
+      "summary": "Riverholt asks for all invoices to go to invoices@riverholt-ha.example from 1 November 2026, quoting an order or works order number.",
+      "notes": "Covers both Riverholt contracts (the Marsh View Estate redecoration and the void property programme), so it does not belong to one project. Payment terms are unchanged.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "payment_status": "unknown"
+    }
+  },
+  "coding": {},
+  "letters": {
+    "customer:Ambleford Property Management Ltd": {
+      "subject": "Final notice: invoice SI-30318, 83 days overdue",
+      "body": "Hello Daniel,\n\nOur records show that invoice SI-30318 for £6,480.00 was due on 14 August 2026 and is now 83 days overdue. Invoice SI-30349 for £5,940.00 was due on 11 September 2026 and is 55 days overdue.\n\nThis is our final notice. Please arrange payment of both invoices within 7 days of this email. If we have not received payment or heard from you by then, the account will be referred to our branch manager.\n\nIf you have already paid, please send me the remittance details so I can match the payment. I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+    },
+    "customer:Corvel Logistics Ltd": {
+      "subject": "Second reminder: invoices SI-30352 and SI-30380",
+      "body": "Hello Aisha,\n\nInvoice SI-30352 for £4,320.00 was due on 11 September 2026 and is now 55 days overdue. Invoice SI-30380 for £3,960.00 was due on 11 October 2026 and is 25 days overdue.\n\nCould you let me know this week the date these will be paid? If there is a problem with either invoice, please tell me so we can put it right quickly. I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+    },
+    "customer:Grayling & Fosse Lettings Ltd": {
+      "subject": "Reminder: invoices SI-30393 and SI-30416",
+      "body": "Hello Chloe,\n\nI think these two invoices may have been overlooked: SI-30393 for £960.00 was due on 6 October 2026 and is 30 days overdue, and SI-30416 for £720.00 was due on 27 October 2026 and is 9 days overdue.\n\nCould you let me know when they will be paid? A reply by Thursday 12 November would be great.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+    },
+    "customer:Larkhollow Hotels Ltd": {
+      "subject": "Reminder: invoice SI-30384 (£7,560.00)",
+      "body": "Hello Sophie,\n\nA quick reminder that invoice SI-30384 for £7,560.00 was due on 15 October 2026 and is now 21 days overdue. It may simply have been missed.\n\nCould you let me know when it will be paid? I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+    },
+    "customer:Lessmoor Academy Trust": {
+      "subject": "Reminder: invoice SI-30389 (£1,512.00)",
+      "body": "Hello Rebecca,\n\nJust a friendly reminder that invoice SI-30389 for £1,512.00 was due on 18 October 2026 and is now 18 days overdue. It may have been overlooked.\n\nCould you let me know when it will be paid? A reply by Thursday 12 November would be very helpful.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+    },
+    "customer:Quarrendon Court RMC Ltd": {
+      "subject": "Second reminder: invoices SI-30370 and SI-30396",
+      "body": "Hello Brian,\n\nInvoice SI-30370 for £2,460.00 was due on 18 September 2026 and is now 48 days overdue. Invoice SI-30396 for £1,380.00 was due on 9 October 2026 and is 27 days overdue.\n\nCould you let me know this week the date these will be paid? If anything is holding them up, please tell me. I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+    },
+    "customer:Riverholt Housing Association": {
+      "subject": "Second reminder: invoices SI-30372, SI-30395 and SI-30401",
+      "body": "Hello Natalie,\n\nOur records show three invoices now overdue:\nSI-30372: £4,350.00, due 1 October 2026, 35 days overdue\nSI-30395: £2,874.00, due 24 October 2026, 12 days overdue\nSI-30401: £15,960.00, due 31 October 2026, 5 days overdue\n\nCould you confirm this week the date these will be paid? If anything is holding them up, please let me know so we can resolve it. I'd be grateful for a reply by Thursday 12 November.\n\nKind regards,\nBranch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+    }
+  },
+  "summary": "23 documents were read and 20 filed to project folders; 3 need a person. £94,346.00 is outstanding, £68,220.00 of it overdue, and 7 chase emails are drafted, including a final notice to Ambleford Property Management Ltd (£6,480.00 more than 60 days overdue). Before they go, allocate the £1,950.00 bank giro credit, check Lessmoor Academy Trust's disputed SI-30388 (£9,744.00) and decide on Corvel Logistics Ltd, £12,480.00 against a £10,000 limit. 10 items need a human check in all."
+}

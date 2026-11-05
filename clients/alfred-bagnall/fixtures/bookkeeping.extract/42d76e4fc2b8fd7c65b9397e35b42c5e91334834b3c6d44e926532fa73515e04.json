@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "42d76e4fc2b8fd7c65b9397e35b42c5e91334834b3c6d44e926532fa73515e04",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-08-28_lessmoor_handover-certificate_J-4115.pdf\nFile type: pdf\n\n--- DOCUMENT TEXT ---\nDemo Decorating Contractors Ltd\nUnit 4, Example Trade Park\nErith DA8 2XX\nErith branch · Tel 020 7946 0410 · erith.office@demo-decorating.example\nHandover certificate\nJob: J-4115 Summer works 2026 - classrooms and corridors\nClient: Lessmoor Academy Trust · Site: Lessmoor Primary School, Slade Green\nThe works listed in the schedule dated 14 July 2026 were handed over on 28 August 2026, before the start of the\nautumn term, subject to the attached snagging list (14 items).\nSnagging to be completed within 21 days of handover, outside school hours.\nFor the contractor: Dean Foley, Site Supervisor · 28/08/2026\nFor the client: R. Thorne, Business Manager · 28/08/2026",
+  "response": {
+    "text": "{\"doc_type\": \"other\", \"counterparty\": \"Lessmoor Academy Trust\", \"counterparty_vat_number\": \"\", \"document_number\": \"\", \"document_date\": \"2026-08-28\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-4115\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Handover certificate for the Lessmoor Primary School summer works, handed over on 28 August 2026 subject to a 14-item snagging list.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Snagging to be completed within 21 days of handover, outside school hours. Signed by Dean Foley and R. Thorne.\"}",
+    "data": {
+      "doc_type": "other",
+      "counterparty": "Lessmoor Academy Trust",
+      "counterparty_vat_number": "",
+      "document_number": "",
+      "document_date": "2026-08-28",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-4115",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Handover certificate for the Lessmoor Primary School summer works, handed over on 28 August 2026 subject to a 14-item snagging list.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Snagging to be completed within 21 days of handover, outside school hours. Signed by Dean Foley and R. Thorne."
+    }
+  }
+}

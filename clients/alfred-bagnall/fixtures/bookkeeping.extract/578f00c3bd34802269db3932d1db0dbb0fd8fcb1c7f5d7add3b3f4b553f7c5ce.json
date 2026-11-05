@@ -1,0 +1,37 @@
+{
+  "task": "bookkeeping.extract",
+  "key": "578f00c3bd34802269db3932d1db0dbb0fd8fcb1c7f5d7add3b3f4b553f7c5ce",
+  "recorded_from": "refresh_fixtures (fixtures/curated.json)",
+  "model": null,
+  "prompt": "File name: 2026-10-06_riverholt_variation-VI-07_J-4102.eml\nFile type: email\n\n--- DOCUMENT TEXT ---\nFrom: Graham Lister <g.lister@riverholt-ha.example>\nTo: erith.office@demo-decorating.example\nDate: Tue, 06 Oct 2026 10:42:00 +0100\nSubject: J-4102 Marsh View - Variation instruction VI-07\n\nHi Kerry,\n\nFurther to our site walk on Friday, please treat this email as variation instruction VI-07 on contract RHA/AM/2026/014 (your job J-4102):\n\n- Replace and paint 14 rotten fascia boards at Plover Court (rear elevation)\n- Additional coat of masonry paint to the bin store walls at Heron Court\n\nPlease send me your price for both items by 16 October. Do not start the fascia work until the price is agreed.\n\nRegards,\nGraham Lister\nContract Administrator, Riverholt Housing Association",
+  "response": {
+    "text": "{\"doc_type\": \"correspondence\", \"counterparty\": \"Riverholt Housing Association\", \"counterparty_vat_number\": \"\", \"document_number\": \"VI-07\", \"document_date\": \"2026-10-06\", \"due_date\": \"\", \"po_number\": \"\", \"project_reference\": \"J-4102\", \"currency\": \"GBP\", \"net_total\": null, \"vat_total\": null, \"gross_total\": null, \"vat_lines\": [], \"line_items\": [], \"payment_status\": \"unknown\", \"card_last4\": \"\", \"bank_sort_code\": \"\", \"bank_account_number\": \"\", \"service_period_start\": \"\", \"service_period_end\": \"\", \"statement_lines\": [], \"summary\": \"Variation instruction VI-07 on the Marsh View contract: replace and paint 14 fascia boards at Plover Court and an extra coat to the Heron Court bin store walls.\", \"confidence\": \"high\", \"uncertain_fields\": [], \"notes\": \"Price needed by 16 October. Do not start the fascia work until the price is agreed.\"}",
+    "data": {
+      "doc_type": "correspondence",
+      "counterparty": "Riverholt Housing Association",
+      "counterparty_vat_number": "",
+      "document_number": "VI-07",
+      "document_date": "2026-10-06",
+      "due_date": "",
+      "po_number": "",
+      "project_reference": "J-4102",
+      "currency": "GBP",
+      "net_total": null,
+      "vat_total": null,
+      "gross_total": null,
+      "vat_lines": [],
+      "line_items": [],
+      "payment_status": "unknown",
+      "card_last4": "",
+      "bank_sort_code": "",
+      "bank_account_number": "",
+      "service_period_start": "",
+      "service_period_end": "",
+      "statement_lines": [],
+      "summary": "Variation instruction VI-07 on the Marsh View contract: replace and paint 14 fascia boards at Plover Court and an extra coat to the Heron Court bin store walls.",
+      "confidence": "high",
+      "uncertain_fields": [],
+      "notes": "Price needed by 16 October. Do not start the fascia work until the price is agreed."
+    }
+  }
+}
