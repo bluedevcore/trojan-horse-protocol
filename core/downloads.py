@@ -178,7 +178,7 @@ def pdf_bytes(title: str, blocks: list[dict], *, subtitle: str | None = None, fo
     from reportlab.lib.pagesizes import A4, landscape
     from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
     from reportlab.lib.units import mm
-    from reportlab.platypus import (KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table,
+    from reportlab.platypus import (PageBreak, Paragraph, SimpleDocTemplate, Spacer, Table,
                                     TableStyle)
 
     ink, muted, rule, fill = (colors.HexColor(c) for c in ("#1F2933", "#5B6775", "#C9D1DB", "#EEF1F5"))
@@ -188,6 +188,7 @@ def pdf_bytes(title: str, blocks: list[dict], *, subtitle: str | None = None, fo
     s_sub = ParagraphStyle("s", parent=base["Normal"], fontSize=9.5, textColor=muted, spaceAfter=8)
     s_h1 = ParagraphStyle("h1", parent=base["Heading2"], fontName="Helvetica-Bold", fontSize=12.5, textColor=ink,
                           spaceBefore=10, spaceAfter=4)
+    s_h1.keepWithNext = 1  # never leave a heading alone at the bottom of a page
     s_h2 = ParagraphStyle("h2", parent=s_h1, fontSize=11)
     s_body = ParagraphStyle("b", parent=base["Normal"], fontSize=9.5, leading=13, textColor=ink, spaceAfter=4)
     s_note = ParagraphStyle("n", parent=s_body, fontSize=8, leading=10, textColor=muted)
@@ -240,7 +241,9 @@ def pdf_bytes(title: str, blocks: list[dict], *, subtitle: str | None = None, fo
             if df.empty:
                 story.append(Paragraph("None.", s_body))
                 continue
-            weights = block.get("widths") or [max(4, min(40, max(len(str(c)), *(len(str(v)) for v in df[c].head(50))))) for c in df.columns]
+            weights = block.get("widths") or [
+                2 + max(4, max(len(w) for w in str(c).split() or [""]), min(40, max(len(str(v)) for v in df[c].head(50))))
+                for c in df.columns]
             total = float(sum(weights))
             col_widths = [usable * w / total for w in weights]
             data = [[Paragraph(esc(c), s_head) for c in df.columns]]
@@ -264,5 +267,5 @@ def pdf_bytes(title: str, blocks: list[dict], *, subtitle: str | None = None, fo
         canvas.drawString(14 * mm, 8 * mm, text)
         canvas.restoreState()
 
-    doc.build([KeepTogether(story[:2])] + story[2:], onFirstPage=_footer, onLaterPages=_footer)
+    doc.build(story, onFirstPage=_footer, onLaterPages=_footer)
     return buffer.getvalue()
