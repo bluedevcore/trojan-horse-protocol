@@ -19,6 +19,7 @@ from core import ui
 from core.claude import ClaudeClient
 from core.estimates import format_minutes
 from tools.bookkeeping import pipeline, reports
+from tools.bookkeeping.documents import type_count
 from tools.bookkeeping.pipeline import PipelineError, RunInputs, RunResult
 
 RESULT_KEY, STEPS_KEY = "bk_result", "bk_steps"
@@ -103,7 +104,7 @@ def render_results(r: RunResult) -> None:
     ui.section("Summary", f"{r.inputs_label.capitalize()} · period {f['period']} · as at {f['as_of']} · "
                           f"finished in {r.seconds:.1f}s")
     by_type = f.get("documents_by_type", {})
-    doc_sub = " · ".join(f"{n} {t}{'s' if n != 1 else ''}" for t, n in sorted(by_type.items(), key=lambda x: -x[1])[:3])
+    doc_sub = " · ".join(type_count(t, n) for t, n in sorted(by_type.items(), key=lambda x: -x[1])[:3])
     metrics = [ui.Metric("Documents read", str(f["documents"]), doc_sub)]
     if f.get("entries"):
         metrics.append(ui.Metric(f"Purchases ready for {r.system_label.split()[0]}", f"£{f['value_ready']:,.0f}",
@@ -117,6 +118,10 @@ def render_results(r: RunResult) -> None:
                                  tone="alert"))
     elif f.get("timesheet_rows"):
         metrics.append(ui.Metric("Timesheet lines", str(f["timesheet_rows"]), f"{f['timesheet_employees']} employees"))
+    if f.get("filing_docs") and not f.get("entries"):
+        to_file = f["filing_to_file"]
+        metrics.append(ui.Metric("Filed to project folders", f"{f['filing_filed']} of {f['filing_docs']}",
+                                 f"{to_file} left to file by hand" if to_file else "all filed", tone="alert" if to_file else "good"))
     n_high = int(f["by_severity"].get("High", 0))
     metrics += [
         ui.Metric("Exceptions", str(f["exceptions"]), f"{n_high} high severity", tone="alert" if n_high else ""),
@@ -151,7 +156,8 @@ def render_results(r: RunResult) -> None:
         with tab:
             render(r)
 
-    ui.section("Downloads", f"Every output from this run. Import files are for {r.system_label}; held entries are left out.")
+    ui.section("Downloads", f"Every output from this run. Import files are for {r.system_label}; held entries are left out."
+               if r.exports else "Every output from this run. Nothing is posted or sent automatically.")
     ui.download_buttons(r.downloads)
     with st.expander("How the time-saved estimate is worked out"):
         for line in r.time_estimate.assumptions:
@@ -169,7 +175,7 @@ def _tabs(r: RunResult) -> list[tuple[str, callable]]:
         "hours": ("Hours for payroll", _hours_tab, not r.hours.empty),
         "po": ("PO matching", lambda x: _table(x.po_table), not r.po_table.empty),
         "statements": ("Supplier statements", lambda x: _table(x.statements), not r.statements.empty),
-        "filing": ("Filing", lambda x: _table(x.filing, wide=["Summary", "Folder"]), not r.filing.empty),
+        "filing": ("Filing", _filing_tab, not r.filing.empty),
         "vat": ("VAT return", _vat_tab, not r.vat_return.empty),
         "emails": (f"Emails ({len(r.letters)})", _emails_tab, bool(r.letters)),
         "checklist": ("Month-end checklist", _checklist_tab, not r.checklist.empty),
@@ -204,7 +210,11 @@ STATUS_STYLE = [("Held", "background-color:#FFF4E0;color:#7A4A00"), ("Ready", "b
                 ("Matched", "background-color:#E8F6EE;color:#0F5A34"), ("Done", "background-color:#E8F6EE;color:#0F5A34"),
                 ("Receipt missing", "background-color:#FDE8E7;color:#8A1C12"),
                 ("Amount differs", "background-color:#FFF4E0;color:#7A4A00"),
-                ("Action needed", "background-color:#FFF4E0;color:#7A4A00")]
+                ("Action needed", "background-color:#FFF4E0;color:#7A4A00"),
+                ("Final notice", "background-color:#FDE8E7;color:#8A1C12"),
+                ("Second reminder", "background-color:#FFF4E0;color:#7A4A00"),
+                ("Reminder", "background-color:#FFF9EC;color:#7A4A00"),
+                ("needs a person", "background-color:#FDE8E7;color:#8A1C12")]
 
 
 def _status_css(value: str) -> str:
@@ -318,9 +328,28 @@ def _sales_tab(r: RunResult) -> None:
 
 def _debtors_tab(r: RunResult) -> None:
     st.markdown("**By customer**")
-    _table(r.debtors_summary, status=None)
+    summary = r.debtors_summary
+    _grid(summary, [("Customer", "text", 260)] + [(c, "money", 130 if c == "Total outstanding" else 110)
+                                                  for c in summary.columns if c != "Customer"], cap=20)
     st.markdown("**Open invoices**")
-    _table(reports.debtors_frame(r), status=None)
+    d = reports.debtors_frame(r)
+    _grid(d, [("Customer", "text", 215), ("Invoice", "text", 75), ("Project", "text", 62), ("Due", "date", 88),
+              ("Amount", "money", 88), ("Received (bank)", "money", 95, "Received"), ("Outstanding", "money", 92),
+              ("Days overdue", "qty", 50, "Days"), ("Chase", "text", 115), ("Notes", "text", 260),
+              ("Invoice date", "date", 88), ("Paid (ledger)", "money", 85), ("Age", "text", 90)], status="Chase", cap=30)
+    st.caption("“Received” is money on the bank statement matched to the invoice (by invoice number, or by customer "
+               "and exact amount). Days are past the due date; negative means not yet due. Disputed invoices and "
+               "credits are not chased.")
+
+
+def _filing_tab(r: RunResult) -> None:
+    _grid(r.filing, [("Doc", "text", 45), ("From / to", "text", 180), ("Type", "text", 108), ("Project", "text", 62),
+                     ("Filed by", "text", 170), ("Folder", "text", 475), ("New file name", "text", 430),
+                     ("Original file", "text", 380)], status="Filed by", cap=30)
+    st.caption("Filed by the project reference Claude read on the document (checked against the project register), a "
+               "job number in the text, or a site name from the register. Anything unclear goes to the “to file” "
+               "folder for a person. Scroll the table right for the new file names; the zip has every document "
+               "renamed in its folder.")
 
 
 def _hours_tab(r: RunResult) -> None:

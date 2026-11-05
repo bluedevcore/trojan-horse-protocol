@@ -28,7 +28,7 @@ from tools.bookkeeping.checks import Finding, finalise, findings_frame
 from tools.bookkeeping.coding import (Chart, Rules, SupplierBook, chart_from_frame, code_from_rules, code_from_supplier,
                                       supplier_vat_checks)
 from tools.bookkeeping.documents import (DOC_SUFFIXES, IMAGE_SUFFIXES, DocText, DocumentError, arithmetic_problems,
-                                         documents_frame, normalise, read_document)
+                                         documents_frame, normalise, read_document, type_count)
 from tools.bookkeeping.exports import SYSTEM_LABELS, build_exports
 from tools.bookkeeping.filing import file_documents
 from tools.bookkeeping.matching import MatchSettings, match_card_to_documents, name_similarity, reconcile_statement
@@ -41,7 +41,7 @@ from tools.bookkeeping.vat import code_for_rate, format_vat_number, normalise_co
 FileInput = tuple[str, bytes]
 PURCHASE_TYPES = ("invoice", "credit_note", "receipt")
 MASTER_ROLES = ("suppliers", "customers", "chart_of_accounts", "employees", "projects")
-DEFAULT_MODULES = {"documents": True, "card_matching": True, "coding": True, "payroll_journal": True,
+DEFAULT_MODULES = {"documents": True, "purchases": True, "card_matching": True, "coding": True, "payroll_journal": True,
                    "sales_invoices": True, "debtors": True, "timesheets": True, "purchase_orders": True,
                    "statements": True, "filing": False, "vat_return": False, "letters": True, "month_end": True}
 
@@ -268,7 +268,7 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
             docs.append(normalise(data, doc, f"D-{i:02d}", src))
         by_type = Counter(d["doc_type"] for d in docs)
         progress.done(f"Extracted the details from {_plural(len(docs), 'document')}",
-                      ", ".join(f"{n} {t.replace('_', ' ')}{'s' if n != 1 else ''}" for t, n in by_type.most_common())
+                      ", ".join(type_count(t, n) for t, n in by_type.most_common())
                       + f" · {_source_phrase(Counter(c.source for c in calls))}")
         if any(c.source in ("mock", "fallback") for c in calls):
             warnings.append("Some documents were read by the pattern reader (no AI), which is less reliable: "
@@ -282,7 +282,8 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
         p_start, p_end = infer_period(dates, inputs.as_of)
 
     # 3. Document checks ----------------------------------------------------------------
-    purchase_docs = [d for d in docs if d["doc_type"] in PURCHASE_TYPES]
+    # modules.purchases: false -> invoices, receipts and credit notes are read (and filed) but not checked or coded
+    purchase_docs = [d for d in docs if d["doc_type"] in PURCHASE_TYPES] if _module_on(config, "purchases") else []
     duplicates: set[str] = set()
     if purchase_docs:
         progress.start(f"Checking {_plural(len(purchase_docs), 'invoice and receipt', 'invoices and receipts')} "
@@ -530,7 +531,8 @@ def run(inputs: RunInputs, config: dict, client: ClaudeClient, progress: StepPro
 
     result.downloads = reports.build_downloads(result)
     built = (f"Built {_plural(len(exports), SYSTEM_LABELS.get(config.get('accounting_system', 'quickbooks'), '') + ' import file')} "
-             f"and the month-end pack" if exports else "Built the month-end pack (nothing is ready to import yet)")
+             f"and the month-end pack" if exports else "Built the month-end pack (nothing is ready to import yet)"
+             if not entries.empty else f"Built {_plural(len(result.downloads), 'output file')}")
     progress.done(built, ", ".join(f.file_name.rsplit(".", 1)[-1].upper() for f in result.downloads[len(exports):]))
     result.seconds = round(time.perf_counter() - started, 2)
     return result
@@ -945,7 +947,9 @@ def _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_tota
                       "sales_value": round(float(sales["gross"].sum()), 2)})
     if not debtors.empty:
         facts.update({"debtor_items": len(debtors), "debtors_outstanding": round(float(debtors["outstanding"].sum()), 2),
-                      "debtors_overdue": round(float(debtors[debtors["days_overdue"] > 0]["outstanding"].clip(lower=0).sum()), 2)})
+                      "debtors_overdue": round(float(debtors[debtors["days_overdue"] > 0]["outstanding"].clip(lower=0).sum()), 2),
+                      "debtor_issues": [{"id": f.id, "check": f.label, "who": f.subject, "finding": f.finding}
+                                        for f in findings if f.area == "Debtors" or f.check_id == "over_credit_limit"]})
     if not ts_rows.empty:
         facts.update({"timesheet_rows": len(ts_rows), "timesheet_employees": ts_rows["employee"].nunique()})
     if not po_table.empty:
@@ -953,7 +957,8 @@ def _facts(config, docs, entries, txns, matches, no_receipt_needed, payroll_tota
     if stmt_docs:
         facts["statements"] = len(stmt_docs)
     if not filing.empty:
-        facts["filing_docs"] = len(filing)
+        unfiled = int((filing["Project"].astype(str) == "").sum())
+        facts.update({"filing_docs": len(filing), "filing_filed": len(filing) - unfiled, "filing_to_file": unfiled})
     if not vat_box.empty:
         facts["vat_return"] = True
         facts["vat_return_box5"] = float(vat_box.loc[vat_box["Box"] == 5, "Amount (£)"].iloc[0])

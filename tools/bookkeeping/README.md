@@ -75,8 +75,9 @@ export_settings: {card_payment_account, card_bank_nominal, journal_number, tax_c
 sample_data:
   documents: ["sample_data/inbox/*"]          # globs or file paths
   tables: {card_statement: sample_data/x.csv, suppliers: ..., chart_of_accounts: ...}   # role: path (or list)
-modules: {documents, card_matching, coding, payroll_journal, sales_invoices, debtors, timesheets,
+modules: {documents, purchases, card_matching, coding, payroll_journal, sales_invoices, debtors, timesheets,
           purchase_orders, statements, filing, vat_return, letters, month_end}   # true/false
+                                    # purchases: false = invoices/receipts are read and filed but not checked or coded
 tables: {<role>: {aliases: {...}}}
 coding:
   fallback_account: Suspense
@@ -103,6 +104,8 @@ month_end: {checklist: [{id: purchase_invoices}, {label: "Manual step", manual: 
 analysis: {tracking_label: Property}   # entries carry the document's project/property ref (or the cardholder)
 views: {tabs: [entries, card, payroll, sales, debtors, hours, po, statements, filing, vat, emails, checklist,
                exceptions, documents]}
+reports: {pack_label, pack_file, pack_help, report_label, report_file, report_help, report_title, emails_help,
+          method: ["...", ...]}    # optional: rename the Excel pack / PDF report for non-bookkeeping jobs
 ai: {domain: "...", signature: "...", reply_by: "by Friday 13 November", letters_per_request: 3}
 time_estimate:                      # counts: documents invoices receipts card_txns entries exceptions human_checks
   manual: [["label", "count key", minutes], ...]          #   emails employees sales_invoices debtor_items
