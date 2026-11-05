@@ -1,0 +1,127 @@
+# Debtor & Filing Agent — prototype demo for Alfred Bagnall & Sons Limited (Branch Administrator, Erith).
+# All wording, file names, rules and contacts for this client live here;
+# the engine in tools/bookkeeping/ is generic (see tools/bookkeeping/README.md).
+
+slug: alfred-bagnall
+client_name: Alfred Bagnall & Sons Limited
+tool_name: Debtor & Filing Agent
+role: Branch Administrator
+headline: "Debtor & Filing Agent: built as a prototype for Alfred Bagnall & Sons Limited"
+replaces: >-
+  Replaces a morning of branch admin: it reconciles the aged debtor list against the bank, drafts a chase email
+  for every overdue account at the right tone, and reads, renames and files contracts and correspondence into
+  the right project folder.
+badges: ["Prototype", "Synthetic sample data", "Excel in, Excel out"]
+footer: >-
+  Independent prototype built for a job application. Not affiliated with or endorsed by Alfred Bagnall & Sons
+  Limited. All sample data is synthetic: the contractor, customers, projects, sites, people and amounts are invented.
+footer_short: "Independent prototype · synthetic data · not affiliated with Alfred Bagnall & Sons Limited"
+sample_caption: >-
+  Uses an invented decorating contractor's branch: an Excel sales ledger with 26 open invoices, the bank
+  statement, the project register and 24 documents waiting to be filed. No setup needed.
+upload_help: >-
+  Drop in contracts, orders and correspondence (PDF or .eml) to file, plus any of: the sales ledger or aged
+  debtors list (Excel/CSV with Customer, Invoice No, Invoice Date, Due Date, Amount, Paid, Project), a bank
+  statement (Date, Description, Money in/out), a project register (Project Ref, Project Name, Site). Missing
+  customer or project lists fall back to the demo's sample ones. Use synthetic or anonymised files only: this is
+  a public demo.
+
+# Pause after each progress step so a screen recording can follow along (seconds).
+step_delay_seconds: 0.4
+
+# The sample runs "as at" this date, so the ageing is reproducible.
+sample_as_of: 2026-11-05
+period: {start: 2026-10-01, end: 2026-10-31}
+
+company:
+  name: Demo Decorating Contractors Ltd
+accounting_system: xero   # not used: nothing is posted; outputs are Excel, Word, PDF and a zip of filed documents
+
+sample_data:
+  documents: ["sample_data/inbox/*"]
+  tables:
+    open_invoices: sample_data/sales_ledger_open_invoices.xlsx
+    bank_statement: sample_data/bank_statement_oct-2026.csv
+    customers: sample_data/customer_list.csv
+    projects: sample_data/project_register.csv
+
+# Which parts of the engine run (each also needs its input files).
+modules:
+  documents: true        # read each document (for filing)
+  card_matching: false
+  coding: false
+  payroll_journal: false
+  sales_invoices: false
+  debtors: true
+  timesheets: false
+  purchase_orders: false
+  statements: false
+  filing: true
+  vat_return: false
+  letters: true
+  month_end: true
+
+debtors:
+  buckets: [0, 30, 60, 90]
+  default_terms_days: 30
+  tiers:
+    - {from: 1, tier: Reminder, tone: "friendly reminder: assume it has been overlooked and ask when it will be paid"}
+    - {from: 31, tier: Second reminder, tone: "firm but polite second reminder: ask for a payment date this week"}
+    - {from: 61, tier: Final notice, tone: "final notice: ask for payment within 7 days and say the account will be referred to the branch manager"}
+
+filing:
+  reference_pattern: "J-\\d{4}"
+  unfiled_folder: "_To file"
+
+reports:
+  pack_label: "Debtors & filing pack (Excel)"
+  pack_help: "Aged debtors, customer balances, filing index, exceptions and drafted emails in one workbook"
+  pack_file: debtors-and-filing-pack
+  report_label: "Credit control & filing report (PDF)"
+  report_help: "Manager summary, aged debtors by customer, human checks and exceptions, ready to circulate"
+  report_file: credit-control-report
+  report_title: "Debtor & Filing Agent — credit control and filing report"
+  emails_help: "Chase emails for every overdue account, editable before sending"
+  method:
+    - "Open invoices were aged at the report date. Payments on the bank statement were matched to invoices in code: by invoice number first, then by customer name and exact amount."
+    - "Claude read each document and suggested its project; code then checked that project against the project register, or matched the site name, before filing it. Anything unclear is left in “_To file”."
+    - "Every figure in this report was calculated in code. Claude only read the documents and drafted the emails and the summary. Nothing is sent automatically."
+
+contacts: {}
+
+month_end:
+  checklist:
+    - {id: debtors_chased}
+    - {id: documents_filed}
+    - {label: "Post the matched receipts to the sales ledger spreadsheet", manual: true}
+    - {label: "Branch manager approves the final notice before it is sent", manual: true}
+    - {label: "Send the chase emails and diary a follow-up for each one", manual: true}
+    - {label: "Send the aged debtor report to the branch manager", manual: true}
+
+views:
+  tabs: [debtors, emails, filing, checklist, exceptions, documents]
+
+# Plain-English context passed to Claude.
+ai:
+  domain: >-
+    The Erith branch of a painting, decorating and building maintenance contractor (about 40 staff at the branch).
+    Customers are housing associations, academy trusts, care homes, hotels, managing agents, residents' management
+    companies and main contractors. Each job has a job number such as J-4102. Documents arriving at the branch include
+    contracts and letters of acceptance, customer purchase and works orders, variation instructions, site meeting
+    minutes, remittance advices and general correspondence.
+  signature: "Branch Administrator\nDemo Decorating Contractors Ltd, Erith branch"
+  reply_by: "by Thursday 12 November"
+  letters_per_request: 3
+
+# Time-saved estimate shown on the results screen. Assumptions are displayed.
+time_estimate:
+  manual:
+    - ["tick an open invoice off against the bank statement and update the ledger", "debtor_items", 3]
+    - ["read, rename and file a document into its project folder", "documents", 3]
+    - ["look into an exception (part payment, unknown receipt, dispute, unfiled document)", "exceptions", 8]
+    - ["write a chase email at the right tone", "emails", 8]
+    - ["update the aged debtor report for the branch manager", "fixed", 20]
+  with_tool:
+    - ["review an item on the needs-human-check list", "human_checks", 4]
+    - ["check and send a drafted chase email", "emails", 2]
+    - ["check the filing index and move the filed documents", "fixed", 10]

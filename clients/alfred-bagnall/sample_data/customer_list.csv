@@ -1,0 +1,11 @@
+Customer,Account Ref,Contact,Email,Terms (days),Credit Limit
+Riverholt Housing Association,RIVERH01,Natalie Okafor,accounts.payable@riverholt-ha.example,30,60000
+Lessmoor Academy Trust,LESSMO01,Rebecca Thorne,finance@lessmoor-trust.example,30,25000
+Ambleford Property Management Ltd,AMBLEF01,Daniel Cho,accounts@ambleford-pm.example,30,15000
+Kestrelgate Construction Ltd,KESTRE01,Paula Mensah,payables@kestrelgate.example,45,40000
+Saltings Care Group Ltd,SALTIN01,Mark Fenton,purchase.ledger@saltings-care.example,30,20000
+Larkhollow Hotels Ltd,LARKHO01,Sophie Kendrick,accounts@larkhollow-hotels.example,30,15000
+Corvel Logistics Ltd,CORVEL01,Aisha Rahman,ap@corvel-logistics.example,30,10000
+Quarrendon Court RMC Ltd,QUARRE01,Brian Ellwood,,14,5000
+Oakmere Medical Centre,OAKMER01,Linda Hayes,manager@oakmere-medical.example,30,5000
+Grayling & Fosse Lettings Ltd,GRAYLI01,Chloe Banner,maintenance@grayling-fosse.example,14,5000
